@@ -91,7 +91,7 @@ int main()
 void menyu()
 {
 	system("CLS");
-	int choice = 's';
+	int choice = 0;
 	cout << "Main Menu\n"
 		<< "\n"
 		<< "New Game (n)\n"
@@ -108,30 +108,35 @@ void menyu()
 		case 1:
 		case 'N':
 
+			choice = 0;
 			d.beginningStory();
-			choice = '|';
+			choice = '4';
 			break;
 
 		case 'c':
 		case 2:
 		case 'C':
+			choice = 0;
 
 			break;
 
 		case 'q':
 		case 3:
 		case 'Q':
+			choice = 0;
 			cout << endl;
 			cout << "GoodBye!" << endl;
-			choice = '|';
+			choice = '4';
 			break;
 
 		default:
-			cout << "Invalid option..." << endl;
+			choice = 0;
+			cout << "Invalid option..." << endl; // infinite loop of death
+			system("CLS");
 			menyu();
 			break;
 		};
-	} while (choice != '|' || choice != '~');
+	} while (choice != '4');
 }
 
 string dialougeInput(string pvalue)
