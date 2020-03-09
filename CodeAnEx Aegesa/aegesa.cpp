@@ -68,6 +68,7 @@ aegesa::statusEff aegesa::getStatus()
 	for (i = 0; i < 20; i++)
 	{
 		My_Statuses[i];
+		//statuses
 	}
 	return My_Statuses[i];
 }
