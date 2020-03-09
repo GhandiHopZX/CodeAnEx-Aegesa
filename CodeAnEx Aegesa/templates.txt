@@ -1,0 +1,31 @@
+
+//template <class T>
+//T factorial(T n)
+//{
+//	if (n == 0)
+//		return 1; // back to here
+//	else
+//	{
+//		unsigned
+//			long long int fact = recursiveMulti(n - 1);
+//		return fact * n; // from here
+//	}
+//	//return n;
+//}
+
+//template <class T>
+//T recursiveAddition(T x, T y)
+//{
+//	int z; // equals x * y
+//	z = x + y;
+//
+//	if (z >= x)
+//	{
+//		x += y;
+//		return x;
+//	}
+//	else
+//	{
+//		return z = x + y;
+//	}
+//}
