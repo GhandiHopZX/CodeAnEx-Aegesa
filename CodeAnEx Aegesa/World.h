@@ -79,6 +79,10 @@ public:
 
 	void navigation(int selectedMap, int m, int c, int e);
 
+	char choiceIn(string);
+
+	string lineStop();
+
 	// getters/accessors
 
 	// other functions

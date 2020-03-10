@@ -30,6 +30,7 @@ World d;
 // function declarations
 void menyu();
 string dialougeInput(string);
+char choiceIN(string);
 
 int main()
 {
@@ -80,7 +81,7 @@ int main()
 
 	cout << "Press Enter to Play" << endl;
 	cin.get();
-
+	system("CLS");
 	// gamemenu
 
 	menyu();
@@ -90,8 +91,6 @@ int main()
 
 void menyu()
 {
-	system("CLS");
-	int choice = 0;
 	cout << "Main Menu\n"
 		<< "\n"
 		<< "New Game (n)\n"
@@ -99,39 +98,41 @@ void menyu()
 		<< "Quit Game (q)" << endl;
 
 	// choice goes here
-	cin >> choice;
+	char choice{};
+	string choiceS;
+	
+	getline(cin, choiceS);
+
+	choice = choiceIN(dialougeInput(choiceS));
+	
 	do
 	{
 		switch (choice)
 		{
 		case 'n':
-		case 1:
 		case 'N':
-
-			choice = 0;
+			system("CLS");
+			//DELETE CHOICE
+			choice = '\0';
 			d.beginningStory();
-			choice = '4';
 			break;
 
 		case 'c':
-		case 2:
 		case 'C':
-			choice = 0;
-
+			system("CLS");
 			break;
 
 		case 'q':
-		case 3:
 		case 'Q':
-			choice = 0;
+			system("CLS");
 			cout << endl;
 			cout << "GoodBye!" << endl;
 			choice = '4';
 			break;
 
 		default:
-			choice = 0;
 			cout << "Invalid option..." << endl; // infinite loop of death
+			cin.get();
 			system("CLS");
 			menyu();
 			break;
@@ -141,7 +142,29 @@ void menyu()
 
 string dialougeInput(string pvalue)
 {
-	getline(cin, pvalue);
+	//getline(cin, pvalue);
 	pvalue.erase(remove(pvalue.begin(), pvalue.end(), '\n'), pvalue.end());
 	return pvalue;
+}
+
+char choiceIN(string choiceBuffer)
+{
+	//string choiceBuffer;
+	char choice = NULL;
+	//cin >> choice;
+	char* choiceWritable = new char[choiceBuffer.size() + 1];
+
+	copy(choiceBuffer.begin(), choiceBuffer.end(), choiceWritable);
+
+	choiceWritable[choiceBuffer.size()] = '\0';
+
+	char* choice3 = choiceWritable;
+
+	char& choice4 = *choice3;
+
+	choice = choice4;
+
+	delete[] choiceWritable;
+
+	return choice;
 }

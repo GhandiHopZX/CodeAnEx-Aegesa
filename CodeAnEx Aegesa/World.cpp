@@ -304,13 +304,13 @@ void World::eventCalls(World::map local, bool trigger, string dialougeOut){}
 void World::dialouge(Player_Actor pn, string in)
 {
 	cout << pn.getName() + ": " + in << endl;
-	cin.get();
+	lineStop();
 }
 
 void World::dialougeAction(Player_Actor pn, string in)
 {
 	cout << pn.getName() + ": " + "*" + " " + in + "*" << endl;
-	cin.get();
+	lineStop();
 }
 
 string World::dialougeInput(string pvalue)
@@ -379,4 +379,34 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].z = z;
 		break;
 	} 
+}
+
+char World::choiceIn(string choiceBuffer)
+{
+	//string choiceBuffer;
+	char choice = NULL;
+	//cin >> choice;
+	char* choiceWritable = new char[choiceBuffer.size() + 1];
+
+	copy(choiceBuffer.begin(), choiceBuffer.end(), choiceWritable);
+
+	choiceWritable[choiceBuffer.size()] = '\0';
+
+	char* choice3 = choiceWritable;
+
+	char& choice4 = *choice3;
+
+	choice = choice4;
+
+	delete[] choiceWritable;
+
+	return choice;
+}
+
+string World::lineStop()
+{
+	string pvalue;
+	getline(cin, pvalue);
+	pvalue.erase();
+	return pvalue;
 }
