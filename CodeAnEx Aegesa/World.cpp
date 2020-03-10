@@ -67,9 +67,6 @@ void World::beginningStory()
 
 	cout << endl;
 
-	
-	
-
 #pragma region Alicia_SetStats
 	Alicia.setName("Alicia");
 	Alicia.setBio("Lost class 3 Android unit. Locked Away for 10 years, now follows you in your journey for the AType upgrade to save her friend..");
@@ -328,13 +325,14 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	// sw = southwest, s = south, se = southeast
 	// w = west, e = east
 	// z = floor
-	cout << "Current Location: " << maps[selectedMap].name << endl;
+	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
 	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y 
 		<< "column\n" << maps[selectedMap].z << "floor" << endl;
 
 	cout << "Where will you go?\n (n)north,\n"
 		<< "(e)east,\n (w)west,\n (s)south,\n (ne)northeast,\n"
 		<< "(nw)northwest,\n (se)southeast,\n (sw)southwest\n " << endl;
+
 	char dir = {};
 	cin >> dir;
 	switch (dir)
@@ -369,7 +367,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		break;
 	default:
 		cout << "not a direction or command" << endl;
-		//menu();
+		menu();
 		break;
 	}
 
