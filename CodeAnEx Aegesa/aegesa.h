@@ -12,7 +12,7 @@ public:
 
 #pragma region vars
 
-	// statbase
+	// statbase 15
 	unsigned int hp = 0; // health
 	unsigned int sp = 0; // special
 	unsigned int fp = 0; // fighter (aural)

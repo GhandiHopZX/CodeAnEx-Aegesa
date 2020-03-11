@@ -3,6 +3,8 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <ctime>
+#include <chrono>
 #include "aegesa.h"
 #include "Player_Actor.h"
 #include "battleSystem.h"
@@ -30,6 +32,7 @@ private:
 	int mao = 0;
 	int tse = 0;
 	int tung = 0;
+	long play_time = 0;
 
 	map lostCity[11][11][4];
 	map darkForest[11][11][2];
@@ -83,7 +86,12 @@ public:
 
 	string lineStop();
 
+	void StopTime();
+
+	long StartTime();
+
 	// getters/accessors
 
 	// other functions
+	~World();
 };

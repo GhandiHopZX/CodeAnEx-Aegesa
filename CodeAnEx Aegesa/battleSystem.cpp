@@ -254,7 +254,7 @@ using namespace std;
 //	normalOutput("priming for attack....");
 //	long maxim = (fp + fp);
 //
-//	long rate = (spd + spdPlus * (fp / 2));
+//	long rate = (spd + spdPlus * (fp / 2)); // where is this utilized?
 //
 //	long dura = maxim;
 //

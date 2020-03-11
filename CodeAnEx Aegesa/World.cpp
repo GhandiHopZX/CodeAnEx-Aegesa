@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <iomanip>
+#include <ctime>
 #include <cmath>
 #include <chrono>
 #include <thread>
@@ -32,6 +33,13 @@ World::World()
 	mao = 0;// int posx = 0;
 	tse = 0;// int posy = 0;
 	tung = 0;// int posz = 0;
+
+	//set time
+	
+	StartTime();
+	// file load for play_time goes here
+	// "                     "
+	play_time += StartTime(); //every time the world is loaded =) also playtime contains the file_data
 
 	map maps[5] =
 	{
@@ -407,4 +415,22 @@ string World::lineStop()
 	getline(cin, pvalue);
 	pvalue.erase();
 	return pvalue;
+}
+
+void World::StopTime()
+{
+	std::this_thread::yield();
+}
+
+long World::StartTime()
+{
+	long copy;
+	auto playtime = std::chrono::high_resolution_clock::now; // you might need to convert this into a long or some kind of type that can be saved and stored for later use
+	//copy = static_cast<long>(playtime);
+	return copy;
+}
+
+World::~World()
+{
+	StopTime();
 }
