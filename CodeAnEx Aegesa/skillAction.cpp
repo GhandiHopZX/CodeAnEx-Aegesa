@@ -9,11 +9,46 @@ HashTableSet kHash;
 //default
 skillAction::skillAction()
 {
+	hpAdd = 0;
+	spAdd = 0;
+	fpAdd = 0;
+	apAdd = 0;
+	dpAdd = 0;
+
+	atkAdd = 0;
+	defAdd = 0;
+	spdAdd = 0;
+
+	dexAdd = 0;
+	intAdd = 0;
+	sprAdd = 0;
+	endAdd = 0;
+	conAdd = 0;
+	strAdd = 0;
+	agiAdd = 0;
+
+	hpPerc = 0;
+	spPerc = 0;
+	fpPerc = 0;
+	atkPerc = 0;
+	defPerc= 0;
+	spdPerc= 0;
+	agiPerc= 0;
+	dexPerc= 0;
+	intPerc= 0;
+	sprPerc= 0;
+	strPerc= 0;
+	endPerc= 0;
+	conPerc= 0; //13
+
 	name = "";
 	dec = "";
 	type = static_cast<elementType>(9);
 	rangeType = false;
 	num = 0;
+	herpesus.buffName = "none";
+	statsForSkill;
+	this->stat14Percentages[statsForSkill];
 }
 
 //calling the skill into existance
@@ -23,10 +58,26 @@ skillAction::skillAction(int call)
 	// because normalOutput is for the battleSystem.
 	// this is for the menu
 
+	hpPerc = 0;
+	spPerc = 0;
+	fpPerc = 0;
+	atkPerc = 0;
+	defPerc = 0;
+	spdPerc = 0;
+	agiPerc = 0;
+	dexPerc = 0;
+	intPerc = 0;
+	sprPerc = 0;
+	strPerc = 0;
+	endPerc = 0;
+	conPerc = 0;
+
 	cout << skillcall(call).name << endl;
 	skillcall(call).dec;
-	cout << endl;
-	displayElementType(skillcall(call).getElementType());
+	cout << "Buff/Debuff effect\n" +
+		skillcall(call).herpesus.buffName << endl;
+	displayElementType(skillcall(call).getElementType())
+		;
 	cout << endl;
 	getRangeType();
 	cout <<
@@ -47,42 +98,90 @@ skillAction::skillAction(int call)
 		skillcall(call).endAdd + '\n' +
 		skillcall(call).strAdd + '\n' +
 		skillcall(call).intAdd + '\n' +
-		skillcall(call).sprAdd + '\n'
+		skillcall(call).sprAdd + '\n' +
+		skillcall(call).stat14Percentages[0] + '\n' +
+		skillcall(call).stat14Percentages[hpPerc] +'\n' +
+		skillcall(call).stat14Percentages[spPerc] +'\n' +
+		skillcall(call).stat14Percentages[fpPerc] +'\n' +
+		skillcall(call).stat14Percentages[atkPerc] +'\n' +
+		skillcall(call).stat14Percentages[defPerc] +'\n' +
+		skillcall(call).stat14Percentages[spdPerc] +'\n' +
+		skillcall(call).stat14Percentages[agiPerc] +'\n' +
+		skillcall(call).stat14Percentages[dexPerc] +'\n' +
+		skillcall(call).stat14Percentages[intPerc] +'\n' +
+		skillcall(call).stat14Percentages[sprPerc] +'\n' +
+		skillcall(call).stat14Percentages[endPerc] +'\n' +
+		skillcall(call).stat14Percentages[conPerc] + '\n'
 		<< endl;
+		
+
+	herpesus.buffName = "none";
+	stat14Percentages[statsForSkill];
 }
 
 skillAction::skillAction(int numid, string name, elementType d, string dec,
-	bool rType, int sp_succ, int fp_succ)
+	bool rType, int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis)
 {
-	// sp consume
-	sp_succ = 0;
-	// fp consume
-	fp_succ = 0;
+	hpPerc = 0;
+	spPerc = 0;
+	fpPerc = 0;
+	atkPerc = 0;
+	defPerc = 0;
+	spdPerc = 0;
+	agiPerc = 0;
+	dexPerc = 0;
+	intPerc = 0;
+	sprPerc = 0;
+	strPerc = 0;
+	endPerc = 0;
+	conPerc = 0;
+	
+	stat13[13] = stat14Percentages[statsForSkill];
 
+	stat13[1] = hpPerc;
+	stat13[2] = spPerc;
+	stat13[3] = fpPerc;
+	stat13[4] = atkPerc;
+	stat13[5] = defPerc;
+	stat13[6] = spdPerc;
+	stat13[7] = agiPerc;
+	stat13[8] = dexPerc;
+	stat13[9] = intPerc;
+	stat13[10] = sprPerc;
+	stat13[11] = strPerc;
+	stat13[12] = endPerc;
+	stat13[13] = conPerc;
+
+	hopesis.buffName = "dummyu"; // you may need to initialize these
+
+	// sp consume
+	spAdd += sp_succ;
+
+	// fp consume
+	fpAdd += fp_succ;
+
+	// 
+	
 	num = numid;
 
 	rangeType = rType;
 
 	type = d;
-
-	fpAdd += 0;
-	spAdd += 0;
-	hpAdd += 0;
 }
 
 skillAction skillAction::skillcall(int p)
 {
 #pragma region Skillist
-	skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 1300, 12);
+	/*skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 1300, 12);
 	skillAction WaterFlash(1, "WaterFlash", elementType::Water, "A singular riptide of water..", false, 234, 2);
 	skillAction MagnaFlare(2, "MagnaFlare", elementType::Lightning, "A raving magnetic flash of plasma.", true, 300, 5);
-	skillAction WindShear(3, "WindShear", elementType::Air, "A Wind blast that cuts anybody who brandishes.", false, 230, 2);
+	skillAction WindShear(3, "WindShear", elementType::Air, "A Wind blast that cuts anybody who brandishes.", false, 230, 2);*/
 #pragma endregion
 
-	kHash.insertSkill(0, FireWeave);
+	/*kHash.insertSkill(0, FireWeave);
 	kHash.insertSkill(1, WaterFlash);
 	kHash.insertSkill(2, MagnaFlare);
-	kHash.insertSkill(3, WindShear);
+	kHash.insertSkill(3, WindShear);*/
 
 	skillAction d = kHash.skillCall(p);
 	return d;

@@ -23,6 +23,8 @@ private:
 	}; //turn number
 
 public:
+	
+	aegesa::statusEff me;
 
 	// constructor
 	battleSystem();
@@ -87,6 +89,8 @@ public:
 
 	void skill();
 
+	void skill2(int* statMul[], int statNum);
+
 	void hack();
 
 	void turn_A_mode();
@@ -96,7 +100,6 @@ public:
 	// rewards
 
 	void rewardOutput();
-
 
 	// templates
 
@@ -134,6 +137,30 @@ public:
 		}
 	}
 
-	void skill(int* statMul[], int statNum);
+	template <class iter> // cmd process
+	iter attack();
 
+	template <class iter> // cmd process
+	iter attackPlus(iter atk, iter bonus, iter hpE); // bonuses granted from party strikes, skills and buffs 
+
+	template <class iter> // cmd process
+	iter skill(iter atk, iter statPlus7, aegesa::statusEff me, iter ); //
+
+	//interpreter 1 2 3 4 5
+
+	template <class Intepreter> // cmd process
+	Intepreter fromACTOR();
+
+	template <class Intepreter> // cmd process
+	Intepreter fromE();
+
+	template <class Intepreter> // knowledge of both actors and enemies virtually everything
+	Intepreter finalizerACTOR(); 
+
+	template <class Intepreter> // knowledge of both actors and enemies virtually everything
+	Intepreter finalizerE();
+
+	template <class Intepreter> // knowledge of literally everything
+	Intepreter account(); // keeping track of turns, sending necessary state data and changes and looking at stat bases
 };
+

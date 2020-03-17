@@ -10,10 +10,14 @@
 #include "battleSystem.h"
 #include "Player_Actor.h"
 #include "Enemy.h"
+#include "HashTableSet.h"
 #include "World.h" // for encounters
 #include "skillAction.h"
 
 using namespace std;
+
+HashTableSet actorSetCpy;
+HashTableSet enemySetCpy;
 //
 //Player_Actor he; //call vars
 //Enemy en; // call vars
@@ -411,7 +415,7 @@ using namespace std;
 //void battleSystem::defend()
 //{}
 //
-void battleSystem::skill(int* statMul[], int statNum) // party one and targeted party
+void battleSystem::skill2(int* statMul[], int statNum) // party one and targeted party
 {
 	int me;
 	me = *statMul[statNum];
@@ -724,3 +728,34 @@ void battleSystem::skill(int* statMul[], int statNum) // party one and targeted 
 //
 //	//inv.my_items(inv.allitemList(en.getItem), en.getItem);
 //}
+
+template<class Intepreter>
+inline Intepreter battleSystem::fromACTOR()
+{
+
+	return Intepreter();
+}
+
+template<class Intepreter>
+inline Intepreter battleSystem::fromE()
+{
+	return Intepreter();
+}
+
+template<class Intepreter>
+inline Intepreter battleSystem::finalizerACTOR()
+{
+	return Intepreter();
+}
+
+template<class Intepreter>
+inline Intepreter battleSystem::finalizerE()
+{
+	return Intepreter();
+}
+
+template<class Intepreter>
+inline Intepreter battleSystem::account()
+{
+	return Intepreter();
+}

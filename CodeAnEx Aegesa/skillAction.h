@@ -41,6 +41,23 @@ public:
 	string dec;
 	elementType type;
 	bool rangeType;
+	aegesa::statusEff herpesus; // whatever it needs to be
+
+	#pragma region Statpercentages
+	int hpPerc;
+	int spPerc;
+	int fpPerc;
+	int atkPerc;
+	int defPerc;
+	int spdPerc;
+	int agiPerc;
+	int dexPerc;
+	int intPerc;
+	int sprPerc;
+	int strPerc;
+	int endPerc;
+	int conPerc;
+	#pragma endregion
 
 #pragma region statModifiers
 	unsigned int hpAdd = 0;
@@ -60,6 +77,9 @@ public:
 	unsigned int conAdd = 0;
 	unsigned int strAdd = 0;
 	unsigned int agiAdd = 0;
+
+	const static int statsForSkill = 13;
+	int stat14Percentages[statsForSkill] = {hpPerc, spPerc, fpPerc, atkPerc, defPerc, spdPerc, agiPerc, dexPerc, intPerc, sprPerc, strPerc, endPerc, conPerc}; // herp derp
 #pragma endregion
 
 	skillAction();
@@ -67,7 +87,7 @@ public:
 	skillAction(int);
 
 	skillAction(int num, string name, elementType d, string dec, bool rangeType,
-		int sp_succ, int fp_succ);
+		int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis);
 
 	skillAction skillcall(int);
 

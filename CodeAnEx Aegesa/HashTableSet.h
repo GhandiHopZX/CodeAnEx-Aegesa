@@ -43,8 +43,30 @@ public:
 	int getSkillSum();
 	void setSkillSum(int);
 
-	// template_type
-	
+	// template_types
+	template <class Hash>
+	Hash isEmptyT();
+
+	template <class Hash>
+	Hash hashT(int);
+
+	template <class Hash>
+	Hash insertT();
+
+	template <class Hash>
+	Hash remove();
+
+	template <class Hash>
+	Hash search();
+
+	template <class Hash>
+	Hash printTableT();
+
+	template <class Hash>
+	Hash get();
+
+	template <class Hash>
+	Hash set();
 
 	// for hashes
 	skillAction skillCall(int sk); //operator for this
