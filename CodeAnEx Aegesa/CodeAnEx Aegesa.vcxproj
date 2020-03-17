@@ -152,6 +152,7 @@
     <ClCompile Include="CodeAnEx Aegesa.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FileSave.cpp" />
+    <ClCompile Include="HashTableSet.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Player_Actor.cpp" />
     <ClCompile Include="skillAction.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="battleSystem.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FileSave.h" />
+    <ClInclude Include="HashTableSet.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="Player_Actor.h" />
     <ClInclude Include="skillAction.h" />

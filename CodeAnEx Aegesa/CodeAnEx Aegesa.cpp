@@ -31,6 +31,7 @@ World d;
 
 // function declarations
 void menyu();
+string lineStop();
 string dialougeInput(string);
 char choiceIN(string);
 
@@ -82,7 +83,7 @@ int main()
 #pragma endregion
 
 	cout << "Press Enter to Play" << endl;
-	cin.get();
+	lineStop();
 	system("CLS");
 	// gamemenu
 
@@ -106,8 +107,8 @@ void menyu()
 	getline(cin, choiceS);
 
 	choice = choiceIN(dialougeInput(choiceS));
-	while (getchar() != '\n'); // flush
 
+	//while (getchar() != '\n'); // flush
 
 	do
 	{
@@ -130,7 +131,9 @@ void menyu()
 		case 'Q':
 			system("CLS");
 			cout << endl;
+			
 			cout << "GoodBye!" << endl;
+			EXIT_SUCCESS;
 			choice = '4';
 			break;
 
@@ -171,4 +174,12 @@ char choiceIN(string choiceBuffer)
 	delete[] choiceWritable;
 
 	return choice;
+}
+
+string lineStop()
+{
+	string pvalue;
+	getline(cin, pvalue);
+	pvalue.erase();
+	return pvalue;
 }

@@ -409,6 +409,8 @@ char World::choiceIn(string choiceBuffer)
 	return choice;
 }
 
+// this thing eats the string that comes after every 'ENTER' press so the system doesn't poop out too much at once...
+// dont use this for anything but text dialouge unless you know what you're doing.
 string World::lineStop()
 {
 	string pvalue;
@@ -424,7 +426,7 @@ void World::StopTime()
 
 long World::StartTime()
 {
-	long copy;
+	long copy = 0;
 	auto playtime = std::chrono::high_resolution_clock::now; // you might need to convert this into a long or some kind of type that can be saved and stored for later use
 	//copy = static_cast<long>(playtime);
 	return copy;

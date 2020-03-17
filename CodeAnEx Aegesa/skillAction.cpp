@@ -1,12 +1,19 @@
 #include <iostream>
+#include <fstream>
 #include "skillAction.h"
 #include "aegesa.h"
+#include "HashTableSet.h"
+
+HashTableSet kHash;
 
 //default
 skillAction::skillAction()
 {
 	name = "";
 	dec = "";
+	type = static_cast<elementType>(9);
+	rangeType = false;
+	num = 0;
 }
 
 //calling the skill into existance
@@ -22,7 +29,7 @@ skillAction::skillAction(int call)
 	displayElementType(skillcall(call).getElementType());
 	cout << endl;
 	getRangeType();
-	cout << 
+	cout <<
 		skillcall(call).num + '\n' +
 		skillcall(call).hpAdd + '\n' +
 		skillcall(call).spAdd + '\n' +
@@ -44,79 +51,46 @@ skillAction::skillAction(int call)
 		<< endl;
 }
 
-skillAction::skillAction(int num, string name, elementType d, string dec,
-	bool rangeType, int sp_succ, int fp_succ)
+skillAction::skillAction(int numid, string name, elementType d, string dec,
+	bool rType, int sp_succ, int fp_succ)
 {
-	
 	// sp consume
 	sp_succ = 0;
 	// fp consume
 	fp_succ = 0;
 
+	num = numid;
+
+	rangeType = rType;
+
+	type = d;
+
 	fpAdd += 0;
 	spAdd += 0;
 	hpAdd += 0;
-
 }
 
 skillAction skillAction::skillcall(int p)
 {
 #pragma region Skillist
 	skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 1300, 12);
-	skillAction WaterFlash(1, "WaterFlash", skillAction::elementType::Water, "A singular riptide of water..", false, 234, 2);
+	skillAction WaterFlash(1, "WaterFlash", elementType::Water, "A singular riptide of water..", false, 234, 2);
+	skillAction MagnaFlare(2, "MagnaFlare", elementType::Lightning, "A raving magnetic flash of plasma.", true, 300, 5);
+	skillAction WindShear(3, "WindShear", elementType::Air, "A Wind blast that cuts anybody who brandishes.", false, 230, 2);
 #pragma endregion
 
-	skillAction allSkills[50] =
-	{
-		FireWeave,
-		WaterFlash
-	};
-	return allSkills[p];
+	kHash.insertSkill(0, FireWeave);
+	kHash.insertSkill(1, WaterFlash);
+	kHash.insertSkill(2, MagnaFlare);
+	kHash.insertSkill(3, WindShear);
+
+	skillAction d = kHash.skillCall(p);
+	return d;
 }
 
 skillAction::elementType skillAction::getElementType()
 {
-	switch (elementType::Water)
-	{
-	case skillAction::elementType::Water:
-		return elementType::Water;
-		break;
-	case skillAction::elementType::Fire:
-		return elementType::Fire;
-		break;
-	case skillAction::elementType::Earth:
-		return elementType::Earth;
-		break;
-	case skillAction::elementType::Air:
-		return elementType::Air;
-		break;
-	case skillAction::elementType::Lightning:
-		return elementType::Lightning;
-		break;
-	case skillAction::elementType::Phase:
-		return elementType::Phase;
-		break;
-	case skillAction::elementType::Bio:
-		return elementType::Bio;
-		break;
-	case skillAction::elementType::Light:
-		return elementType::Light;
-		break;
-	case skillAction::elementType::Dark:
-		return elementType::Dark;
-		break;
-	case skillAction::elementType::Normal:
-		return elementType::Normal;
-		break;
-	default:
-		return elementType::Normal;
-		break;
-	}
-}
-
-skillAction::elementType skillAction::setElementType(int m)
-{
-	return static_cast<elementType>(m);
+	return type;
 }
 
 void skillAction::displayElementType(elementType d)
@@ -159,28 +133,33 @@ void skillAction::displayElementType(elementType d)
 	}
 }
 
-void skillAction::getDescription()
+void skillAction::setRangeType(bool rangeT)
 {
-	cout << dec;
+	rangeType = rangeT;
+
+	if (rangeType == true) // aoe true
+	{
+		cout << "AOE set" << endl;
+
+	}
+	else // single false
+	{	
+		cout << "Single set" << endl;
+	}
 }
 
-void skillAction::getRangeType()
+bool skillAction::getRangeType()
 {
-	if (rangeType = true)
-	{
-		cout << "AOE" << endl;
-	}
-	else
-	{
-		cout << "Single" << endl;
-	}
+	return rangeType;
 }
 
-template <>
-struct hash<skillAction>
+string skillAction::getDescription()
 {
-	size_t operator() (const skillAction& sk) const
-	{
-		//individual Hashes
-	}
-};
+	return dec;
+}
+
+skillAction::elementType skillAction::setElementType(int m)
+{
+	type = static_cast<elementType>(m);
+	return type;
+}

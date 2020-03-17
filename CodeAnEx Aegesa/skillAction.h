@@ -1,4 +1,8 @@
 #pragma once
+#include <iomanip>
+#include <iostream>
+#include <list>
+#include <cstring>
 #include "battleSystem.h"
 #include "aegesa.h"
 
@@ -76,9 +80,19 @@ public:
 
 	void displayElementType(elementType d);
 
-	void getDescription();
+	string getDescription();
 
-	void getRangeType();
+	void setRangeType(bool);
 
+	bool getRangeType();
+
+	template <class printedT>
+	printedT output(string i)
+	{
+		cout << setprecision(2) << fixed << endl;
+		return i;
+	}
 	//state changes - wip
 };
+
+

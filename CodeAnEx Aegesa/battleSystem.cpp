@@ -60,6 +60,7 @@ using namespace std;
 //		//normalOutput("ENTER " + en.callTroopMember(0).getName() + " " + en.callTroopMember(0).getTitle());
 //	}
 //
+
 //	do
 //	{
 //		// action loop

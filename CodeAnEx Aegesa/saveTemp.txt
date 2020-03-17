@@ -3,6 +3,7 @@ Bio
 Stats
 Gold
 INVENTORY
+SKILLS
 CLASS_PROGRESSION
 TimePlayed
 CurrentParty
