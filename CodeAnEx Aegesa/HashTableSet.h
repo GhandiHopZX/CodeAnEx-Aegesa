@@ -42,6 +42,8 @@ public:
 	void printSkTable();
 	int getSkillSum();
 	void setSkillSum(int);
+
+	// template_type
 	
 
 	// for hashes
