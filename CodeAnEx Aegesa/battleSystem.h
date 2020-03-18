@@ -147,6 +147,17 @@ public:
 	template <class iter> // cmd process
 	iter skill(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); //
 
+	template <class iter> // cmd process
+	iter actorThrow(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); //
+
+	template <class iter> // cmd process
+	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); //
+
+	template <class iter> // cmd process
+	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); // super aura attack
+
+	template <class iter> // cmd process
+	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, Player_Actor tArr[]); // SUPER ZENKAI BOOST
 
 	// ai choices processed
 	template <class iter> // cmd process
@@ -164,19 +175,28 @@ public:
 	template <class iter> // cmd process
 	iter aiAttackPlus(Enemy targetArr[], iter atk, iter bonus, iter hpE);
 
+	template <class iter> // cmd process
+	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Enemy tArr[]); //
+
+	template <class iter> // cmd process
+	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Enemy tArr[]); // super aura attack
+
+	template <class iter> // cmd process
+	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, Enemy tArr[]); // SUPER ZENKAI BOOST
+
 	//interpreter 1 2 3 4 5
 
 	template <class Intepreter> // cmd process
-	Intepreter fromACTOR(Enemy targetarr[]);
+	Intepreter toE(Enemy targetarr[], Intepreter choices[]);
 
 	template <class Intepreter> // cmd process
-	Intepreter fromE(Player_Actor targetArr2[]);
+	Intepreter toActor(Player_Actor targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of both actors and enemies virtually everything
-	Intepreter finalizerACTOR(Player_Actor targetArr1[], Enemy targetArr2[]);
+	Intepreter finalizerACTOR(Player_Actor targetArr1[], Enemy targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of both actors and enemies virtually everything
-	Intepreter finalizerE(Enemy targetArr1[], Player_Actor targetArr2[]);
+	Intepreter finalizerE(Enemy targetArr1[], Player_Actor targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of literally everything
 	Intepreter accounts(Player_Actor targetArr1[], Enemy targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
