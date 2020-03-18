@@ -415,21 +415,21 @@ HashTableSet enemySetCpy;
 //void battleSystem::defend()
 //{}
 //
-void battleSystem::skill2(int* statMul[], int statNum) // party one and targeted party
-{
-	int me;
-	me = *statMul[statNum];
-	int& bk = me;
-
-	/*he.statPlus('h', skilz.skillcall->hpAdd);
-	he.statPlus('s', skilz.skillcall->spAdd);
-	he.statPlus('d', skilz.skillcall->defAdd);*/
-	// end deletion
-
-	// determine range type
-
-	delete[] statMul;
-}
+//void battleSystem::skill2(int* statMul[], int statNum) // party one and targeted party
+//{
+//	int me;
+//	me = *statMul[statNum];
+//	int& bk = me;
+//
+//	/*he.statPlus('h', skilz.skillcall->hpAdd);
+//	he.statPlus('s', skilz.skillcall->spAdd);
+//	he.statPlus('d', skilz.skillcall->defAdd);*/
+//	// end deletion
+//
+//	// determine range type
+//
+//	delete[] statMul;
+//}
 //
 //void battleSystem::hack() {
 //	
@@ -729,33 +729,4 @@ void battleSystem::skill2(int* statMul[], int statNum) // party one and targeted
 //	//inv.my_items(inv.allitemList(en.getItem), en.getItem);
 //}
 
-template<class Intepreter>
-inline Intepreter battleSystem::fromACTOR()
-{
 
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::fromE()
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::finalizerACTOR()
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::finalizerE()
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::account()
-{
-	return Intepreter();
-}

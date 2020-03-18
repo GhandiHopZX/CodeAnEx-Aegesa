@@ -3,7 +3,6 @@
 #include <string>
 #include <cstdio>
 #include "aegesa.h"
-#include "battleSystem.h"
 #include "inventory.h"
 
 using namespace std;

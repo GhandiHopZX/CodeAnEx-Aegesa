@@ -44,19 +44,19 @@ public:
 	aegesa::statusEff herpesus; // whatever it needs to be
 
 	#pragma region Statpercentages
-	int hpPerc;
-	int spPerc;
-	int fpPerc;
-	int atkPerc;
-	int defPerc;
-	int spdPerc;
-	int agiPerc;
-	int dexPerc;
-	int intPerc;
-	int sprPerc;
-	int strPerc;
-	int endPerc;
-	int conPerc;
+	int hpPerc; // hp Percent
+	int spPerc; // sp Percent
+	int fpPerc; // fp Percent
+	int atkPerc; // atk Percent
+	int defPerc; // def Percent
+	int spdPerc; // spd Percent
+	int agiPerc; // agi Percent
+	int dexPerc; // dex Percent
+	int intPerc; // int Percent
+	int sprPerc; // spr Percent
+	int strPerc; // str Percent
+	int endPerc; // end Percent
+	int conPerc; // con Percent
 	#pragma endregion
 
 #pragma region statModifiers
