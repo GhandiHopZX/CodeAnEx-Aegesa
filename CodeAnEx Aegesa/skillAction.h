@@ -22,6 +22,8 @@ public:
 	// and yes I'm putting it all in a magic hash
 	// This exists because Enemy is not skillAction so ill compare the two in
 	// validation when damage is processed...
+	// strike types for TURN A too
+
 	enum class elementType
 	{
 		Water = 0,
@@ -42,6 +44,7 @@ public:
 	elementType type;
 	bool rangeType;
 	aegesa::statusEff herpesus; // whatever it needs to be
+	char strikeType; // hard set goodness
 
 	#pragma region Statpercentages
 	int hpPerc; // hp Percent
@@ -87,7 +90,7 @@ public:
 	skillAction(int);
 
 	skillAction(int num, string name, elementType d, string dec, bool rangeType,
-		int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis);
+		int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis, char st);
 
 	skillAction skillcall(int);
 

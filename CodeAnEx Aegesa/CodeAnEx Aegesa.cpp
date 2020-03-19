@@ -31,9 +31,19 @@ World d;
 bool newGamePlus;
 
 // function declarations
+// DONE MENYU
 int menyu();
+
+//new Game Plus
+int menyuPlus(); 
+
+// Stops you from nutting in the strings
 string lineStop();
+
+// helps with taht 
 string dialougeInput(string);
+
+// select shit with this 
 char choiceIN(string);
 
 int main()
@@ -86,8 +96,8 @@ int main()
 	cout << "Press Enter to Play" << endl;
 	lineStop();
 	system("CLS");
-	// gamemenu
 
+	// gamemenu
 	menyu();
 
 	system("PAUSE");
@@ -162,6 +172,11 @@ int menyu()
 		menyu();
 		break;
 	}
+} // DONE
+
+int menyuPlus()
+{
+	return 0;
 }
 
 string dialougeInput(string pvalue)

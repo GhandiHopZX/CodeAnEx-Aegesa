@@ -23,7 +23,7 @@ private:
 	}; //turn number
 
 public:
-	
+
 	aegesa::statusEff me;
 
 	// constructor
@@ -43,23 +43,22 @@ public:
 	template <class targeting> // 
 	targeting setTargetArray(targeting d[]);
 
-	template <class targeting> //
-	targeting setAiTargetArray(targeting d[]);
+	template <class aiTargeting> //
+	aiTargeting setAiTargetArray(aiTargeting d[]);
 
 	// functions
 
 	template <class targeting> // cmd placements 
 	targeting playerDeck(targeting d[]);
 
-	template <class targeting> // cmd checks
-	targeting aiDeck(targeting d[]);
+	template <class aiTargeting> // cmd checks
+	aiTargeting aiDeck(aiTargeting d[]);
 
 	// the core functions of what the player can do when the player can do
 	void turn(); // call player deck and then give options
 
 	// recalls all or any stat plus modifier
 	//functions for reauthentications when a number of turns are up
-
 	void battleMode();
 
 	int statusCall(int ti);
@@ -87,6 +86,12 @@ public:
 	void hackOutput(string);
 
 	void rewardOutput(string);
+
+	//getters
+	/*Player_Actor getActors
+	{
+		
+	}*/
 
 	// rewards
 
@@ -202,182 +207,3 @@ public:
 	Intepreter accounts(Player_Actor *targetArr1[], Enemy *targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
 };
 
-template<class targeting>
-inline targeting battleSystem::getTargetArray()
-{
-	return targeting();
-}
-
-template<class targeting>
-inline targeting battleSystem::getAITarget()
-{
-	return targeting();
-}
-
-template<class targeting>
-inline targeting battleSystem::setTargetArray(targeting d[])
-{
-	return targeting();
-}
-
-template<class targeting>
-inline targeting battleSystem::setAiTargetArray(targeting d[])
-{
-	return targeting();
-}
-
-template<class targeting>
-inline targeting battleSystem::playerDeck(targeting d[])
-{
-	return targeting();
-}
-
-template<class targeting>
-inline targeting battleSystem::aiDeck(targeting d[])
-{
-	return targeting();
-}
-
-template<class victory>
-inline victory battleSystem::rewards(Enemy tArr[])
-{
-	return victory();
-}
-
-template<class TURNA>
-inline TURNA battleSystem::turn_A_mode(Enemy d[], Player_Actor u[])
-{
-	return TURNA();
-}
-
-template<class iter>
-inline iter battleSystem::attack(Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::def(Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::hack(Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::attackPlus(iter atk, iter bonus, iter hpE, Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::skill(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::actorThrow(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::transform(iter atk, iter statPlus14[], aegesa::statusEff me, Player_Actor tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::aiAttack(Enemy targetArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::aiSkill(Enemy targetArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::aiDef(Enemy tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::aiHack(Enemy tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::aiAttackPlus(Enemy targetArr[], iter atk, iter bonus, iter hpE)
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Enemy tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Enemy tArr[])
-{
-	return iter();
-}
-
-template<class iter>
-inline iter battleSystem::transform(iter atk, iter statPlus14[], aegesa::statusEff me, Enemy tArr[])
-{
-	return iter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::toE(Enemy* targetarr[], Intepreter choices[])
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::toActor(Player_Actor* targetArr2[], Intepreter choices[])
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::finalizerACTOR(Player_Actor* targetArr1[], Enemy* targetArr2[], Intepreter choices[])
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::finalizerE(Enemy* targetArr1[], Player_Actor* targetArr2[], Intepreter choices[])
-{
-	return Intepreter();
-}
-
-template<class Intepreter>
-inline Intepreter battleSystem::accounts(Player_Actor* targetArr1[], Enemy* targetArr2[], Intepreter turns)
-{
-	return Intepreter();
-}

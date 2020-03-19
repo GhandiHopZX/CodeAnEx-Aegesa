@@ -49,6 +49,7 @@ skillAction::skillAction()
 	herpesus.buffName = "none";
 	statsForSkill;
 	this->stat14Percentages[statsForSkill];
+	this->strikeType = 'o';
 }
 
 //calling the skill into existance
@@ -71,27 +72,36 @@ skillAction::skillAction(int call)
 	strPerc = 0;
 	endPerc = 0;
 	conPerc = 0;
+	this->strikeType = 'o';
 
 	cout << skillcall(call).name << endl;
 	skillcall(call).dec;
-	cout << "Buff/Debuff effect\n" +
-		skillcall(call).herpesus.buffName << endl;
+	
+	cout << "Element\n";
 	displayElementType(skillcall(call).getElementType())
 		;
 	cout << endl;
-	getRangeType();
-	cout <<
-		skillcall(call).num + '\n' +
+	cout << " RangeType\n" + getRangeType() << endl;
+	cout << "num#\n" <<
+		skillcall(call).num + '\n';
+
+		cout << "Buff/Debuff name\n" +
+		skillcall(call).herpesus.buffName << endl;
+
+		cout << "StrikeType (O) OVERHAND, (L) LUNGE, (WS) WIDE-SWING, (P) PARRY\n " <<
+			 "O < L < W > P > L > O\n" <<
+			 "W AND L COLLIDE CAUSES DAMAGE TO BOTH SIDES\n" <<
+			 "O AND P CANCEL BOTH ATTACKS\n" <<
+		skillcall(call).strikeType + '\n' << endl;
+		cout << "Buff/debuff effects" +
 		skillcall(call).hpAdd + '\n' +
 		skillcall(call).spAdd + '\n' +
 		skillcall(call).dpAdd + '\n' +
 		skillcall(call).fpAdd + '\n' +
 		skillcall(call).apAdd + '\n' +
-
 		skillcall(call).atkAdd + '\n' +
 		skillcall(call).defAdd + '\n' +
 		skillcall(call).spdAdd + '\n' +
-
 		skillcall(call).agiAdd + '\n' +
 		skillcall(call).conAdd + '\n' +
 		skillcall(call).dexAdd + '\n' +
@@ -99,6 +109,7 @@ skillAction::skillAction(int call)
 		skillcall(call).strAdd + '\n' +
 		skillcall(call).intAdd + '\n' +
 		skillcall(call).sprAdd + '\n' +
+
 		skillcall(call).stat14Percentages[0] + '\n' +
 		skillcall(call).stat14Percentages[hpPerc] +'\n' +
 		skillcall(call).stat14Percentages[spPerc] +'\n' +
@@ -120,7 +131,7 @@ skillAction::skillAction(int call)
 }
 
 skillAction::skillAction(int numid, string name, elementType d, string dec,
-	bool rType, int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis)
+	bool rType, int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis, char strikeType)
 {
 	hpPerc = 0;
 	spPerc = 0;
@@ -138,6 +149,7 @@ skillAction::skillAction(int numid, string name, elementType d, string dec,
 	
 	stat13[13] = stat14Percentages[statsForSkill];
 
+	stat13[0] = 0;
 	stat13[1] = hpPerc;
 	stat13[2] = spPerc;
 	stat13[3] = fpPerc;
@@ -160,7 +172,8 @@ skillAction::skillAction(int numid, string name, elementType d, string dec,
 	// fp consume
 	fpAdd += fp_succ;
 
-	// 
+	// strike type
+	this->strikeType = 'o';
 	
 	num = numid;
 
