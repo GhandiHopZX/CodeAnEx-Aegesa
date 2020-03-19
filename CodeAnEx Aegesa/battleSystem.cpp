@@ -27,10 +27,7 @@ HashTableSet enemySetCpy;
 //
 //battleSystem::battleSystem()
 //{
-//	turn_Number = 0;
-//	turnGuageNum = 0; // this is if more than one is set, its usually reset
-//	aGuage = 0;
-//	battleMode(); // battle mode
+
 //}
 //
 ////todo: callin party data
@@ -729,4 +726,69 @@ HashTableSet enemySetCpy;
 //	//inv.my_items(inv.allitemList(en.getItem), en.getItem);
 //}
 
+battleSystem::battleSystem()
+{
+	turn_Number = 0;
+	turnGuageNum = 0; // this is if more than one is set, its usually reset
+	aGuage = 0;
+	battleTime = false;
+}
 
+void battleSystem::turn()
+{
+}
+
+void battleSystem::battleMode()
+{
+}
+
+int battleSystem::statusCall(int ti)
+{
+	return 0;
+}
+
+bool battleSystem::playerTGuage(int, int spd, int fp)
+{
+	return false;
+}
+
+bool battleSystem::enemyTGuage(int, int spd, int fp)
+{
+	return false;
+}
+
+void battleSystem::statTurn(aegesa::statusEff)
+{
+}
+
+void battleSystem::turnSystem(int)
+{
+}
+
+void battleSystem::healOutput(string)
+{
+}
+
+void battleSystem::normalOutput(string)
+{
+}
+
+void battleSystem::damageOutput(string)
+{
+}
+
+void battleSystem::critDmgOutput(string)
+{
+}
+
+void battleSystem::multiDamageOutput(string[])
+{
+}
+
+void battleSystem::hackOutput(string)
+{
+}
+
+void battleSystem::rewardOutput(string)
+{
+}

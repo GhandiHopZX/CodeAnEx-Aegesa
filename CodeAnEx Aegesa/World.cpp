@@ -204,6 +204,7 @@ void World::endGame()
 	// end of game? =)
 	cin.get();
 	cout << "Will you dream again?" << endl;
+	EXIT_SUCCESS;
 }
 
 //Enemy Encounter call ins
@@ -333,6 +334,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	// sw = southwest, s = south, se = southeast
 	// w = west, e = east
 	// z = floor
+
 	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
 	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y 
 		<< "column\n" << maps[selectedMap].z << "floor" << endl;
