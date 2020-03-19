@@ -202,9 +202,8 @@ void World::endGame()
 {
 
 	// end of game? =)
-	cin.get();
+	lineStop();
 	cout << "Will you dream again?" << endl;
-	EXIT_SUCCESS;
 }
 
 //Enemy Encounter call ins

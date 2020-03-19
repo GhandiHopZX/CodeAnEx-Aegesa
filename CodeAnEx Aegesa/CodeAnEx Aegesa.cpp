@@ -30,7 +30,7 @@ printedT output(string i)
 World d;
 
 // function declarations
-void menyu();
+int menyu();
 string lineStop();
 string dialougeInput(string);
 char choiceIN(string);
@@ -90,10 +90,13 @@ int main()
 	menyu();
 
 	system("PAUSE");
+	return 0;
 }
 
-void menyu()
+int menyu()
 {
+	system("CLS");
+	system("Color 0A");
 	cout << "Main Menu\n"
 		<< "\n"
 		<< "New Game (n)\n"
@@ -105,10 +108,9 @@ void menyu()
 	string choiceS;
 	
 	getline(cin, choiceS);
-
 	choice = choiceIN(dialougeInput(choiceS));
 
-	//while (getchar() != '\n'); // flush
+	while (getchar() != '\n'); // flush
 
 	do
 	{
@@ -118,8 +120,12 @@ void menyu()
 		case 'N':
 			system("CLS");
 			//DELETE CHOICE
-			choice = '\0';
+
+			//choiceIN(dialougeInput(choiceS));
 			d.beginningStory();
+			choice = 0;
+			//return 0;
+			menyu();
 			break;
 
 		case 'c':
@@ -131,20 +137,23 @@ void menyu()
 		case 'Q':
 			system("CLS");
 			cout << endl;
-			
 			cout << "GoodBye!" << endl;
-			EXIT_SUCCESS;
-			choice = '4';
+			
+			lineStop();
+			choice = 0;
+			return 0;
 			break;
 
 		default:
 			cout << "Invalid option..." << endl; // infinite loop of death
-			cin.get();
+			while (getchar() != '\n'); // flush
+			lineStop();
 			system("CLS");
 			menyu();
 			break;
 		};
-	} while (choice != '4');
+	} while (choice != 0);
+	//return 0;
 }
 
 string dialougeInput(string pvalue)
