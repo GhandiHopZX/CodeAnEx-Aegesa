@@ -28,6 +28,7 @@ printedT output(string i)
 // globals
 
 World d;
+bool newGamePlus;
 
 // function declarations
 int menyu();
@@ -42,7 +43,7 @@ int main()
 	// title screen
 #pragma region Title
 
-	cout 
+	cout
 		<< "####################################################################################################################\n"
 		<< "#####################################################################################################################\n"
 		<< "#####################################################################################################################\n"
@@ -106,7 +107,7 @@ int menyu()
 	// choice goes here
 	char choice{};
 	string choiceS;
-	
+
 	getline(cin, choiceS);
 	choice = choiceIN(dialougeInput(choiceS));
 
@@ -119,13 +120,9 @@ int menyu()
 		case 'n':
 		case 'N':
 			system("CLS");
-			//DELETE CHOICE
-
-			//choiceIN(dialougeInput(choiceS));
+			//DELETE CHOICE /// DONE
 			d.beginningStory();
 			choice = 0;
-			//return 0;
-			menyu();
 			break;
 
 		case 'c':
@@ -138,22 +135,33 @@ int menyu()
 			system("CLS");
 			cout << endl;
 			cout << "GoodBye!" << endl;
-			
+			choice = 0;
 			lineStop();
 			choice = 0;
 			return 0;
 			break;
 
 		default:
-			cout << "Invalid option..." << endl; // infinite loop of death
+			cout << "Invalid option..." << endl;
 			while (getchar() != '\n'); // flush
 			lineStop();
 			system("CLS");
+			choice = 0;
 			menyu();
 			break;
 		};
 	} while (choice != 0);
-	//return 0;
+	choice = 0;
+
+	switch (newGamePlus)
+	{
+	case true:
+		d.beginningStory(); //TODO: edit to new game plus
+		break;
+	default:
+		menyu();
+		break;
+	}
 }
 
 string dialougeInput(string pvalue)
