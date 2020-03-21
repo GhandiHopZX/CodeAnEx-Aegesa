@@ -691,6 +691,8 @@ HashTableSet enemySetCpy;
 
 battleSystem::battleSystem()
 {
+	AiCrit = false;
+	ActorCrit = true;
 	turn_Number = 0;
 	turnGuageNum = 0; // this is if more than one is set, its usually reset
 	aGuage = 0;
@@ -750,8 +752,7 @@ void battleSystem::turnSystem(int tIn)
 
 }
 
-
-#pragma region Text Operators
+#pragma region Text Output Functions
 
 void battleSystem::healOutput(string hin)
 {
@@ -815,7 +816,7 @@ void battleSystem::hackOutput(string hkIn)
 
 void battleSystem::rewardOutput(string rwIn)
 {
-	system("Color 09");
+	system("Color 0D");
 	cout << rwIn << " Aquired." << endl; // the amount aquired will be the math in the actual reward function
 	cout << "Press Enter";
 	system("COLOR 07");

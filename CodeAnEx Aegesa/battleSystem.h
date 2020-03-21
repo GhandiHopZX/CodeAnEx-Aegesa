@@ -24,7 +24,7 @@ private:
 
 	int mx = 8;// change this for the maximum amount of enemy fighters
 	int numMembers = 0; // current number of members
-
+	
 public:
 
 	//objects
@@ -34,7 +34,14 @@ public:
 	// constructor
 	battleSystem();
 
+	battleSystem(Player_Actor fromPartyHash[], Enemy RandEncounterHash[]);
+
 	// variables
+
+	bool ActorCrit;
+
+	bool AiCrit;
+
 	int turnGuageNum;
 
 	// getters/accessors
@@ -78,6 +85,7 @@ public:
 
 	bool enemyTGuage(int, int spd, int fp);
 
+	
 	// output types
 
 	void statTurn(aegesa::statusEff);
@@ -116,9 +124,40 @@ public:
 	template <class statPwr>
 	statPwr point_plier(statPwr atk, statPwr mgk, statPwr auraFp)
 	{
+		int newAtk_value = 0;
+		int oldAtk = 0;
+		int selfCritmultiplier = 1; // hard set to 1 for now
+		int weaponCritplier = 1; // hard set to 1 for now
+		int statCritplier = 1; // same until stats and weapons play a role in this parameter's math
 		int attr_size = atk + mgk + auraFp;
-		int atk_value = .75 * + .66 * attr_size;
-		return atk_value;
+		int atk_value = .75* + .66* attr_size; // crit
+
+		// constants 
+		int MAX_DMG = atk_value; // Max allowed damage
+		int MIN_DMG = attr_size; // Min allowed damage
+
+		selfCritmultiplier = attr_size % 1; // self crit chance is supposed to go here
+		weaponCritplier = attr_size % 1; // weapon crit
+		statCritplier = attr_size % 1; //stat crit
+
+		int culmCHance = selfCritmultiplier * weaponCritplier * statCritplier;
+		
+		oldAtk = atk_value;
+
+		// Randomizer
+		newAtk_value = (rand() % (MAX_DMG - MIN_DMG + 1)) + (MIN_DMG * culmCHance);
+
+		// determine critical
+		if (newAtk_value > oldAtk)
+		{
+			ActorCrit = true;
+		}
+		else
+		{
+			ActorCrit = false;
+		}
+
+		return newAtk_value;
 	}
 
 	template <class T>
@@ -235,4 +274,28 @@ template<class TURNA>
 inline TURNA battleSystem::turn_A_mode(Enemy d[], Player_Actor u[])
 {
 	return TURNA();
+}
+
+template<class iter>
+inline iter battleSystem::attack(Player_Actor tArr[])
+{
+	int newAttack;
+	int newMagickPwr;
+	int auralPwr;
+	int attkValue;
+
+	newAttack = tArr->getATKd(); // so weapons are added to the mix apparently and subtracted
+	newMagickPwr = ((tArr->getINTd() + tArr->getSpd()) / 1.3);
+	auralPwr = tArr->getFpd();
+
+	tArr;
+	attkValue = point_plier(newAttack, newMagickPwr, auralPwr);
+
+	return attkValue;
+}
+
+template<class iter>
+inline iter battleSystem::def(Player_Actor tArr[])
+{
+	return iter();
 }
