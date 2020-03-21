@@ -84,7 +84,6 @@ public:
 	bool playerTGuage(int, int spd, int fp);
 
 	bool enemyTGuage(int, int spd, int fp);
-
 	
 	// output types
 
@@ -130,7 +129,7 @@ public:
 		int weaponCritplier = 1; // hard set to 1 for now
 		int statCritplier = 1; // same until stats and weapons play a role in this parameter's math
 		int attr_size = atk + mgk + auraFp;
-		int atk_value = .75* + .66* attr_size; // crit
+		int atk_value = .75* + .66* attr_size; // crit // maybe lower these for the ARPG
 
 		// constants 
 		int MAX_DMG = atk_value; // Max allowed damage
@@ -150,6 +149,7 @@ public:
 		// determine critical
 		if (newAtk_value > oldAtk)
 		{
+			critDmgOutput("Critical: " + newAtk_value);
 			ActorCrit = true;
 		}
 		else
@@ -258,7 +258,7 @@ public:
 };
 
 template<class victory>
-inline victory battleSystem::rewards(Enemy tArr[])
+inline victory battleSystem::rewards(Enemy tArr[]) // TODO: add inventory param and output the goodness
 {
 	countEnemies(); // resetting numMembers 
 
