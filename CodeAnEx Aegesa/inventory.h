@@ -3,7 +3,6 @@
 #include <string>
 #include <cstdio>
 #include "inventory.h"
-#include "Player_Actor.h"
 
 using namespace std;
 

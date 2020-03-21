@@ -266,16 +266,16 @@ skillAction HashTableSet::skillCall(int sk)
 }
 #pragma endregion
 
-HashTableSet::~HashTableSet()
-{
-
-}
-
 // operator++
 int HashTableSet::operator++(int k)
 {
-	int *m = &k;
+	int* m = &k;
 	++m;
 	int& oldVal = *m;
 	return oldVal;
+}
+
+HashTableSet::~HashTableSet()
+{
+
 }

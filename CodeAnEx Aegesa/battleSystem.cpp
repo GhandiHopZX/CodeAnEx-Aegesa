@@ -341,26 +341,18 @@ HashTableSet enemySetCpy;
 //	cout << ein << endl;
 //	cout << "Press Enter";
 //	system("COLOR 07");
-//	cin.get();
+//	lineStop();
 //}
 //
 //// damage output
 //void battleSystem::damageOutput(string bin)
 //{
-//	system("Color 0E");
-//	cout << bin << endl;
-//	cout << "Press Enter";
-//	system("COLOR 07");
-//	cin.get();
+
 //}
 //
 //void battleSystem::critDmgOutput(string din)
 //{
-//	system("Color 0C");
-//	cout << din << endl;
-//	cout << "Press Enter";
-//	system("COLOR 07");
-//	cin.get();
+
 //}
 //
 //// heal output
@@ -370,24 +362,11 @@ HashTableSet enemySetCpy;
 //	cout << hin << endl;
 //	cout << "Press Enter";
 //	system("COLOR 07");
-//	cin.get();
+//	lineStop();
 //}
 //
 //// an experiment?
-//void battleSystem::multiDamageOutput(string n[])
-//{
-//	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-//	// you can loop k higher to see more color choices
-//	for (int k = 1; k < 255; k++)
-//	{
-//		// pick the colorattribute k you want
-//		SetConsoleTextAttribute(hConsole, k);
-//		cout << k << n[k] << endl;
-//	}
-//	system("COLOR 07");
-//	cout << "Press Enter";
-//	cin.get();
-//}
+
 //
 //void battleSystem::hackOutput(string n)
 //{
@@ -395,7 +374,7 @@ HashTableSet enemySetCpy;
 //	cout << n << endl;
 //	cout << "Press Enter";
 //	system("COLOR 07");
-//	cin.get();
+//  lineStop();
 //}
 //
 //// battle_system calls
@@ -709,22 +688,6 @@ HashTableSet enemySetCpy;
 //void battleSystem::enemyTurn()
 //{}
 //
-//void battleSystem::rewardOutput()
-//{
-//	//Player_Actor he; //call vars
-//	//Enemy en; // call vars
-//	//inventory inv; // call tha listos
-//
-//	// iterate all the enemies that were on
-//	// the battle field and run this at least
-//	// once for all of their rewards.
-//	// also store them in the player inventoru
-//	int rew = en.getItem();
-//	inv.rewardCall(rew);
-//	normalOutput(" Obtained...");
-//
-//	//inv.my_items(inv.allitemList(en.getItem), en.getItem);
-//}
 
 battleSystem::battleSystem()
 {
@@ -742,9 +705,30 @@ void battleSystem::battleMode()
 {
 }
 
+void battleSystem::countEnemies(Enemy tArr[])
+{
+	for (int i = 0; i < mx; i++)
+	{
+		numMembers += tArr[i].name.at(0);
+	}
+}
+
+string battleSystem::lineStop()
+{
+	string pvalue;
+	getline(cin, pvalue);
+	pvalue.erase();
+	return pvalue;
+}
+
 int battleSystem::statusCall(int ti)
 {
 	return 0;
+}
+
+int battleSystem::getNumMembers()
+{
+	return numMembers;
 }
 
 bool battleSystem::playerTGuage(int, int spd, int fp)
@@ -757,38 +741,85 @@ bool battleSystem::enemyTGuage(int, int spd, int fp)
 	return false;
 }
 
-void battleSystem::statTurn(aegesa::statusEff)
+void battleSystem::statTurn(aegesa::statusEff E)
 {
 }
 
-void battleSystem::turnSystem(int)
+void battleSystem::turnSystem(int tIn)
 {
+
 }
 
-void battleSystem::healOutput(string)
+
+#pragma region Text Operators
+
+void battleSystem::healOutput(string hin)
 {
+	system("Color 0B");
+		cout << hin << endl;
+		cout << "Press Enter";
+		system("COLOR 07");
+		lineStop();
 }
 
-void battleSystem::normalOutput(string)
+void battleSystem::normalOutput(string ein)
 {
+	system("Color 0F");
+		cout << ein << endl;
+		cout << "Press Enter";
+		system("COLOR 07");
+		lineStop();
 }
 
-void battleSystem::damageOutput(string)
+void battleSystem::damageOutput(string bin)
 {
+	system("Color 0E");
+	cout << bin << endl;
+	cout << "Press Enter";
+	system("COLOR 07");
+	lineStop();
 }
 
-void battleSystem::critDmgOutput(string)
+void battleSystem::critDmgOutput(string din)
 {
+	system("Color 0C");
+	cout << din << endl;
+	cout << "Press Enter";
+	system("COLOR 07");
+	lineStop();
 }
 
-void battleSystem::multiDamageOutput(string[])
+void battleSystem::multiDamageOutput(string multius[])
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		// you can loop k higher to see more color choices
+		for (int k = 1; k < 255; k++)
+		{
+			// pick the colorattribute k you want
+			SetConsoleTextAttribute(hConsole, k);
+			cout << k << multius[k] << endl;
+		}
+		system("COLOR 07");
+		cout << "Press Enter";
+		lineStop();
 }
 
-void battleSystem::hackOutput(string)
+void battleSystem::hackOutput(string hkIn)
 {
+	system("Color 09");
+	cout << hkIn << endl;
+	cout << "Press Enter";
+	system("COLOR 07");
+	lineStop();
 }
 
-void battleSystem::rewardOutput(string)
+void battleSystem::rewardOutput(string rwIn)
 {
+	system("Color 09");
+	cout << rwIn << " Aquired." << endl; // the amount aquired will be the math in the actual reward function
+	cout << "Press Enter";
+	system("COLOR 07");
+	lineStop();
 }
+
+#pragma endregion

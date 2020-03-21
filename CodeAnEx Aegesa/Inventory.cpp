@@ -3,8 +3,7 @@
 #include <map>
 #include <stack>
 #include "inventory.h"
-#include "Player_Actor.h"
-#include "Enemy.h"
+#include "HashTableSet.h"
 #include "World.h"
 
 // use tha multimap function

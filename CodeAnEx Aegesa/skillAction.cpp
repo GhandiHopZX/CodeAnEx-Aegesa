@@ -93,6 +93,7 @@ skillAction::skillAction(int call)
 			 "W AND L COLLIDE CAUSES DAMAGE TO BOTH SIDES\n" <<
 			 "O AND P CANCEL BOTH ATTACKS\n" <<
 		skillcall(call).strikeType + '\n' << endl;
+
 		cout << "Buff/debuff effects" +
 		skillcall(call).hpAdd + '\n' +
 		skillcall(call).spAdd + '\n' +
@@ -108,8 +109,9 @@ skillAction::skillAction(int call)
 		skillcall(call).endAdd + '\n' +
 		skillcall(call).strAdd + '\n' +
 		skillcall(call).intAdd + '\n' +
-		skillcall(call).sprAdd + '\n' +
-
+		skillcall(call).sprAdd + '\n' 
+		
+		<< "Viable Percentage of Stat boost/effect\n" <<
 		skillcall(call).stat14Percentages[0] + '\n' +
 		skillcall(call).stat14Percentages[hpPerc] +'\n' +
 		skillcall(call).stat14Percentages[spPerc] +'\n' +

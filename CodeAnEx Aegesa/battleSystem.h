@@ -22,9 +22,14 @@ private:
 		a = 0, b = 1, c = 2, d = 3, e = 4, f = 5
 	}; //turn number
 
+	int mx = 8;// change this for the maximum amount of enemy fighters
+	int numMembers = 0; // current number of members
+
 public:
 
+	//objects
 	aegesa::statusEff me;
+	inventory award;
 
 	// constructor
 	battleSystem();
@@ -61,7 +66,13 @@ public:
 	//functions for reauthentications when a number of turns are up
 	void battleMode();
 
+	void countEnemies(Enemy tArr[]); // this is the setter
+
+	string lineStop();
+
 	int statusCall(int ti);
+
+	int getNumMembers();
 
 	bool playerTGuage(int, int spd, int fp);
 
@@ -207,3 +218,21 @@ public:
 	Intepreter accounts(Player_Actor *targetArr1[], Enemy *targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
 };
 
+template<class victory>
+inline victory battleSystem::rewards(Enemy tArr[])
+{
+	countEnemies(); // resetting numMembers 
+
+	for (int i = 0; i < getNumMembers(); i++)
+	{
+		award = tArr[i].itemN;
+		return award;
+	}
+	
+}
+
+template<class TURNA>
+inline TURNA battleSystem::turn_A_mode(Enemy d[], Player_Actor u[])
+{
+	return TURNA();
+}

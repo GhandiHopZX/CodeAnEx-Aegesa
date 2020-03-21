@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include <list>
 #include "aegesa.h"
 #include "inventory.h"
 
