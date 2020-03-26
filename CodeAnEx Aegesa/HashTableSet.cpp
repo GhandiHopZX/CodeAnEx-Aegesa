@@ -22,13 +22,6 @@ HashTableSet::HashTableSet() // you cant include this class anywhere else bc of 
 	skey_exists = {};
 }
 
-HashTableSet::HashTableSet(int key, skillAction meeep)
-{
-	skill_Sum = {};
-	shash_Value = {};
-	skey_exists = {};
-}
-
 //HashTableSet SkillList;
 
 #pragma region nameList
@@ -274,6 +267,113 @@ int HashTableSet::operator++(int k)
 	int& oldVal = *m;
 	return oldVal;
 }
+
+template<class Hash>
+Hash HashTableSet::isEmptyT() const
+{
+	int addAll{};
+	for (int i{}; i < skillGroups; i++)
+	{
+		addAll += (skillTable[i].size());
+	}
+
+	if (!addAll)
+	{
+		return true;
+	}
+	return false;
+}
+
+template<class Hash>
+Hash HashTableSet::hashT(int keyT)
+{
+	return keyT % hashGroups; // Key: 905, in return, this function will spit out 5.
+}
+
+template<class Hash>
+Hash HashTableSet::insertT()
+{
+	int hashValue = hash(key);
+	auto& cell = nametable[hashValue];
+	auto bItr = begin(cell);
+	bool keyExists = false;
+	for (; bItr != end(cell); bItr++)
+	{
+		if (bItr->first == key)
+		{
+			keyExists = true;
+			bItr->second = value;
+			cout << "[WARNING] Key exists. Value replaced." << endl;
+			break;
+		}
+	}
+
+	if (!keyExists)
+	{
+		cell.emplace_back(key, value);
+	}
+	return;
+}
+
+template<class Hash>
+Hash HashTableSet::remove()
+{
+	int hashValue = hash(key);
+	auto& cell = nametable[hashValue];
+	auto bItr = begin(cell);
+	bool keyExists = false;
+	for (; bItr != end(cell); bItr++)
+	{
+		if (bItr->first == key)
+		{
+			keyExists = true;
+			bItr = cell.erase(bItr);
+			cout << "[INFO] Pair removed." << endl;
+			break;
+		}
+	}
+
+	if (!keyExists)
+	{
+		cout << "[WARNING] Key not found. PAIR NOT REMOVED." << endl;
+	}
+	return;
+}
+
+template<class Hash>
+Hash HashTableSet::search()
+{
+	return Hash();
+}
+
+template<class Hash>
+Hash HashTableSet::printTableT()
+{
+	for (int i{}; i < hashGroups; i++)
+	{
+		if (nametable[i].size() == 0) continue;
+
+		auto bItr = nametable[i].begin();
+		for (; bItr != nametable[i].end(); bItr++)
+		{
+			cout << "[INFO] Key: " << bItr->first << " Value: " << bItr->second << endl;
+		}
+	}
+	return;
+}
+
+template<class Hash>
+Hash HashTableSet::get()
+{
+	return Hash();
+}
+
+template<class Hash>
+Hash HashTableSet::set()
+{
+	return Hash();
+}
+
 
 HashTableSet::~HashTableSet()
 {

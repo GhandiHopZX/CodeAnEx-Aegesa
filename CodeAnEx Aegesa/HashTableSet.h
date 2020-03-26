@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unordered_set>
 #include "skillAction.h"
+#include "inventory.h"
 
 using namespace std;
 
@@ -11,16 +12,18 @@ class HashTableSet // with this you can make multiple hashes with calculations t
 private:
 	static const int hashGroups = 400;
 	static const int skillGroups = 200;
+
 	int skill_Sum;
 	int shash_Value;
 	bool skey_exists;
 
 	list<pair<int, skillAction>> skillTable[skillGroups];
 	list<pair<int, string>> nametable[hashGroups];
+	
 
 public:
 	HashTableSet();
-	HashTableSet(int, skillAction);
+
 	~HashTableSet();
 
 	int operator++(int k);
@@ -45,7 +48,50 @@ public:
 
 	// template_types
 	template <class Hash>
-	Hash isEmptyT();
+	Hash fullTemp(int key, Hash objType)
+	{
+		static const int hashT = 300;
+		int templateHSum;
+		int tHash_Value;
+		int tKey_Exists;
+
+		list<pair<int, Hash>> INVENTORU[hashT];
+
+	/*	bool isEmptyT() const
+		{};
+
+		template <typename Hash>
+		Hash hashT(int keyCall)
+		{};
+
+		template <typename Hash>
+		Hash insertT(int key, Hash type)
+		{};
+
+		template <typename Hash>
+		Hash remove(int key)
+		{};
+
+		template <typename Hash>
+		Hash search(int key)
+		{};
+
+		template <typename Hash>
+		Hash printTableT()
+		{};
+
+		template <typename Hash>
+		Hash get()
+		{};
+
+		template <typename Hash>
+		Hash set()
+		{};*/
+
+	};
+
+	template <class Hash>
+	Hash isEmptyT() const;
 
 	template <class Hash>
 	Hash hashT(int);
@@ -71,3 +117,4 @@ public:
 	// for hashes
 	skillAction skillCall(int sk); //operator for this
 };
+

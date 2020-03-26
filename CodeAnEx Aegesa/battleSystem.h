@@ -318,278 +318,278 @@ inline iter battleSystem::def(Player_Actor tArr[])
 
 template<class iter>
 inline iter battleSystem::hack(Player_Actor tArr[])
+//{
+//	tArr->getDEXd();
+//	// get the enemy target
+//	//targetEnemy();
+//
+//	wstring window;
+//
+//	// movement grid
+//	wstring grid[26][6]; 
+//	// one plus higher for
+//	//the actuall char amount in the order
+//	// grid array
+//	window += L"=== === ===";
+//	window += L"=== === ===";
+//	window += L"=== === ===";
+//
+//	// snap to grid
+//	grid[25][5] = window;
+//	
+//	while (VK_SPACE)
+//	{
+//		normalOutput("press space to fire when \n your marker (X) lands on (*) \n making a (#)");
+//		//system("CLS");
+//
+//		// platforms 
+//
+//		// 1 2 3
+//		// 4 5 6
+//		// 7 8 9
+//
+//		// X< 1 = 0 1 2
+//		//	  2 = 3 4 5
+//		//	  3 = 6 7 8
+//		// 	  4 = 9 10 11
+//		//	  5 = 12 13 14
+//		//	  6 = 15 16 17
+//		//    7 = 18 19 20
+//		//	  8 = 21 22 23
+//		//	  9 = 24 25 26 >X
+//
+//		wstring actorT, enemy, hitMarkA;
+//		actorT = L"X"; // XX
+//		enemy = L"*"; // **
+//		hitMarkA = L"#"; // ## mark empty when actorT overlays enemy
+//
+//		// player startpoint
+//		int x, y;
+//		grid[0][1] = actorT;
+//		grid[1][1] = actorT;
+//		grid[2][1] = actorT;
+//
+//		// enemy startpoint
+//		int ex, ey;
+//		grid[8][1] = enemy;
+//		grid[9][1] = enemy;
+//		grid[10][1] = enemy;
+//
+//		// key console
+//#pragma region VirtualKey input
+//		switch (INPUT_KEYBOARD)
+//		{
+//		case VK_UP:
+//			//movement -y
+//#pragma region up
+//			// movement y
+//			if (y >= 0)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y -= 0;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (y <= 5)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y -= i;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[y + 1] = '='; // behind u
+//			}
+//			break;
+//
+//		case VK_DOWN:
+//			// movement +y
+//#pragma region down
+//			if (y >= 5)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y += 0;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (y <= 0)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y += i;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[y - 1] = '=';
+//			}
+//			break;
+//
+//		case VK_LEFT:
+//			// movement x-
+//			// validation
+//#pragma region left
+//			if (x <= 25)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x -= i;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (x >= 0)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x += 0;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[x + 1] = '=';
+//				actorT[x + 2] = '=';
+//				actorT[x + 3] = '=';
+//			}
+//			break;
+//
+//		case VK_RIGHT:
+//			// movement x+
+//#pragma region right
+//			if (x >= 25)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x += 0;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (x <= 0)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x += i;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[x - 1] = '=';
+//				actorT[x - 2] = '=';
+//				actorT[x - 3] = '=';
+//			}
+//			break;
+//
+//		default:
+//			break;
+//		}
+//#pragma endregion
+//		
+//#pragma region AI
+//
+//		//--------- enemy movement ------------
+//		if (ex | ey == y | x)
+//		{
+//			enemy[ex - 1 | +1] | enemy[ey - 1 | +1];
+//		}
+//
+//		// movement replacement
+//		//up
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ey + 1] = '='; // behind u
+//		}
+//		//down 
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ey - 1] = '=';
+//		}
+//		//left
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ex + 1] = '=';
+//			enemy[ex + 2] = '=';
+//			enemy[ex + 3] = '=';
+//		}
+//		//right
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ex - 1] = '=';
+//			enemy[ex - 2] = '=';
+//			enemy[ex - 3] = '=';
+//		}
+//
+//		// ai move away from player 
+//		if (actorT[x] -1 >= enemy[ex] || actorT[x] - 1 <= enemy[ex])
+//		{
+//			// check if theres space and seek a way to escape
+//			// wait
+//			// move again
+//		}
+//
+//		if (actorT[y] - 1 >= enemy[ey] || actorT[y] - 1 <= enemy[ey])
+//		{
+//			// check if theres space and seek a way to escape
+//			// wait
+//			// move again
+//		}
+//		
+//		// collision
+//		if (grid[x][y] == grid[ex][ey] && grid[ex] == grid[ey])
+//		{
+//			enemy = hitMarkA;
+//			actorT = hitMarkA;
+//
+//			switch (VK_SPACE)
+//			{
+//				hackOutput("HIT");
+//				lineStop();
+//				hackOutput("HACKED!");
+//			default:
+//				break;
+//			}
+//		}
+//		else
+//		{
+//			enemy = enemy;
+//			actorT = actorT;
+//
+//			switch (VK_SPACE)
+//			{
+//			default:
+//				break;
+//			}
+//		}
+//		/*
+//		  1  2  3  4  5  6
+//		  11 12 13 14 15 16
+//		  21 22 23 24 25 26
+//		 */
+//#pragma endregion
+//
+//	
 {
-	tArr->getDEXd();
-	// get the enemy target
-	//targetEnemy();
-
-	wstring window;
-
-	// movement grid
-	wstring grid[26][6]; 
-	// one plus higher for
-	//the actuall char amount in the order
-	// grid array
-	window += L"=== === ===";
-	window += L"=== === ===";
-	window += L"=== === ===";
-
-	// snap to grid
-	grid[25][5] = window;
-	
-	while (!VK_SPACE)
-	{
-		normalOutput("press space to fire when \n your marker (X) lands on (*) \n making a (#)");
-		//system("CLS");
-
-		// platforms 
-
-		// 1 2 3
-		// 4 5 6
-		// 7 8 9
-
-		// X< 1 = 0 1 2
-		//	  2 = 3 4 5
-		//	  3 = 6 7 8
-		// 	  4 = 9 10 11
-		//	  5 = 12 13 14
-		//	  6 = 15 16 17
-		//    7 = 18 19 20
-		//	  8 = 21 22 23
-		//	  9 = 24 25 26 >X
-
-		wstring actorT, enemy, hitMarkA;
-		actorT = L"X"; // XX
-		enemy = L"*"; // **
-		hitMarkA = L"#"; // ## mark empty when actorT overlays enemy
-
-		// player startpoint
-		int x, y;
-		grid[0][1] = actorT;
-		grid[1][1] = actorT;
-		grid[2][1] = actorT;
-
-		// enemy startpoint
-		int ex, ey;
-		grid[8][1] = enemy;
-		grid[9][1] = enemy;
-		grid[10][1] = enemy;
-
-		// key console
-#pragma region VirtualKey input
-		switch (INPUT_KEYBOARD)
-		{
-		case VK_UP:
-			//movement -y
-#pragma region up
-			// movement y
-			if (y >= 0)
-			{
-				for (int i = 0; i < 2; i++)
-				{
-					x += 0;
-					y -= 0;
-
-					actorT = grid[x][y];
-				}
-			}
-			else if (y <= 5)
-			{
-				for (int i = 0; i < 2; i++)
-				{
-					x += 0;
-					y -= i;
-
-					actorT = grid[x][y];
-				}
-			}
-#pragma endregion
-			if (actorT != grid[x][y]) //replacemet space
-			{
-				actorT[y + 1] = '='; // behind u
-			}
-			break;
-
-		case VK_DOWN:
-			// movement +y
-#pragma region down
-			if (y >= 5)
-			{
-				for (int i = 0; i < 2; i++)
-				{
-					x += 0;
-					y += 0;
-
-					actorT = grid[x][y];
-				}
-			}
-			else if (y <= 0)
-			{
-				for (int i = 0; i < 2; i++)
-				{
-					x += 0;
-					y += i;
-
-					actorT = grid[x][y];
-				}
-			}
-#pragma endregion
-			if (actorT != grid[x][y]) //replacemet space
-			{
-				actorT[y - 1] = '=';
-			}
-			break;
-
-		case VK_LEFT:
-			// movement x-
-			// validation
-#pragma region left
-			if (x <= 25)
-			{
-				for (int i = 0; i < 4; i++)
-				{
-					x -= i;
-					y += 0;
-					actorT = grid[x][y];
-				}
-			}
-			else if (x >= 0)
-			{
-				for (int i = 0; i < 4; i++)
-				{
-					x += 0;
-					y += 0;
-					actorT = grid[x][y];
-				}
-			}
-
-#pragma endregion
-			if (actorT != grid[x][y]) //replacemet space
-			{
-				actorT[x + 1] = '=';
-				actorT[x + 2] = '=';
-				actorT[x + 3] = '=';
-			}
-			break;
-
-		case VK_RIGHT:
-			// movement x+
-#pragma region right
-			if (x >= 25)
-			{
-				for (int i = 0; i < 4; i++)
-				{
-					x += 0;
-					y += 0;
-					actorT = grid[x][y];
-				}
-			}
-			else if (x <= 0)
-			{
-				for (int i = 0; i < 4; i++)
-				{
-					x += i;
-					y += 0;
-					actorT = grid[x][y];
-				}
-			}
-#pragma endregion
-			if (actorT != grid[x][y]) //replacemet space
-			{
-				actorT[x - 1] = '=';
-				actorT[x - 2] = '=';
-				actorT[x - 3] = '=';
-			}
-			break;
-
-		default:
-			break;
-		}
-#pragma endregion
-		
-#pragma region AI
-
-		//--------- enemy movement ------------
-		if (ex | ey == y | x)
-		{
-			enemy[ex - 1 | +1] | enemy[ey - 1 | +1];
-		}
-
-		// movement replacement
-		//up
-		if (enemy != grid[ex][ey]) //replacemet space
-		{
-			enemy[ey + 1] = '='; // behind u
-		}
-		//down 
-		if (enemy != grid[ex][ey]) //replacemet space
-		{
-			enemy[ey - 1] = '=';
-		}
-		//left
-		if (enemy != grid[ex][ey]) //replacemet space
-		{
-			enemy[ex + 1] = '=';
-			enemy[ex + 2] = '=';
-			enemy[ex + 3] = '=';
-		}
-		//right
-		if (enemy != grid[ex][ey]) //replacemet space
-		{
-			enemy[ex - 1] = '=';
-			enemy[ex - 2] = '=';
-			enemy[ex - 3] = '=';
-		}
-
-		// ai move away from player 
-		if (actorT[x] -1 >= enemy[ex] || actorT[x] - 1 <= enemy[ex])
-		{
-			// check if theres space and seek a way to escape
-			// wait
-			// move again
-		}
-
-		if (actorT[y] - 1 >= enemy[ey] || actorT[y] - 1 <= enemy[ey])
-		{
-			// check if theres space and seek a way to escape
-			// wait
-			// move again
-		}
-		
-		// collision
-		if (grid[x][y] == grid[ex][ey] && grid[ex] == grid[ey])
-		{
-			enemy = hitMarkA;
-			actorT = hitMarkA;
-
-			switch (VK_SPACE)
-			{
-				hackOutput("HIT");
-				lineStop();
-				hackOutput("HACKED!");
-			default:
-				break;
-			}
-		}
-		else
-		{
-			enemy = enemy;
-			actorT = actorT;
-
-			switch (VK_SPACE)
-			{
-			default:
-				break;
-			}
-		}
-		/*
-		  1  2  3  4  5  6
-		  11 12 13 14 15 16
-		  21 22 23 24 25 26
-		 */
-#pragma endregion
-
-	}
-
 	return iter();
 }
