@@ -20,6 +20,12 @@ HashTableSet::HashTableSet() // you cant include this class anywhere else bc of 
 	skill_Sum = {};
 	shash_Value = {};
 	skey_exists = {};
+
+	templateHSum = {};
+	tHash_Value = {};
+	tKey_Exists = {};
+
+	tLastCall = {};
 }
 
 //HashTableSet SkillList;
@@ -113,7 +119,6 @@ inline void HashTableSet::printTable()
 	return;
 }
 #pragma endregion
-
 
 #pragma region skillList
 bool HashTableSet::sisEmpty() const
@@ -269,32 +274,86 @@ int HashTableSet::operator++(int k)
 }
 
 template<class Hash>
-Hash HashTableSet::isEmptyT() const
+Hash HashTableSet::fullTemp(int choice, int key, Hash objType)
 {
-	int addAll{};
-	for (int i{}; i < skillGroups; i++)
+	list<pair<int, Hash>> INVENTORU[hashTe];
+	
+	switch (choice)
 	{
-		addAll += (skillTable[i].size());
+		// hash it
+	case 1: 
+		Hash HashTableSet::hashT(key);
+		tLastCall = key;
+		break;
+		//bool isEmptyT() const;
+	case 2: 
+		Hash HashTableSet::isEmptyT() const;
+		break;
+		// insert
+	case 3: 
+		Hash HashTableSet::insertT(key, objType);
+		tLastCall = key;
+		break;
+		// remove it
+	case 4:
+		Hash HashTableSet::remove(key);
+		tLastCall = key;
+		break;
+		// find it
+	case 5: 
+		Hash HashTableSet::search(key);
+		tLastCall = key;
+		break;
+		// print it out
+	case 6:
+		Hash HashTableSet::printTableT(key);
+		tLastCall = key;
+		break;
+		// get last call
+	case 7: 
+		Hash HashTableSet::get();
+		break;
+		// set for the get
+	case 8:
+		Hash HashTableSet::set(key);
+		tLastCall = key;
+		break;
+
+	default:
+		break;
+	}
+	return objType;
+}
+
+template<typename Hash>
+Hash HashTableSet::isEmpty()
+{
+	int sum{};
+	for (int i{}; i < hashTe; i++)
+	{
+		sum += (Hash::INVENTORU[i].size());
 	}
 
-	if (!addAll)
+	if (!sum)
 	{
 		return true;
 	}
 	return false;
 }
 
-template<class Hash>
+template <typename Hash>
 Hash HashTableSet::hashT(int keyT)
 {
-	return keyT % hashGroups; // Key: 905, in return, this function will spit out 5.
-}
+	tLastCall = keyT;
+	return keyT % hashTe; // Key: 905, in return, this function will spit out 5.
+};
 
-template<class Hash>
-Hash HashTableSet::insertT()
+template <typename Hash>
+Hash HashTableSet::insertT(int key, Hash value)
 {
-	int hashValue = hash(key);
-	auto& cell = nametable[hashValue];
+	tLastCall = key;
+	tHash_Value = hash(key);
+	auto& cell = Hash::INVENTORU[hashTe];
 	auto bItr = begin(cell);
 	bool keyExists = false;
 	for (; bItr != end(cell); bItr++)
@@ -313,13 +372,14 @@ Hash HashTableSet::insertT()
 		cell.emplace_back(key, value);
 	}
 	return;
-}
+};
 
-template<class Hash>
-Hash HashTableSet::remove()
+template<typename Hash>
+Hash HashTableSet::remove(int key)
 {
-	int hashValue = hash(key);
-	auto& cell = nametable[hashValue];
+	tLastCall = key;
+	tHash_Value = hash(key);
+	auto& cell = Hash::INVENTORU[tHash_Value];
 	auto bItr = begin(cell);
 	bool keyExists = false;
 	for (; bItr != end(cell); bItr++)
@@ -328,52 +388,53 @@ Hash HashTableSet::remove()
 		{
 			keyExists = true;
 			bItr = cell.erase(bItr);
-			cout << "[INFO] Pair removed." << endl;
+			cout << "[INFO] Skill removed." << endl;
 			break;
 		}
 	}
 
 	if (!keyExists)
 	{
-		cout << "[WARNING] Key not found. PAIR NOT REMOVED." << endl;
+		cout << "[WARNING] Skill not found. PAIR NOT REMOVED." << endl;
 	}
 	return;
-}
+};
 
-template<class Hash>
-Hash HashTableSet::search()
+template<typename Hash>
+Hash HashTableSet::search(int key)
 {
+	tLastCall = key;
 	return Hash();
-}
 
-template<class Hash>
+};
+
+template<typename Hash>
 Hash HashTableSet::printTableT()
 {
-	for (int i{}; i < hashGroups; i++)
+	for (int i{}; i < hashTe; i++)
 	{
-		if (nametable[i].size() == 0) continue;
+		if (Hash::INVENTORU[i].size() == 0) continue;
 
-		auto bItr = nametable[i].begin();
-		for (; bItr != nametable[i].end(); bItr++)
+		auto bItr = Hash::INVENTORU[i].begin();
+		for (; bItr != Hash::INVENTORU[i].end(); bItr++)
 		{
 			cout << "[INFO] Key: " << bItr->first << " Value: " << bItr->second << endl;
 		}
 	}
 	return;
-}
+};
 
-template<class Hash>
+template<typename Hash>
 Hash HashTableSet::get()
 {
-	return Hash();
-}
+	return Hash::INVENTORU[tLastCall];
+};
 
-template<class Hash>
-Hash HashTableSet::set()
+template<typename Hash>
+Hash HashTableSet::set(int key)
 {
-	return Hash();
-}
-
+	return tLastCall = key;
+};
 
 HashTableSet::~HashTableSet()
 {
