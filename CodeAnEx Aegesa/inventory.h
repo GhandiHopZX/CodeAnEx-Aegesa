@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdio>
 #include "inventory.h"
+#include "Player_Actor.h"
 
 using namespace std;
 
@@ -157,6 +158,8 @@ public:
 	void displaylistItem() const;
 	void displaylistWeapon() const;
 	void displaylistArmor() const;
+
+	//void itemUse(int d, Player_Actor o);
 
 	//void PlayerItemInventory(Player_Actor);
 

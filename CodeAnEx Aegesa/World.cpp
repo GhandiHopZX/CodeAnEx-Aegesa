@@ -3,6 +3,7 @@
 #include "inventory.h"
 #include "enemy.h"
 #include "World.h"
+#include "HashTableSet.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -24,9 +25,10 @@ Player_Actor Actor1; // Proper instantiation
 Player_Actor Alicia; // 
 Player_Actor Renae; // 
 Player_Actor Iyn; // 
-inventory mainInventory;
+inventory mainInventory; //
 int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
 
+HashTableSet anyHash; // magic hash of many things 
 
 World::World()
 {
@@ -200,7 +202,6 @@ void World::chapter5()
 
 void World::endGame()
 {
-
 	// end of game? =)
 	lineStop();
 	cout << "Will you dream again?" << endl;

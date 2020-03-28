@@ -6,7 +6,7 @@
 #include <stack>
 #include <thread>
 #include "Player_Actor.h"
-#include "inventory.h"
+//#include "inventory.h"
 #include "aegesa.h"
 
 using namespace std;
@@ -22,11 +22,9 @@ private:
 	// variables
 
 public:
-	/*
-	inventory::weapon mActorWeaponE[1];
-	inventory::armor mActorArmorE[1];
-	*/
-
+	
+	
+	
 	// stat multiplier flag
 	/*bool statmulti;
 	int dummyPlus;
@@ -579,10 +577,12 @@ public:
 //
 //#pragma endregion
 
-	/*void setParty(Player_Actor currentPa, int pos);
+	/*
+	void setParty(Player_Actor currentPa, int pos);
 	Player_Actor getParty();
-	Player_Actor callPartyMember(int pos);*/
+	Player_Actor callPartyMember(int pos);
 	//void battleGuage();
+	*/
 
 	// Deconstructor
 	~Player_Actor();

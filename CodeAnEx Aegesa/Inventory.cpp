@@ -50,48 +50,42 @@ inventory::item allitemList(int integer)
 {
 	return itemlist[integer];
 }
-//
-//#pragma region All_armors
-//	inventory::armor broad_armor;
-//	inventory::armor kavelar_gear;
-//	inventory::armor carbonite_gear;
-//	inventory::armor crystalline_armor;
-//	inventory::armor aerolite_gear;
-//	inventory::armor vandham_armor;
-//	inventory::armor antiImpact_armor;
-//	inventory::armor katType_armor;
-//	inventory::armor grenadier_composite_armor;
-//	inventory::armor anti_nuclear_armor;
-//#pragma endregion
-//
-//	inventory::armor armorlist[100] =
-//	{
-//		broad_armor,
-//		kavelar_gear,
-//		carbonite_gear,
-//		crystalline_armor,
-//		aerolite_gear,
-//		vandham_armor,
-//		antiImpact_armor,
-//		katType_armor,
-//		grenadier_composite_armor,
-//		anti_nuclear_armor
-//	};
-//
-//	inventory::armor allarmorList(int integer)
-//	{
-//		return armorlist[integer];
-//	}
 
-//weapon my_weapons[inventory::MAX_INTEGRITY] =
-	//{};
+// all armors
+#pragma region All_armors
+	inventory::armor broad_armor;
+	inventory::armor kavelar_gear;
+	inventory::armor carbonite_gear;
+	inventory::armor crystalline_armor;
+	inventory::armor aerolite_gear;
+	inventory::armor vandham_armor;
+	inventory::armor antiImpact_armor;
+	inventory::armor katType_armor;
+	inventory::armor grenadier_composite_armor;
+	inventory::armor anti_nuclear_armor;
+#pragma endregion
 
-	//armor my_armors[inventory::MAX_INTEGRITY] =
-	//{};
+	inventory::armor armorlist[100] =
+	{
+		broad_armor,
+		kavelar_gear,
+		carbonite_gear,
+		crystalline_armor,
+		aerolite_gear,
+		vandham_armor,
+		antiImpact_armor,
+		katType_armor,
+		grenadier_composite_armor,
+		anti_nuclear_armor
+	};
+//
+	inventory::armor allarmorList(int integer)
+	{
+		return armorlist[integer];
+	}
 
 inventory::item my_items[inventory::MAX_INTEGRITY] =
 {};
-
 
 inventory::inventory()
 {
@@ -108,6 +102,7 @@ inventory::inventory(int)
 
 inventory::inventory(const inventory&)
 {
+	size = 20;
 	capacity = MAX_INTEGRITY;
 	headw = nullptr;
 	heada = nullptr;
@@ -451,42 +446,8 @@ void inventory::displaylistArmor() const
 	}
 }
 
-//void selectlistItem(int u, Player_Actor o)
-//{
-//	if (inventory::my_items <= 0)
-//	{
-//		string message = "No Items in index..";
-//		cout << message;
-//		my_items[0];
-//	}
-//	else
-//	{
-//		cout << "use Item?";
-//		itemUse(u, o);
-//	}
-//	remItem(my_items[u].quantity);
-//	//return my_items[u];
-//}
-
 //void inventory::itemUse(int d, Player_Actor o)
 //{
-//	// add stuff here
-//	o.AGId += my_items[d].agiAdd;
-//	o.ap += my_items[d].apAdd;
-//	o.ATKd += my_items[d].atkAdd;
-//	o.CONd += my_items[d].conAdd;
-//	o.DEFd += my_items[d].defAdd;
-//	o.DEXd += my_items[d].dexAdd;
-//	o.ENDd += my_items[d].endAdd;
-//	o.fpd += my_items[d].fpAdd;
-//	 // use the gold value for gold items += my_items[d].goldValue;
-//	o.AGId += my_items[d].hpAdd;
-//	o.AGId += my_items[d].intAdd;
-//	o.AGId += my_items[d].spAdd;
-//	o.AGId += my_items[d].spdAdd;
-//	o.AGId += my_items[d].sprAdd;
-//	o.AGId += my_items[d].strAdd;
-//
 //	// name call
 //	cout << my_items[d].name << "used" << endl;
 //}

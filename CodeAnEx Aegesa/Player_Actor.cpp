@@ -45,6 +45,8 @@ Player_Actor Party[];
 
 inventory d();
 
+inventory::weapon mActorWeaponE[1];
+inventory::armor mActorArmorE[1];
 //
 //void Player_Actor::setParty(Player_Actor currentPa, int pos)
 //{
