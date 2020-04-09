@@ -11,12 +11,13 @@
 #include <thread>
 #include <algorithm>
 #include <fstream>
+#include "World.h"
+// battle system stuff
+#include "Enemy.h"
 #include "aegesa.h"
 #include "Player_Actor.h"
-#include "battleSystem.h"
 #include "inventory.h"
-#include "enemy.h"
-#include "World.h"
+#include "battleSystem.h"
 //#include "HashTableSet.h"
 
 using namespace std;
@@ -336,6 +337,10 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	// sw = southwest, s = south, se = southeast
 	// w = west, e = east
 	// z = floor
+	// these are for changing the coodinates to each floor 
+	int xC = 0;
+	int yC = 0;
+	int zC = 0;
 
 	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
 	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y 
@@ -385,6 +390,13 @@ void World::navigation(int selectedMap, int x, int y, int z)
 
 	switch (z)
 	{
+	case (1):
+		z++;
+		break;
+
+	case -1:
+		z--;
+		break;
 	default:
 		maps[selectedMap].z = z;
 		break;

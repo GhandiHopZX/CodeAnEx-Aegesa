@@ -7,7 +7,7 @@
 #include <chrono>
 #include "aegesa.h"
 #include "Player_Actor.h"
-#include "battleSystem.h"
+#include "Enemy.h"
 
 class World // this is the mainline story for Code AnEx AEGESA
 {
@@ -33,6 +33,7 @@ private:
 	int tse = 0;
 	int tung = 0;
 	long play_time = 0;
+	const static int partySize = 6;
 
 	map lostCity[11][11][4];
 	map darkForest[11][11][2];
@@ -93,5 +94,9 @@ public:
 	// getters/accessors
 
 	// other functions
+	Player_Actor playerParty[partySize]; // menus
+
+	aegesa battlersP[partySize]; // for the player_Actors
+	aegesa battlersE[partySize]; // for the enemy
 	~World();
 };

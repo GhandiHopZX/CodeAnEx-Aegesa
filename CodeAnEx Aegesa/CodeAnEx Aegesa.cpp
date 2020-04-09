@@ -15,6 +15,7 @@
 #include <chrono>
 #include "World.h"
 
+
 using namespace std;
 
 // templates
@@ -172,6 +173,7 @@ int menyu()
 		menyu();
 		break;
 	}
+	return choice;
 } // DONE
 
 int menyuPlus()
