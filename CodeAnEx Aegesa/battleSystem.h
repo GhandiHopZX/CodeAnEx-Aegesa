@@ -3,9 +3,9 @@
 #include <list>
 #include <vector>
 #include <ctime>
+#include <iostream>
 #include "aegesa.h"
-#include "Player_Actor.h"
-#include "Enemy.h"
+#include "inventory.h"
 
 using namespace std;
 
@@ -29,12 +29,11 @@ public:
 
 	//objects
 	aegesa::statusEff me;
-	inventory award;
 
 	// constructor
 	battleSystem();
 
-	battleSystem(Player_Actor fromPartyHash[], Enemy RandEncounterHash[], bool battleMode);
+	battleSystem(aegesa fromPartyHash[], bool battleMode);
 
 	// variables
 
@@ -75,7 +74,7 @@ public:
 	//functions for reauthentications when a number of turns are up
 	void battleMode();
 
-	void countEnemies(Enemy tArr[]); // this is the setter
+	void countEnemies(aegesa tArr[]); // this is the setter
 
 	string lineStop();
 
@@ -116,12 +115,12 @@ public:
 
 	// rewards
 
-	template <class victory> // cmd process
-	victory rewards(Enemy tArr[]);
+	template <typename victory> // cmd process
+	victory rewards(aegesa tArr[]);
 
 	// templates
 	template <class TURNA>
-	TURNA turn_A_mode(Enemy d[], Player_Actor u[]);
+	TURNA turn_A_mode(aegesa d[], aegesa u[]);
 
 	template <class statPwr>
 	statPwr point_plier(statPwr atk, statPwr mgk, statPwr auraFp) // mainly for attacks not anything else
@@ -192,132 +191,136 @@ public:
 
 	// your choices processed
 	template <class iter> // cmd process
-	iter attack(Player_Actor tArr[]);
+	iter attack(aegesa tArr[]);
 
 	template <class iter> // cmd process
-	iter def(Player_Actor tArr[]);
+	iter def(aegesa tArr[]);
 
 	template <class iter> // cmd process
-	iter hack(Player_Actor tArr[]);
+	iter hack(aegesa tArr[]);
 
 	template <class iter> // cmd process
-	iter itemUse(Player_Actor tArr[]);
+	iter itemUse(aegesa tArr[]);
 
 	template <class iter> // cmd process
-	iter attackPlus(iter atk, iter bonus, iter hpE, Player_Actor tArr[]); // bonuses granted from party strikes, skills and buffs 
+	iter attackPlus(iter atk, iter bonus, iter hpE, aegesa tArr[]); // bonuses granted from party strikes, skills and buffs 
 
 	template <class iter> // cmd process
-	iter skill(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); //
+	iter skill(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter actorThrow(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); //
+	iter actorThrow(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); //
+	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Player_Actor tArr[]); // super aura attack
+	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]) ; // super aura attack
 
 	template <class iter> // cmd process
-	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, Player_Actor tArr[]); // SUPER ZENKAI BOOST
+	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, aegesa tArr[]); // SUPER ZENKAI BOOST
+
+#pragma region AiCmds
 
 	// ai choices processed
-	template <class iter> // cmd process
-	iter aiAttack(Enemy targetArr[]);
+	//template <class iter> // cmd process
+	//iter aiAttack(HashTableSet targetArr[]);
 
-	template <class iter> // cmd process
-	iter aiSkill(Enemy targetArr[]);
+	//template <class iter> // cmd process
+	//iter aiSkill(HashTableSet targetArr[]);
 
-	template <class iter> // cmd process
-	iter aiDef(Enemy tArr[]);
+	//template <class iter> // cmd process
+	//iter aiDef(HashTableSet tArr[]);
 
-	template <class iter> // cmd process
-	iter aiHack(Enemy tArr[]);
+	//template <class iter> // cmd process
+	//iter aiHack(HashTableSet tArr[]);
 
-	template <class iter> // cmd process
-	iter aiAttackPlus(Enemy targetArr[], iter atk, iter bonus, iter hpE);
+	//template <class iter> // cmd process
+	//iter aiAttackPlus(HashTableSet targetArr[], iter atk, iter bonus, iter hpE);
 
-	template <class iter> // cmd process
-	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Enemy tArr[]); //
+	//template <class iter> // cmd process
+	//iter aiTeamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, HashTableSet tArr[]); //
 
-	template <class iter> // cmd process
-	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, Enemy tArr[]); // super aura attack
+	//template <class iter> // cmd process
+	//iter aiAuralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, HashTableSet tArr[]); // super aura attack
 
-	template <class iter> // cmd process
-	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, Enemy tArr[]); // SUPER ZENKAI BOOST
+	//template <class iter> // cmd process
+	//iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, HashTableSet tArr[]); // SUPER ZENKAI BOOST
+#pragma endregion
 
 	//interpreter 1 2 3 4 5
 
 	template <class Intepreter> // cmd process
-	Intepreter toE(Enemy *targetarr[], Intepreter choices[]);
+	Intepreter toE(aegesa *targetarr[], Intepreter choices[]);
 
 	template <class Intepreter> // cmd process
-	Intepreter toActor(Player_Actor *targetArr2[], Intepreter choices[]);
+	Intepreter toActor(aegesa *targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of both actors and enemies virtually everything
-	Intepreter finalizerACTOR(Player_Actor *targetArr1[], Enemy *targetArr2[], Intepreter choices[]);
+	Intepreter FinalizerACTOR(aegesa *targetArr1[], aegesa *targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of both actors and enemies virtually everything
-	Intepreter finalizerE(Enemy *targetArr1[], Player_Actor *targetArr2[], Intepreter choices[]);
+	Intepreter aiFinalizerE(aegesa *targetArr1[], aegesa *targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of literally everything
-	Intepreter accounts(Player_Actor *targetArr1[], Enemy *targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
+	Intepreter accounts(aegesa *targetArr1[], aegesa *targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
 };
 
-template<class victory>
-inline victory battleSystem::rewards(Enemy tArr[]) // TODO: add inventory param and output the goodness
-{
-	countEnemies(); // resetting numMembers 
+//template<class victory>
+//inline victory battleSystem::rewards(aegesa tArr[]) // TODO: add inventory param and output the goodness
+//{
+//	countEnemies(); // resetting numMembers 
+//
+//	for (int i = 0; i < getNumMembers(); i++)
+//	{
+//		award = tArr[i];
+//		return award;
+//	}
+//}
+//
+//template<class TURNA>
+//inline TURNA battleSystem::turn_A_mode(Enemy d[], Player_Actor u[])
+//{
+//	return TURNA();
+//}
 
-	for (int i = 0; i < getNumMembers(); i++)
-	{
-		award = tArr[i].itemN;
-		return award;
-	}
-}
+//template<class iter>
+//inline iter battleSystem::attack(Player_Actor tArr[])
+//{
+//	int newAttack;
+//	int newMagickPwr;
+//	int auralPwr;
+//	int attkValue;
+//
+//	newAttack = tArr->getATKd(); // so weapons are added to the mix apparently and subtracted
+//	newMagickPwr = ((tArr->getINTd() + tArr->getSpd()) * .33);
+//	auralPwr = (tArr->getFpd() * .33);
+//
+//	attkValue = point_plier(newAttack, newMagickPwr, auralPwr);
+//
+//	return attkValue;
+//}
 
-template<class TURNA>
-inline TURNA battleSystem::turn_A_mode(Enemy d[], Player_Actor u[])
-{
-	return TURNA();
-}
+//template<class iter>
+//inline iter battleSystem::def(Player_Actor tArr[])
+//{
+//	int newDef;
+//	int mDef;
+//	int auralDef;
+//	int defValue;
+//
+//	defValue = tArr->getDEFd(); // def items are added 
+//	auralDef = tArr->getFpd();
+//	mDef = (tArr->getDEFd() + tArr->getINTd() + auralDef) * .45;
+//
+//	newDef = defValue + auralDef + mDef + (tArr->getSTRd() * .33 + tArr->getENDd() * .33 + tArr->getCONd() * .33);
+//
+//	return newDef;
+//}
 
-template<class iter>
-inline iter battleSystem::attack(Player_Actor tArr[])
-{
-	int newAttack;
-	int newMagickPwr;
-	int auralPwr;
-	int attkValue;
-
-	newAttack = tArr->getATKd(); // so weapons are added to the mix apparently and subtracted
-	newMagickPwr = ((tArr->getINTd() + tArr->getSpd()) * .33);
-	auralPwr = (tArr->getFpd() * .33);
-
-	attkValue = point_plier(newAttack, newMagickPwr, auralPwr);
-
-	return attkValue;
-}
-
-template<class iter>
-inline iter battleSystem::def(Player_Actor tArr[])
-{
-	int newDef;
-	int mDef;
-	int auralDef;
-	int defValue;
-
-	defValue = tArr->getDEFd(); // def items are added 
-	auralDef = tArr->getFpd();
-	mDef = (tArr->getDEFd() + tArr->getINTd() + auralDef) * .45;
-
-	newDef = defValue + auralDef + mDef + (tArr->getSTRd() * .33 + tArr->getENDd() * .33 + tArr->getCONd() * .33);
-
-	return newDef;
-}
-
-template<class iter>
-inline iter battleSystem::hack(Player_Actor tArr[])
+// this can't be a template unless it can use a void function
+//template<class iter>
+//inline iter battleSystem::hack(Player_Actor tArr[])
 //{
 //	tArr->getDEXd();
 //	// get the enemy target
@@ -590,6 +593,6 @@ inline iter battleSystem::hack(Player_Actor tArr[])
 //#pragma endregion
 //
 //	
-{
-	return iter();
-}
+//{
+//	return iter();
+//}

@@ -10,25 +10,19 @@
 #include "battleSystem.h"
 #include "Player_Actor.h"
 #include "Enemy.h"
-#include "HashTableSet.h"
 #include "World.h" // for encounters
 #include "skillAction.h"
 
 using namespace std;
 
-HashTableSet actorSetCpy;
-HashTableSet enemySetCpy;
+//HashTableSet actorSetCpy;
+//HashTableSet enemySetCpy;
 //
 //Player_Actor he; //call vars
 //Enemy en; // call vars
 //skillAction skilz;
 //inventory inv;
 //aegesa ae;
-//
-//battleSystem::battleSystem()
-//{
-
-//}
 //
 ////todo: callin party data
 //
@@ -426,13 +420,13 @@ void battleSystem::battleMode()
 {
 }
 
-void battleSystem::countEnemies(Enemy tArr[])
-{
-	for (int i = 0; i < mx; i++)
-	{
-		numMembers += tArr[i].name.at(0);
-	}
-}
+//void battleSystem::countEnemies(Enemy tArr[])
+//{
+//	for (int i = 0; i < mx; i++)
+//	{
+//		numMembers += tArr[i].name.at(0);
+//	}
+//}
 
 string battleSystem::lineStop()
 {

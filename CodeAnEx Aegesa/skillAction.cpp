@@ -2,9 +2,6 @@
 #include <fstream>
 #include "skillAction.h"
 #include "aegesa.h"
-#include "HashTableSet.h"
-
-HashTableSet kHash;
 
 //default
 skillAction::skillAction()
@@ -133,7 +130,7 @@ skillAction::skillAction(int call)
 }
 
 skillAction::skillAction(int numid, string name, elementType d, string dec,
-	bool rType, int sp_succ, int fp_succ, int stat13[], aegesa::statusEff hopesis, char strikeType)
+	bool rType, int sp_succ, int fp_succ, int stat13[], aegesa::statusEff e, char strikeType)
 {
 	hpPerc = 0;
 	spPerc = 0;
@@ -166,7 +163,7 @@ skillAction::skillAction(int numid, string name, elementType d, string dec,
 	stat13[12] = endPerc;
 	stat13[13] = conPerc;
 
-	hopesis.buffName = "dummyu"; // you may need to initialize these
+	e.buffName = "dummyu"; // you may need to initialize these
 
 	// sp consume
 	spAdd += sp_succ;
@@ -186,20 +183,17 @@ skillAction::skillAction(int numid, string name, elementType d, string dec,
 
 skillAction skillAction::skillcall(int p)
 {
+
 #pragma region Skillist
-	/*skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 1300, 12);
+	/*skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 130, 12, stat14Percentages[5], 1, 'o');
 	skillAction WaterFlash(1, "WaterFlash", elementType::Water, "A singular riptide of water..", false, 234, 2);
 	skillAction MagnaFlare(2, "MagnaFlare", elementType::Lightning, "A raving magnetic flash of plasma.", true, 300, 5);
 	skillAction WindShear(3, "WindShear", elementType::Air, "A Wind blast that cuts anybody who brandishes.", false, 230, 2);*/
 #pragma endregion
 
-	/*kHash.insertSkill(0, FireWeave);
-	kHash.insertSkill(1, WaterFlash);
-	kHash.insertSkill(2, MagnaFlare);
-	kHash.insertSkill(3, WindShear);*/
 
-	skillAction d = kHash.skillCall(p);
-	return d;
+
+	return p;
 }
 
 skillAction::elementType skillAction::getElementType()

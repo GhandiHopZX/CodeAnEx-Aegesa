@@ -2,7 +2,6 @@
 #include <string>
 #include <ctime>
 #include "Player_Actor.h"
-//#include "battleSystem.h"
 #include "inventory.h"
 
 Player_Actor::Player_Actor()
@@ -41,12 +40,11 @@ Player_Actor::Player_Actor()
 #pragma endregion
 }
 
-Player_Actor Party[];
-
-inventory d();
+//Player_Actor Party[];
 
 inventory::weapon mActorWeaponE[1];
 inventory::armor mActorArmorE[1];
+
 //
 //void Player_Actor::setParty(Player_Actor currentPa, int pos)
 //{
@@ -76,9 +74,4 @@ inventory::armor mActorArmorE[1];
 // use this to kill the player and when they die
 Player_Actor::~Player_Actor()
 {
-}
-
-inventory d()
-{
-	return inventory();
 }

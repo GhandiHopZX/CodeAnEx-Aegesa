@@ -1,9 +1,3 @@
-#include "Player_Actor.h"
-#include "battleSystem.h"
-#include "inventory.h"
-#include "enemy.h"
-#include "World.h"
-#include "HashTableSet.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -17,6 +11,13 @@
 #include <thread>
 #include <algorithm>
 #include <fstream>
+#include "aegesa.h"
+#include "Player_Actor.h"
+#include "battleSystem.h"
+#include "inventory.h"
+#include "enemy.h"
+#include "World.h"
+//#include "HashTableSet.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ Player_Actor Iyn; //
 inventory mainInventory; //
 int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
 
-HashTableSet anyHash; // magic hash of many things 
+//HashTableSet anyHash; // magic hash of many things 
 
 World::World()
 {
@@ -222,7 +223,8 @@ void World::menu()
 	{
 	case 'i':
 	case 'item':
-		//mainInventory.PlayerItemInventory(Actor1);
+		//mainInventory.PlayerItemInventory();
+		Actor1;
 		break;
 
 	case 'n':

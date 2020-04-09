@@ -161,7 +161,9 @@ public:
 
 	//void itemUse(int d, Player_Actor o);
 
-	//void PlayerItemInventory(Player_Actor);
+	void PlayerItemInventory();
+
+	void combatItemInventory(inventory);
 
 	void itemCall(int);
 
@@ -193,22 +195,22 @@ public:
 	inventory::weapon anti_nuclear_injector;
 #pragma endregion
 
-	//inventory::weapon weaponlist[100] =
-	//{
-	// brawd_injector,
-	// glass_gauntlet,
-	// carbonite_knuckle,
-	// crystalline_injector,
-	// aerolite_gauntlet,
-	// vandham_gauntlet,
-	// antimatter_injector,
-	// shinobi_claws,
-	// tacheyon_injector,
-	// magic_glove,
-	// bomber_injector,
-	// titanium_infused_gauntlet,
-	// anti_nuclear_injector
-	//};
+	inventory::weapon weaponlist[100] =
+	{
+	 brawd_injector,
+	 glass_gauntlet,
+	 carbonite_knuckle,
+	 crystalline_injector,
+	 aerolite_gauntlet,
+	 vandham_gauntlet,
+	 antimatter_injector,
+	 shinobi_claws,
+	 tacheyon_injector,
+	 magic_glove,
+	 bomber_injector,
+	 titanium_infused_gauntlet,
+	 anti_nuclear_injector
+	};
 
 	//inventory::weapon allweaponList(int integer)
 	//{

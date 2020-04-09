@@ -3,8 +3,6 @@
 #include <map>
 #include <stack>
 #include "inventory.h"
-#include "HashTableSet.h"
-#include "World.h"
 
 // use tha multimap function
 using namespace std;
@@ -94,23 +92,46 @@ inventory::inventory()
 	headi = nullptr;
 	size = 20;
 	capacity = 100;
+	stackArray = 0;
+
+sum_weapons = 0; // total number of nodes
+ sum_armors = 0; // total number of nodes
+ sum_items = 0;
 }
 
 inventory::inventory(int)
 {
+	headw = nullptr;
+	heada = nullptr;
+	headi = nullptr;
+	size = 20;
+	capacity = 100;
+	stackArray = 0;
+
+	sum_weapons = 0; // total number of nodes
+	sum_armors = 0; // total number of nodes
+	sum_items = 0;
 }
 
 inventory::inventory(const inventory&)
 {
-	size = 20;
 	capacity = MAX_INTEGRITY;
 	headw = nullptr;
 	heada = nullptr;
 	headi = nullptr;
+	size = 20;
+	capacity = 100;
+	stackArray = 0;
+
+	sum_weapons = 0; // total number of nodes
+	sum_armors = 0; // total number of nodes
+	sum_items = 0;
 }
 
 void inventory::push(int val)
 {
+	val++;
+	
 }
 
 void inventory::pop(int& a)
@@ -446,12 +467,6 @@ void inventory::displaylistArmor() const
 	}
 }
 
-//void inventory::itemUse(int d, Player_Actor o)
-//{
-//	// name call
-//	cout << my_items[d].name << "used" << endl;
-//}
-
 //
 //void inventory::armorSell(int d, Player_Actor o)
 //{
@@ -489,106 +504,106 @@ void inventory::itemCall(int i)
 
 } // for item usage
 
-// for combat
-//void inventory::PlayerItemInventory(Player_Actor o) // gotta make an inventory that'll work in the world menu
-//{
-//	system("CLS");
-//	// show choices'
-//	cout << "What menu would you like to select..?" << endl;
-//	cout << "Items(i), Armors(a), Weapons(w), Equipped(e), Quit(q)" << endl;
-//	char choice = {};
-//	int i = 0;
-//	switch (choice)
-//	{
-//	case 'i':
-//		cout << "Select an Item? or Exit? (Q,q): use an number to select one.. 0 - " + sum_items << endl;
-//		displaylistItem();
-//		// select an item? using a #
-//		cout << "select an item? using a #" << endl;
-//		//int i = 0;
-//		choice = 'N';
-//		cin >> i;
-//		selectlistItem(i, o); // usage
-//		if (isalpha(i))
-//		{
-//			cout << "invalid option" << endl;
-//			PlayerItemInventory(o);
-//			break;
-//		}
-//		cout << "Make another selection?" << endl;
-//		PlayerItemInventory(o);
-//		break;
-//
-//	case 'a':
-//		cout << "Select an Armor?: use an number to select one.. 0 - " + sum_armors << endl;
-//		displaylistArmor();
-//		// select an armor? using a #
-//		cout << "select an armor? using a #" << endl;
-//		//int i = 0;
-//		choice = 'N';
-//		cin >> i;
-//		//selectlistArmor(i,o);
-//		//equip armor
-//		if (isalpha(i))
-//		{
-//			cout << "invalid option" << endl;
-//			PlayerItemInventory(o);
-//			break;
-//		}
-//		cout << "Make another selection?" << endl;
-//		PlayerItemInventory(o);
-//		break;
-//
-//	case 'w':
-//		cout << "Select an Weapon?: use an number to select one.. 0 - " + inventory::sum_weapons << endl;
-//		displaylistWeapon();
-//		cout << "select an weapon? using a #" << endl;
-//
-//		choice = 'N';
-//		cin >> i;
-//		selectlistWeapon(i,o);
-//		//equip armor
-//		if (isalpha(i))
-//		{
-//			cout << "invalid option" << endl;
-//			PlayerItemInventory(o);
-//			break;
-//		}
-//		cout << "Make another selection?" << endl;
-//		PlayerItemInventory(o);
-//		break;
-//
-//	case 'e':
-//		cout << "Weapons equipped: select one for overview.. 0 - " + sum_weapons << endl;
-//		cout << "Armors equipped: select one for overview.. 0 - " + sum_armors << endl;
-//		//displaylistEQWgear();
-//		cout << endl;
-//		//displaylistEQAgear();
-//		cout << endl;
-//		cout << "select a gear? using a #" << endl;
-//		//int i = 0;
-//		choice = 'N';
-//		cin >> i;
-//
-//		//selectlistWeapon(i);
-//		//equip armor
-//		if (isalpha(i))
-//		{
-//			cout << "invalid option" << endl;
-//			PlayerItemInventory(o);
-//			break;
-//		}
-//		cout << "Make another selection?" << endl;
-//		PlayerItemInventory(o);
-//		break;
-//
-//	case 'q':
-//		break;
-//
-//	default:
-//		break;
-//	}
-//}
+ //for combat
+void inventory::PlayerItemInventory() // gotta make an inventory that'll work in the world menu
+{
+	system("CLS");
+	// show choices'
+	cout << "What menu would you like to select..?" << endl;
+	cout << "Items(i), Armors(a), Weapons(w), Equipped(e), Quit(q)" << endl;
+	char choice = {};
+	int i = 0;
+	switch (choice)
+	{
+	case 'i':
+		cout << "Select an Item? or Exit? (Q,q): use an number to select one.. 0 - " + sum_items << endl;
+		displaylistItem();
+		// select an item? using a #
+		cout << "select an item? using a #" << endl;
+		//int i = 0;
+		choice = 'N';
+		cin >> i;
+		//selectlistItem(i, o); // usage
+		if (isalpha(i))
+		{
+			cout << "invalid option" << endl;
+			//PlayerItemInventory(boop);
+			break;
+		}
+		cout << "Make another selection?" << endl;
+		//PlayerItemInventory(boop);
+		break;
+
+	case 'a':
+		cout << "Select an Armor?: use an number to select one.. 0 - " + sum_armors << endl;
+		displaylistArmor();
+		// select an armor? using a #
+		cout << "select an armor? using a #" << endl;
+		//int i = 0;
+		choice = 'N';
+		cin >> i;
+		//selectlistArmor(i,o);
+		//equip armor
+		if (isalpha(i))
+		{
+			cout << "invalid option" << endl;
+			//PlayerItemInventory(boop);
+			break;
+		}
+		cout << "Make another selection?" << endl;
+		//PlayerItemInventory(boop);
+		break;
+
+	case 'w':
+		cout << "Select an Weapon?: use an number to select one.. 0 - " + inventory::sum_weapons << endl;
+		displaylistWeapon();
+		cout << "select an weapon? using a #" << endl;
+
+		choice = 'N';
+		cin >> i;
+		//selectlistWeapon(i,o);
+		//equip armor
+		if (isalpha(i))
+		{
+			cout << "invalid option" << endl;
+			//PlayerItemInventory(boop);
+			break;
+		}
+		cout << "Make another selection?" << endl;
+		//PlayerItemInventory(boop);
+		break;
+
+	case 'e':
+		cout << "Weapons equipped: select one for overview.. 0 - " + sum_weapons << endl;
+		cout << "Armors equipped: select one for overview.. 0 - " + sum_armors << endl;
+		//displaylistEQWgear();
+		cout << endl;
+		//displaylistEQAgear();
+		cout << endl;
+		cout << "select a gear? using a #" << endl;
+		//int i = 0;
+		choice = 'N';
+		cin >> i;
+
+		//selectlistWeapon(i);
+		//equip armor
+		if (isalpha(i))
+		{
+			cout << "invalid option" << endl;
+			//PlayerItemInventory(boop);
+			break;
+		}
+		cout << "Make another selection?" << endl;
+		//PlayerItemInventory(boop);
+		break;
+
+	case 'q':
+		break;
+
+	default:
+		break;
+	}
+}
 
 //
 //void inventory::setWeapon(Player_Actor o, inventory::weapon weapon, int index)
@@ -617,7 +632,6 @@ void inventory::rewardCall(int index)
 	addItem(itemlist[index].quantity);
 	//return allitemList(index);
 }
-
 
 //
 //void inventory::weaponCall(int index)
