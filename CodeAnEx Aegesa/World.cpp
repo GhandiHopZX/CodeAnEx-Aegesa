@@ -53,6 +53,7 @@ World::World()
 		aegesaShrine[5][0][0]
 	};
 
+
 }
 
 void World::beginningStory()
@@ -309,7 +310,7 @@ void World::optionMenuCall(){}
 
 void World::eventCalls(World::map local, bool trigger, string dialougeOut)
 {
-	if (local.name == maps->name)
+	if(local.name == "Dark_Forest")
 	{
 
 	}

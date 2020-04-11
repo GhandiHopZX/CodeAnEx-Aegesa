@@ -42,7 +42,7 @@ private:
 	map aegesaShrine[11][11][5];
 
 public:
-	
+
 	map maps[5] =
 	{
 		lostCity[5][0][0],
