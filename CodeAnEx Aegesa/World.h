@@ -67,7 +67,7 @@ public:
 
 	void menu();
 
-	void partyMenu(Player_Actor party);
+	void partyMenu(Player_Actor party[]);
 
 	void dataCall();
 
@@ -98,5 +98,6 @@ public:
 
 	aegesa battlersP[partySize]; // for the player_Actors
 	aegesa battlersE[partySize]; // for the enemy
+
 	~World();
 };

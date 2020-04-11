@@ -115,14 +115,15 @@ int menyu()
 		<< "Continue (c)\n"
 		<< "Quit Game (q)" << endl;
 
-	// choice goes here
+	
 	char choice{};
 	string choiceS;
 
+	// choice goes here
 	getline(cin, choiceS);
 	choice = choiceIN(dialougeInput(choiceS));
 
-	while (getchar() != '\n'); // flush
+	//while (getchar() != '\n'); // flush
 
 	do
 	{
@@ -154,7 +155,6 @@ int menyu()
 
 		default:
 			cout << "Invalid option..." << endl;
-			while (getchar() != '\n'); // flush
 			lineStop();
 			system("CLS");
 			choice = 0;

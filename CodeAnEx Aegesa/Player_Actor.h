@@ -23,8 +23,6 @@ private:
 
 public:
 	
-	
-	
 	// stat multiplier flag
 	/*bool statmulti;
 	int dummyPlus;

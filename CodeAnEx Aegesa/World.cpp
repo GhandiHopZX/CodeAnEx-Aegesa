@@ -18,7 +18,6 @@
 #include "Player_Actor.h"
 #include "inventory.h"
 #include "battleSystem.h"
-//#include "HashTableSet.h"
 
 using namespace std;
 
@@ -235,7 +234,7 @@ void World::menu()
 
 	case 'p':
 	case 'part':
-		partyMenu(Actor1);
+		partyMenu(playerParty);
 		break;
 
 	case 'd':
@@ -255,7 +254,7 @@ void World::menu()
 	}
 }
 
-void World::partyMenu(Player_Actor party)
+void World::partyMenu(Player_Actor party[])
 {
 	char choice = 'm';
 	system("CLS");
@@ -308,7 +307,13 @@ void World::dataCall(){}
 
 void World::optionMenuCall(){}
 
-void World::eventCalls(World::map local, bool trigger, string dialougeOut){}
+void World::eventCalls(World::map local, bool trigger, string dialougeOut)
+{
+	if (local.name == maps->name)
+	{
+
+	}
+}
 
 void World::dialouge(Player_Actor pn, string in)
 {
@@ -356,31 +361,51 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	{
 	case 'n':
 		maps[selectedMap].y += 1;
+		tse = maps[selectedMap].y;
+		// event randomizer
 		break;
 	case 'ne':
 		maps[selectedMap].y += 1;
+		tse = maps[selectedMap].y;
 		maps[selectedMap].x -= 1;
+		mao = maps[selectedMap].x;
+		// event randomizer
 		break;
 	case 'nw':
 		maps[selectedMap].y += 1;
 		maps[selectedMap].x += 1;
+		tse = maps[selectedMap].y;
+		mao = maps[selectedMap].x;
+		// event randomizer
 		break;
 	case 's':
 		maps[selectedMap].y -= 1;
+		tse = maps[selectedMap].y;
+		// event randomizer
 		break;
 	case 'se':
 		maps[selectedMap].y -= 1;
 		maps[selectedMap].x -= 1;
+		tse = maps[selectedMap].y;
+		mao = maps[selectedMap].x;
+		// event randomizer
 		break;
 	case 'sw':
 		maps[selectedMap].y -= 1;
 		maps[selectedMap].x += 1;
+		tse = maps[selectedMap].y;
+		mao = maps[selectedMap].x;
+		// event randomizer
 		break;
 	case 'w':
 		maps[selectedMap].x += 1;
+		mao = maps[selectedMap].x;
+		// event randomizer
 		break;
 	case 'e':
 		maps[selectedMap].x -= 1;
+		mao = maps[selectedMap].x;
+		// event randomizer
 		break;
 	default:
 		cout << "not a direction or command" << endl;
@@ -399,6 +424,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		break;
 	default:
 		maps[selectedMap].z = z;
+		tung = maps[selectedMap].z;
 		break;
 	} 
 }
@@ -425,8 +451,9 @@ char World::choiceIn(string choiceBuffer)
 	return choice;
 }
 
-// this thing eats the string that comes after every 'ENTER' press so the system doesn't poop out too much at once...
-// dont use this for anything but text dialouge unless you know what you're doing.
+// this thing eats the string that comes after every 
+// 'ENTER' press so the system doesn't poop out too much at once...
+// don't use this for anything but text dialouge unless you know what you're doing.
 string World::lineStop()
 {
 	string pvalue;
