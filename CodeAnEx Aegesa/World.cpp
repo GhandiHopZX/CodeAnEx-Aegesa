@@ -28,11 +28,13 @@ Player_Actor Renae; //
 Player_Actor Iyn; // 
 inventory mainInventory; //
 int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
+const int MIN = 1;
 
 //HashTableSet anyHash; // magic hash of many things 
 
 World::World()
 {
+	
 	mao = 0; // int posx = 0;
 	tse = 0; // int posy = 0;
 	tung = 0; // int posz = 0;
@@ -259,13 +261,12 @@ void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor p
 
 }
 
-void World::randomizer(Player_Actor party[], int mx, int my, int mz)
+void World::evRandomizer(Player_Actor party[], int mx, int my, int mz)
 {
-	const int MAX_RAND = 150;
+	const int MAX_EVRAND = 450;
+	unsigned int evRand = (rand() % (MAX_EVRAND - MIN + 1)) + MIN; 
 
-	const int MIN = 230;
 
-	unsigned int evRand = (rand() % (MAX_RAND - MIN + 1)) + MIN; 
 }
 
 void World::partyMenu(Player_Actor party[])
@@ -441,7 +442,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		z++;
 		break;
 
-	case -1:
+	case (-1):
 		z--;
 		break;
 	default:
