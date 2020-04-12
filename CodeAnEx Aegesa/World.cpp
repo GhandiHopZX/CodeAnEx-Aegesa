@@ -33,9 +33,9 @@ int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine
 
 World::World()
 {
-	mao = 0;// int posx = 0;
-	tse = 0;// int posy = 0;
-	tung = 0;// int posz = 0;
+	mao = 0; // int posx = 0;
+	tse = 0; // int posy = 0;
+	tung = 0; // int posz = 0;
 
 	//set time
 	
@@ -52,8 +52,6 @@ World::World()
 		rheTan[5][0][0],
 		aegesaShrine[5][0][0]
 	};
-
-
 }
 
 void World::beginningStory()
@@ -161,6 +159,7 @@ void World::beginningStory()
 	#pragma endregion
 	
 	//end of chapter 0
+
 	chapter1();
 }
 
@@ -255,6 +254,20 @@ void World::menu()
 	}
 }
 
+void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
+{
+
+}
+
+void World::randomizer(Player_Actor party[], int mx, int my, int mz)
+{
+	const int MAX_RAND = 150;
+
+	const int MIN = 230;
+
+	unsigned int evRand = (rand() % (MAX_RAND - MIN + 1)) + MIN; 
+}
+
 void World::partyMenu(Player_Actor party[])
 {
 	char choice = 'm';
@@ -310,10 +323,18 @@ void World::optionMenuCall(){}
 
 void World::eventCalls(World::map local, bool trigger, string dialougeOut)
 {
-	if(local.name == "Dark_Forest")
+	if (local.name == "Dark_Forest")
 	{
 
 	}
+
+	/*switch ()
+	{
+	case (local.name == "Dark_Forest"):
+		break;
+	default:
+		break;
+	}*/
 }
 
 void World::dialouge(Player_Actor pn, string in)

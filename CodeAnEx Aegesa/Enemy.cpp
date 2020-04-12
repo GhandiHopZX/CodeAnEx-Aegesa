@@ -21,6 +21,7 @@ Enemy::Enemy()
 	party_num = 4;
 	bio = "";
 	title = "";
+	isPlayer = false;
 
 	name = "";
 	this->allEffGet;
@@ -52,6 +53,7 @@ Enemy::Enemy(string namer, elementType, int expAw, int gA, int item)
 	goldA = gA;
 	itemN = item;
 	elementType::Normal;
+	isPlayer = false;
 }
 
 Enemy Enemy::enemyRandEncounter()
@@ -67,7 +69,7 @@ Enemy Enemy::enemyRandEncounter()
 	const int MIN = 1;
 	const int GOLD_MIN = 100;
 
-	string lvl1names[14] =
+	const string lvl1names[14] =
 	{ "Mongrel", "Rancor", "Mandrake", "Jumpsuit Man",
 		"Gorgon Eye", "Jackal", "Golem", "Worm", "Pci Eater",
 	"Temptest", "Mecha Recon", "Harpy", "Leech", "Gorigami" };

@@ -67,6 +67,11 @@ public:
 
 	void menu();
 
+	//Main game loop: 1. main menu, 2. when move, 3. randomizer or => 4. if theres a story ev that engages. 5. back to top
+	void gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[]);
+
+	void randomizer(Player_Actor party[], int mx, int my, int mz);
+
 	void partyMenu(Player_Actor party[]);
 
 	void dataCall();

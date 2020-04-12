@@ -11,6 +11,7 @@ Player_Actor::Player_Actor()
 	statmulti = false;
 	leader = false;
 	party_num = 4;
+	isPlayer = true;
 
 #pragma region Stat_Instantiation
 
@@ -43,7 +44,7 @@ Player_Actor::Player_Actor()
 //Player_Actor Party[];
 
 inventory::weapon mActorWeaponE[1];
-inventory::armor mActorArmorE[1];
+inventory::armor mActorArmorE[3];
 
 //
 //void Player_Actor::setParty(Player_Actor currentPa, int pos)

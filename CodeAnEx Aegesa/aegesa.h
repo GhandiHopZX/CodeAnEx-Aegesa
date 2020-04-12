@@ -11,6 +11,8 @@ public:
 	aegesa();
 
 #pragma region vars
+	// is this a player
+	bool isPlayer = false;
 
 	// statbase 15
 	unsigned int hp = 0; // health
