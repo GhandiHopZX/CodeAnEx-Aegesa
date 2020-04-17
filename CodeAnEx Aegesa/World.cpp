@@ -48,7 +48,7 @@ World::World()
 	{
 		lostCity[5][0][0],
 		darkForest[5][0][0],
-		ekana[5][0][0],
+		eikka[5][0][0],
 		rheTan[5][0][0],
 		aegesaShrine[5][0][0]
 	};
@@ -97,6 +97,9 @@ void World::beginningStory()
 #pragma endregion
 
 #pragma region opening setting
+	// location name set
+	maps->name = "Lost City";
+
 	system("COLOR 07");
 	dialougeAction(Actor1, "Wakes up");
 	cout << Actor1.getName() + ": " + "Huhhh..." << endl;
@@ -271,12 +274,22 @@ void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor p
 
 }
 
-void World::evRandomizer(Player_Actor party[], int mx, int my, int mz)
+void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int mz)
 {
 	const int MAX_EVRAND = 450;
 	unsigned int evRand = (rand() % (MAX_EVRAND - MIN + 1)) + MIN;
 
+	//battle processing and dot giving
+	for (int i = 0; i < partySize; i++)
+	{
+		if (!(party[i].DEAD.inEff) && party[i].isPlayer == true) // check for in_party npcs and dead ppl
+		{
 
+		}
+		party[i]; 
+	}
+
+	party->isPlayer;
 }
 
 void World::partyMenu(Player_Actor party[])
@@ -334,18 +347,30 @@ void World::optionMenuCall() {}
 
 void World::eventCalls(World::map local, bool trigger, string dialougeOut)
 {
-	if (local.name == "Dark_Forest")
+	if (local.name == "Lost City")
 	{
 
 	}
 
-	/*switch ()
+	if (local.name == "Dark Forest")
 	{
-	case (local.name == "Dark_Forest"):
-		break;
-	default:
-		break;
-	}*/
+
+	}
+
+	if (local.name == "Eikka")
+	{
+
+	}
+
+	if (local.name == "RheTan")
+	{
+
+	}
+
+	if (local.name == "Aegesa Shrine")
+	{
+
+	}
 }
 
 void World::dialouge(Player_Actor pn, string in)
@@ -475,11 +500,13 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	}
 }
 
-string World::whereAmI(int selectedMap, int x, int y, int z)
+void World::whereAmI(int selectedMap, int x, int y, int z)
 {
-	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
-	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y
-		<< "column\n" << maps[selectedMap].z << "floor" << endl;
+	cout << "\nCurrent Location:" << endl;
+	cout << "AT: " << maps[selectedMap].name << endl;
+	cout << "row: " << maps[selectedMap].x << endl;
+	cout << "column: " << maps[selectedMap].y << endl;
+	cout << "floor: " << maps[selectedMap].z << endl;
 }
 
 char World::choiceIn(string choiceBuffer)

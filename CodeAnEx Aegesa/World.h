@@ -39,7 +39,7 @@ private:
 
 	map lostCity[11][11][4];
 	map darkForest[11][11][2];
-	map ekana[11][11][1];
+	map eikka[11][11][1];
 	map rheTan[11][11][1];
 	map aegesaShrine[11][11][5];
 
@@ -49,7 +49,7 @@ public:
 	{
 		lostCity[5][0][0],
 		darkForest[5][0][0],
-		ekana[5][0][0],
+		eikka[5][0][0],
 		rheTan[5][0][0],
 		aegesaShrine[5][0][0]
 	};
@@ -84,7 +84,7 @@ public:
 	//Main game loop: 1. main menu, 2. when move, 3. randomizer or => 4. if theres a story ev that engages. 5. back to top
 	void gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[]);
 
-	void evRandomizer(Player_Actor party[], int mx, int my, int mz);
+	void evRandomizer(Player_Actor party[], map location, int mx, int my, int mz); // location is for mob levels
 
 	void partyMenu(Player_Actor party[]);
 
@@ -98,7 +98,7 @@ public:
 
 	void navigation(int selectedMap, int m, int c, int e);
 
-	string whereAmI(int selectedMap, int x, int y, int z);
+	void whereAmI(int selectedMap, int x, int y, int z);
 
 	char choiceIn(string);
 

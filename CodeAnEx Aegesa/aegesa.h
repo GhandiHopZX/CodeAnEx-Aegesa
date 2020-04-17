@@ -63,6 +63,7 @@ public:
 	{
 		string buffName;
 		int turns_Of_aff = 0;
+		bool inEff;
 
 		// afflictions statbase
 		unsigned int hp = 0; // health
