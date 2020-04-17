@@ -4,6 +4,7 @@
 #include <stack>
 #include "inventory.h"
 
+
 // use tha multimap function
 using namespace std;
 
@@ -49,7 +50,7 @@ inventory::item allitemList(int integer)
 	return itemlist[integer];
 }
 
-// all armors
+
 #pragma region All_armors
 	inventory::armor broad_armor;
 	inventory::armor kavelar_gear;
@@ -76,14 +77,21 @@ inventory::item allitemList(int integer)
 		grenadier_composite_armor,
 		anti_nuclear_armor
 	};
-//
+
 	inventory::armor allarmorList(int integer)
 	{
 		return armorlist[integer];
 	}
 
+inventory::weapon my_weapons[inventory::MAX_INTEGRITY] =
+	{};
+
+	inventory::armor my_armors[inventory::MAX_INTEGRITY] =
+	{};
+
 inventory::item my_items[inventory::MAX_INTEGRITY] =
 {};
+
 
 inventory::inventory()
 {
@@ -92,11 +100,10 @@ inventory::inventory()
 	headi = nullptr;
 	size = 20;
 	capacity = 100;
-	stackArray = 0;
 
-sum_weapons = 0; // total number of nodes
- sum_armors = 0; // total number of nodes
- sum_items = 0;
+	sum_weapons = 0; // total number of nodes
+	sum_armors = 0; // total number of nodes
+	sum_items = 0;
 }
 
 inventory::inventory(int)
@@ -131,11 +138,11 @@ inventory::inventory(const inventory&)
 void inventory::push(int val)
 {
 	val++;
-	
 }
 
 void inventory::pop(int& a)
 {
+	--a;
 }
 
 bool inventory::isFull() const
@@ -467,6 +474,46 @@ void inventory::displaylistArmor() const
 	}
 }
 
+//void selectlistItem(int u, Player_Actor o)
+//{
+//	if (inventory::my_items <= 0)
+//	{
+//		string message = "No Items in index..";
+//		cout << message;
+//		my_items[0];
+//	}
+//	else
+//	{
+//		cout << "use Item?";
+//		itemUse(u, o);
+//	}
+//	remItem(my_items[u].quantity);
+//	//return my_items[u];
+//}
+
+//void inventory::itemUse(int d, Player_Actor o)
+//{
+//	// add stuff here
+//	o.AGId += my_items[d].agiAdd;
+//	o.ap += my_items[d].apAdd;
+//	o.ATKd += my_items[d].atkAdd;
+//	o.CONd += my_items[d].conAdd;
+//	o.DEFd += my_items[d].defAdd;
+//	o.DEXd += my_items[d].dexAdd;
+//	o.ENDd += my_items[d].endAdd;
+//	o.fpd += my_items[d].fpAdd;
+//	 // use the gold value for gold items += my_items[d].goldValue;
+//	o.AGId += my_items[d].hpAdd;
+//	o.AGId += my_items[d].intAdd;
+//	o.AGId += my_items[d].spAdd;
+//	o.AGId += my_items[d].spdAdd;
+//	o.AGId += my_items[d].sprAdd;
+//	o.AGId += my_items[d].strAdd;
+//
+//	// name call
+//	cout << my_items[d].name << "used" << endl;
+//}
+
 //
 //void inventory::armorSell(int d, Player_Actor o)
 //{
@@ -504,7 +551,7 @@ void inventory::itemCall(int i)
 
 } // for item usage
 
- //for combat
+//for combat
 void inventory::PlayerItemInventory() // gotta make an inventory that'll work in the world menu
 {
 	system("CLS");
@@ -632,6 +679,7 @@ void inventory::rewardCall(int index)
 	addItem(itemlist[index].quantity);
 	//return allitemList(index);
 }
+
 
 //
 //void inventory::weaponCall(int index)

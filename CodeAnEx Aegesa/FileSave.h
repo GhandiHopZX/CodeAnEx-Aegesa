@@ -22,22 +22,35 @@ private:
 	string loadedDir;
 	int numberOfFiles = 0;
 	string loadedDirs[1] = {};
-	
+
 public:
 
 	// vars
+	struct CLASS_PROGRESSION_STATE
+	{
+		string className;
+		int expTier1MAX;
+		int expTier2MAX;
+		int expTier3MAX;
+		int expTier4MAX;
+		int expTier5MAX;
+		int expTier6MAX;
+		int expTier7MAX;
+		int expMAX;
+	};
+
 	struct SKILLSET
 	{
 		int keys[24];
 	};
-	
+
 	struct PARTY_MEMBER_DATA
 	{
 		string PLAYER_NAME;
 		string BIO;
 		SKILLSET SKILLS;
 		int STATS[14]; //15 TOTAL
-		string CLASS_PROGRESSION_STATE;
+		CLASS_PROGRESSION_STATE jobState;
 	};
 
 	struct FILEDATA
@@ -72,7 +85,7 @@ public:
 
 	FileSave();
 
-	void saveFile(vector<FileSave::SKILLSET> &SkillSet, vector<FileSave::PARTY_MEMBER_DATA> PMD[], vector<FileSave::FILEDATA> &FileData)
+	void saveFile(vector<FileSave::SKILLSET>& SkillSet, vector<FileSave::PARTY_MEMBER_DATA> PMD[], vector<FileSave::FILEDATA>& FileData)
 	{
 		fstream JavaFile((savePath + '/' + saveName + ".dat").c_str(), ios::out, ios_base::trunc);
 
@@ -89,7 +102,7 @@ public:
 		saveName = m;
 	};
 
-	FileLoad loadFile() 
+	FileLoad loadFile()
 	{
 		//int choice = 0;
 		//cout << "FILE Select.. (1) for pasting directory or (2) for QuickLoad" << endl;

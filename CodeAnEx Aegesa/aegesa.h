@@ -63,7 +63,7 @@ public:
 	{
 		string buffName;
 		int turns_Of_aff = 0;
-		
+
 		// afflictions statbase
 		unsigned int hp = 0; // health
 		unsigned int sp = 0; // special
@@ -96,7 +96,7 @@ public:
 	aegesa::statusEff CURSEDVSDARK; // AGONY
 	aegesa::statusEff CURSRDVSLIGHT; // DEPRESSION
 	aegesa::statusEff CURSEDVSDEMONIC; // ACCURSED
-	aegesa::statusEff CURSED; 
+	aegesa::statusEff CURSED;
 	aegesa::statusEff ANGER; // ADRENELINE
 #pragma endregion
 
@@ -113,7 +113,7 @@ public:
 		CURSRDVSLIGHT,
 		CURSEDVSDEMONIC,
 		CURSED,
-		ANGER 
+		ANGER
 	}; // wip
 
 	statusEff My_Statuses[20]{
@@ -126,6 +126,7 @@ public:
 	// stat multiplier flag
 	bool statmulti;
 	int dummyPlus;
+	int newSpd;
 
 	enum class elementType
 	{
@@ -379,7 +380,7 @@ public:
 
 	void statPlus(char stat, int plus);
 
-	
+
 
 #pragma endregion
 
@@ -464,6 +465,11 @@ public:
 		return CONd;
 	};
 
+	int getBGspd()
+	{
+		return newSpd;
+	};
+
 #pragma endregion
 
 #pragma region setters
@@ -533,7 +539,7 @@ public:
 		SPRd = sprIn;
 	}
 
-
+	void setBGSpd(int spdIn);
 #pragma endregion
 
 	//// functions
@@ -542,8 +548,8 @@ public:
 
 	int getSPDPlus();
 	void setStatus(statusEff statusName[]);
-	
-	void battleGuage();
+
+	int battleGuage(int spd);
 	string normalOutput(string normal)
 	{
 		return normal;

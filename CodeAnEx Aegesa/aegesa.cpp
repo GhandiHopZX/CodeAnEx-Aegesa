@@ -1,7 +1,5 @@
 #include <iostream>
 #include "aegesa.h"
-#include "Player_Actor.h"
-#include "Enemy.h"
 using namespace std;
 
 aegesa::aegesa()
@@ -25,8 +23,11 @@ aegesa::aegesa()
 	STRd = getSTR(); // strength (also effects status)
 	ENDd = getEND(); // endurance (bodily based / also effects status)
 	CONd = getCON(); // constitution (mental, body, soul, based / also effects status)
-	isPlayer = false;
-	
+}
+
+void aegesa::setBGSpd(int spdIn)
+{
+	newSpd = getSPDd() + spdIn % getSPD();
 }
 
 void aegesa::setTitle(string n)
@@ -369,8 +370,9 @@ void aegesa::statPlus(char stat, int plus)
 	}
 }
 
-void aegesa::battleGuage()
+int aegesa::battleGuage(int spd)
 {
+	return spd;
 }
 
 aegesa::~aegesa()

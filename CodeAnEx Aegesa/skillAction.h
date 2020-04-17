@@ -18,12 +18,12 @@ private:
 #pragma endregion
 
 public:
-	// every skill has an range type, element, name, description, sp/fp consumption, and stat multipliers 
-	// and yes I'm putting it all in a magic hash
-	// This exists because Enemy is not skillAction so ill compare the two in
-	// validation when damage is processed...
-	// strike types for TURN A too
 
+#pragma region public_vars
+	// every skill has an range type, element, name, description, sp/fp consumption, and stat multipliers 
+// and yes I'm putting it all in a magic hash
+// This exists because Enemy is not skillAction so ill compare the two in
+// validation when damage is processed...
 	enum class elementType
 	{
 		Water = 0,
@@ -46,7 +46,9 @@ public:
 	aegesa::statusEff herpesus; // whatever it needs to be
 	char strikeType; // hard set goodness
 
-	#pragma region Statpercentages
+#pragma endregion
+
+#pragma region Statpercentages
 	int hpPerc; // hp Percent
 	int spPerc; // sp Percent
 	int fpPerc; // fp Percent
@@ -60,7 +62,7 @@ public:
 	int strPerc; // str Percent
 	int endPerc; // end Percent
 	int conPerc; // con Percent
-	#pragma endregion
+#pragma endregion
 
 #pragma region statModifiers
 	unsigned int hpAdd = 0;
@@ -82,7 +84,7 @@ public:
 	unsigned int agiAdd = 0;
 
 	const static int statsForSkill = 13;
-	int stat14Percentages[statsForSkill] = {hpPerc, spPerc, fpPerc, atkPerc, defPerc, spdPerc, agiPerc, dexPerc, intPerc, sprPerc, strPerc, endPerc, conPerc}; // herp derp
+	int stat14Percentages[statsForSkill] = { hpPerc, spPerc, fpPerc, atkPerc, defPerc, spdPerc, agiPerc, dexPerc, intPerc, sprPerc, strPerc, endPerc, conPerc }; // herp derp
 #pragma endregion
 
 	skillAction();
@@ -117,5 +119,3 @@ public:
 	}
 	//state changes - wip
 };
-
-

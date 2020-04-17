@@ -24,7 +24,7 @@ private:
 
 	int mx = 8;// change this for the maximum amount of enemy fighters
 	int numMembers = 0; // current number of members
-	
+
 public:
 
 	//objects
@@ -49,7 +49,7 @@ public:
 
 	template <class targeting> // 
 	targeting getAITarget();
-	
+
 	// setters/mutators
 	template <class targeting> // 
 	targeting setTargetArray(targeting d[]);
@@ -131,7 +131,7 @@ public:
 		int weaponCritplier = 1; // hard set to 1 for now
 		int statCritplier = 1; // same until stats and weapons play a role in this parameter's math
 		int attr_size = atk + mgk + auraFp;
-		int atk_value = .75* + .66* + attr_size; // crit // maybe lower these for the ARPG
+		int atk_value = .75 * +.66 * +attr_size; // crit // maybe lower these for the ARPG
 
 		// constants 
 		int MAX_DMG = atk_value; // Max allowed damage
@@ -142,7 +142,7 @@ public:
 		statCritplier = attr_size % 1; //stat crit
 
 		int culmCHance = selfCritmultiplier * weaponCritplier * statCritplier;
-		
+
 		oldAtk = atk_value;
 
 		// Randomizer
@@ -215,7 +215,7 @@ public:
 	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]) ; // super aura attack
+	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); // super aura attack
 
 	template <class iter> // cmd process
 	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, aegesa tArr[]); // SUPER ZENKAI BOOST
@@ -251,19 +251,19 @@ public:
 	//interpreter 1 2 3 4 5
 
 	template <class Intepreter> // cmd process
-	Intepreter toE(aegesa *targetarr[], Intepreter choices[]);
+	Intepreter toE(aegesa* targetarr[], Intepreter choices[]);
 
 	template <class Intepreter> // cmd process
-	Intepreter toActor(aegesa *targetArr2[], Intepreter choices[]);
+	Intepreter toActor(aegesa* targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of both actors and enemies virtually everything
-	Intepreter FinalizerACTOR(aegesa *targetArr1[], aegesa *targetArr2[], Intepreter choices[]);
+	Intepreter FinalizerACTOR(aegesa* targetArr1[], aegesa* targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of both actors and enemies virtually everything
-	Intepreter aiFinalizerE(aegesa *targetArr1[], aegesa *targetArr2[], Intepreter choices[]);
+	Intepreter aiFinalizerE(aegesa* targetArr1[], aegesa* targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of literally everything
-	Intepreter accounts(aegesa *targetArr1[], aegesa *targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
+	Intepreter accounts(aegesa* targetArr1[], aegesa* targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
 };
 
 //template<class victory>

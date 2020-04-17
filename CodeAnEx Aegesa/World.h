@@ -33,6 +33,8 @@ private:
 	int tse = 0;
 	int tung = 0;
 	long play_time = 0;
+	int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
+	const int MIN = 1;
 	const static int partySize = 6;
 
 	map lostCity[11][11][4];
@@ -51,7 +53,7 @@ public:
 		rheTan[5][0][0],
 		aegesaShrine[5][0][0]
 	};
-	
+
 	World();
 
 	// setters/mutators
@@ -65,7 +67,19 @@ public:
 
 	void endGame(); // game end
 
+	// menu stuff
 	void menu();
+
+	// menu calls
+	void inventory();
+
+	void navigation();
+
+	void partyMenu();
+
+	void dataCall();
+
+	void optionMenuCall();
 
 	//Main game loop: 1. main menu, 2. when move, 3. randomizer or => 4. if theres a story ev that engages. 5. back to top
 	void gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[]);
@@ -73,10 +87,6 @@ public:
 	void evRandomizer(Player_Actor party[], int mx, int my, int mz);
 
 	void partyMenu(Player_Actor party[]);
-
-	void dataCall();
-
-	void optionMenuCall();
 
 	void eventCalls(World::map local, bool trigger, string dialougeOut);
 

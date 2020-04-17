@@ -46,6 +46,8 @@ Player_Actor::Player_Actor()
 inventory::weapon mActorWeaponE[1];
 inventory::armor mActorArmorE[3];
 
+inventory d();
+
 //
 //void Player_Actor::setParty(Player_Actor currentPa, int pos)
 //{
@@ -75,4 +77,9 @@ inventory::armor mActorArmorE[3];
 // use this to kill the player and when they die
 Player_Actor::~Player_Actor()
 {
+}
+
+inventory d()
+{
+	return inventory();
 }

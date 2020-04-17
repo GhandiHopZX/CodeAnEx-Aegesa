@@ -14,15 +14,20 @@
 #include "skillAction.h"
 
 using namespace std;
-
-//HashTableSet actorSetCpy;
-//HashTableSet enemySetCpy;
 //
 //Player_Actor he; //call vars
-//Enemy en; // call vars
+//Enemy en;+ // call vars
 //skillAction skilz;
 //inventory inv;
 //aegesa ae;
+//
+//battleSystem::battleSystem()
+//{
+//	turn_Number = 0;
+//	turnGuageNum = 0; // this is if more than one is set, its usually reset
+//	aGuage = 0;
+//	battleMode(); // battle mode
+//}
 //
 ////todo: callin party data
 //
@@ -335,18 +340,26 @@ using namespace std;
 //	cout << ein << endl;
 //	cout << "Press Enter";
 //	system("COLOR 07");
-//	lineStop();
+//	cin.get();
 //}
 //
 //// damage output
 //void battleSystem::damageOutput(string bin)
 //{
-
+//	system("Color 0E");
+//	cout << bin << endl;
+//	cout << "Press Enter";
+//	system("COLOR 07");
+//	cin.get();
 //}
 //
 //void battleSystem::critDmgOutput(string din)
 //{
-
+//	system("Color 0C");
+//	cout << din << endl;
+//	cout << "Press Enter";
+//	system("COLOR 07");
+//	cin.get();
 //}
 //
 //// heal output
@@ -356,12 +369,33 @@ using namespace std;
 //	cout << hin << endl;
 //	cout << "Press Enter";
 //	system("COLOR 07");
-//	lineStop();
+//	cin.get();
 //}
 //
 //// an experiment?
-
+//void battleSystem::multiDamageOutput(string n[])
+//{
+//	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+//	// you can loop k higher to see more color choices
+//	for (int k = 1; k < 255; k++)
+//	{
+//		// pick the colorattribute k you want
+//		SetConsoleTextAttribute(hConsole, k);
+//		cout << k << n[k] << endl;
+//	}
+//	system("COLOR 07");
+//	cout << "Press Enter";
+//	cin.get();
+//}
 //
+//void battleSystem::hackOutput(string n)
+//{
+//	system("Color 09");
+//	cout << n << endl;
+//	cout << "Press Enter";
+//	system("COLOR 07");
+//	cin.get();
+//}
 //
 //// battle_system calls
 //void battleSystem::attack() // to do: modify this
@@ -377,23 +411,296 @@ using namespace std;
 //void battleSystem::defend()
 //{}
 //
-//void battleSystem::skill2(int* statMul[], int statNum) // party one and targeted party
+//void battleSystem::skill(int* statMul[], int statNum) // party one and targeted party
 //{
-//	int me;
-//	me = *statMul[statNum];
-//	int& bk = me;
-//
-//	/*he.statPlus('h', skilz.skillcall->hpAdd);
-//	he.statPlus('s', skilz.skillcall->spAdd);
-//	he.statPlus('d', skilz.skillcall->defAdd);*/
-//	// end deletion
-//
-//	// determine range type
-//
-//	delete[] statMul;
+	//int me;
+	//me = *statMul[statNum];
+	//int& bk = me;
+
+	/*he.statPlus('h', skilz.skillcall->hpAdd);
+	he.statPlus('s', skilz.skillcall->spAdd);
+	he.statPlus('d', skilz.skillcall->defAdd);*/
+	// end deletion
+
+	// determine range type
+
+	//delete[] statMul;
 //}
 //
-
+//void battleSystem::hack() {
+//	
+//	// get the enemy target
+//	targetEnemy();
+//
+//	wstring window;
+//
+//	// movement grid
+//	wstring grid[26][6]; 
+//	// one plus higher for
+//	//the actuall char amount in the order
+//	// grid array
+//	window += L"=== === ===";
+//	window += L"=== === ===";
+//	window += L"=== === ===";
+//
+//	// snap to grid
+//	grid[25][5] = window;
+//	
+//	while (!VK_SPACE)
+//	{
+//		normalOutput("press space to fire when \n your marker (X) lands on (*) \n making a (#)");
+//		//system("CLS");
+//
+//		// platforms 
+//
+//		// 1 2 3
+//		// 4 5 6
+//		// 7 8 9
+//
+//		// X< 1 = 0 1 2
+//		//	  2 = 3 4 5
+//		//	  3 = 6 7 8
+//		// 	  4 = 9 10 11
+//		//	  5 = 12 13 14
+//		//	  6 = 15 16 17
+//		//    7 = 18 19 20
+//		//	  8 = 21 22 23
+//		//	  9 = 24 25 26 >X
+//
+//
+//		wstring actorT, enemy, hitMarkA;
+//		actorT = L"X"; // XX
+//		enemy = L"*"; // **
+//		hitMarkA = L"#"; // ## mark empty when actorT overlays enemy
+//
+//		// player startpoint
+//		int x, y;
+//		grid[0][1] = actorT;
+//		grid[1][1] = actorT;
+//		grid[2][1] = actorT;
+//
+//		// enemy startpoint
+//		int ex, ey;
+//		grid[8][1] = enemy;
+//		grid[9][1] = enemy;
+//		grid[10][1] = enemy;
+//
+//		// key console
+//#pragma region VirtualKey input
+//		switch (INPUT_KEYBOARD)
+//		{
+//		case VK_UP:
+//			//movement -y
+//#pragma region up
+//			// movement y
+//			if (y >= 0)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y -= 0;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (y <= 5)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y -= i;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[y + 1] = '='; // behind u
+//			}
+//			break;
+//
+//		case VK_DOWN:
+//			// movement +y
+//#pragma region down
+//			if (y >= 5)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y += 0;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (y <= 0)
+//			{
+//				for (int i = 0; i < 2; i++)
+//				{
+//					x += 0;
+//					y += i;
+//
+//					actorT = grid[x][y];
+//				}
+//			}
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[y - 1] = '=';
+//			}
+//			break;
+//
+//		case VK_LEFT:
+//			// movement x-
+//			// validation
+//#pragma region left
+//			if (x <= 25)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x -= i;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (x >= 0)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x += 0;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[x + 1] = '=';
+//				actorT[x + 2] = '=';
+//				actorT[x + 3] = '=';
+//			}
+//			break;
+//
+//		case VK_RIGHT:
+//			// movement x+
+//#pragma region right
+//			if (x >= 25)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x += 0;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//			else if (x <= 0)
+//			{
+//				for (int i = 0; i < 4; i++)
+//				{
+//					x += i;
+//					y += 0;
+//					actorT = grid[x][y];
+//				}
+//			}
+//#pragma endregion
+//			if (actorT != grid[x][y]) //replacemet space
+//			{
+//				actorT[x - 1] = '=';
+//				actorT[x - 2] = '=';
+//				actorT[x - 3] = '=';
+//			}
+//			break;
+//
+//		default:
+//			break;
+//		}
+//#pragma endregion
+//		
+//#pragma region AI
+//
+//		//--------- enemy movement ------------
+//		if (ex | ey == y | x)
+//		{
+//			enemy[ex - 1 | +1] | enemy[ey - 1 | +1];
+//		}
+//
+//		// movement replacement
+//		//up
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ey + 1] = '='; // behind u
+//		}
+//		//down 
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ey - 1] = '=';
+//		}
+//		//left
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ex + 1] = '=';
+//			enemy[ex + 2] = '=';
+//			enemy[ex + 3] = '=';
+//		}
+//		//right
+//		if (enemy != grid[ex][ey]) //replacemet space
+//		{
+//			enemy[ex - 1] = '=';
+//			enemy[ex - 2] = '=';
+//			enemy[ex - 3] = '=';
+//		}
+//
+//		// ai move away from player 
+//		if (actorT[x] -1 >= enemy[ex] || actorT[x] - 1 <= enemy[ex])
+//		{
+//			// check if theres space and seek a way to escape
+//			// wait
+//			// move again
+//		}
+//
+//		if (actorT[y] - 1 >= enemy[ey] || actorT[y] - 1 <= enemy[ey])
+//		{
+//			// check if theres space and seek a way to escape
+//			// wait
+//			// move again
+//		}
+//		
+//		// collision
+//		if (grid[x][y] == grid[ex][ey] && grid[ex] == grid[ey])
+//		{
+//			enemy = hitMarkA;
+//			actorT = hitMarkA;
+//
+//			switch (VK_SPACE)
+//			{
+//				hackOutput("HIT");
+//				cin.get();
+//				hackOutput("HACKED!");
+//			default:
+//				break;
+//			}
+//		}
+//		else
+//		{
+//			enemy = enemy;
+//			actorT = actorT;
+//
+//			switch (VK_SPACE)
+//			{
+//			default:
+//				break;
+//			}
+//		}
+//		/*
+//		  1  2  3  4  5  6
+//		  11 12 13 14 15 16
+//		  21 22 23 24 25 26
+//		 */
+//#pragma endregion
+//
+//	}
+//}
 //
 //void battleSystem::turn_A_mode()
 //{}
@@ -401,139 +708,19 @@ using namespace std;
 //void battleSystem::enemyTurn()
 //{}
 //
-
-battleSystem::battleSystem()
-{
-	AiCrit = false;
-	ActorCrit = true;
-	turn_Number = 0;
-	turnGuageNum = 0; // this is if more than one is set, its usually reset
-	aGuage = 0;
-	battleTime = false;
-}
-
-void battleSystem::turn()
-{
-}
-
-void battleSystem::battleMode()
-{
-}
-
-//void battleSystem::countEnemies(Enemy tArr[])
+//void battleSystem::rewardOutput()
 //{
-//	for (int i = 0; i < mx; i++)
-//	{
-//		numMembers += tArr[i].name.at(0);
-//	}
+//	//Player_Actor he; //call vars
+//	//Enemy en; // call vars
+//	//inventory inv; // call tha listos
+//
+//	// iterate all the enemies that were on
+//	// the battle field and run this at least
+//	// once for all of their rewards.
+//	// also store them in the player inventoru
+//	int rew = en.getItem();
+//	inv.rewardCall(rew);
+//	normalOutput(" Obtained...");
+//
+//	//inv.my_items(inv.allitemList(en.getItem), en.getItem);
 //}
-
-string battleSystem::lineStop()
-{
-	string pvalue;
-	getline(cin, pvalue);
-	pvalue.erase();
-	return pvalue;
-}
-
-int battleSystem::statusCall(int ti)
-{
-	return 0;
-}
-
-int battleSystem::getNumMembers()
-{
-	return numMembers;
-}
-
-bool battleSystem::playerTGuage(int, int spd, int fp)
-{
-	return false;
-}
-
-bool battleSystem::enemyTGuage(int, int spd, int fp)
-{
-	return false;
-}
-
-void battleSystem::statTurn(aegesa::statusEff E)
-{
-}
-
-void battleSystem::turnSystem(int tIn)
-{
-
-}
-
-#pragma region Text Output Functions
-
-void battleSystem::healOutput(string hin)
-{
-	system("Color 0B");
-		cout << hin << endl;
-		cout << "Press Enter";
-		system("COLOR 07");
-		lineStop();
-}
-
-void battleSystem::normalOutput(string ein)
-{
-	system("Color 0F");
-		cout << ein << endl;
-		cout << "Press Enter";
-		system("COLOR 07");
-		lineStop();
-}
-
-void battleSystem::damageOutput(string bin)
-{
-	system("Color 0E");
-	cout << bin << endl;
-	cout << "Press Enter";
-	system("COLOR 07");
-	lineStop();
-}
-
-void battleSystem::critDmgOutput(string din)
-{
-	system("Color 0C");
-	cout << din << endl;
-	cout << "Press Enter";
-	system("COLOR 07");
-	lineStop();
-}
-
-void battleSystem::multiDamageOutput(string multius[])
-{
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		// you can loop k higher to see more color choices
-		for (int k = 1; k < 255; k++)
-		{
-			// pick the colorattribute k you want
-			SetConsoleTextAttribute(hConsole, k);
-			cout << k << multius[k] << endl;
-		}
-		system("COLOR 07");
-		cout << "Press Enter";
-		lineStop();
-}
-
-void battleSystem::hackOutput(string hkIn)
-{
-	system("Color 09");
-	cout << hkIn << endl;
-	cout << "Press Enter";
-	system("COLOR 07");
-	lineStop();
-}
-
-void battleSystem::rewardOutput(string rwIn)
-{
-	system("Color 0D");
-	cout << rwIn << " Aquired." << endl; // the amount aquired will be the math in the actual reward function
-	cout << "Press Enter";
-	system("COLOR 07");
-	lineStop();
-}
-
-#pragma endregion

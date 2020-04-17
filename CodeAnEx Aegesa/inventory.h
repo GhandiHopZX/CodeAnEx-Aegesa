@@ -3,7 +3,6 @@
 #include <string>
 #include <cstdio>
 #include "inventory.h"
-#include "Player_Actor.h"
 
 using namespace std;
 
@@ -159,13 +158,11 @@ public:
 	void displaylistWeapon() const;
 	void displaylistArmor() const;
 
-	//void itemUse(int d, Player_Actor o);
+	void itemCall(int);
 
 	void PlayerItemInventory();
 
 	void combatItemInventory(inventory);
-
-	void itemCall(int);
 
 	// battleSystem
 	void rewardCall(int);

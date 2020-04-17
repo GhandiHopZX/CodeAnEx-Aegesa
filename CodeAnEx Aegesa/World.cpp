@@ -27,20 +27,18 @@ Player_Actor Alicia; //
 Player_Actor Renae; // 
 Player_Actor Iyn; // 
 inventory mainInventory; //
-int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
-const int MIN = 1;
 
 //HashTableSet anyHash; // magic hash of many things 
 
 World::World()
 {
-	
+
 	mao = 0; // int posx = 0;
 	tse = 0; // int posy = 0;
 	tung = 0; // int posz = 0;
 
 	//set time
-	
+
 	StartTime();
 	// file load for play_time goes here
 	// "                     "
@@ -61,14 +59,14 @@ void World::beginningStory()
 	//system("COLOR e4"); // shop color
 	system("COLOR 09");
 	system("CLS");
-	
-	string nameIn = "";
+
+	string nameIn = "k";
 	string bioIn = "";
 
 	// What's Your Name?
 
 	cout << "What's Your Name?: " << endl;
-	
+
 	Actor1.setName(dialougeInput(nameIn));
 
 	cout << endl;
@@ -98,7 +96,7 @@ void World::beginningStory()
 	Alicia.setDp(0); // always set these defaulted to 0
 #pragma endregion
 
-	#pragma region opening setting
+#pragma region opening setting
 	system("COLOR 07");
 	dialougeAction(Actor1, "Wakes up");
 	cout << Actor1.getName() + ": " + "Huhhh..." << endl;
@@ -158,8 +156,8 @@ void World::beginningStory()
 	dialouge(Alicia, "Alright then..");
 	dialouge(Alicia, "I'll show you where it is. If you help me find my friend..");
 	dialouge(Actor1, "I'm not too sure I should even really trust you to go with you to any place...");
-	#pragma endregion
-	
+#pragma endregion
+
 	//end of chapter 0
 
 	chapter1();
@@ -225,8 +223,8 @@ void World::menu()
 	{
 	case 'i':
 	case 'item':
-		//mainInventory.PlayerItemInventory();
-		Actor1;
+		//mainInventory.PlayerItemInventory(); // do this within a method
+		//Actor1;
 		break;
 
 	case 'n':
@@ -256,6 +254,18 @@ void World::menu()
 	}
 }
 
+void World::inventory()
+{
+}
+
+void World::navigation()
+{
+}
+
+void World::partyMenu()
+{
+}
+
 void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
 {
 
@@ -264,7 +274,7 @@ void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor p
 void World::evRandomizer(Player_Actor party[], int mx, int my, int mz)
 {
 	const int MAX_EVRAND = 450;
-	unsigned int evRand = (rand() % (MAX_EVRAND - MIN + 1)) + MIN; 
+	unsigned int evRand = (rand() % (MAX_EVRAND - MIN + 1)) + MIN;
 
 
 }
@@ -297,7 +307,7 @@ void World::partyMenu(Player_Actor party[])
 	case 'e':
 		// select party member
 		// equip items
-		
+
 		//mainInventory.PlayerItemInventory(Actor1);
 		break;
 
@@ -318,9 +328,9 @@ void World::partyMenu(Player_Actor party[])
 	}
 }
 
-void World::dataCall(){}
+void World::dataCall() {}
 
-void World::optionMenuCall(){}
+void World::optionMenuCall() {}
 
 void World::eventCalls(World::map local, bool trigger, string dialougeOut)
 {
@@ -371,10 +381,10 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	int zC = 0;
 
 	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
-	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y 
+	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y
 		<< "column\n" << maps[selectedMap].z << "floor" << endl;
 
-	cout << "Where will you go?\n (n)north,\n"
+	cout << "\nWhere will you go?\n (n)north,\n"
 		<< "(e)east,\n (w)west,\n (s)south,\n (ne)northeast,\n"
 		<< "(nw)northwest,\n (se)southeast,\n (sw)southwest\n " << endl;
 
@@ -449,7 +459,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].z = z;
 		tung = maps[selectedMap].z;
 		break;
-	} 
+	}
 }
 
 char World::choiceIn(string choiceBuffer)

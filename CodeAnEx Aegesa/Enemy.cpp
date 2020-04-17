@@ -25,7 +25,7 @@ Enemy::Enemy()
 
 	name = "";
 	this->allEffGet;
-	this->battleGuage();
+	this->battleGuage(NULL);
 	this->dummyPlus = 0;
 	this->getAGI();
 	this->getAp();
@@ -170,7 +170,6 @@ Enemy Enemy::BossCall(int call)
 
 	return lvl1index[call];
 }
-
 //Enemy Enemy::callTroopMember(int init)
 //{
 //	return enemyTroop.clear; //; how to use lists???
@@ -210,6 +209,7 @@ void Enemy::setEXP(int rexp)
 {
 	expA = rexp;
 }
+
 
 //void Enemy::setTroop(Enemy d, int indx) 
 //{

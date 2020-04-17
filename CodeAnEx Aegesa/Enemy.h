@@ -17,7 +17,7 @@ private:
 	int goldA; // gold awarded
 	bool leader; // lead
 	int party_num;
-	
+
 
 public:
 	// check this for a weakness
@@ -61,6 +61,8 @@ public:
 	void setGold(int);
 
 	void setEXP(int);
+
+	
 
 	void setTroop(Enemy d, int indx);
 
