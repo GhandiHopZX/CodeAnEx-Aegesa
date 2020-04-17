@@ -98,6 +98,8 @@ public:
 
 	void navigation(int selectedMap, int m, int c, int e);
 
+	string whereAmI(int selectedMap, int x, int y, int z);
+
 	char choiceIn(string);
 
 	string lineStop();

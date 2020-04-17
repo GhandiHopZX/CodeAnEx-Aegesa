@@ -380,9 +380,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	int yC = 0;
 	int zC = 0;
 
-	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
-	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y
-		<< "column\n" << maps[selectedMap].z << "floor" << endl;
+	whereAmI(selectedMap, x, y, z);
 
 	cout << "\nWhere will you go?\n (n)north,\n"
 		<< "(e)east,\n (w)west,\n (s)south,\n (ne)northeast,\n"
@@ -396,6 +394,8 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].y += 1;
 		tse = maps[selectedMap].y;
 		// event randomizer
+		whereAmI(selectedMap, x, y, z);
+		menu();
 		break;
 	case 'ne':
 		maps[selectedMap].y += 1;
@@ -403,6 +403,8 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].x -= 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		whereAmI(selectedMap, x, y, z);
+		menu();
 		break;
 	case 'nw':
 		maps[selectedMap].y += 1;
@@ -410,11 +412,15 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		whereAmI(selectedMap, x, y, z);
+		menu();
 		break;
 	case 's':
 		maps[selectedMap].y -= 1;
 		tse = maps[selectedMap].y;
 		// event randomizer
+		whereAmI(selectedMap, x, y, z);
+		menu();
 		break;
 	case 'se':
 		maps[selectedMap].y -= 1;
@@ -422,6 +428,8 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		whereAmI(selectedMap, x, y, z);
+		menu();
 		break;
 	case 'sw':
 		maps[selectedMap].y -= 1;
@@ -429,19 +437,24 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		menu();
 		break;
 	case 'w':
 		maps[selectedMap].x += 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		whereAmI(selectedMap, x, y, z);
+		menu();
 		break;
 	case 'e':
 		maps[selectedMap].x -= 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		menu();
 		break;
 	default:
 		cout << "not a direction or command" << endl;
+		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
 	}
@@ -460,6 +473,13 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tung = maps[selectedMap].z;
 		break;
 	}
+}
+
+string World::whereAmI(int selectedMap, int x, int y, int z)
+{
+	cout << "\nCurrent Location: " << maps[selectedMap].name << endl;
+	cout << "AT: " << maps[selectedMap].x << "row\n" << maps[selectedMap].y
+		<< "column\n" << maps[selectedMap].z << "floor" << endl;
 }
 
 char World::choiceIn(string choiceBuffer)
