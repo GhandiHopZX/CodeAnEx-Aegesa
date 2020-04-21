@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include "aegesa.h"
 using namespace std;
 
@@ -8,6 +9,8 @@ aegesa::aegesa()
 	dummyPlus = NULL;
 	statmulti = NULL;
 	party_num = 4;
+	num_Statuses = 0;
+
 	hpd = getHp();
 	spd = getSp(); // special
 	fpd = getFp(); // fighter (aural)
@@ -27,7 +30,25 @@ aegesa::aegesa()
 
 void aegesa::setBGSpd(int spdIn)
 {
-	newSpd = getSPDd() + spdIn % getSPD();
+	newSpd = getSPDd() + static_cast<int>(0.3) *(spdIn * getSPD());
+}
+
+
+void aegesa::setStatus(statusEff)
+{
+}
+
+aegesa::statusEff aegesa::getStatus()
+{
+	return statusEff();
+}
+
+string aegesa::printStatus()
+{
+	for (int i = 0; i < 20; i++)
+	{
+		return My_Statuses[i].buffName;
+	}
 }
 
 void aegesa::setTitle(string n)
@@ -35,44 +56,11 @@ void aegesa::setTitle(string n)
 	title = n;
 }
 
-void aegesa::setStatus(statusEff statusName[])
-{
-	// Base stats
-	statusName[0].hp += 5;
-
-	// a criterion is checked here
-	// and used to see what statuses are present in said
-	// player status then are passed
-	// into the statusEFF index then the index is passed into
-	// gameSystem...
-	// this is where the statuses are taken
-
-	statusName[20] = {};
-	statusEff thisStatus[20] = {};
-	for (int i = 0; i < 20; i++)
-	{
-		My_Statuses[i] = statusName[i];
-	}
-	// beta test
-	string beta = "test";
-	// statusEff;
-}
-
 int aegesa::getSPDPlus()
 {
 	return dummyPlus;
 }
 
-aegesa::statusEff aegesa::getStatus()
-{
-	int i = 0;
-	for (i = 0; i < 20; i++)
-	{
-		My_Statuses[i];
-		//statuses herpos
-	}
-	return My_Statuses[i];
-}
 
 void aegesa::statPlus(char stat, int plus)
 {
@@ -378,3 +366,5 @@ int aegesa::battleGuage(int spd)
 aegesa::~aegesa()
 {
 }
+
+aegesa::statusEff My_Statuses[];

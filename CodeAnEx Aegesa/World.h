@@ -36,6 +36,7 @@ private:
 	int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
 	const int MIN = 1;
 	const static int partySize = 6;
+	const static int ePartySize = 4;
 
 	map lostCity[11][11][4];
 	map darkForest[11][11][2];
@@ -114,7 +115,7 @@ public:
 	Player_Actor playerParty[partySize]; // menus
 
 	aegesa battlersP[partySize]; // for the player_Actors
-	aegesa battlersE[partySize]; // for the enemy
+	aegesa battlersE[ePartySize]; // for the enemy
 
 	~World();
 };

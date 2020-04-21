@@ -294,27 +294,41 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 
 void World::partyMenu(Player_Actor party[])
 {
-	char choice = 'm';
+	char choice2 = ' ';
+	string scin = "";
+
 	system("CLS");
 	cout << "Current Party" << endl;
 	cout << "" << endl;
 
-	// print menu
-	/*for (int i = 0; i < party.getParty_num(); i++)
-	{
-		string m = party.callPartyMember(i).getStatus().buffName;
-		int v = party.callPartyMember(i).getStatus().turns_Of_aff;
-		cout << party.callPartyMember(i).getName() << ": " << '\n' << "HP" << ": " << party.callPartyMember(i).getHpd() << '/' << party.callPartyMember(i).getHp();
-		cout << '\n' << "SP" << '\t' << party.callPartyMember(i).getSPDd() << '/' << party.callPartyMember(i).getSp() << endl;
-		cout << "[" << m << "]" << "Turns Left: " << v << endl;
-	}*/
+	int party_ppl = party->getParty_num();
 
-	cout << "Please select an option....\n (s) status,\n (e) Equip,\n (sa) skillActions,\n (t) classTree ";
-	switch (choice)
+	// print menu
+	for (int i = 0; i < party_ppl; i++)
+	{
+		int v = party[i].getStatus().turns_Of_aff;
+
+		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
+		cout << '\n' << "SP" << ": " << '\t' << party[i].getSPDd() << '/' << party[i].getSp() << endl;
+
+		cout << "[status effect(s)]" << endl;
+		for (int k = 0; k < party[i].num_Statuses; k++)
+		{
+			party[i].getStatus().buffName;
+			cout << "[" << party->printStatus()  << " " << "]" << "Turns Left: " << v << endl;
+		}
+		cout << endl;
+	}
+
+	choice2 = choiceIn(scin);
+
+	cout << "Please select an option....\n (s) Status,\n (e) Equip,\n (sa) SkillActions,\n (t) ClassTree \n";
+	switch (choice2)
 	{
 	case 's':
 		// select party member
 		// status for member
+		menu();
 		break;
 
 	case 'e':
@@ -322,16 +336,19 @@ void World::partyMenu(Player_Actor party[])
 		// equip items
 
 		//mainInventory.PlayerItemInventory(Actor1);
+		menu();
 		break;
 
 	case 'sa':
 		// select party member
 		// skill set
+		menu();
 		break;
 
 	case 'c':
 		// select party member
 		// class tree
+		menu();
 		break;
 
 	default:

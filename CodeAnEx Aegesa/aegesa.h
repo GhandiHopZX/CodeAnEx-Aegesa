@@ -53,6 +53,7 @@ public:
 	int CONd = 0; // constitution (mental, body, soul, based / also effects status)
 	int party_num; // number of people you can have
 	bool leader;
+	int num_Statuses = 0;
 
 	// experience
 	unsigned int EXP; // experience to obtain the per level ap gain
@@ -63,7 +64,7 @@ public:
 	{
 		string buffName;
 		int turns_Of_aff = 0;
-		bool inEff;
+		bool inEff = false;
 
 		// afflictions statbase
 		unsigned int hp = 0; // health
@@ -101,6 +102,7 @@ public:
 	aegesa::statusEff ANGER; // ADRENELINE
 #pragma endregion
 
+	// this needs to be a list
 	aegesa::statusEff allEffGet[20] = {
 		REGENERATION,
 		POISON,
@@ -117,8 +119,7 @@ public:
 		ANGER
 	}; // wip
 
-	statusEff My_Statuses[20]{
-	};
+	
 
 	// variables
 	string name = ""; // YOUR NAME!
@@ -255,7 +256,7 @@ public:
 	};
 
 	//get Status
-	statusEff getStatus();
+	//statusEff getStatus();
 
 	//exp Getter
 	int getExp()
@@ -545,10 +546,17 @@ public:
 
 	//// functions
 
+	void setStatus(statusEff);
+
+	statusEff getStatus();
+
+	string printStatus();
+
 	void setTitle(string n);
 
 	int getSPDPlus();
-	void setStatus(statusEff statusName[]);
+
+	//void setStatus(statusEff statusName);
 
 	int battleGuage(int spd);
 	string normalOutput(string normal)
