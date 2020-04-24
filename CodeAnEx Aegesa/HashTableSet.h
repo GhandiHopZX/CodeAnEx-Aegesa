@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <unordered_set>
+#include "aegesa.h"
 #include "skillAction.h"
 
 using namespace std;
@@ -17,18 +18,12 @@ private:
 	int shash_Value;
 	bool skey_exists;
 
-	int status_sum;
-	int status_Value;
-	bool status_exists;
-
 	list<pair<int, skillAction>> skillTable[skillGroups];
 	list<pair<int, string>> nametable[hashGroups];
-	list<pair<int, aegesa::statusEff>> my_StatusesList[statusGroups];
 
 public:
 	HashTableSet();
 	HashTableSet(int, skillAction);
-	HashTableSet(int, aegesa::statusEff);
 	~HashTableSet();
 
 	int operator++(int k);
@@ -43,15 +38,6 @@ public:
 	
 	// skill and stat
 	bool sisEmpty() const;
-	bool statIsEmpty() const;
-	int statHash(int key);
-	void insertStatus(int key, aegesa::statusEff m);
-	void removeStatusItem(int key);
-	string searchStatusTable(int key);
-	void printStatusTable();
-	int getStatusNum();
-	void setStatusSum(int m);
-	aegesa::statusEff statusCall(int sk);
 	int skillHash(int);
 	void insertSkill(int key, skillAction m);
 	void removeSkItem(int);

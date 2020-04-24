@@ -119,7 +119,7 @@ public:
 		ANGER
 	}; // wip
 
-	
+	aegesa::statusEff My_Statuses[20];
 
 	// variables
 	string name = ""; // YOUR NAME!

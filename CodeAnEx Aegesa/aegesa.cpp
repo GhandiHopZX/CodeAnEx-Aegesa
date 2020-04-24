@@ -34,14 +34,22 @@ void aegesa::setBGSpd(int spdIn)
 }
 
 
-void aegesa::setStatus(statusEff)
-{
-}
 
-aegesa::statusEff aegesa::getStatus()
-{
-	return statusEff();
-}
+//void aegesa::setStatus(statusEff dick)
+//{
+//	for (int i = 0; i < 20; i++)
+//	{
+//		/*My_Statuses[i].buffName = dick.buffName;
+//		My_Statuses[i].AGI = dick.AGI;*/
+//	}
+//	
+//}
+//
+//aegesa::statusEff aegesa::getStatus()
+//{
+//	return statusEff();
+//}
+
 
 string aegesa::printStatus()
 {
@@ -60,7 +68,6 @@ int aegesa::getSPDPlus()
 {
 	return dummyPlus;
 }
-
 
 void aegesa::statPlus(char stat, int plus)
 {
@@ -367,4 +374,3 @@ aegesa::~aegesa()
 {
 }
 
-aegesa::statusEff My_Statuses[];
