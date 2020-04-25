@@ -159,9 +159,23 @@ void World::beginningStory()
 	dialouge(Alicia, "Alright then..");
 	dialouge(Alicia, "I'll show you where it is. If you help me find my friend..");
 	dialouge(Actor1, "I'm not too sure I should even really trust you to go with you to any place...");
+	
+	// party insert
+
+	//playerParty[partySize] = this also needs to be a list
+	//{ with lots of functions
+	//Actor1,
+	//Alicia
+	//};
+	//
+
+	system("CLS");
+	cout << "-----=======ALICIA HAS JOINED YOUR PARTY======-----" << endl;
+	lineStop();
 #pragma endregion
 
 	//end of chapter 0
+
 
 	chapter1();
 }
