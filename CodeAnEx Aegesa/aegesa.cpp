@@ -33,8 +33,6 @@ void aegesa::setBGSpd(int spdIn)
 	newSpd = getSPDd() + static_cast<int>(0.3) *(spdIn * getSPD());
 }
 
-
-
 //void aegesa::setStatus(statusEff dick)
 //{
 //	for (int i = 0; i < 20; i++)
@@ -49,7 +47,6 @@ void aegesa::setBGSpd(int spdIn)
 //{
 //	return statusEff();
 //}
-
 
 string aegesa::printStatus()
 {
@@ -364,6 +361,63 @@ void aegesa::statPlus(char stat, int plus)
 		break;
 	}
 }
+
+aegesa::statusEff aegesa::indexer(int e)
+{
+	return allEffGet[e]; // indexed item if exists
+}
+
+bool aegesa::isFull(int d)
+{
+	for (int i = 0; i < 20; i++)
+	{
+		if (allEffGet[d].buffName != My_Statuses[i].buffName)
+		{
+			return false; // then the state isn't existant here
+		}
+
+		if (My_Statuses[i].turns_Of_aff == -1)
+		{
+			return true;
+		}
+
+		if (My_Statuses[i].turns_Of_aff == allEffGet[d].turns_Of_aff)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void aegesa::add_state(int id, bool force)
+{
+// ineffective state
+	if (allEffGet[id].turns_Of_aff == NULL)
+	{
+		return;
+	}
+
+	if (!force)
+	{
+		for (int i = 0; i < 20; i++)
+		{
+			//weird narrowing but workable narrowing
+			// makes sure minus works
+			if (allEffGet[i].minusState == true && !allEffGet[id].minusState) 
+			{
+				return;
+			}
+		}
+	}
+
+	if (!(My_Statuses[id].addState)) // state id > if the state is not added
+	{
+		
+	}
+}
+
+
 
 int aegesa::battleGuage(int spd)
 {

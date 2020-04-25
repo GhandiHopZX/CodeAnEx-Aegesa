@@ -65,6 +65,8 @@ public:
 		string buffName;
 		int turns_Of_aff = 0;
 		bool inEff = false;
+		bool minusState;
+		bool addState;
 
 		// afflictions statbase
 		unsigned int hp = 0; // health
@@ -557,6 +559,13 @@ public:
 	int getSPDPlus();
 
 	//void setStatus(statusEff statusName);
+
+	//states (I called status effects please excuse me on that.)
+	aegesa::statusEff indexer(int);
+
+	bool isFull(int);
+
+	void add_state(int id, bool force = false);
 
 	int battleGuage(int spd);
 	string normalOutput(string normal)

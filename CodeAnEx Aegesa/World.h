@@ -37,6 +37,7 @@ private:
 	const int MIN = 1;
 	const static int partySize = 6;
 	const static int ePartySize = 4;
+	bool movedEVTrigger;
 
 	map lostCity[11][11][4];
 	map darkForest[11][11][2];
@@ -54,6 +55,15 @@ public:
 		rheTan[5][0][0],
 		aegesaShrine[5][0][0]
 	};
+
+	string eventTypeNamesLV1[40]
+	{
+		"Yokai Attack",
+		"Cyber Ghosts",
+		"", // quest
+		"Wild Monsters"
+	};
+
 
 	World();
 
@@ -89,7 +99,7 @@ public:
 
 	void partyMenu(Player_Actor party[]);
 
-	void eventCalls(World::map local, bool trigger, string dialougeOut);
+	void eventCalls(World::map local, bool trigger, int);
 
 	void dialouge(Player_Actor pn, string in);
 
@@ -109,7 +119,11 @@ public:
 
 	long StartTime();
 
+	void mEVTriggerSetter(bool);
+
 	// getters/accessors
+
+	bool mEVTriggerActive();
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus

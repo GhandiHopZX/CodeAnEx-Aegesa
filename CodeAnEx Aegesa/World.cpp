@@ -66,14 +66,14 @@ void World::beginningStory()
 	// What's Your Name?
 
 	cout << "What's Your Name?: " << endl;
-
-	Actor1.setName(dialougeInput(nameIn));
-
+	cin >> nameIn;
+	Actor1.setName(nameIn);
 	cout << endl;
 
 	// What's Your Story?
 	cout << "What's Your Story?: " << endl;
-	Actor1.setBio(dialougeInput(bioIn));
+	Actor1.setBio(bioIn);
+	cin >> bioIn;
 
 	cout << endl;
 
@@ -271,9 +271,37 @@ void World::partyMenu()
 
 void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
 {
+	if (mEVTriggerActive() == true)
+	{
+		if (m.name == "Lost City")
+		{
+			evRandomizer(party, m, mx, my, mz);
+		}
 
+		if (m.name == "Dark Forest")
+		{
+
+		}
+
+		if (m.name == "Eikka")
+		{
+
+		}
+
+		if (m.name == "RheTan")
+		{
+
+		}
+
+		if (m.name == "Aegesa Shrine")
+		{
+
+		}
+	}
+	
 }
 
+// work on this
 void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int mz)
 {
 	const int MAX_EVRAND = 450;
@@ -284,7 +312,7 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 	{
 		if (!(party[i].DEAD.inEff) && party[i].isPlayer == true) // check for in_party npcs and dead ppl
 		{
-
+			eventCalls(location, mEVTriggerActive(), evRand);
 		}
 		party[i]; 
 	}
@@ -306,16 +334,16 @@ void World::partyMenu(Player_Actor party[])
 	// print menu
 	for (int i = 0; i < party_ppl; i++)
 	{
-		int v = party[i].getStatus().turns_Of_aff;
+		//int v = party[i].getStatus().turns_Of_aff;
 
 		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
 		cout << '\n' << "SP" << ": " << '\t' << party[i].getSPDd() << '/' << party[i].getSp() << endl;
 
-		cout << "[status effect(s)]" << endl;
+		cout << "[state(s)]" << endl;
 		for (int k = 0; k < party[i].num_Statuses; k++)
 		{
-			party[i].getStatus().buffName;
-			cout << "[" << party->printStatus()  << " " << "]" << "Turns Left: " << v << endl;
+			//party[i].getStatus().buffName;
+			cout << "["  /*<< party[i].printStatus() */ << " " << "]" << "Turns Left: " << /*v<<*/ endl;
 		}
 		cout << endl;
 	}
@@ -362,11 +390,12 @@ void World::dataCall() {}
 
 void World::optionMenuCall() {}
 
-void World::eventCalls(World::map local, bool trigger, string dialougeOut)
+void World::eventCalls(World::map local, bool trigger, int evNCall)
 {
+	// names and any other data goes here
 	if (local.name == "Lost City")
 	{
-
+		eventTypeNamesLV1[evNCall];
 	}
 
 	if (local.name == "Dark Forest")
@@ -436,6 +465,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].y += 1;
 		tse = maps[selectedMap].y;
 		// event randomizer
+		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -445,6 +475,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].x -= 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -454,6 +485,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -461,6 +493,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].y -= 1;
 		tse = maps[selectedMap].y;
 		// event randomizer
+		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -470,6 +503,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -479,12 +513,15 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		//mEVTriggerSetter(true);
+		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
 	case 'w':
 		maps[selectedMap].x += 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -492,6 +529,8 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		maps[selectedMap].x -= 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
+		//mEVTriggerSetter(true);
+		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
 	default:
@@ -570,6 +609,16 @@ long World::StartTime()
 	auto playtime = std::chrono::high_resolution_clock::now; // you might need to convert this into a long or some kind of type that can be saved and stored for later use
 	//copy = static_cast<long>(playtime);
 	return copy;
+}
+
+void World::mEVTriggerSetter(bool mEVT)
+{
+	movedEVTrigger = mEVT;
+}
+
+bool World::mEVTriggerActive()
+{
+	return movedEVTrigger;
 }
 
 World::~World()
