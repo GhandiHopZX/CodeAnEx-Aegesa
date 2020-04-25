@@ -1,12 +1,17 @@
 #pragma once
+#include <list>
+#include <vector>
 #include <iostream>
-#include <string>
+#include <unordered_set>
 #include "aegesa.h"
 
 using namespace std;
 //this is a parent class for enemies, actors and player actors
 class aegesa
 {
+private:
+	static const int statusGroups = 20;
+	
 public:
 	aegesa();
 
@@ -105,7 +110,8 @@ public:
 #pragma endregion
 
 	// this needs to be a list
-	aegesa::statusEff allEffGet[20] = {
+	
+	aegesa::statusEff allEffGet[statusGroups] = {
 		REGENERATION,
 		POISON,
 		STUNED,
@@ -121,6 +127,10 @@ public:
 		ANGER
 	}; // wip
 
+	list<pair<int, aegesa::statusEff>> allEffGet2[statusGroups];
+
+	//allEffGet2[];
+	
 	aegesa::statusEff My_Statuses[20];
 
 	// variables
