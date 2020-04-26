@@ -170,7 +170,7 @@ void World::beginningStory()
 	//
 
 	system("CLS");
-	cout << "-----=======ALICIA HAS JOINED YOUR PARTY======-----" << endl;
+	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
 	lineStop();
 #pragma endregion
 
@@ -328,7 +328,7 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 		{
 			eventCalls(location, mEVTriggerActive(), evRand);
 		}
-		party[i]; 
+		//party[i]; 
 	}
 
 	party->isPlayer;

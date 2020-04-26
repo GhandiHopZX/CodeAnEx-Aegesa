@@ -1,6 +1,8 @@
 #include <iostream>
 #include <list>
 #include "aegesa.h"
+#include <map>
+#include <stack>
 using namespace std;
 
 aegesa::aegesa()
@@ -33,20 +35,15 @@ void aegesa::setBGSpd(int spdIn)
 	newSpd = getSPDd() + static_cast<int>(0.3) *(spdIn * getSPD());
 }
 
-//void aegesa::setStatus(statusEff dick)
-//{
-//	for (int i = 0; i < 20; i++)
-//	{
-//		/*My_Statuses[i].buffName = dick.buffName;
-//		My_Statuses[i].AGI = dick.AGI;*/
-//	}
-//	
-//}
-//
-//aegesa::statusEff aegesa::getStatus()
-//{
-//	return statusEff();
-//}
+
+void aegesa::setStatus(statusEff)
+{
+}
+
+aegesa::statusEff aegesa::getStatus()
+{
+	return statusEff();
+}
 
 string aegesa::printStatus()
 {
@@ -390,7 +387,33 @@ bool aegesa::isFull(int d)
 	return false;
 }
 
-void aegesa::add_state(int id, bool force)
+void aegesa::insertStatus(int key, aegesa::statusEff m)
+{
+	auto& cell = aegesa::allEffGet2[num_Statuses];
+	auto bItr = begin(cell);
+	for (; bItr != end(cell); bItr++)
+	{
+		if (bItr->first == key)
+		{
+			bItr->second = m;
+			cout << "[WARNING] Key exists. Value replaced." << endl;
+			break;
+		}
+	}
+
+	if (! m.buffName.empty())
+	{
+		cell.emplace_back(key, num_Statuses);
+	}
+	return;
+}
+
+void aegesa::remove_state(int id, bool force = false)
+{
+
+}
+
+void aegesa::add_state(int id, bool force = false)
 {
 // ineffective state
 	if (allEffGet[id].turns_Of_aff == NULL)
@@ -413,7 +436,70 @@ void aegesa::add_state(int id, bool force)
 
 	if (!(My_Statuses[id].addState)) // state id > if the state is not added
 	{
-		
+		insertStatus(id, allEffGet[id]);
+	}
+
+	if (allEffGet[id].zeroHP == true)
+	{
+		setHpd(0);
+	}
+
+	
+
+	for (int i = 0; i < sizeupAEG; i++)
+	{
+		if (allEffGet[id].addState?(i):false)
+		{
+			insertStatus(i, allEffGet[id]);
+		}
+
+		if (allEffGet[id].minusState?(i):false)
+		{
+			// remove state
+			remove_state(id, force);
+		}
+	}
+
+	// line change to a large rating order (if value is the same, then a strong restriction order)
+	
+
+	int a = 0;
+	int b = 0;
+	aegesa::statusEff state_a;
+	aegesa::statusEff state_b;
+	state_a = allEffGet[statusGroups];
+	state_b = allEffGet[statusGroups];
+
+	//sort time; 
+
+
+	//for loops for sorting
+	for (int i = 0; i < sizeupAEG; i++)
+	{
+		if (state_a.rating > state_b.rating)
+		{
+			- 1;
+		}
+
+		else if (state_a.rating < state_b.rating)
+		{
+			+1;
+		}
+
+		else if (state_a.restriction > state_b.restriction)
+		{
+			-1;
+		}
+
+		else if (state_a.restriction < state_b.restriction)
+		{
+			+1;
+		}
+
+		else
+		{
+			//a <=> b; combined comparison
+		}
 	}
 }
 

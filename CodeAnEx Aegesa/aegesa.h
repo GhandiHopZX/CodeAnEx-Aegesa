@@ -60,6 +60,8 @@ public:
 	bool leader;
 	int num_Statuses = 0;
 
+	int sizeupAEG = allEffGet2->max_size();
+
 	// experience
 	unsigned int EXP; // experience to obtain the per level ap gain
 	string title;
@@ -69,9 +71,12 @@ public:
 	{
 		string buffName;
 		int turns_Of_aff = 0;
+		int rating;
+		int restriction;
 		bool inEff = false;
 		bool minusState;
 		bool addState;
+		bool zeroHP;
 
 		// afflictions statbase
 		unsigned int hp = 0; // health
@@ -131,7 +136,9 @@ public:
 
 	//allEffGet2[];
 	
-	aegesa::statusEff My_Statuses[20];
+	aegesa::statusEff My_Statuses[statusGroups];
+
+	list<pair<int, aegesa::statusEff>> My_Statuses2[20];
 
 	// variables
 	string name = ""; // YOUR NAME!
@@ -575,7 +582,11 @@ public:
 
 	bool isFull(int);
 
-	void add_state(int id, bool force = false);
+	void insertStatus(int key, aegesa::statusEff m);
+
+	void remove_state(int id, bool force);
+
+	void add_state(int id, bool force);
 
 	int battleGuage(int spd);
 	string normalOutput(string normal)

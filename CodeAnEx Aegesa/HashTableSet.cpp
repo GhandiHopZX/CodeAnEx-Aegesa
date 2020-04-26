@@ -33,6 +33,7 @@ HashTableSet::HashTableSet(int key, skillAction meeep)
 //HashTableSet SkillList;
 
 #pragma region skillList
+
 bool HashTableSet::sisEmpty() const
 {
 	int addAll{};
