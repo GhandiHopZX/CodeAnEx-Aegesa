@@ -20,16 +20,16 @@ public:
 	bool isPlayer = false;
 
 	// statbase 15
-	unsigned int hp = 0; // health
-	unsigned int sp = 0; // special
-	unsigned int fp = 0; // fighter (aural)
-	unsigned int ap = 0; // abiliy (optained after every level) (you'll also obtain -ap- from special items, Bosses and TurnA clashes)
-	unsigned int dp = 0; // dynamic points (obtained after a Turn A clash for leveling)
+	unsigned int hp = 0; // health f
+	unsigned int sp = 0; // special f
+	unsigned int fp = 0; // fighter (aural) f
+	unsigned int ap = 0; // abiliy (optained after every level) (you'll also obtain -ap- from special items, Bosses and TurnA clashes) f
+	unsigned int dp = 0; // dynamic points (obtained after a Turn A clash for leveling) f
 
 	// battler statbase <- ap goes here
-	unsigned int ATK = 0; // attack
+	unsigned int ATK = 0; // attack 
 	unsigned int DEF = 0; // defence (armor based)
-	unsigned int SPD = 0; // speed
+	unsigned int SPD = 0; // speed f
 
 	// ability stats <- dp goes here
 	unsigned int AGI = 0; // agility
@@ -565,17 +565,15 @@ public:
 
 	//// functions
 
-	void setStatus(statusEff);
+	/*void setStatus(statusEff);
 
-	statusEff getStatus();
+	statusEff getStatus();*/
 
 	string printStatus();
 
 	void setTitle(string n);
 
 	int getSPDPlus();
-
-	//void setStatus(statusEff statusName);
 
 	//states (I called status effects please excuse me on that.)
 	aegesa::statusEff indexer(int);

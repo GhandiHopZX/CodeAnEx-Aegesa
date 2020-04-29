@@ -36,14 +36,14 @@ void aegesa::setBGSpd(int spdIn)
 }
 
 
-void aegesa::setStatus(statusEff)
-{
-}
-
-aegesa::statusEff aegesa::getStatus()
-{
-	return statusEff();
-}
+//void aegesa::setStatus(statusEff)
+//{
+//}
+//
+//aegesa::statusEff aegesa::getStatus()
+//{
+//	return statusEff();
+//}
 
 string aegesa::printStatus()
 {
@@ -359,10 +359,10 @@ void aegesa::statPlus(char stat, int plus)
 	}
 }
 
-aegesa::statusEff aegesa::indexer(int e)
-{
-	return allEffGet[e]; // indexed item if exists
-}
+//aegesa::statusEff aegesa::indexer(int e)
+//{
+//	return allEffGet[e]; // indexed item if exists
+//}
 
 bool aegesa::isFull(int d)
 {
