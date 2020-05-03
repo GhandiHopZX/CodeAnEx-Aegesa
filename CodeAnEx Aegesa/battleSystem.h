@@ -33,7 +33,11 @@ public:
 	// constructor
 	battleSystem();
 
-	battleSystem(aegesa fromPartyHash[], bool battleMode);
+	//player vs enemy encounter
+	battleSystem(Player_Actor partyCrew[], Enemy enemyCrew[], bool battleMode);
+
+	//dummy battle or possible pvp
+	battleSystem(Player_Actor PartyOne[], Player_Actor PartyTwo[]);
 
 	// variables
 

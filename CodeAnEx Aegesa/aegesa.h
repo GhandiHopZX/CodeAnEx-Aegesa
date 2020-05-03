@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unordered_set>
 #include "aegesa.h"
+#include "stateEffects.h"
 
 using namespace std;
 //this is a parent class for enemies, actors and player actors
@@ -587,6 +588,7 @@ public:
 	void add_state(int id, bool force);
 
 	int battleGuage(int spd);
+
 	string normalOutput(string normal)
 	{
 		return normal;

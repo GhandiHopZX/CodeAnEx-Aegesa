@@ -45,6 +45,9 @@
     <ClCompile Include="HashTableSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stateEffects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aegesa.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HashTableSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stateEffects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
