@@ -176,7 +176,6 @@ void World::beginningStory()
 
 	//end of chapter 0
 
-
 	chapter1();
 }
 
@@ -324,7 +323,15 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 	//battle processing and dot giving
 	for (int i = 0; i < partySize; i++)
 	{
-		if (!(party[i].DEAD.inEff) && party[i].isPlayer == true) // check for in_party npcs and dead ppl
+		if ((party[i].My_Statuses[i].at(i) = 'D') && party[i].isPlayer == true)
+		{
+			// game over
+		}
+		else if (!(party[i].My_Statuses[i].at(i) = 'D') && party[i].isPlayer == true) // check for in_party npcs and dead ppl
+		{
+			eventCalls(location, mEVTriggerActive(), evRand);
+		}
+		else
 		{
 			eventCalls(location, mEVTriggerActive(), evRand);
 		}

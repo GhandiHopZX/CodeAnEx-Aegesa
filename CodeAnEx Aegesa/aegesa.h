@@ -61,85 +61,14 @@ public:
 	bool leader;
 	int num_Statuses = 0;
 
-	int sizeupAEG = allEffGet2->max_size();
-
 	// experience
 	unsigned int EXP; // experience to obtain the per level ap gain
 	string title;
 #pragma endregion
 
-	struct statusEff
-	{
-		string buffName;
-		int turns_Of_aff = 0;
-		int rating;
-		int restriction;
-		bool inEff = false;
-		bool minusState;
-		bool addState;
-		bool zeroHP;
+	string My_Statuses[statusGroups];
 
-		// afflictions statbase
-		unsigned int hp = 0; // health
-		unsigned int sp = 0; // special
-		unsigned int fp = 0; // fighter (aural)
-
-		// battler statbase <- ap goes here
-		unsigned int ATK = 0; // attack
-		unsigned int DEF = 0; // defence (armor based)
-		unsigned int SPD = 0; // speed
-
-		// ability stats <- dp goes here
-		unsigned int AGI = 0; // agility
-		unsigned int DEX = 0; // dexterity
-		unsigned int INT = 0; // intelligence
-		unsigned int SPR = 0; // spirit
-		unsigned int STR = 0; // strength (also effects status)
-		unsigned int END = 0; // endurance (bodily based / also effects status)
-		unsigned int CON = 0; // constitution (mental, body, soul, based / also effects status)
-	};
-
-#pragma region statusTypes
-	aegesa::statusEff REGENERATION;
-	aegesa::statusEff POISON;
-	aegesa::statusEff STUNED;
-	aegesa::statusEff DEAD;
-	aegesa::statusEff HACKED;
-	aegesa::statusEff CRIPPLE;
-	aegesa::statusEff INEBREATED;
-	aegesa::statusEff SLEEP;
-	aegesa::statusEff CURSEDVSDARK; // AGONY
-	aegesa::statusEff CURSRDVSLIGHT; // DEPRESSION
-	aegesa::statusEff CURSEDVSDEMONIC; // ACCURSED
-	aegesa::statusEff CURSED;
-	aegesa::statusEff ANGER; // ADRENELINE
-#pragma endregion
-
-	// this needs to be a list
-	
-	aegesa::statusEff allEffGet[statusGroups] = {
-		REGENERATION,
-		POISON,
-		STUNED,
-		DEAD,
-		HACKED,
-		CRIPPLE,
-		INEBREATED,
-		SLEEP,
-		CURSEDVSDARK,
-		CURSRDVSLIGHT,
-		CURSEDVSDEMONIC,
-		CURSED,
-		ANGER
-	}; // wip
-
-	list<pair<int, aegesa::statusEff>> allEffGet2[statusGroups];
-
-	//allEffGet2[];
-	
-	aegesa::statusEff My_Statuses[statusGroups];
-
-	list<pair<int, aegesa::statusEff>> My_Statuses2[20];
+	list<pair<int, string>> My_Statuses2[20];
 
 	// variables
 	string name = ""; // YOUR NAME!
@@ -566,26 +495,17 @@ public:
 
 	//// functions
 
-	/*void setStatus(statusEff);
+	void setState(string);
 
-	statusEff getStatus();*/
+	string getState();
 
-	string printStatus();
+	string printStates();
 
 	void setTitle(string n);
 
 	int getSPDPlus();
-
-	//states (I called status effects please excuse me on that.)
-	aegesa::statusEff indexer(int);
-
-	bool isFull(int);
-
-	void insertStatus(int key, aegesa::statusEff m);
-
-	void remove_state(int id, bool force);
-
-	void add_state(int id, bool force);
+	
+	bool stateIsEmpty();
 
 	int battleGuage(int spd);
 

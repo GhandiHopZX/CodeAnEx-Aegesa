@@ -5,6 +5,7 @@
 #include <ctime>
 #include <iostream>
 #include "aegesa.h"
+#include "stateEffects.h"
 #include "inventory.h"
 
 using namespace std;
@@ -28,7 +29,7 @@ private:
 public:
 
 	//objects
-	aegesa::statusEff me;
+	stateEffects::statusEff me;
 
 	// constructor
 	battleSystem();
@@ -92,7 +93,7 @@ public:
 
 	// output types
 
-	void statTurn(aegesa::statusEff);
+	void statTurn(stateEffects::statusEff);
 
 	void turnSystem(int);
 
@@ -210,19 +211,19 @@ public:
 	iter attackPlus(iter atk, iter bonus, iter hpE, aegesa tArr[]); // bonuses granted from party strikes, skills and buffs 
 
 	template <class iter> // cmd process
-	iter skill(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
+	iter skill(iter atk, iter statPlus14[], stateEffects::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter actorThrow(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
+	iter actorThrow(iter atk, iter statPlus14[], stateEffects::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter teamAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); //
+	iter teamAttack(iter atk, iter statPlus14[], stateEffects::statusEff me, bool rangeType, aegesa tArr[]); //
 
 	template <class iter> // cmd process
-	iter auralAttack(iter atk, iter statPlus14[], aegesa::statusEff me, bool rangeType, aegesa tArr[]); // super aura attack
+	iter auralAttack(iter atk, iter statPlus14[], stateEffects::statusEff me, bool rangeType, aegesa tArr[]); // super aura attack
 
 	template <class iter> // cmd process
-	iter transform(iter atk, iter statPlus14[], aegesa::statusEff me, aegesa tArr[]); // SUPER ZENKAI BOOST
+	iter transform(iter atk, iter statPlus14[], stateEffects::statusEff me, aegesa tArr[]); // SUPER ZENKAI BOOST
 
 #pragma region AiCmds
 

@@ -125,6 +125,8 @@ public:
 
 	bool mEVTriggerActive();
 
+	// state modifiers
+
 	// other functions
 	Player_Actor playerParty[partySize]; // menus
 

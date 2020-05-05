@@ -6,6 +6,7 @@
 #include <stack>
 #include <thread>
 #include "Player_Actor.h"
+#include "stateEffects.h"
 //#include "inventory.h"
 #include "aegesa.h"
 
