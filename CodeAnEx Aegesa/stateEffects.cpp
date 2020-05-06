@@ -50,8 +50,7 @@ void stateEffects::insertStatus(int key, stateEffects::statusEff m)
 
 	if (!m.buffName.empty())
 	{
-		//cell.emplace_front(key, num_Statuses);
-		//cell.rbegin(key, num_Statuses);
+		cell.emplace_front(key, m);
 	}
 	return;
 }
