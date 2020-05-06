@@ -99,7 +99,7 @@ skillAction::skillAction(int call)
 }
 
 skillAction::skillAction(int numid, string name, elementType d, string dec,
-	bool rType, int sp_succ, int fp_succ, int stat13[], aegesa::statusEff e, char strikeType)
+	bool rType, int sp_succ, int fp_succ, int stat13[], stateEffects::statusEff e, char strikeType)
 {
 	hpPerc = 0;
 	spPerc = 0;

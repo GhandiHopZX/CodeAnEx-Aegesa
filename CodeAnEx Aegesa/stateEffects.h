@@ -132,7 +132,6 @@ public:
 	unsigned int END = 0; // endurance (bodily based / also effects status)
 	unsigned int CON = 0; // constitution (mental, body, soul, based / also effects status)
 
-	int sizeupAEG = allEffGet2->max_size();
 	int num_Statuses = 0;
 
 	// experience
@@ -140,7 +139,7 @@ public:
 	string title;
 #pragma endregion
 
-	list<pair<int, stateEffects::statusEff>> allEffGet2[statusGroups];
+	list<pair<int, statusEff>> allEffGet2[statusGroups];
 
 	//allEffGet2[];
 
@@ -159,18 +158,14 @@ public:
 
 	void remove_state(int id, bool force);
 
-	void add_state(int id, bool force);
+	void add_state(int id, bool force, statusEff kd[]);
 
 	stateEffects();
 	~stateEffects();
 
 };
 
-stateEffects::stateEffects()
-{
-}
 
-stateEffects::~stateEffects()
-{
-}
+
+
 

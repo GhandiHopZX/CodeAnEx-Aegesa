@@ -24,7 +24,7 @@ Enemy::Enemy()
 	isPlayer = false;
 
 	name = "";
-	this->allEffGet;
+	//this->allEffGet;
 	this->battleGuage(NULL);
 	this->dummyPlus = 0;
 	this->getAGI();

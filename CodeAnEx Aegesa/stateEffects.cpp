@@ -1,5 +1,9 @@
 #include "stateEffects.h"
-#include "stateEffects.h"
+
+
+stateEffects::stateEffects()
+{
+}
 
 stateEffects::statusEff stateEffects::indexer(int)
 {
@@ -46,16 +50,19 @@ void stateEffects::insertStatus(int key, stateEffects::statusEff m)
 
 	if (!m.buffName.empty())
 	{
-		cell.emplace_back(key, num_Statuses);
+		//cell.emplace_front(key, num_Statuses);
+		//cell.rbegin(key, num_Statuses);
 	}
 	return;
 }
+
 void stateEffects::remove_state(int id, bool force = false)
 {
 
 }
-void stateEffects::add_state(int id, bool force = false)
+void stateEffects::add_state(int id, bool force, stateEffects::statusEff kd[])
 {
+	force = false;
 	// ineffective state
 	if (allEffGet[id].turns_Of_aff == NULL)
 	{
@@ -75,7 +82,7 @@ void stateEffects::add_state(int id, bool force = false)
 		}
 	}
 
-	if (!(My_Statuses[id].addState)) // state id > if the state is not added
+	if (!(kd[id].addState)) // state id > if the state is not added
 	{
 		insertStatus(id, allEffGet[id]);
 	}
@@ -142,4 +149,11 @@ void stateEffects::add_state(int id, bool force = false)
 			//a <=> b; combined comparison
 		}
 	}
+
+	
+
+}
+
+stateEffects::~stateEffects()
+{
 }

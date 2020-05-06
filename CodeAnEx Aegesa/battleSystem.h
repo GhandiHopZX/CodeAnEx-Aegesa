@@ -7,6 +7,8 @@
 #include "aegesa.h"
 #include "stateEffects.h"
 #include "inventory.h"
+#include "Player_Actor.h"
+#include "Enemy.h"
 
 using namespace std;
 

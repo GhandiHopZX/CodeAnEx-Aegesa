@@ -82,7 +82,7 @@ bool aegesa::stateIsEmpty()
 {
 	for (size_t i = 0; i < 20; i++)
 	{
-		if (My_Statuses[i].empty)
+		if (My_Statuses[i].empty())
 		{
 			return true;
 		}
@@ -92,7 +92,7 @@ bool aegesa::stateIsEmpty()
 			return true;
 		}
 
-		if (My_Statuses[i].size > My_Statuses[i].empty)
+		if (My_Statuses[i].size() > My_Statuses[i].empty())
 		{
 			return false; // then the state isn't existant here its something else
 		}
