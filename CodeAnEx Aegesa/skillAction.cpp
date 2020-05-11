@@ -52,7 +52,7 @@ skillAction::skillAction(int call)
 		skillcall(call).num + '\n';
 
 	cout << "Buff/Debuff name\n" +
-		skillcall(call).herpesus.buffName << endl;
+		skillcall(call).herpesus << endl;
 
 	cout << "StrikeType (O) OVERHAND, (L) LUNGE, (WS) WIDE-SWING, (P) PARRY\n " <<
 		"O < L < W > P > L > O\n" <<
@@ -94,12 +94,12 @@ skillAction::skillAction(int call)
 		<< endl;
 
 
-	herpesus.buffName = "none";
+	herpesus = "none";
 	stat14Percentages[statsForSkill];
 }
 
 skillAction::skillAction(int numid, string name, elementType d, string dec,
-	bool rType, int sp_succ, int fp_succ, int stat13[], stateEffects::statusEff e, char strikeType)
+	bool rType, int sp_succ, int fp_succ, int stat13[], string e, char strikeType)
 {
 	hpPerc = 0;
 	spPerc = 0;
@@ -132,7 +132,7 @@ skillAction::skillAction(int numid, string name, elementType d, string dec,
 	stat13[12] = endPerc;
 	stat13[13] = conPerc;
 
-	e.buffName = "dummyu"; // you may need to initialize these
+	e = "dummyu"; // you may need to initialize these
 
 	// sp consume
 	spAdd += sp_succ;

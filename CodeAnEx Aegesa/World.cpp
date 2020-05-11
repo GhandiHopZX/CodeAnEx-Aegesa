@@ -92,6 +92,20 @@ void World::beginningStory()
 	Alicia.setHp(15);
 	Alicia.setSp(155);
 	Alicia.setFp(5);
+
+	Alicia.setATKd(6);
+	Alicia.setSPDd(8);
+	Alicia.setDEFd(4);
+	Alicia.setSTRd(10);
+	Alicia.setDEXd(12);
+	Alicia.setCONd(7);
+	Alicia.setENDd(5);
+	Alicia.setINTd(6);
+
+	Alicia.setHpd(15);
+	Alicia.setSpd(150);
+	Alicia.setFpd(5);
+
 	Alicia.setAp(5);
 	Alicia.setDp(0); // always set these defaulted to 0
 #pragma endregion
@@ -168,7 +182,9 @@ void World::beginningStory()
 	//Alicia
 	//};
 	//
-
+	addPartyMember(0, Actor1);
+	addPartyMember(1, Alicia);
+	
 	system("CLS");
 	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
 	lineStop();
@@ -358,7 +374,7 @@ void World::partyMenu(Player_Actor party[])
 		//int v = party[i].getStatus().turns_Of_aff;
 
 		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
-		cout << '\n' << "SP" << ": " << '\t' << party[i].getSPDd() << '/' << party[i].getSp() << endl;
+		cout << '\n' << "SP" << ": " << '\t' << party[i].getSpd() << '/' << party[i].getSp() << endl;
 
 		//cout << "[state(s)]" << endl;
 		for (int k = 0; k < party[i].num_Statuses; k++)
@@ -646,3 +662,42 @@ World::~World()
 {
 	StopTime();
 }
+
+void World::addPartyMember(int m, Player_Actor in)
+{
+		playerParty[m].setName(in.getName());
+		playerParty[m].setBio(in.getBio());
+
+		playerParty[m].setAGI(in.getAGI());
+		playerParty[m].setAGId(in.getAGId());
+		playerParty[m].setSTR(in.getSTR());
+		playerParty[m].setSTRd(in.getSTRd());
+		playerParty[m].setSPR(in.getSPR());
+		playerParty[m].setSPRd(in.getSPRd());
+		playerParty[m].setAp(in.getAp());
+		playerParty[m].setATK(in.getATK());
+		playerParty[m].setATKd(in.getATKd());
+		playerParty[m].setCON(in.getCON());
+		playerParty[m].setCONd(in.getCONd());
+		playerParty[m].setBGSpd(in.getBGspd());
+		playerParty[m].setDEF(in.getDEFd());
+		playerParty[m].setDEFd(in.getDEFd());
+		playerParty[m].setDEX(in.getDEX());
+		playerParty[m].setDEXd(in.getDEXd());
+		playerParty[m].setEND(in.getEND());
+		playerParty[m].setENDd(in.getENDd());
+		playerParty[m].setFp(in.getFp());
+		playerParty[m].setFpd(in.getFpd());
+		playerParty[m].setDp(in.getDp());
+		playerParty[m].setINT(in.getINT());
+		playerParty[m].setINTd(in.getINTd());
+		playerParty[m].setSp(in.getSp());
+		playerParty[m].setHp(in.getHp());
+		playerParty[m].setHpd(in.getHpd());
+		playerParty[m].setSpd(in.getSpd());
+		playerParty[m].setState("NORMAL");
+		playerParty[m].setTitle(in.getTitle());
+}
+
+void World::removePartyMember(int m)
+{}

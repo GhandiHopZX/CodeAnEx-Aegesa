@@ -43,7 +43,7 @@ public:
 	string dec;
 	elementType type;
 	bool rangeType;
-	stateEffects::statusEff herpesus; // whatever it needs to be
+	string herpesus; // whatever it needs to be
 	char strikeType; // hard set goodness
 
 #pragma endregion
@@ -92,7 +92,7 @@ public:
 	skillAction(int);
 
 	skillAction(int num, string name, elementType d, string dec, bool rangeType,
-		int sp_succ, int fp_succ, int stat13[], stateEffects::statusEff hopesis, char st);
+		int sp_succ, int fp_succ, int stat13[], string hopesis, char st);
 
 	skillAction skillcall(int);
 

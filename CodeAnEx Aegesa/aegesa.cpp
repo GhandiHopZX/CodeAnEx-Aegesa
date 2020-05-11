@@ -3,6 +3,7 @@
 #include "aegesa.h"
 #include <map>
 #include <stack>
+
 using namespace std;
 
 aegesa::aegesa()
@@ -42,6 +43,29 @@ void aegesa::setBGSpd(int spdIn)
 //aegesa::statusEff aegesa::getStatus()
 //{
 //	return statusEff();
+//}
+
+//bool stateEffects::isFull(int d)
+//{
+//	for (int i = 0; i < 20; i++)
+//	{
+//		if (allEffGet[d].buffName != aegesa::My_Statuses[i].buffName)
+//		{
+//			return false; // then the state isn't existant here
+//		}
+//
+//		if (aegesa::My_Statuses[i].turns_Of_aff == -1)
+//		{
+//			return true;
+//		}
+//
+//		if (aegesa::My_Statuses[i].turns_Of_aff == allEffGet[d].turns_Of_aff)
+//		{
+//			return true;
+//		}
+//	}
+//
+//	return false;
 //}
 
 void aegesa::setState(string name)
