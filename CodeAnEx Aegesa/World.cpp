@@ -757,45 +757,49 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 
 		// save its data here
 			outFile.open("/" + deleteCall + ".dat", ios::out, ios::trunc);
-			if (!outFile.is_open)
+			if (!outFile)
 				{
-					outFile.write(deleteCall.c_str(), playerParty[i].getAGI());
-					outFile.write(deleteCall.c_str(), playerParty[i].getAGId() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getAp() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getATK() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getATKd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getBGspd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getBio().size() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getCON() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getCONd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getDEF() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getDEFd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getDEX() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getDEXd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getDp() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getEND() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getENDd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getExp() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getFp() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getFpd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getHp() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getHpd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getINT() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getINTd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getName().size() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getParty_num() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSMulti() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSp() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSPD() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSpd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSPDd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSPDPlus() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSPR() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getSPRd() );
-					outFile.write(deleteCall.c_str(), playerParty[i].getState().size());
-					outFile.write(deleteCall.c_str(), playerParty[i].getSTR());
-					outFile.write(deleteCall.c_str(), playerParty[i].getSTRd());
+					return;
 				}
+			else
+			{
+				outFile.write(deleteCall.c_str(), playerParty[i].getAGI());
+				outFile.write(deleteCall.c_str(), playerParty[i].getAGId());
+				outFile.write(deleteCall.c_str(), playerParty[i].getAp());
+				outFile.write(deleteCall.c_str(), playerParty[i].getATK());
+				outFile.write(deleteCall.c_str(), playerParty[i].getATKd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getBGspd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getBio().size());
+				outFile.write(deleteCall.c_str(), playerParty[i].getCON());
+				outFile.write(deleteCall.c_str(), playerParty[i].getCONd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getDEF());
+				outFile.write(deleteCall.c_str(), playerParty[i].getDEFd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getDEX());
+				outFile.write(deleteCall.c_str(), playerParty[i].getDEXd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getDp());
+				outFile.write(deleteCall.c_str(), playerParty[i].getEND());
+				outFile.write(deleteCall.c_str(), playerParty[i].getENDd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getExp());
+				outFile.write(deleteCall.c_str(), playerParty[i].getFp());
+				outFile.write(deleteCall.c_str(), playerParty[i].getFpd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getHp());
+				outFile.write(deleteCall.c_str(), playerParty[i].getHpd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getINT());
+				outFile.write(deleteCall.c_str(), playerParty[i].getINTd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getName().size());
+				outFile.write(deleteCall.c_str(), playerParty[i].getParty_num());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSMulti());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSp());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSPD());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSpd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSPDd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSPDPlus());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSPR());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSPRd());
+				outFile.write(deleteCall.c_str(), playerParty[i].getState().size());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSTR());
+				outFile.write(deleteCall.c_str(), playerParty[i].getSTRd());
+			}
 			outFile.close();
 		}
 		if (playerParty[i].getName() != deleteCall)
