@@ -77,6 +77,38 @@ void World::beginningStory()
 
 	cout << endl;
 
+#pragma region Actor1_SetStats
+	
+	Actor1.setATK(5);
+	Actor1.setSPD(3);
+	Actor1.setDEF(2);
+	Actor1.setSTR(2);
+	Actor1.setDEX(2);
+	Actor1.setCON(4);
+	Actor1.setEND(2);
+	Actor1.setINT(7);
+
+	Actor1.setHp(15);
+	Actor1.setSp(250);
+	Actor1.setFp(2);
+
+	Actor1.setATKd(1);
+	Actor1.setSPDd(1);
+	Actor1.setDEFd(1);
+	Actor1.setSTRd(1);
+	Actor1.setDEXd(1);
+	Actor1.setCONd(1);
+	Actor1.setENDd(1);
+	Actor1.setINTd(1);
+
+	Actor1.setHpd(12);
+	Actor1.setSpd(15);
+	Actor1.setFpd(1);
+
+	Actor1.setAp(5);
+	Actor1.setDp(0); // always set these defaulted to 0
+#pragma endregion
+
 #pragma region Alicia_SetStats
 	Alicia.setName("Alicia");
 	Alicia.setBio("Lost class 3 Android unit. Locked Away for 10 years, now follows you in your journey for the AType upgrade to save her friend..");
@@ -184,6 +216,8 @@ void World::beginningStory()
 	//
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
+
+	changePartySize(2);
 	
 	system("CLS");
 	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
@@ -339,11 +373,11 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 	//battle processing and dot giving
 	for (int i = 0; i < partySize; i++)
 	{
-		if ((party[i].My_Statuses[i].at(i) = 'D') && party[i].isPlayer == true)
+		if ((party[i].My_Statuses[i].at(i) == 'D') && party[i].isPlayer == true)
 		{
 			// game over
 		}
-		else if (!(party[i].My_Statuses[i].at(i) = 'D') && party[i].isPlayer == true) // check for in_party npcs and dead ppl
+		else if (!(party[i].My_Statuses[i].at(i) == 'D') && party[i].isPlayer == true) // check for in_party npcs and dead ppl
 		{
 			eventCalls(location, mEVTriggerActive(), evRand);
 		}
@@ -423,9 +457,7 @@ void World::partyMenu(Player_Actor party[])
 	}
 }
 
-void World::dataCall() {}
 
-void World::optionMenuCall() {}
 
 void World::eventCalls(World::map local, bool trigger, int evNCall)
 {
@@ -455,6 +487,10 @@ void World::eventCalls(World::map local, bool trigger, int evNCall)
 
 	}
 }
+
+void World::dataCall() {}
+
+void World::optionMenuCall() {}
 
 void World::dialouge(Player_Actor pn, string in)
 {
@@ -660,7 +696,12 @@ bool World::mEVTriggerActive()
 
 World::~World()
 {
-	StopTime();
+	StopTime(); // use this outside of this constructor for any game shutdown.
+}
+
+void World::changePartySize(int isIn)
+{
+	playerParty->setParty_num(isIn);
 }
 
 void World::addPartyMember(int m, Player_Actor in)
@@ -699,5 +740,80 @@ void World::addPartyMember(int m, Player_Actor in)
 		playerParty[m].setTitle(in.getTitle());
 }
 
-void World::removePartyMember(int m)
-{}
+void World::removePartyMember(int m, Player_Actor out, string deleteCall)
+{
+	int negation = 1;
+	int partyNum = playerParty[m].getParty_num();
+	fstream outFile;
+	Player_Actor arr[6];
+
+	deleteCall = out.getName();
+
+	for (int i = 0; i < partyNum; i++)
+	{
+		if (playerParty[i].getName() == deleteCall)
+		{
+		// overrite the one before the last with the last
+
+		// save its data here
+			outFile.open("/" + deleteCall + ".dat", ios::out, ios::trunc);
+			if (!outFile.is_open)
+				{
+					outFile.write(deleteCall.c_str(), playerParty[i].getAGI());
+					outFile.write(deleteCall.c_str(), playerParty[i].getAGId() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getAp() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getATK() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getATKd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getBGspd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getBio().size() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getCON() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getCONd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getDEF() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getDEFd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getDEX() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getDEXd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getDp() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getEND() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getENDd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getExp() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getFp() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getFpd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getHp() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getHpd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getINT() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getINTd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getName().size() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getParty_num() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSMulti() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSp() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSPD() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSpd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSPDd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSPDPlus() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSPR() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getSPRd() );
+					outFile.write(deleteCall.c_str(), playerParty[i].getState().size());
+					outFile.write(deleteCall.c_str(), playerParty[i].getSTR());
+					outFile.write(deleteCall.c_str(), playerParty[i].getSTRd());
+				}
+			outFile.close();
+		}
+		if (playerParty[i].getName() != deleteCall)
+		{
+			// save party into a object array
+			arr[i] = playerParty[i];
+		}
+	}
+
+	// deletion
+	if (playerParty[m].getName() == deleteCall)
+	{
+		playerParty[m].setParty_num(partyNum - negation);
+	}
+
+	// restoration
+	for (int i = 0; i < partyNum; i++)
+	{
+		playerParty[i] = arr[i];
+	}
+}

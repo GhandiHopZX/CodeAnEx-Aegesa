@@ -130,10 +130,12 @@ public:
 	// other functions
 	Player_Actor playerParty[partySize]; // menus
 	void addPartyMember(int , Player_Actor in);
-	void removePartyMember(int m);
+	void removePartyMember(int m, Player_Actor out, string deleteCall);
 	aegesa battlersP[partySize]; // for the player_Actors
 	aegesa battlersE[ePartySize]; // for the enemy
 
 	~World();
+
+	void changePartySize(int isIn);
 	
 };
