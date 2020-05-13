@@ -394,7 +394,7 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 void World::partyMenu(Player_Actor party[])
 {
 	char choice2 = ' ';
-	string scin = "";
+	string scin = " ";
 
 	system("CLS");
 	cout << "Current Party" << endl;
@@ -418,10 +418,14 @@ void World::partyMenu(Player_Actor party[])
 		}
 		cout << endl;
 	}
+	scin = "\0";
 
-	choice2 = choiceIn(scin);
+	
 
 	cout << "Please select an option....\n (s) Status,\n (e) Equip,\n (sa) SkillActions,\n (t) ClassTree \n";
+	cin >> scin;
+
+	choice2 = choiceIn(scin);
 	switch (choice2)
 	{
 	case 's':
@@ -456,8 +460,6 @@ void World::partyMenu(Player_Actor party[])
 		break;
 	}
 }
-
-
 
 void World::eventCalls(World::map local, bool trigger, int evNCall)
 {
