@@ -322,6 +322,7 @@ void World::menu()
 
 void World::inventory()
 {
+	mainInventory.PlayerItemInventory();
 }
 
 void World::navigation()
@@ -418,14 +419,13 @@ void World::partyMenu(Player_Actor party[])
 		}
 		cout << endl;
 	}
+
 	scin = "\0";
-
-	
-
 	cout << "Please select an option....\n (s) Status,\n (e) Equip,\n (sa) SkillActions,\n (t) ClassTree \n";
 	cin >> scin;
 
 	choice2 = choiceIn(scin);
+
 	switch (choice2)
 	{
 	case 's':
