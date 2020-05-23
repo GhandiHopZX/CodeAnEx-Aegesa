@@ -329,10 +329,6 @@ void World::navigation()
 {
 }
 
-void World::partyMenu()
-{
-}
-
 void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
 {
 	if (mEVTriggerActive() == true)
@@ -391,7 +387,7 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 
 	party->isPlayer;
 }
-
+// k
 void World::partyMenu(Player_Actor party[])
 {
 	char choice2 = ' ';
@@ -448,7 +444,7 @@ void World::partyMenu(Player_Actor party[])
 		menu();
 		break;
 
-	case 'c':
+	case 't':
 		// select party member
 		// class tree
 		menu();

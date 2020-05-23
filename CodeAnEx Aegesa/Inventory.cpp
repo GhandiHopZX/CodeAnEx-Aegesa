@@ -84,10 +84,10 @@ inventory::item allitemList(int integer)
 	}
 
 inventory::weapon my_weapons[inventory::MAX_INTEGRITY] =
-	{};
+{};
 
-	inventory::armor my_armors[inventory::MAX_INTEGRITY] =
-	{};
+inventory::armor my_armors[inventory::MAX_INTEGRITY] =
+{};
 
 inventory::item my_items[inventory::MAX_INTEGRITY] =
 {};
