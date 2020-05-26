@@ -282,6 +282,7 @@ void World::endGame()
 
 void World::menu()
 {
+	system("CLS");
 	char choice = {};
 	cout << "Please select an option....\n (i) Inventory,\n (n) Navigation,\n (p) Party,\n (d) Save/Load,\n (o) Options";
 	cin >> choice;
@@ -289,8 +290,7 @@ void World::menu()
 	{
 	case 'i':
 	case 'item':
-		//mainInventory.PlayerItemInventory(); // do this within a method
-		//Actor1;
+		//inventory();
 		break;
 
 	case 'n':
@@ -377,11 +377,11 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 	//battle processing and dot giving
 	for (int i = 0; i < partySize; i++)
 	{
-		if ((party[i].My_Statuses[i].at(i) == 'D') && party[i].isPlayer == true)
+		if ((party[i].My_Statuses[i].at(0) == 'D') && party[i].isPlayer == true)
 		{
 			// game over
 		}
-		else if (!(party[i].My_Statuses[i].at(i) == 'D') && party[i].isPlayer == true) // check for in_party npcs and dead ppl
+		else if (!(party[i].My_Statuses[i].at(0) == 'D') && party[i].isPlayer == true) // check for in_party npcs and dead ppl
 		{
 			eventCalls(location, mEVTriggerActive(), evRand);
 		}
@@ -543,7 +543,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 
 	cout << "\nWhere will you go?\n (n)north,\n"
 		<< "(e)east,\n (w)west,\n (s)south,\n (ne)northeast,\n"
-		<< "(nw)northwest,\n (se)southeast,\n (sw)southwest\n " << endl;
+		<< "(nw)northwest,\n (se)southeast,\n (sw)southwest\n, (q)nowhere\n" << endl;
 
 	char dir = {};
 	cin >> dir;
@@ -621,6 +621,11 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
+
+	case 'q':
+		menu();
+		break;
+
 	default:
 		cout << "not a direction or command" << endl;
 		whereAmI(selectedMap, x, y, z);
