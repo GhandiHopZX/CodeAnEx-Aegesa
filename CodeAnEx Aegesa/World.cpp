@@ -331,32 +331,39 @@ void World::navigation()
 
 void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
 {
-	if (mEVTriggerActive() == true)
+	switch (mEVTriggerActive())
 	{
-		if (m.name == "Lost City")
+	case true:
+		switch (m.name.at(0))
 		{
+		case 'L':
+			//"Lost City"
 			evRandomizer(party, m, mx, my, mz);
+			break;
+		case 'D':
+			//"Dark Forest"
+			break;
+		case 'E':
+			//"Eikka"
+			break;
+		case 'R':
+			//"RheTan"
+			break;
+
+		case 'A':
+			//"Aegesa Shrine"
+			break;
+
+		default:
+			break;
 		}
+		break;
 
-		if (m.name == "Dark Forest")
-		{
+	case false:
+		break;
 
-		}
-
-		if (m.name == "Eikka")
-		{
-
-		}
-
-		if (m.name == "RheTan")
-		{
-
-		}
-
-		if (m.name == "Aegesa Shrine")
-		{
-
-		}
+	default:
+		break;
 	}
 	
 }
@@ -459,30 +466,40 @@ void World::partyMenu(Player_Actor party[])
 
 void World::eventCalls(World::map local, bool trigger, int evNCall)
 {
-	// names and any other data goes here
-	if (local.name == "Lost City")
+
+	switch (mEVTriggerActive())
 	{
-		eventTypeNamesLV1[evNCall];
-	}
+	case true:
+		switch (local.name.at(0))
+		{
+		case 'L':
+			//"Lost City"
+			eventTypeNamesLV1[evNCall];
+			break;
+		case 'D':
+			//"Dark Forest"
+			break;
+		case 'E':
+			//"Eikka"
+			break;
+		case 'R':
+			//"RheTan"
+			break;
 
-	if (local.name == "Dark Forest")
-	{
+		case 'A':
+			//"Aegesa Shrine"
+			break;
 
-	}
+		default:
+			break;
+		}
+		break;
 
-	if (local.name == "Eikka")
-	{
+	case false:
+		break;
 
-	}
-
-	if (local.name == "RheTan")
-	{
-
-	}
-
-	if (local.name == "Aegesa Shrine")
-	{
-
+	default:
+		break;
 	}
 }
 
@@ -692,11 +709,6 @@ bool World::mEVTriggerActive()
 	return movedEVTrigger;
 }
 
-World::~World()
-{
-	StopTime(); // use this outside of this constructor for any game shutdown.
-}
-
 void World::changePartySize(int isIn)
 {
 	playerParty->setParty_num(isIn);
@@ -818,4 +830,9 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 	{
 		playerParty[i] = arr[i];
 	}
+}
+
+World::~World()
+{
+	StopTime(); // use this outside of this constructor for any game shutdown.
 }
