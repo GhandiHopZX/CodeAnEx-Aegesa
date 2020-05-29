@@ -291,7 +291,7 @@ void World::menu()
 {
 	system("CLS");
 	char choice = {};
-	cout << "Please select an option....\n (i) Inventory,\n (n) Navigation,\n (p) Party,\n (d) Save/Load,\n (o) Options";
+	cout << "Please select an option....\n (i) Inventory,\n (n) Navigation,\n (p) Party,\n (d) Save/Load,\n (o) Options\n" << endl;
 	cin >> choice;
 	switch (choice)
 	{
@@ -421,7 +421,7 @@ void World::partyMenu(Player_Actor party[])
 	// print menu
 	for (int i = 0; i < party_ppl; i++)
 	{
-		//int v = party[i].getStatus().turns_Of_aff;
+		//int v = party[i];
 
 		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
 		cout << '\n' << "SP" << ": " << '\t' << party[i].getSpd() << '/' << party[i].getSp() << endl;
@@ -530,23 +530,25 @@ void World::statusCall(Player_Actor p[])
 
 	for (int i = 0; i < partyNum; i++)
 	{
-	// for the one chosen
+	// for the ones to choose
 		cout << p[i].getName() << endl;
 		cout << endl;
-		
 	}
 
-	cout << "Select Member... " << "1 - " << partyNum << endl;
+	cout << "Select Member... " << "0 - " << partyNum - 1 << endl;
 
 	cin >> choice;
 
-	while (choice < 1 || choice > partyNum)
+	system("CLS");
+
+	while (choice < 0 || choice > partyNum)
 	{
 		cout << "Invalid selection. Reselect...";
 		cin >> choice;
+		break;
 	}
 
-	if (choice <= partyNum && choice != 0)
+	if (choice <= partyNum)
 	{
 		cout << p[choice].getName() << endl;
 
@@ -554,7 +556,7 @@ void World::statusCall(Player_Actor p[])
 		p[choice].printStates();
 		
 		cout << endl;
-
+		
 		cout << "HP: " << p[choice].getHpd() << "/" << p[choice].getHp() << endl;
 		cout << "SP: " << p[choice].getSpd() << "/" << p[choice].getSp() << endl;
 		cout << "FP: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
