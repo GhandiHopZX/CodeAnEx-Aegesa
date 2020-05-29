@@ -2,6 +2,7 @@
 #include <list>
 #include <vector>
 #include <iostream>
+#include <map>
 #include <unordered_set>
 #include "aegesa.h"
 #include "stateEffects.h"
@@ -65,10 +66,10 @@ public:
 	unsigned int EXP; // experience to obtain the per level ap gain
 	string title;
 #pragma endregion
+	// just use maps for now on.
+	map<int, string> My_Statuses2[statusGroups];
 
-	string My_Statuses[statusGroups];
-
-	list<pair<int, string>> My_Statuses2[20];
+	string My_Statuses[statusGroups]{};
 
 	// variables
 	string name = ""; // YOUR NAME!
@@ -102,6 +103,11 @@ public:
 	string getTitle()
 	{
 		return title;
+	}
+
+	int getNumOfStates()
+	{
+		return num_Statuses;
 	}
 
 	int getParty_num()
@@ -216,8 +222,16 @@ public:
 #pragma endregion
 
 	// setters / mutators
+	void removeStates(int);
+	void stateCheck();
 
 #pragma region setters
+	
+	void setNumOfStates(int n)
+	{
+		num_Statuses = n;
+	}
+
 	void setParty_num(int n)
 	{
 		party_num = n;
@@ -499,7 +513,7 @@ public:
 
 	string getState();
 
-	string printStates();
+	void printStates();
 
 	void setTitle(string n);
 

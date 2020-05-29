@@ -264,14 +264,21 @@ void World::chapter5()
 {
 
 	//end of chapter
-	endGame();
+	//endGame(); call this when you beat the game
+	lineStop();
+}
+
+void World::gameOver()
+{
+	cout << "GAME OVER" << endl;
 }
 
 void World::endGame()
 {
-	// end of game? =)
-	lineStop();
 	cout << "Will you dream again?" << endl;
+	// end of game? =)
+	// lineStop(); use this outside of the function.
+	
 }
 
 //Enemy Encounter call ins
@@ -290,7 +297,7 @@ void World::menu()
 	{
 	case 'i':
 	case 'item':
-		//inventory();
+		inventory();
 		break;
 
 	case 'n':
@@ -305,7 +312,10 @@ void World::menu()
 
 	case 'd':
 	case 'data':
-		dataCall();
+		//
+		//dataCall();
+		gameOver();
+		lineStop();
 		break;
 
 	case 'o':
@@ -327,6 +337,7 @@ void World::inventory()
 
 void World::navigation()
 {
+
 }
 
 void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
@@ -394,6 +405,7 @@ void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int
 
 	party->isPlayer;
 }
+
 // k
 void World::partyMenu(Player_Actor party[])
 {
@@ -418,7 +430,7 @@ void World::partyMenu(Player_Actor party[])
 		for (int k = 0; k < party[i].num_Statuses; k++)
 		{
 			//party[i].getStatus().buffName;
-			cout << "["  << party[i].printStates()  << " " << "]" << "Turns Left: " << /*v<<*/ endl;
+			cout << "["  << party[i].getState()  << " " << "]" << "Turns Left: " << /*v<<*/ endl;
 		}
 		cout << endl;
 	}
@@ -434,6 +446,8 @@ void World::partyMenu(Player_Actor party[])
 	case 's':
 		// select party member
 		// status for member
+		statusCall(playerParty);
+		lineStop();
 		menu();
 		break;
 
@@ -506,6 +520,77 @@ void World::eventCalls(World::map local, bool trigger, int evNCall)
 void World::dataCall() {}
 
 void World::optionMenuCall() {}
+
+void World::statusCall(Player_Actor p[])
+{
+	int partyNum = getPartySize();
+	int choice = 0;
+
+	cout << "Status for ?" << endl;
+
+	for (int i = 0; i < partyNum; i++)
+	{
+	// for the one chosen
+		cout << p[i].getName() << endl;
+		cout << endl;
+		
+	}
+
+	cout << "Select Member... " << "1 - " << partyNum << endl;
+
+	cin >> choice;
+
+	while (choice < 1 || choice > partyNum)
+	{
+		cout << "Invalid selection. Reselect...";
+		cin >> choice;
+	}
+
+	if (choice <= partyNum && choice != 0)
+	{
+		cout << p[choice].getName() << endl;
+
+		cout << "States" << endl;
+		p[choice].printStates();
+		
+		cout << endl;
+
+		cout << "HP: " << p[choice].getHpd() << "/" << p[choice].getHp() << endl;
+		cout << "SP: " << p[choice].getSpd() << "/" << p[choice].getSp() << endl;
+		cout << "FP: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
+		cout << "AP: " << p[choice].getAp() << endl;
+		cout << "DP: " << p[choice].getDp() << endl;
+
+		cout << "ATK: " << p[choice].getATKd() << "/" << p[choice].getATK() << endl;
+		cout << "DEF: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
+		cout << "SPD: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
+
+		cout << "AGI: " << p[choice].getAGId() << "/" << p[choice].getAGI() << endl;
+		cout << "DEX: " << p[choice].getDEXd() << "/" << p[choice].getDEX() << endl;
+		cout << "INT: " << p[choice].getINTd() << "/" << p[choice].getINT() << endl;
+		cout << "SPR: " << p[choice].getSPRd() << "/" << p[choice].getSPR() << endl;
+		cout << "STR: " << p[choice].getSTRd() << "/" << p[choice].getSTR() << endl;
+		cout << "END: " << p[choice].getENDd() << "/" << p[choice].getEND() << endl;
+		cout << "CON: " << p[choice].getCONd() << "/" << p[choice].getCON() << endl;
+
+		switch (p[choice].leader)
+		{
+		case true:
+			cout << "Leader" << endl;
+			break;
+
+		default:
+			cout << "Not Leader" << endl;
+			break;
+		}
+
+		cout << endl;
+
+		cout << "OK?" << endl;
+
+	}
+	lineStop();
+}
 
 void World::dialouge(Player_Actor pn, string in)
 {
@@ -707,6 +792,11 @@ long World::StartTime()
 void World::mEVTriggerSetter(bool mEVT)
 {
 	movedEVTrigger = mEVT;
+}
+
+int World::getPartySize()
+{
+	return playerParty->getParty_num();
 }
 
 bool World::mEVTriggerActive()

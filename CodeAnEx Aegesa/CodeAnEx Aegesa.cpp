@@ -26,6 +26,43 @@ printedT output(string i)
 	return i;
 }
 
+template <class findDuplicate>
+findDuplicate twoSameNum(findDuplicate d[])
+{
+	int o;
+	int o2;
+
+	o = d[0];
+	o2 = d[0];
+
+	bool check;
+
+	while (check == true)
+	{
+		o = d[o];
+		o2 = d[d[o2]];
+
+		if (o == o2)
+			break;
+
+		int& ptr1;
+		int& ptr2;
+
+		ptr1 = d[0];
+		ptr2 = o;
+
+		while (ptr1 != ptr2)
+		{
+			ptr1 = d[ptr1];
+			ptr2 = d[ptr2];
+			return ptr1;
+			
+		}
+		check = false;
+		break;
+	}
+}
+
 // globals
 
 World d;

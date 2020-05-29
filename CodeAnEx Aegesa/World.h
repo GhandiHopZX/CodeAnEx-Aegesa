@@ -76,6 +76,7 @@ public:
 	void chapter4(); //Renae's Secret/Lost Civilization
 	void chapter5(); //Alicia's Verdict
 
+	void gameOver(); // obvious
 	void endGame(); // game end
 
 	// menu stuff
@@ -91,6 +92,9 @@ public:
 	void dataCall();
 
 	void optionMenuCall();
+
+	// submenu calls
+	void statusCall(Player_Actor p[]);
 
 	//Main game loop: 1. main menu, 2. when move, 3. randomizer or => 4. if theres a story ev that engages. 5. back to top
 	void gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[]);
@@ -122,7 +126,7 @@ public:
 	void mEVTriggerSetter(bool);
 
 	// getters/accessors
-
+	int getPartySize();
 	bool mEVTriggerActive();
 
 	// state modifiers

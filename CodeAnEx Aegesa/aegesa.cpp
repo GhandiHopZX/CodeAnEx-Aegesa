@@ -1,8 +1,10 @@
 #include <iostream>
 #include <list>
-#include "aegesa.h"
 #include <map>
 #include <stack>
+#include <vector>
+#include <utility>
+#include "aegesa.h"
 
 using namespace std;
 
@@ -70,25 +72,49 @@ void aegesa::setBGSpd(int spdIn)
 
 void aegesa::setState(string name)
 {
+	stateCheck();
 	for (int i = 0; i < 20; i++)
 	{
+		int m = getNumOfStates() + 1;
 		//My_Statuses2.
+		//validate actual states
+		//add one if needed
+		//put in the state 
+		My_Statuses2->insert(pair<int, string>(m, name));
 	}
 }
 
 string aegesa::getState()
 {
-	return string();
+	stateCheck();
+	map<int, string>::iterator it;
+	string sups[20];
+
+	for (int i = 0; i < getNumOfStates(); i++)
+	{
+		for (it = My_Statuses2[i].begin(); it != My_Statuses2[i].end(); ++it)
+		{
+			sups[i] += it->second;
+		}
+		return sups[i];
+	}
+	
 }
 
-string aegesa::printStates()
+void aegesa::printStates()
 {
 	string cstate;
-	cstate = "CURRENT STATES";
-	for (int i = 0; i < 20; i++)
+	cstate = " CURRENT STATES";
+
+	// iterator
+	map<int, string>::iterator it;
+
+	for (int i = 0; i < getNumOfStates(); i++)
 	{
-		cout << My_Statuses[i];
-		return cstate; // completes
+		for (it = My_Statuses2[i].begin(); it!= My_Statuses2[i].end(); ++it)
+		{
+			cout << "[" << it->second << "]" << " /" << " ";
+		}
 	}
 }
 
@@ -106,23 +132,40 @@ bool aegesa::stateIsEmpty()
 {
 	for (size_t i = 0; i < 20; i++)
 	{
-		if (My_Statuses[i].empty())
+		if (My_Statuses2->at(i).empty())
 		{
 			return true;
 		}
 
-		if (My_Statuses[i] == "")
+		if (My_Statuses2->at(i) == "")
 		{
 			return true;
 		}
 
-		if (My_Statuses[i].size() > My_Statuses[i].empty())
+		if (My_Statuses2->at(i).size() > My_Statuses2->at(i).empty())
 		{
 			return false; // then the state isn't existant here its something else
 		}
 	}
 	
 	return false;
+}
+
+void aegesa::removeStates(int io)
+{
+	My_Statuses2->at(io).erase();
+	setNumOfStates(-1);
+}
+
+void aegesa::stateCheck()
+{
+	for (int i = 0; i < getNumOfStates(); i++)
+	{
+		if (My_Statuses2->at(i).empty())
+		{
+			removeStates(i);
+		}
+	}
 }
 
 void aegesa::statPlus(char stat, int plus)
