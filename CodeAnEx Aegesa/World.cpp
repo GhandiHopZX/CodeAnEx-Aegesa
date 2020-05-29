@@ -79,6 +79,7 @@ void World::beginningStory()
 
 #pragma region Actor1_SetStats
 	
+
 	Actor1.setATK(5);
 	Actor1.setSPD(3);
 	Actor1.setDEF(2);
@@ -214,6 +215,7 @@ void World::beginningStory()
 	//Alicia
 	//};
 	//
+	Actor1.setLead(true);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
 
@@ -575,13 +577,14 @@ void World::statusCall(Player_Actor p[])
 		cout << "END: " << p[choice].getENDd() << "/" << p[choice].getEND() << endl;
 		cout << "CON: " << p[choice].getCONd() << "/" << p[choice].getCON() << endl;
 
-		switch (p[choice].leader)
+
+		switch (p[choice].getLeadRole())
 		{
 		case true:
 			cout << "Leader" << endl;
 			break;
 
-		default:
+		case false:
 			cout << "Not Leader" << endl;
 			break;
 		}

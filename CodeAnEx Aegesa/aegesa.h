@@ -13,7 +13,7 @@ class aegesa
 {
 private:
 	static const int statusGroups = 20;
-	
+	bool leader;
 public:
 	aegesa();
 
@@ -59,7 +59,7 @@ public:
 	int ENDd = 0; // endurance (bodily based / also effects status)
 	int CONd = 0; // constitution (mental, body, soul, based / also effects status)
 	int party_num; // number of people you can have
-	bool leader;
+	
 	int num_Statuses = 0;
 
 	// experience
@@ -95,6 +95,11 @@ public:
 	};
 
 #pragma region getters
+	bool getLeadRole()
+	{
+		return leader;
+	}
+
 	string getName()
 	{
 		return name;
@@ -227,6 +232,11 @@ public:
 
 #pragma region setters
 	
+	void setLead(bool m)
+	{
+		leader = m;
+	}
+
 	void setNumOfStates(int n)
 	{
 		num_Statuses = n;

@@ -9,7 +9,6 @@ Player_Actor::Player_Actor()
 	name = "";
 	bio = "";
 	statmulti = false;
-	leader = false;
 	party_num = 4;
 	isPlayer = true;
 
