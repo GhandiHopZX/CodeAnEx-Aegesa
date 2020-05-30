@@ -217,12 +217,11 @@ void World::beginningStory()
 	//
 
 	// from now on change this if you want to see anykind of numeric
-	// or boolean change or like I said just make it a list
+	// or datatype change or like I said just make it a list
 	playerParty[0].setLead(true); 
 	changePartySize(2);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
-	
 	
 
 	system("CLS");

@@ -22,7 +22,7 @@ private:
 	// and that's it for now. 
 	// this is the lost city player pos and map
 
-	World();
+	
 	struct map
 	{
 		int x = 0;
@@ -48,6 +48,7 @@ private:
 	map aegesaShrine[11][11][5];
 
 public:
+	World();
 
 	map maps[5] =
 	{

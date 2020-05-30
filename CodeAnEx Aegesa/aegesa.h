@@ -66,6 +66,7 @@ public:
 	unsigned int EXP; // experience to obtain the per level ap gain
 	string title;
 #pragma endregion
+
 	// just use maps for now on.
 	map<int, string> My_Statuses2[statusGroups];
 
