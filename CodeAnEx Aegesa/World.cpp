@@ -215,12 +215,15 @@ void World::beginningStory()
 	//Alicia
 	//};
 	//
+	
+	playerParty[0].setLead(true);
 	Actor1.setLead(true);
+	changePartySize(2);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
-
-	changePartySize(2);
 	
+	
+
 	system("CLS");
 	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
 	lineStop();
@@ -618,6 +621,7 @@ string World::dialougeInput(string pvalue)
 
 void World::navigation(int selectedMap, int x, int y, int z)
 {
+	system("CLS");
 	// maps
 
 	// n = north, ne = northeast, nw = northwest, 
@@ -632,8 +636,8 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	whereAmI(selectedMap, x, y, z);
 
 	cout << "\nWhere will you go?\n (n)north,\n"
-		<< "(e)east,\n (w)west,\n (s)south,\n (ne)northeast,\n"
-		<< "(nw)northwest,\n (se)southeast,\n (sw)southwest\n, (q)nowhere\n" << endl;
+		<< "(e)east,\n (w)west,\n (s)south,\n (1)northeast,\n"
+		<< "(2)northwest,\n (3)southeast,\n (4)southwest\n, (q)nowhere\n" << endl;
 
 	char dir = {};
 	cin >> dir;
@@ -647,19 +651,19 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
-	case 'ne':
+	case '1':
 		maps[selectedMap].y += 1;
 		tse = maps[selectedMap].y;
-		maps[selectedMap].x -= 1;
+		maps[selectedMap].x += 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
 		//mEVTriggerSetter(true);
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
-	case 'nw':
+	case '2':
 		maps[selectedMap].y += 1;
-		maps[selectedMap].x += 1;
+		maps[selectedMap].x -= 1;
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
@@ -675,9 +679,9 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
-	case 'se':
+	case '3':
 		maps[selectedMap].y -= 1;
-		maps[selectedMap].x -= 1;
+		maps[selectedMap].x += 1;
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
@@ -685,9 +689,9 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
-	case 'sw':
+	case '4':
 		maps[selectedMap].y -= 1;
-		maps[selectedMap].x += 1;
+		maps[selectedMap].x -= 1;
 		tse = maps[selectedMap].y;
 		mao = maps[selectedMap].x;
 		// event randomizer
@@ -696,7 +700,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		menu();
 		break;
 	case 'w':
-		maps[selectedMap].x += 1;
+		maps[selectedMap].x -= 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
 		//mEVTriggerSetter(true);
@@ -704,7 +708,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		menu();
 		break;
 	case 'e':
-		maps[selectedMap].x -= 1;
+		maps[selectedMap].x += 1;
 		mao = maps[selectedMap].x;
 		// event randomizer
 		//mEVTriggerSetter(true);
@@ -854,8 +858,9 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 {
 	int negation = 1;
 	int partyNum = playerParty[m].getParty_num();
+	const int sPartyNum = 6;
 	fstream outFile;
-	Player_Actor arr[6];
+	Player_Actor arr[sPartyNum];
 
 	deleteCall = out.getName();
 
