@@ -21,6 +21,8 @@ private:
 	// for now we only have ch 0 - 5 to cover the lost city arc
 	// and that's it for now. 
 	// this is the lost city player pos and map
+
+	World();
 	struct map
 	{
 		int x = 0;
@@ -65,7 +67,12 @@ public:
 	};
 
 
-	World();
+	string stateTokenC[20]
+	{
+		"",
+		""
+	};
+
 
 	// setters/mutators
 
@@ -130,6 +137,7 @@ public:
 	bool mEVTriggerActive();
 
 	// state modifiers
+	string tokenChanger(string name, int turns);
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus

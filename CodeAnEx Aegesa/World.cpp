@@ -215,9 +215,10 @@ void World::beginningStory()
 	//Alicia
 	//};
 	//
-	
-	playerParty[0].setLead(true);
-	Actor1.setLead(true);
+
+	// from now on change this if you want to see anykind of numeric
+	// or boolean change or like I said just make it a list
+	playerParty[0].setLead(true); 
 	changePartySize(2);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
@@ -526,6 +527,7 @@ void World::dataCall() {}
 
 void World::optionMenuCall() {}
 
+// Statuses
 void World::statusCall(Player_Actor p[])
 {
 	int partyNum = getPartySize();

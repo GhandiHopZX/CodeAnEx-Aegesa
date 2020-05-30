@@ -73,12 +73,12 @@ inventory d();
 //	return Party[pos];
 //}
 
-// use this to kill the player and when they die
-Player_Actor::~Player_Actor()
-{
-}
-
 inventory d()
 {
 	return inventory();
+}
+
+// use this to kill the player and when they die
+Player_Actor::~Player_Actor()
+{
 }
