@@ -68,19 +68,26 @@ public:
 	};
 
 #pragma region statusTypes
-	string REGENERATION;
-	string POISON;
-	string STUNED;
-	string DEAD;
-	string HACKED;
-	string CRIPPLE;
-	string INEBREATED;
-	string SLEEP;
-	string CURSEDVSDARK; // AGONY
-	string CURSRDVSLIGHT; // DEPRESSION
-	string CURSEDVSDEMONIC; // ACCURSED
-	string CURSED;
-	string ANGER; // ADRENELINE
+	string REGENERATION = "REGENERATION";
+	string POISON = "POISON";
+	string STUNED = "STUNED";
+	string DEAD = "DEAD";
+	string HACKED = "HACKED";
+	string CRIPPLE = "CRIPPLE";
+	string INEBREATED = "INEBREATED";
+	string SLEEP = "SLEEP";
+	string CURSEDVSDARK = "AGONY"; // AGONY
+	string CURSRDVSLIGHT = "CURSRDVSLIGHT"; // LACKING
+	string CURSEDVSDEMONIC = "CURSEDVSDEMONIC"; // ACCURSED
+	string CURSED = "CURSED";
+	string ANGER = "ANGER";
+	string RADIATED = "RADIATED";
+	string BURNING = "BURNING";
+	string PARALYSED = "PARALYSED";
+	string DAZED = "DAZED";
+	string MAD = "MAD";
+	string FATIGUED = "FATIGUED";
+	string TRANSFORMATION = "TRANSFORMATION";
 #pragma endregion
 
 	// this needs to be a list
@@ -98,7 +105,14 @@ public:
 		CURSRDVSLIGHT,
 		CURSEDVSDEMONIC,
 		CURSED,
-		ANGER
+		ANGER,
+		RADIATED,
+		BURNING,
+		PARALYSED,
+		TRANSFORMATION,
+		DAZED,
+		MAD,
+		FATIGUED
 	}; // wip
 
 

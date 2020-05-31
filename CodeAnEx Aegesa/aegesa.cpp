@@ -10,7 +10,7 @@ using namespace std;
 
 aegesa::aegesa()
 {
-	EXP = NULL;
+	EXP = 0;
 	dummyPlus = NULL;
 	statmulti = NULL;
 	party_num = 4;
@@ -70,6 +70,7 @@ void aegesa::setBGSpd(int spdIn)
 //	return false;
 //}
 
+// states are added here
 void aegesa::setState(string name)
 {
 	stateCheck();
@@ -84,6 +85,7 @@ void aegesa::setState(string name)
 	}
 }
 
+// gets all states
 string aegesa::getState()
 {
 	stateCheck();
@@ -98,9 +100,9 @@ string aegesa::getState()
 		}
 		return sups[i];
 	}
-	
 }
 
+// print all states
 void aegesa::printStates()
 {
 	string cstate;
@@ -118,19 +120,22 @@ void aegesa::printStates()
 	}
 }
 
+// Title change
 void aegesa::setTitle(string n)
 {
 	title = n;
 }
 
+// speed add for in battle status 
 int aegesa::getSPDPlus()
 {
 	return dummyPlus;
 }
 
+// no state avaliable
 bool aegesa::stateIsEmpty()
 {
-	for (size_t i = 0; i < 20; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		if (My_Statuses2->at(i).empty())
 		{
@@ -151,12 +156,14 @@ bool aegesa::stateIsEmpty()
 	return false;
 }
 
+// gets rid of states
 void aegesa::removeStates(int io)
 {
 	My_Statuses2->at(io).erase();
 	setNumOfStates(-1);
 }
 
+// is the state there??
 void aegesa::stateCheck()
 {
 	for (int i = 0; i < getNumOfStates(); i++)
@@ -168,6 +175,8 @@ void aegesa::stateCheck()
 	}
 }
 
+// stat add modifier for another modifiers
+// like stat boosts or debufs and other status effects for transfer
 void aegesa::statPlus(char stat, int plus)
 {
 	int* eDrain = new int;
@@ -469,7 +478,7 @@ void aegesa::statPlus(char stat, int plus)
 //	return allEffGet[e]; // indexed item if exists
 //}
 
-
+// speed = how fast you can take your turn
 int aegesa::battleGuage(int spd)
 {
 	return spd;

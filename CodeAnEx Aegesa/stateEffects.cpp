@@ -18,6 +18,7 @@ string stateEffects::indexer(int s)
 	return string();
 }
 
+//useless
 bool stateEffects::isFull(int d)
 {
 	for (int i = 0; i < 20; i++)

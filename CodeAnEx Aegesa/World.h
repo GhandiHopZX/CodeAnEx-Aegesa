@@ -2,12 +2,15 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <map>
 #include <vector>
 #include <ctime>
+#include <unordered_set>
 #include <chrono>
 #include "aegesa.h"
 #include "Player_Actor.h"
 #include "Enemy.h"
+#include "stateEffects.h"
 
 class World // this is the mainline story for Code AnEx AEGESA
 {
@@ -17,12 +20,14 @@ class World // this is the mainline story for Code AnEx AEGESA
 	// sorry for the bad storytelling if that's your thing....
 
 private:
+
+	//keep this for state effects above map structs
+	map<int, stateEffects> currentPartyStates[6];
+
 	// Hub worlds that have cellular navigation 
 	// for now we only have ch 0 - 5 to cover the lost city arc
 	// and that's it for now. 
 	// this is the lost city player pos and map
-
-	
 	struct map
 	{
 		int x = 0;
@@ -70,8 +75,19 @@ public:
 
 	string stateTokenC[20]
 	{
-		"",
-		""
+		"REGENERATION",
+		"POISON",
+		"STUNED",
+		"DEAD",
+		"HACKED",
+		"CRIPPLE",
+		"INEBREATED",
+		"SLEEP",
+		"CURSEDVSDARK",
+		"CURSRDVSLIGHT",
+		"CURSEDVSDEMONIC",
+		"CURSED",
+		"ANGER"
 	};
 
 
@@ -142,6 +158,7 @@ public:
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus
+	
 	void addPartyMember(int , Player_Actor in);
 	void removePartyMember(int m, Player_Actor out, string deleteCall);
 	aegesa battlersP[partySize]; // for the player_Actors

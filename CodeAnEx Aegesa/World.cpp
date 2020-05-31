@@ -13,6 +13,7 @@
 #include <fstream>
 #include "World.h"
 // battle system stuff
+#include "stateEffects.h"
 #include "Enemy.h"
 #include "aegesa.h"
 #include "Player_Actor.h"
@@ -29,6 +30,7 @@ Player_Actor Iyn; //
 inventory mainInventory; //
 
 //HashTableSet anyHash; // magic hash of many things 
+//						// List aggregation stuff
 
 World::World()
 {
