@@ -42,6 +42,7 @@ private:
 	long play_time = 0;
 	int location = 0; // 0 lostCity, 1 darkForest, 2 ekana, 3 rheTan, 4 aegesaShrine...
 	const int MIN = 1;
+	const int MAX_STATES = 20;
 	const static int partySize = 6;
 	const static int ePartySize = 4;
 	bool movedEVTrigger;
@@ -153,8 +154,11 @@ public:
 	int getPartySize();
 	bool mEVTriggerActive();
 
+	
+
 	// state modifiers
-	string tokenChanger(string name, int turns);
+	string tokenChangerAdd(int partyNum, int place, string name, stateEffects t);
+	string tokenChangerRem(int partyNum, int place, string name, stateEffects);
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus

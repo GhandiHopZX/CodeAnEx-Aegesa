@@ -2,6 +2,7 @@
 #include <string>
 #include <ctime>
 #include "Player_Actor.h"
+#include "stateEffects.h"
 #include "inventory.h"
 
 Player_Actor::Player_Actor()
@@ -40,38 +41,8 @@ Player_Actor::Player_Actor()
 #pragma endregion
 }
 
-//Player_Actor Party[];
-
 inventory::weapon mActorWeaponE[1];
 inventory::armor mActorArmorE[3];
-
-//
-//void Player_Actor::setParty(Player_Actor currentPa, int pos)
-//{
-//	if (leader == true)
-//	{
-//		Party[pos] = currentPa;
-//	}
-//	else
-//	{
-//		cout << "not a party leader..." << endl;
-//	}
-//}
-//
-//Player_Actor Player_Actor::getParty()
-//{
-//	for (int i = 0; i < party_num; i++)
-//	{
-//		return Party[party_num];
-//	};
-//}
-//
-//Player_Actor Player_Actor::callPartyMember(int pos)
-//{
-//	return Party[pos];
-//}
-
-inventory d;
 
 // use this to kill the player and when they die
 Player_Actor::~Player_Actor()

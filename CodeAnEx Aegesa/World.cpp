@@ -28,6 +28,7 @@ Player_Actor Alicia; //
 Player_Actor Renae; // 
 Player_Actor Iyn; // 
 inventory mainInventory; //
+stateEffects st;
 
 //HashTableSet anyHash; // magic hash of many things 
 //						// List aggregation stuff
@@ -814,6 +815,36 @@ int World::getPartySize()
 bool World::mEVTriggerActive()
 {
 	return movedEVTrigger;
+}
+
+string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects t)
+{
+	string happened = "";
+	for (int i = 0; i < 20; i++)
+	{
+		if (name != t.allEffGet[i])
+		{
+			t.buffName == t.allEffGet[i];
+		}
+		else if (i > 20)
+		{
+			cout << "State Type does not exist..." << endl;
+			break;
+		}
+		else
+		{
+			t.buffName == name;
+			break;
+		}
+	}
+	currentPartyStates[partyNum].insert(pair<int, stateEffects>(place, t));
+	happened = playerParty[partyNum].getName() + " is" + t.buffName;
+	return happened;
+}
+
+string World::tokenChangerRem(int partyNum, int place, string name, stateEffects)
+{
+	
 }
 
 void World::changePartySize(int isIn)

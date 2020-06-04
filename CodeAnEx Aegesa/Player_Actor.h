@@ -583,6 +583,6 @@ public:
 		//void battleGuage();
 		*/
 
-		// Deconstructor
+// Deconstructor
 	~Player_Actor();
 };
