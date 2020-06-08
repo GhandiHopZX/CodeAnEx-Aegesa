@@ -9,6 +9,7 @@
 #include <cmath>
 #include <chrono>
 #include <thread>
+#include <map>
 #include <algorithm>
 #include <fstream>
 #include "World.h"
@@ -47,7 +48,7 @@ World::World()
 	// "                     "
 	play_time += StartTime(); //every time the world is loaded =) also playtime contains the file_data
 
-	map maps[5] =
+	mapN maps[5] =
 	{
 		lostCity[5][0][0],
 		darkForest[5][0][0],
@@ -82,7 +83,6 @@ void World::beginningStory()
 
 #pragma region Actor1_SetStats
 	
-
 	Actor1.setATK(5);
 	Actor1.setSPD(3);
 	Actor1.setDEF(2);
@@ -315,6 +315,7 @@ void World::menu()
 
 	case 'p':
 	case 'part':
+		// array calls can be used alone without needing to use brackets
 		partyMenu(playerParty);
 		break;
 
@@ -348,7 +349,7 @@ void World::navigation()
 
 }
 
-void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[])
+void World::gameLoop(int mx, int my, int mz, mapN m, int location, Player_Actor party[])
 {
 	switch (mEVTriggerActive())
 	{
@@ -388,7 +389,7 @@ void World::gameLoop(int mx, int my, int mz, map m, int location, Player_Actor p
 }
 
 // work on this
-void World::evRandomizer(Player_Actor party[], map location, int mx, int my, int mz)
+void World::evRandomizer(Player_Actor party[], mapN location, int mx, int my, int mz)
 {
 	const int MAX_EVRAND = 450;
 	unsigned int evRand = (rand() % (MAX_EVRAND - MIN + 1)) + MIN;
@@ -486,7 +487,7 @@ void World::partyMenu(Player_Actor party[])
 	}
 }
 
-void World::eventCalls(World::map local, bool trigger, int evNCall)
+void World::eventCalls(World::mapN local, bool trigger, int evNCall)
 {
 
 	switch (mEVTriggerActive())
@@ -822,6 +823,7 @@ string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects
 	string happened = "";
 	for (int i = 0; i < 20; i++)
 	{
+		// does this buff/de exist?
 		if (name != t.allEffGet[i])
 		{
 			t.buffName == t.allEffGet[i];
@@ -838,13 +840,34 @@ string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects
 		}
 	}
 	currentPartyStates[partyNum].insert(pair<int, stateEffects>(place, t));
-	happened = playerParty[partyNum].getName() + " is" + t.buffName;
+	happened = playerParty[partyNum].getName() + " is " + t.buffName;
 	return happened;
 }
 
-string World::tokenChangerRem(int partyNum, int place, string name, stateEffects)
+string World::tokenChangerRem(int partyNum, int place, string name, stateEffects t)
 {
+	auto& cell = currentPartyStates[partyNum];
+	auto bItr = begin(cell);
+	bool keyExists = false;
+	for (; bItr != end(cell); bItr++)
+	{
+		if (bItr->first == place)
+		{
+			keyExists = true;
+			bItr = cell.erase(bItr);
+			cout << "[INFO] state removed." << endl;
+			break;
+		}
+	}
+
+	if (!keyExists)
+	{
+		cout << "[WARNING] state not found. PAIR NOT REMOVED." << endl;
+	}
 	
+string hap = playerParty[partyNum].getName() + " is free of " + t.buffName;
+
+return hap;
 }
 
 void World::changePartySize(int isIn)

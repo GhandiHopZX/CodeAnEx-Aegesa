@@ -14,6 +14,7 @@
 #include "skillAction.h"
 
 using namespace std;
+
 //
 //Player_Actor he; //call vars
 //Enemy en;+ // call vars

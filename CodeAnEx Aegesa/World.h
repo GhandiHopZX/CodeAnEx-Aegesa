@@ -28,7 +28,7 @@ private:
 	// for now we only have ch 0 - 5 to cover the lost city arc
 	// and that's it for now. 
 	// this is the lost city player pos and map
-	struct map
+	struct mapN
 	{
 		int x = 0;
 		int y = 0;
@@ -47,16 +47,16 @@ private:
 	const static int ePartySize = 4;
 	bool movedEVTrigger;
 
-	map lostCity[11][11][4];
-	map darkForest[11][11][2];
-	map eikka[11][11][1];
-	map rheTan[11][11][1];
-	map aegesaShrine[11][11][5];
+	mapN lostCity[11][11][4];
+	mapN darkForest[11][11][2];
+	mapN eikka[11][11][1];
+	mapN rheTan[11][11][1];
+	mapN aegesaShrine[11][11][5];
 
 public:
 	World();
 
-	map maps[5] =
+	mapN maps[5] =
 	{
 		lostCity[5][0][0],
 		darkForest[5][0][0],
@@ -122,13 +122,13 @@ public:
 	void statusCall(Player_Actor p[]);
 
 	//Main game loop: 1. main menu, 2. when move, 3. randomizer or => 4. if theres a story ev that engages. 5. back to top
-	void gameLoop(int mx, int my, int mz, map m, int location, Player_Actor party[]);
+	void gameLoop(int mx, int my, int mz, mapN m, int location, Player_Actor party[]);
 
-	void evRandomizer(Player_Actor party[], map location, int mx, int my, int mz); // location is for mob levels
+	void evRandomizer(Player_Actor party[], mapN location, int mx, int my, int mz); // location is for mob levels
 
 	void partyMenu(Player_Actor party[]);
 
-	void eventCalls(World::map local, bool trigger, int);
+	void eventCalls(World::mapN local, bool trigger, int);
 
 	void dialouge(Player_Actor pn, string in);
 
