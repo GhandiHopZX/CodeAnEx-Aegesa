@@ -158,18 +158,12 @@ public:
 	void displaylistWeapon() const;
 	void displaylistArmor() const;
 
-	item itemCall(int);
-
 	void PlayerItemInventory();
 
 	void combatItemInventory(inventory);
 
 	// battleSystem
 	void rewardCall(int);
-
-	void armorCall(int index);
-
-	void weaponCall(int index);
 
 	void addItem(int);
 
@@ -211,16 +205,22 @@ public:
 
 	// selections
 
-	inventory::weapon equipW(weapon[]);
-	inventory::armor equipA(armor[]);
-
 	// setters / mutators
-
-
 
 	// shop_time
 
 	// templates
+	template <class Equip>
+	Equip output(Equip i[], Equip newG, int select)
+	{
+		i[select] = newG;
+	}
+
+	template <class aGCall>
+	aGCall anyItemEver(aGCall index[], int select)
+	{
+		return aGCall[select];
+	}
 
 	// Deconstructor
 	~inventory();

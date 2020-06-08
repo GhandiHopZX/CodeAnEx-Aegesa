@@ -18,7 +18,7 @@ protected:
 private:
 
 	string savePath;
-	string saveName;
+	string saveName = "SaveData.dat";
 	string loadedDir;
 	int numberOfFiles = 0;
 	string loadedDirs[1] = {};
@@ -29,14 +29,14 @@ public:
 	struct CLASS_PROGRESSION_STATE
 	{
 		string className;
-		int expTier1MAX;
-		int expTier2MAX;
-		int expTier3MAX;
-		int expTier4MAX;
-		int expTier5MAX;
-		int expTier6MAX;
-		int expTier7MAX;
-		int expMAX;
+		unsigned int expTier1MAX;
+		unsigned int expTier2MAX;
+		unsigned int expTier3MAX;
+		unsigned int expTier4MAX;
+		unsigned int expTier5MAX;
+		unsigned int expTier6MAX;
+		unsigned int expTier7MAX;
+		unsigned int expMAX;
 	};
 
 	struct SKILLSET
@@ -68,9 +68,6 @@ public:
 		int LOCATION_XYZ[3];
 	};
 
-	PARTY_MEMBER_DATA PMD01[3]; // Find a way to hashify this number
-	int INVENTORY_KEYS[50]{}; // this one too
-
 	struct FileLoad
 	{
 		SKILLSET l1;
@@ -80,17 +77,81 @@ public:
 	};
 
 	FileLoad nuwData; // one for fstream
+	FileLoad currentFileLoaded;
 
+	PARTY_MEMBER_DATA PMD01[3]; // Find a way to hashify this number
+	int INVENTORY_KEYS[50]{}; // this one too
+	vector<FileSave::SKILLSET>& SkillSet;
+	vector<FileSave::FILEDATA>& FileData;
 	//functions
 
 	FileSave();
 
-	void saveFile(vector<FileSave::SKILLSET>& SkillSet, vector<FileSave::PARTY_MEMBER_DATA> PMD[], vector<FileSave::FILEDATA>& FileData)
+	string getSavePath()
 	{
-		fstream JavaFile((savePath + '/' + saveName + ".dat").c_str(), ios::out, ios_base::trunc);
+		return savePath;
+	}
 
+	void setSaveData(SKILLSET SkillSetIn, PARTY_MEMBER_DATA PMD[], FILEDATA FileDataIn, int inVKeys[])
+	{
+		for (int i = 0; i < 24; i++)
+		{
+			currentFileLoaded.l1.keys[i] = SkillSetIn.keys[i];
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			currentFileLoaded.l2[i] = PMD[i];
+		}
+		currentFileLoaded.l3 = FileDataIn;
+		for (int i = 0; i < 49; i++)
+		{
+			currentFileLoaded.INVENTORY_KEYS_l4[i] = inVKeys[i];
+		}
+		saveFile();
+	}
+
+	string path = getSavePath() + '/' + saveName + ".dat";
+
+	fstream SaveFile;
+
+	void saveFile()
+	{
 		// = &SkillSet;
+		// check to see if file is saving
+		if (SaveFile.fail())
+		{
+			cout << "Error Recording the File.\n";
+		}
+		else
+		{
+			SaveFile.seekg(0L, ios::beg);    // to set position to read the file
+			SaveFile.write(reinterpret_cast<char*>(&currentFileLoaded), sizeof(currentFileLoaded));
+			cout << "Record Successed\n";
+		}
+		// close the file
+		SaveFile.close();
 	};
+
+	void loadFile()
+	{
+		FileLoad c;
+		int i;
+		SaveFile.open(getSavePath(), ios::in | ios::out | ios::binary);
+		SaveFile.seekg(0L, ios::beg);    // to set position to read the file
+		while (SaveFile.peek() != EOF)
+		{
+
+			SaveFile.read(reinterpret_cast<char*>(&c), sizeof(c));
+			setSaveData(c.l1, c.l2, c.l3, c.INVENTORY_KEYS_l4);
+			/*cout << "Name: " << c.INVENTORY_KEYS_l4 << endl;
+			cout << "Address: " << c.l1 << endl;
+			cout << "City:  " << c.l2 << endl;
+			 << "State: " << c.l3 << endl;*/
+			i++;
+		}
+		cout << "recording successful" << endl;
+		SaveFile.close();
+	}
 
 	void setSavePath(string m)
 	{
@@ -102,82 +163,67 @@ public:
 		saveName = m;
 	};
 
-	FileLoad loadFile()
+	void loadFile()
 	{
-		//int choice = 0;
-		//cout << "FILE Select.. (1) for pasting directory or (2) for QuickLoad" << endl;
-		//cin >> choice;
+		int choice = 0;
+		cout << "FILE Select.. (1) for pasting directory or (2) for QuickLoad" << endl;
+		cin >> choice;
 
-		//switch (choice)
-		//{
-		//case 1:
-		//	getline(cin, loadedDir);
-		//	break;
-		//case 2:
+		switch (choice)
+		{
+		case 1:
+			getline(cin, loadedDir);
+			break;
+		case 2:
 
-		//	// scan through for files for the numberOfFiles
-		//	// find the .dat ones
-		//	/*for each (FILE var in derp)
-		//	{
+			// scan through for files for the numberOfFiles in a directory
+			// find the .dat ones
+			/*for each (FILE var in derp)
+			{
 
-		//	}*/
-		//	// put them in this array "numberOfFiles"
-		//	for (int i = 0; i < numberOfFiles; i++)
-		//	{
-		//		loadedDirs[numberOfFiles] += loadedDir;
-		//	}
-		//	cout << endl;
-		//	// load selections
-		//	for (int i = 0; i < numberOfFiles; i++)
-		//	{
-		//		cout << endl;
-		//		cout << i + 1 << loadedDirs[numberOfFiles] << endl;
-		//	}
+			}*/
+			// put them in this array "numberOfFiles"
+			for (int i = 0; i < numberOfFiles; i++)
+			{
+				loadedDirs[numberOfFiles] += loadedDir;
+			}
+			cout << endl;
+			// load selections
+			for (int i = 0; i < numberOfFiles; i++)
+			{
+				cout << endl;
+				cout << i++ << loadedDirs[numberOfFiles] << endl;
+			}
 
-		//	int selectFileNumb = 0;
-		//	cin >> selectFileNumb;
-		//	try
-		//	{
-		//		switch (selectFileNumb)
-		//		{
+			int selectFileNumb = 0;
+			cin >> selectFileNumb;
+			try
+			{
 
-		//		case 0: // check for number
-		//			// if selectFileNumb is a number 
-		//			int j = selectFileNumb;
-		//			int i = 0;
-		//			do
-		//			{
-		//				loadedDirs[i];
-		//			} while (i != selectFileNumb);
+				
+				if (selectFileNumb <= 0)
+				{
+					cout << "No File Found..." << endl;
+				}
 
-		//			if (selectFileNumb <= 0)
-		//			{
-		//				cout << "No File Found..." << endl;
-		//			}
-		//			break;
-
-		//		default:
-		//			cout << "Invalid Choice.." << endl;
-		//			loadFile();
-		//			break;
-		//		}
-		//	}
-		//	catch (const std::invalid_argument& dis) // find something for the alphabet
-		//	{
-		//		cout << "Sorry try again..." << endl;
-		//		loadFile();
-		//	}
-		//	break;
-		//	
-		//default:
-		//
-		//	break;
-		//}
-		//// fstream stuff here...
+				cout << "Invalid Choice.." << endl;
+				loadFile();
+			}
+			catch (const std::invalid_argument& dis) // find something for the alphabet
+			{
+				cout << "Sorry try again..." << endl;
+				loadFile();
+			}
+			break;
+			
+		default:
+		
+			break;
+		}
+		// fstream stuff here...
 		//fstream JavaFile((loadedDir + '/' + saveName + ".dat").c_str(), ios::in, ios_base::trunc);
 
-		//// end here
-		//return nuwData;
+		// end here
 	};
 
 	string getSavePath()

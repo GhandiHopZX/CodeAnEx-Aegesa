@@ -474,10 +474,6 @@ void inventory::displaylistArmor() const
 	}
 }
 
-inventory::item inventory::itemCall(int i)
-{
-	return itemlist[i];
-} // for item usage
 
 //for combat
 void inventory::PlayerItemInventory() // gotta make an inventory that'll work in the world menu
@@ -587,7 +583,6 @@ void inventory::rewardCall(int index)
 	//return allitemList(index);
 }
 
-
 void inventory::addItem(int find) {
 	int i = 1;
 	item b;
@@ -609,15 +604,8 @@ void inventory::remItem(int find) {
 	deleteNodeItem(my_items[find], i);
 } //removing to the struct array
 
-inventory::weapon inventory::equipW(weapon[]) //work on these
-{
-	return inventory::weapon();
-}
 
-inventory::armor inventory::equipA(armor[]) // this one too
-{
-	return inventory::armor();
-}
+
 
 inventory::~inventory()
 {
