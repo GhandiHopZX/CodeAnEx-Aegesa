@@ -38,6 +38,8 @@ public:
 		return normal;
 	};
 
+
+
 	// new get 
 	string getBio()
 	{

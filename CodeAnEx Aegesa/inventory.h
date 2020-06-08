@@ -158,7 +158,7 @@ public:
 	void displaylistWeapon() const;
 	void displaylistArmor() const;
 
-	void itemCall(int);
+	item itemCall(int);
 
 	void PlayerItemInventory();
 
@@ -209,27 +209,14 @@ public:
 	 anti_nuclear_injector
 	};
 
-	//inventory::weapon allweaponList(int integer)
-	//{
-	//	return weaponlist[integer];
-	//}
-
 	// selections
-	//void selectlistItem(int, Player_Actor);
 
-	//void itemUse(int d, Player_Actor);
-
-	//void armorSell(int d, Player_Actor o);
-
-	
-
-	//void selectlistWeapon(int u, Player_Actor);
-
-	// get
+	inventory::weapon equipW(weapon[]);
+	inventory::armor equipA(armor[]);
 
 	// setters / mutators
-	//void setWeapon(Player_Actor o, inventory::weapon weapon, int index);
-	//void setArmor(Player_Actor o, inventory::armor gear, int index);
+
+
 
 	// shop_time
 

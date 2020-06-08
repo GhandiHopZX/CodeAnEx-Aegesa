@@ -64,8 +64,8 @@ inventory::item allitemList(int integer)
 	inventory::armor anti_nuclear_armor;
 #pragma endregion
 
-	inventory::armor armorlist[100] =
-	{
+inventory::armor armorlist[100] =
+{
 		broad_armor,
 		kavelar_gear,
 		carbonite_gear,
@@ -78,7 +78,7 @@ inventory::item allitemList(int integer)
 		anti_nuclear_armor
 	};
 
-	inventory::armor allarmorList(int integer)
+inventory::armor allarmorList(int integer)
 	{
 		return armorlist[integer];
 	}
@@ -474,10 +474,9 @@ void inventory::displaylistArmor() const
 	}
 }
 
-
-void inventory::itemCall(int i)
+inventory::item inventory::itemCall(int i)
 {
-
+	return itemlist[i];
 } // for item usage
 
 //for combat
@@ -609,6 +608,16 @@ void inventory::remItem(int find) {
 	my_items[find].quantity -= i; // calls the index and adds 1
 	deleteNodeItem(my_items[find], i);
 } //removing to the struct array
+
+inventory::weapon inventory::equipW(weapon[]) //work on these
+{
+	return inventory::weapon();
+}
+
+inventory::armor inventory::equipA(armor[]) // this one too
+{
+	return inventory::armor();
+}
 
 inventory::~inventory()
 {
