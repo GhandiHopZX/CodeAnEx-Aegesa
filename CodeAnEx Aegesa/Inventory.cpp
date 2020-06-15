@@ -3,7 +3,7 @@
 #include <map>
 #include <stack>
 #include "inventory.h"
-
+//#include "Player_Actor.h"
 
 // use tha multimap function
 using namespace std;
@@ -50,7 +50,6 @@ inventory::item allitemList(int integer)
 	return itemlist[integer];
 }
 
-
 #pragma region All_armors
 	inventory::armor broad_armor;
 	inventory::armor kavelar_gear;
@@ -91,7 +90,6 @@ inventory::armor my_armors[inventory::MAX_INTEGRITY] =
 
 inventory::item my_items[inventory::MAX_INTEGRITY] =
 {};
-
 
 inventory::inventory()
 {
@@ -476,7 +474,8 @@ void inventory::displaylistArmor() const
 
 
 //for combat
-void inventory::PlayerItemInventory() // gotta make an inventory that'll work in the world menu
+template <class InvA>
+InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work in the world menu
 {
 	system("CLS");
 	// show choices'
@@ -484,28 +483,117 @@ void inventory::PlayerItemInventory() // gotta make an inventory that'll work in
 	cout << "Items(i), Armors(a), Weapons(w), Equipped(e), Quit(q)" << endl;
 	char choice = {};
 	int i = 0;
+	int listCount = 1;
+	int hd = 0;
+	int maxP = party->getParty_num();
+	cin >> choice;
+
+	
+
+	if (!(isalpha(choice)))
+	{
+		cout << "try again bitch.." << endl;
+		cin >> choice;
+	}
+
 	switch (choice)
 	{
 	case 'i':
 		cout << "Select an Item? or Exit? (Q,q): use an number to select one.. 0 - " + sum_items << endl;
 		displaylistItem();
+		for (int h = 0; h < maxP; h++)
+		{
+			cout << listCount << my_items[h].name << endl;
+			++listCount;
+		}
 		// select an item? using a #
-		cout << "select an item? using a #" << endl;
+		cout << "select an item? using a number.." << endl;
 		//int i = 0;
+
 		choice = 'N';
 		cin >> i;
-		//selectlistItem(i, o); // usage
-		if (isalpha(i))
+		cout << "Would you like to use this item? Yes(Y) or No(N) ?" << endl;
+		cout << anyItemEver(my_items, i).name << endl;
+		
+		choice = NULL;
+		switch (choice)
 		{
-			cout << "invalid option" << endl;
-			//PlayerItemInventory(boop);
+		case 'y':
+			listCount = 1;
+			hd = 0;
+			cout << "On who?" << endl;
+			for (int h = 0; h < maxP; h++)
+			{
+				cout << listCount << party[h].getName() << endl;
+				++listCount;
+			}
+			cin >> hd;
+
+			if (!(isalpha(hd)))
+			{
+				cout << "try again bitch.." << endl;
+				cin >> hd;
+			}
+
+			itemExecute(party, getItem(i), hd);
+			PlayerItemInventory(party);
+			break;
+		case 'n':
+			PlayerItemInventory(party);
+			break;
+		default:
+			PlayerItemInventory(party);
 			break;
 		}
+		// select_Item(my_items[i]);
+		//selectlistItem(i, o); // usage
 		cout << "Make another selection?" << endl;
-		//PlayerItemInventory(boop);
+		PlayerItemInventory(party);
 		break;
 
 	case 'a':
+		listCount = 1;
+		hd = 0;
+		choice = NULL;
+		int choiceInt;
+		int choiceA;
+		int a = 0;
+		int choiceB;
+		cout << "Select an Actor .. 0 - " << maxP << endl;
+		for (int h = 0; h < maxP; h++)
+		{
+			cout << listCount << party[h].getName() << endl;
+			++listCount;
+		}
+		cin >> hd;
+		
+		listCount = 0;
+		for (a = 0; a < 20; a++)
+		{
+			cout << listCount << my_armors[a].name << endl;
+			++listCount;
+		}
+		cout << "Select an Armor .. 0 - " << listCount << endl;
+		cin >> choiceA;
+
+		cout << "Select Actor's Armor .. 0 - " << 4 << endl;
+		listCount = 0;
+		for (int h = 0; h < 4; h++)
+		{
+			cout << listCount << party[h].getArmorEQ() << endl;
+			++listCount;
+		}
+		cin >> choiceB;
+
+		party->setArmor(choiceB, anyItemEver(my_armors, choiceA));
+
+		if (!(isalpha(choice)))
+		{
+			cout << "try again bitch.." << endl;
+			cin >> choice;
+		}
+		
+
 		cout << "Select an Armor?: use an number to select one.. 0 - " + sum_armors << endl;
 		displaylistArmor();
 		// select an armor? using a #
@@ -515,14 +603,8 @@ void inventory::PlayerItemInventory() // gotta make an inventory that'll work in
 		cin >> i;
 		//selectlistArmor(i,o);
 		//equip armor
-		if (isalpha(i))
-		{
-			cout << "invalid option" << endl;
-			//PlayerItemInventory(boop);
-			break;
-		}
 		cout << "Make another selection?" << endl;
-		//PlayerItemInventory(boop);
+		PlayerItemInventory(party);
 		break;
 
 	case 'w':
@@ -532,16 +614,16 @@ void inventory::PlayerItemInventory() // gotta make an inventory that'll work in
 
 		choice = 'N';
 		cin >> i;
-		//selectlistWeapon(i,o);
+		//selectlistWeapon(i);
 		//equip armor
 		if (isalpha(i))
 		{
 			cout << "invalid option" << endl;
-			//PlayerItemInventory(boop);
+			PlayerItemInventory(party);
 			break;
 		}
 		cout << "Make another selection?" << endl;
-		//PlayerItemInventory(boop);
+		PlayerItemInventory(party);
 		break;
 
 	case 'e':
@@ -551,7 +633,7 @@ void inventory::PlayerItemInventory() // gotta make an inventory that'll work in
 		cout << endl;
 		//displaylistEQAgear();
 		cout << endl;
-		cout << "select a gear? using a #" << endl;
+		cout << "select equipment? using a number.." << endl;
 		//int i = 0;
 		choice = 'N';
 		cin >> i;
@@ -561,14 +643,15 @@ void inventory::PlayerItemInventory() // gotta make an inventory that'll work in
 		if (isalpha(i))
 		{
 			cout << "invalid option" << endl;
-			//PlayerItemInventory(boop);
+			PlayerItemInventory(party);
 			break;
 		}
 		cout << "Make another selection?" << endl;
-		//PlayerItemInventory(boop);
+		PlayerItemInventory(party);
 		break;
 
 	case 'q':
+
 		break;
 
 	default:
@@ -604,7 +687,10 @@ void inventory::remItem(int find) {
 	deleteNodeItem(my_items[find], i);
 } //removing to the struct array
 
-
+inventory::item inventory::getItem(int d)
+{
+	return my_items[d];
+}
 
 
 inventory::~inventory()

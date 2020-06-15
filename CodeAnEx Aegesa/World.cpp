@@ -341,7 +341,8 @@ void World::menu()
 
 void World::inventory()
 {
-	mainInventory.PlayerItemInventory();
+	mainInventory.PlayerItemInventory(playerParty);
+	menu();
 }
 
 void World::navigation()
@@ -430,16 +431,14 @@ void World::partyMenu(Player_Actor party[])
 	// print menu
 	for (int i = 0; i < party_ppl; i++)
 	{
-		//int v = party[i];
 
 		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
 		cout << '\n' << "SP" << ": " << '\t' << party[i].getSpd() << '/' << party[i].getSp() << endl;
 
-		//cout << "[state(s)]" << endl;
+		cout << "[::state(s)::]" << endl;
 		for (int k = 0; k < party[i].num_Statuses; k++)
 		{
-			//party[i].getStatus().buffName;
-			cout << "["  << party[i].getState()  << " " << "]" << "Turns Left: " << /*v<<*/ endl;
+			cout << "["  << party[i].getState()  << " " << "]" << "Turns Left: " << endl;
 		}
 		cout << endl;
 	}
@@ -464,7 +463,7 @@ void World::partyMenu(Player_Actor party[])
 		// select party member
 		// equip items
 
-		//mainInventory.PlayerItemInventory(Actor1);
+		mainInventory.PlayerItemInventory(playerParty);
 		menu();
 		break;
 

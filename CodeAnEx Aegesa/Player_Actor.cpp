@@ -2,8 +2,8 @@
 #include <string>
 #include <ctime>
 #include "Player_Actor.h"
-#include "stateEffects.h"
 #include "inventory.h"
+#include "stateEffects.h"
 
 Player_Actor::Player_Actor()
 {
@@ -44,6 +44,19 @@ Player_Actor::Player_Actor()
 inventory::weapon mActorWeaponE[1];
 inventory::armor mActorArmorE[3];
 
+template <class ArmorOut>
+ArmorOut setArmor(int y, ArmorOut d)
+{
+	mActorArmorE[y] = d;
+	cout << "armor " << d.name << "equipped" << endl;
+}
+
+template <class WeaponOut>
+WeaponOut setWeapon(int y, WeaponOut d)
+{
+	mActorWeaponE[y] = d;
+	cout << "weapon " << d.name << "equipped" << endl;
+}
 // use this to kill the player and when they die
 Player_Actor::~Player_Actor()
 {

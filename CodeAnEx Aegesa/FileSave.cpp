@@ -12,8 +12,7 @@
 #include <ctype.h>
 #include "FileSave.h"
 
-const int keyMax = 24;
-
+const int keyMax = 23;
 
 FileSave::FileSave()
 {
@@ -23,8 +22,8 @@ FileSave::FileSave()
 	PARTY_MEMBER_DATA pmd[3];
 	FILEDATA fd;
 
-	keysd->names[24] = {};
-	keysd->keys[24] = {};
+	keysd->names[keyMax] = {};
+	keysd->keys[keyMax] = {};
 
 	pmd->BIO = "";
 	pmd->jobState.className = "";
@@ -38,20 +37,20 @@ FileSave::FileSave()
 	pmd->jobState.expTier7MAX = 0;
 	pmd->PLAYER_NAME = "";
 	pmd->SKILLS.keys[keyMax] = {};
-	pmd->STATS[15] = {};
+	pmd->STATS[14] = {};
 	
 	fd.BIO = "";
 	fd.CLASS_PROGRESSION_STATE = "";
 	fd.COMPLETED_SEG = 0;
 	fd.CURRENT_PARTY = 0;
 	fd.GOLD = 0;
-	fd.LOCATION_XYZ[3] = {0};
-	fd.LOCATION_XYZ[2] = { 0 };
+	fd.LOCATION_XYZ[2] = {0};
 	fd.LOCATION_XYZ[1] = { 0 };
+	fd.LOCATION_XYZ[0] = { 0 };
 	fd.PLAYER_NAME = "";
 	fd.PLAY_TIME = 0;
 	fd.SKILLS.keys[keyMax] = { 0 };
-	fd.STATS[15] = {0};
+	fd.STATS[13] = {0};
 	fd.STORY_SEG = 0;
 }
 

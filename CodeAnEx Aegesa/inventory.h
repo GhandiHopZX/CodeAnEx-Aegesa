@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdio>
 #include "inventory.h"
+#include "Player_Actor.h"
 
 using namespace std;
 
@@ -158,9 +159,8 @@ public:
 	void displaylistWeapon() const;
 	void displaylistArmor() const;
 
-	void PlayerItemInventory();
+	//void combatItemInventory(Player_Actor party[]);
 
-	void combatItemInventory(inventory);
 
 	// battleSystem
 	void rewardCall(int);
@@ -204,17 +204,31 @@ public:
 	};
 
 	// selections
+	item getItem(int);
+	void itemExecute(Player_Actor i[], inventory::item newI, int selectParty)
+	{
+		i[selectParty].setAGId(newI.agiAdd);
+		i[selectParty].setATKd(newI.atkAdd);
+		i[selectParty].setCONd(newI.conAdd);
+		i[selectParty].setDEFd(newI.defAdd);
+		i[selectParty].setDEXd(newI.dexAdd);
+		i[selectParty].setENDd(newI.endAdd);
+		i[selectParty].setSPDd(newI.spdAdd);
+		i[selectParty].setSPRd(newI.sprAdd);
+		i[selectParty].setINTd(newI.intAdd);
+		i[selectParty].setSTRd(newI.strAdd);
 
+		i[selectParty].setHpd(newI.hpAdd);
+		i[selectParty].setSpd(newI.spAdd);
+		i[selectParty].setFpd(newI.fpAdd);
+		cout << newI.name << " used" << endl;
+	}
 	// setters / mutators
 
 	// shop_time
 
 	// templates
-	template <class Equip>
-	Equip output(Equip i[], Equip newG, int select)
-	{
-		i[select] = newG;
-	}
+
 
 	template <class aGCall>
 	aGCall anyItemEver(aGCall index[], int select)
