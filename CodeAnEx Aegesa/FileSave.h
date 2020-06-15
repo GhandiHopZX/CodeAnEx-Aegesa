@@ -17,6 +17,7 @@ protected:
 
 private:
 
+	
 	string savePath;
 	string saveName = "SaveData.dat";
 	string loadedDir;
@@ -41,7 +42,8 @@ public:
 
 	struct SKILLSET
 	{
-		int keys[24];
+		string names[24] = { 0 };
+		int keys[24] = {0};
 	};
 
 	struct PARTY_MEMBER_DATA
@@ -81,8 +83,8 @@ public:
 
 	PARTY_MEMBER_DATA PMD01[3]; // Find a way to hashify this number
 	int INVENTORY_KEYS[50]{}; // this one too
-	vector<FileSave::SKILLSET>& SkillSet;
-	vector<FileSave::FILEDATA>& FileData;
+	SKILLSET SkillSet;
+	FILEDATA FileData;
 	//functions
 
 	FileSave();
@@ -163,8 +165,9 @@ public:
 		saveName = m;
 	};
 
-	void loadFile()
+	void loadFileOp()
 	{
+		int selectFileNumb = 0;
 		int choice = 0;
 		cout << "FILE Select.. (1) for pasting directory or (2) for QuickLoad" << endl;
 		cin >> choice;
@@ -195,7 +198,7 @@ public:
 				cout << i++ << loadedDirs[numberOfFiles] << endl;
 			}
 
-			int selectFileNumb = 0;
+			
 			cin >> selectFileNumb;
 			try
 			{
@@ -209,7 +212,7 @@ public:
 				cout << "Invalid Choice.." << endl;
 				loadFile();
 			}
-			catch (const std::invalid_argument& dis) // find something for the alphabet
+			catch (const std::invalid_argument&) // find something for the alphabet
 			{
 				cout << "Sorry try again..." << endl;
 				loadFile();
@@ -226,10 +229,6 @@ public:
 		// end here
 	};
 
-	string getSavePath()
-	{
-		return savePath;
-	};
 
 	string getSaveName()
 	{
