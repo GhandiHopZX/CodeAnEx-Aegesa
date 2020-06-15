@@ -24,7 +24,7 @@ FileSave::FileSave()
 	FILEDATA fd;
 
 	keysd->names[24] = {};
-	keysd->keys[keyMax] = {};
+	keysd->keys[24] = {};
 
 	pmd->BIO = "";
 	pmd->jobState.className = "";

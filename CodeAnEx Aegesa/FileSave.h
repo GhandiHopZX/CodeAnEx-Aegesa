@@ -137,7 +137,7 @@ public:
 	void loadFile()
 	{
 		FileLoad c;
-		int i;
+		int i = 0;
 		SaveFile.open(getSavePath(), ios::in | ios::out | ios::binary);
 		SaveFile.seekg(0L, ios::beg);    // to set position to read the file
 		while (SaveFile.peek() != EOF)
