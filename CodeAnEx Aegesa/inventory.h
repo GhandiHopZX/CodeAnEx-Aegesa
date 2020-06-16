@@ -161,6 +161,7 @@ public:
 
 	//void combatItemInventory(Player_Actor party[]);
 
+	void PlayerItemInventory(Player_Actor party[]);
 
 	// battleSystem
 	void rewardCall(int);
@@ -168,7 +169,6 @@ public:
 	void addItem(int);
 
 	void remItem(int);
-
 
 #pragma region All_weapons
 	inventory::weapon brawd_injector;

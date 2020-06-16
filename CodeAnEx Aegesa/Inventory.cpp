@@ -474,8 +474,7 @@ void inventory::displaylistArmor() const
 
 
 //for combat
-template <class InvA>
-InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work in the world menu
+void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inventory that'll work in the world menu
 {
 	system("CLS");
 	// show choices'
@@ -503,7 +502,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		listCount = 1;
 		for (size_t i = 0; i < listCount; i++)
 		{
-			inventory::anyItemEver(my_items, i) << endl;
+			cout << my_items[i].name << endl;
 			if (!(my_items[i].name.empty()))
 			{
 				listCount += 1;
@@ -520,7 +519,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		
 		for (size_t i = 0; i < listCount; i++)
 		{
-			cout << inventory::anyItemEver(my_items, i) << endl;
+			cout << my_items[i].name << endl;
 		}
 
 		// select an item? using a #
@@ -530,7 +529,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		choice = NULL;
 		cin >> i;
 		cout << "Would you like to use this item? Yes(Y) or No(N) ?" << endl;
-		cout <<"[" << anyItemEver(my_items, i).name  << "]"<< endl;
+		cout <<"[" << my_items[i].name << "]"<< endl;
 		
 		choice = NULL;
 		switch (choice)
@@ -568,6 +567,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		PlayerItemInventory(party);
 		break;
 
+		 
 	case 'a':
 		listCount = 1;
 		hd = 0;
@@ -576,7 +576,22 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		int choiceA;
 		int a = 0;
 		int choiceB;
-		cout << "Select an Actor .. 0 - " << maxP << endl;
+
+		listCount = 1;
+		for (size_t i = 0; i < listCount; i++)
+		{
+			cout << my_armors[i].name << endl;
+			if (!(my_armors[i].name.empty()))
+			{
+				listCount += 1;
+			}
+			else
+			{
+				listCount += 0;
+			}
+		}
+
+		cout << "Select an Actor to select an armor.. 0 - " << maxP << endl;
 		for (int h = 0; h < maxP; h++)
 		{
 			cout << listCount << party[h].getName() << endl;
@@ -584,18 +599,17 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		}
 		cin >> hd;
 		
-		listCount = 1;
-		for (a = 0; a < 20; a++)
+		for (a = 0; a < listCount; a++)
 		{
-			cout << listCount << my_armors[a].name << endl;
-			++listCount;
+			cout << a + 1 << my_armors[a].name << endl;
 		}
+
 		cout << "Select an Armor .. 0 - " << listCount << endl;
 		cin >> choiceA;
 
 		cout << "Select Actor's Armor .. 0 - " << 4 << endl;
 		listCount = 1;
-		for (int h = 0; h < 4; h++)
+		for (int h = 0; h < maxP; h++)
 		{
 			cout << listCount << party[h].getArmorEQ() << endl;
 			++listCount;
@@ -610,29 +624,38 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 			cin >> choice;
 		}
 		
+		choice = NULL;
+		cin >> choice;
 
-		cout << "Select an Armor?: use an number to select one.. 0 - " + sum_armors << endl;
-		displaylistArmor();
-		// select an armor? using a #
-		cout << "select an armor? using a #" << endl;
-		//int i = 0;
-		choice = 'N';
-		cin >> i;
-		//selectlistArmor(i,o);
-		//equip armor
 		cout << "Make another selection?" << endl;
 		PlayerItemInventory(party);
 		break;
 
 	case 'w':
-		cout << "Select an Weapon?: use an number to select one.. 0 - " + inventory::sum_weapons << endl;
-		displaylistWeapon();
-		cout << "select an weapon? using a #" << endl;
-
+		listCount = 1;
 		choice = 'N';
+		listCount = 1;
+		for (size_t i = 0; i < listCount; i++)
+		{
+			cout << my_weapons[i].name << endl;
+			if (!(my_weapons[i].name.empty()))
+			{
+				listCount += 1;
+			}
+			else
+			{
+				listCount += 0;
+			}
+		}
 		cin >> i;
+
 		//selectlistWeapon(i);
 		//equip armor
+
+		cout << "Select an Weapon?: use an number to select one.. 0 - " + listCount << endl;
+		//displaylistWeapon();
+		cout << "select an weapon? using a #" << endl;
+
 		if (isalpha(i))
 		{
 			cout << "invalid option" << endl;
@@ -644,8 +667,35 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		break;
 
 	case 'e':
-		cout << "Weapons equipped: select one for overview.. 0 - " + sum_weapons << endl;
-		cout << "Armors equipped: select one for overview.. 0 - " + sum_armors << endl;
+		int listCount2 = 1;
+		for (size_t i = 0; i < listCount2; i++)
+		{
+			cout << party. << endl;
+			if (!(my_weapons[i].name.empty()))
+			{
+				listCount2 += 1;
+			}
+			else
+			{
+				listCount2 += 0;
+			}
+		}
+
+		listCount = 1;
+		for (size_t i = 0; i < listCount; i++)
+		{
+			cout << my_armors[i].name << endl;
+			if (!(my_armors[i].name.empty()))
+			{
+				listCount += 1;
+			}
+			else
+			{
+				listCount += 0;
+			}
+		}
+		cout << "Weapons equipped: select one for overview.. 0 - " +  listCount2 << endl;
+		cout << "Armors equipped: select one for overview.. 0 - " + listCount << endl;
 		//displaylistEQWgear();
 		cout << endl;
 		//displaylistEQAgear();

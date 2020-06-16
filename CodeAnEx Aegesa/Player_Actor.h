@@ -7,7 +7,7 @@
 #include <thread>
 #include "Player_Actor.h"
 #include "stateEffects.h"
-//#include "inventory.h"
+#include "inventory.h"
 #include "aegesa.h"
 
 using namespace std;
@@ -19,7 +19,8 @@ private:
 
 	string bio; // YOUR STORY!
 	string name; // YOUR NAME!
-
+	inventory::weapon mActorWeaponE[1];
+	inventory::armor mActorArmorE[3];
 	// variables
 
 public:
@@ -31,12 +32,15 @@ public:
 	// Constructors
 	Player_Actor();
 
+	inventory::armor getArmorEQ();
+
+	inventory::weapon getWeaponEQ();
+
 	// getters / accessors
 
-	string normalOutput(string normal)
-	{
-		return normal;
-	};
+	string normalOutput(string normal);
+
+
 
 	// new get 
 	string getBio()
@@ -48,6 +52,7 @@ public:
 	{
 		bio = bin;
 	}
+
 
 
 
@@ -589,7 +594,19 @@ void setWeapon(int y, inventory::weapon d);*/
 
 
 //templates;
+template <class ArmorOut>
+ArmorOut setArmor(int y, ArmorOut d)
+{
+	mActorArmorE[y] = d;
+	cout << "armor " << d.name << "equipped" << endl;
+}
 
+template <class WeaponOut>
+WeaponOut setWeapon(int y, WeaponOut d)
+{
+	mActorWeaponE[y] = d;
+	cout << "weapon " << d.name << "equipped" << endl;
+}
 
 
 		/*

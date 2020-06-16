@@ -41,39 +41,27 @@ Player_Actor::Player_Actor()
 #pragma endregion
 }
 
-inventory::weapon mActorWeaponE[1];
-inventory::armor mActorArmorE[3];
-
-inventory::armor getArmorEQ()
+inventory::armor Player_Actor::getArmorEQ()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		return mActorArmorE[i];
 	}
 }
 
-inventory::weapon getWeaponEQ()
+inventory::weapon Player_Actor::getWeaponEQ()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		return mActorWeaponE[i];
 	}
 }
 
-
-template <class ArmorOut>
-ArmorOut setArmor(int y, ArmorOut d)
+string Player_Actor::normalOutput(string normal)
 {
-	mActorArmorE[y] = d;
-	cout << "armor " << d.name << "equipped" << endl;
+	return string();
 }
 
-template <class WeaponOut>
-WeaponOut setWeapon(int y, WeaponOut d)
-{
-	mActorWeaponE[y] = d;
-	cout << "weapon " << d.name << "equipped" << endl;
-}
 // use this to kill the player and when they die
 Player_Actor::~Player_Actor()
 {
