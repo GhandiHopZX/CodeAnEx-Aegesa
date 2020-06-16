@@ -44,6 +44,23 @@ Player_Actor::Player_Actor()
 inventory::weapon mActorWeaponE[1];
 inventory::armor mActorArmorE[3];
 
+inventory::armor getArmorEQ()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		return mActorArmorE[i];
+	}
+}
+
+inventory::weapon getWeaponEQ()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		return mActorWeaponE[i];
+	}
+}
+
+
 template <class ArmorOut>
 ArmorOut setArmor(int y, ArmorOut d)
 {

@@ -499,21 +499,38 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 	switch (choice)
 	{
 	case 'i':
-		cout << "Select an Item? or Exit? (Q,q): use an number to select one.. 0 - " + sum_items << endl;
-		displaylistItem();
-		for (int h = 0; h < maxP; h++)
+		i = 0;
+		listCount = 1;
+		for (size_t i = 0; i < listCount; i++)
 		{
-			cout << listCount << my_items[h].name << endl;
-			++listCount;
+			inventory::anyItemEver(my_items, i) << endl;
+			if (!(my_items[i].name.empty()))
+			{
+				listCount += 1;
+			}
+			else
+			{
+				listCount += 0;
+			}
 		}
+
+		cout << "Select an Item? or Exit? (n): use an number to select one.. 0 - " << endl;
+		
+		//displaylistItem();
+		
+		for (size_t i = 0; i < listCount; i++)
+		{
+			cout << inventory::anyItemEver(my_items, i) << endl;
+		}
+
 		// select an item? using a #
 		cout << "select an item? using a number.." << endl;
 		//int i = 0;
 
-		choice = 'N';
+		choice = NULL;
 		cin >> i;
 		cout << "Would you like to use this item? Yes(Y) or No(N) ?" << endl;
-		cout << anyItemEver(my_items, i).name << endl;
+		cout <<"[" << anyItemEver(my_items, i).name  << "]"<< endl;
 		
 		choice = NULL;
 		switch (choice)
@@ -531,7 +548,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 
 			if (!(isalpha(hd)))
 			{
-				cout << "try again bitch.." << endl;
+				cout << "try again.." << endl;
 				cin >> hd;
 			}
 
@@ -567,7 +584,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		}
 		cin >> hd;
 		
-		listCount = 0;
+		listCount = 1;
 		for (a = 0; a < 20; a++)
 		{
 			cout << listCount << my_armors[a].name << endl;
@@ -577,7 +594,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 		cin >> choiceA;
 
 		cout << "Select Actor's Armor .. 0 - " << 4 << endl;
-		listCount = 0;
+		listCount = 1;
 		for (int h = 0; h < 4; h++)
 		{
 			cout << listCount << party[h].getArmorEQ() << endl;
@@ -589,7 +606,7 @@ InvA PlayerItemInventory(InvA party[]) // gotta make an inventory that'll work i
 
 		if (!(isalpha(choice)))
 		{
-			cout << "try again bitch.." << endl;
+			cout << "try again.." << endl;
 			cin >> choice;
 		}
 		
@@ -691,6 +708,8 @@ inventory::item inventory::getItem(int d)
 {
 	return my_items[d];
 }
+
+
 
 
 inventory::~inventory()

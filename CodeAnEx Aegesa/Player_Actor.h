@@ -589,21 +589,6 @@ void setWeapon(int y, inventory::weapon d);*/
 
 
 //templates;
-inventory::armor getArmorEQ()
-{
-	for (int i = 0; i < 4; i++)
-	{
-		return mActorArmorE[i];
-	}
-}
-
-inventory::weapon getWeaponEQ()
-{
-	for (int i = 0; i < 4; i++)
-	{
-		return mActorWeaponE[i];
-	}
-}
 
 
 
