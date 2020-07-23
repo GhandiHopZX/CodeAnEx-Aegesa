@@ -7,7 +7,6 @@
 #include <thread>
 #include "Player_Actor.h"
 #include "stateEffects.h"
-#include "inventory.h"
 #include "aegesa.h"
 
 using namespace std;
@@ -16,11 +15,81 @@ class Player_Actor : public aegesa
 {
 private:
 	// variables
+	struct weapon
+	{
+		string name;
+		unsigned int atkAdd = 0;
+		unsigned int defAdd = 0;
+		unsigned int spdAdd = 0;
+
+		unsigned int dexAdd = 0;
+		unsigned int intAdd = 0;
+		unsigned int sprAdd = 0;
+		unsigned int endAdd = 0;
+		unsigned int conAdd = 0;
+		unsigned int strAdd = 0;
+		unsigned int agiAdd = 0;
+		unsigned int goldValue = 0;
+
+		unsigned int wvalue = 0; // node
+		unsigned int quantity = 0;
+		struct weapon* next; //next item
+	};
+
+	struct armor
+	{
+		string name;
+		unsigned int atkAdd = 0;
+		unsigned int defAdd = 0;
+		unsigned int spdAdd = 0;
+
+		unsigned int dexAdd = 0;
+		unsigned int intAdd = 0;
+		unsigned int sprAdd = 0;
+		unsigned int endAdd = 0;
+		unsigned int conAdd = 0;
+		unsigned int strAdd = 0;
+		unsigned int agiAdd = 0;
+		unsigned int goldValue = 0;
+
+		unsigned int avalue = 0; //node
+		unsigned int quantity = 0;
+		struct armor* next; //next armor
+	};
+
+	struct item
+	{
+		string name;
+		unsigned int hpAdd = 0;
+		unsigned int spAdd = 0;
+		unsigned int fpAdd = 0;
+		unsigned int apAdd = 0;
+		// no dp plus plz
+
+		unsigned int atkAdd = 0;
+		unsigned int defAdd = 0;
+		unsigned int spdAdd = 0;
+
+		unsigned int dexAdd = 0;
+		unsigned int intAdd = 0;
+		unsigned int sprAdd = 0;
+		unsigned int endAdd = 0;
+		unsigned int conAdd = 0;
+		unsigned int strAdd = 0;
+		unsigned int agiAdd = 0;
+		unsigned int goldValue = 0;
+
+		unsigned int ivalue = 0; // node for items
+		unsigned int quantity = 0;
+		struct item* node;
+
+		// next item
+	};
 
 	string bio; // YOUR STORY!
 	string name; // YOUR NAME!
-	inventory::weapon mActorWeaponE[1];
-	inventory::armor mActorArmorE[3];
+	weapon mActorWeaponE[1];
+	armor mActorArmorE[3];
 	// variables
 
 public:
@@ -32,15 +101,13 @@ public:
 	// Constructors
 	Player_Actor();
 
-	inventory::armor getArmorEQ();
+	armor getArmorEQ();
 
-	inventory::weapon getWeaponEQ();
+	weapon getWeaponEQ();
 
 	// getters / accessors
 
 	string normalOutput(string normal);
-
-
 
 	// new get 
 	string getBio()
@@ -52,9 +119,6 @@ public:
 	{
 		bio = bin;
 	}
-
-
-
 
 	//#pragma region getters
 	//
@@ -583,8 +647,6 @@ public:
 	//
 	//#pragma endregion
 
-
-
 /*nventory::armor getArmorEQ();
 
 inventory::weapon getWeaponEQ();
@@ -593,20 +655,6 @@ void setArmor(int y, inventory::armor d);
 void setWeapon(int y, inventory::weapon d);*/
 
 
-//templates;
-template <class ArmorOut>
-ArmorOut setArmor(int y, ArmorOut d)
-{
-	mActorArmorE[y] = d;
-	cout << "armor " << d.name << "equipped" << endl;
-}
-
-template <class WeaponOut>
-WeaponOut setWeapon(int y, WeaponOut d)
-{
-	mActorWeaponE[y] = d;
-	cout << "weapon " << d.name << "equipped" << endl;
-}
 
 
 		/*

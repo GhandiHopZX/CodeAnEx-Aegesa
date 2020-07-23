@@ -6,9 +6,9 @@
 #include "windows.h"
 #include "stdlib.h"
 #include "aegesa.h"
-#include "inventory.h"
 #include "battleSystem.h"
 #include "Player_Actor.h"
+#include "inventory.h"
 #include "Enemy.h"
 #include "World.h" // for encounters
 #include "skillAction.h"

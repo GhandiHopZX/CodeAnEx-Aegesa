@@ -3,7 +3,7 @@
 #include <map>
 #include <stack>
 #include "inventory.h"
-//#include "Player_Actor.h"
+#include "Player_Actor.h"
 
 // use tha multimap function
 using namespace std;
@@ -482,7 +482,10 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 	cout << "Items(i), Armors(a), Weapons(w), Equipped(e), Quit(q)" << endl;
 	char choice = {};
 	int i = 0;
+	int a = 0;
 	int listCount = 1;
+	int listCount2 = 1;
+	int choiceInt;
 	int hd = 0;
 	int maxP = party->getParty_num();
 	cin >> choice;
@@ -552,6 +555,7 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 			}
 
 			itemExecute(party, getItem(i), hd);
+
 			PlayerItemInventory(party);
 			break;
 		case 'n':
@@ -572,9 +576,9 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		listCount = 1;
 		hd = 0;
 		choice = NULL;
-		int choiceInt;
+		choiceInt;
 		int choiceA;
-		int a = 0;
+		a = 0;
 		int choiceB;
 
 		listCount = 1;
@@ -611,17 +615,17 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		listCount = 1;
 		for (int h = 0; h < maxP; h++)
 		{
-			cout << listCount << party[h].getArmorEQ() << endl;
+			cout << listCount << party[h].getArmorEQ().name << endl;
 			++listCount;
 		}
 		cin >> choiceB;
 
-		party->setArmor(choiceB, anyItemEver(my_armors, choiceA));
+		party->setArmor(choiceB, armorlist);
 
-		if (!(isalpha(choice)))
+		if (!(isalpha(choiceA)))
 		{
 			cout << "try again.." << endl;
-			cin >> choice;
+			cin >> choiceA;
 		}
 		
 		choice = NULL;
@@ -650,7 +654,7 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		cin >> i;
 
 		//selectlistWeapon(i);
-		//equip armor
+		//equip weapon
 
 		cout << "Select an Weapon?: use an number to select one.. 0 - " + listCount << endl;
 		//displaylistWeapon();
@@ -659,18 +663,19 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		if (isalpha(i))
 		{
 			cout << "invalid option" << endl;
-			PlayerItemInventory(party);
+			//PlayerItemInventory(party);
 			break;
 		}
 		cout << "Make another selection?" << endl;
-		PlayerItemInventory(party);
+		cin >> i;
+		//PlayerItemInventory(party);
 		break;
 
 	case 'e':
-		int listCount2 = 1;
+		listCount2 = 1;
 		for (size_t i = 0; i < listCount2; i++)
 		{
-			cout << party. << endl;
+			cout << my_weapons[i].name << endl;
 			if (!(my_weapons[i].name.empty()))
 			{
 				listCount2 += 1;

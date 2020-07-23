@@ -2,7 +2,6 @@
 #include <string>
 #include <ctime>
 #include "Player_Actor.h"
-#include "inventory.h"
 #include "stateEffects.h"
 
 Player_Actor::Player_Actor()
@@ -41,7 +40,7 @@ Player_Actor::Player_Actor()
 #pragma endregion
 }
 
-inventory::armor Player_Actor::getArmorEQ()
+Player_Actor::armor Player_Actor::getArmorEQ()
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -49,7 +48,7 @@ inventory::armor Player_Actor::getArmorEQ()
 	}
 }
 
-inventory::weapon Player_Actor::getWeaponEQ()
+Player_Actor::weapon Player_Actor::getWeaponEQ()
 {
 	for (int i = 0; i < 1; i++)
 	{

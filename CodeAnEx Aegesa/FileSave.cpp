@@ -13,7 +13,7 @@
 #include "FileSave.h"
 
 const int keyMax = 23;
-
+const int statbase = 14;
 FileSave::FileSave()
 {
 	
@@ -37,7 +37,7 @@ FileSave::FileSave()
 	pmd->jobState.expTier7MAX = 0;
 	pmd->PLAYER_NAME = "";
 	pmd->SKILLS.keys[keyMax] = {};
-	pmd->STATS[14] = {};
+	pmd->STATS[statbase] = {};
 	
 	fd.BIO = "";
 	fd.CLASS_PROGRESSION_STATE = "";

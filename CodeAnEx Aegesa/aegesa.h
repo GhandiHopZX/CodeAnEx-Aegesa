@@ -5,7 +5,6 @@
 #include <map>
 #include <unordered_set>
 #include "aegesa.h"
-#include "stateEffects.h"
 
 using namespace std;
 //this is a parent class for enemies, actors and player actors

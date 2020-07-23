@@ -17,7 +17,6 @@ protected:
 
 private:
 
-	
 	string savePath;
 	string saveName = "SaveData.dat";
 	string loadedDir;

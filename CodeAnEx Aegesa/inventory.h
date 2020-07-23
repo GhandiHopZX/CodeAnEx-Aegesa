@@ -2,9 +2,8 @@
 #include <iostream>
 #include <string>
 #include <cstdio>
-#include "inventory.h"
+//#include "inventory.h"
 #include "Player_Actor.h"
-
 using namespace std;
 
 class inventory

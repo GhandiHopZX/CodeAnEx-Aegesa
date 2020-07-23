@@ -993,6 +993,22 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 	}
 }
 
+//templates;
+template <class ArmorOut>
+ArmorOut setArmor(int y, ArmorOut d)
+{
+	mActorArmorE[y] = d;
+	cout << "armor " << d.name << "equipped" << endl;
+}
+
+template <class WeaponOut>
+WeaponOut setWeapon(int y, WeaponOut d)
+{
+	mActorWeaponE[y] = d;
+	cout << "weapon " << d.name << "equipped" << endl;
+}
+
+
 World::~World()
 {
 	StopTime(); // use this outside of this constructor for any game shutdown.

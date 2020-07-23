@@ -4,10 +4,8 @@
 #include <vector>
 #include <ctime>
 #include <iostream>
-#include "aegesa.h"
-#include "stateEffects.h"
-#include "inventory.h"
 #include "Player_Actor.h"
+#include "aegesa.h"
 #include "Enemy.h"
 
 using namespace std;
