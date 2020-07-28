@@ -995,16 +995,16 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 
 //templates;
 template <class ArmorOut>
-ArmorOut setArmor(int y, ArmorOut d)
+ArmorOut setArmor(int y, ArmorOut d, Player_Actor a)
 {
-	mActorArmorE[y] = d;
+	a.mActorArmorE[y] = d;
 	cout << "armor " << d.name << "equipped" << endl;
 }
 
 template <class WeaponOut>
-WeaponOut setWeapon(int y, WeaponOut d)
+WeaponOut setWeapon(int y, WeaponOut d, Player_Actor a)
 {
-	mActorWeaponE[y] = d;
+	a.mActorWeaponE[y] = d;
 	cout << "weapon " << d.name << "equipped" << endl;
 }
 

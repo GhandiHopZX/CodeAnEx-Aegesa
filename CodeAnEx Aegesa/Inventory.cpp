@@ -3,7 +3,6 @@
 #include <map>
 #include <stack>
 #include "inventory.h"
-#include "Player_Actor.h"
 
 // use tha multimap function
 using namespace std;
@@ -472,6 +471,51 @@ void inventory::displaylistArmor() const
 	}
 }
 
+Player_Actor::weapon inventory::wConvert(Player_Actor::weapon ar, inventory::weapon ar2)
+{
+	
+#pragma region stat match
+	ar.agiAdd = ar2.agiAdd;
+	ar.atkAdd = ar2.atkAdd;
+	ar.conAdd = ar2.conAdd;
+	ar.defAdd = ar2.defAdd;
+	ar.dexAdd = ar2.dexAdd;
+	ar.endAdd = ar2.endAdd;
+	ar.goldValue = ar2.goldValue;
+	ar.intAdd = ar2.intAdd;
+	ar.name = ar2.name;
+	ar.quantity = ar2.quantity;
+	ar.spdAdd = ar2.spdAdd;
+	ar.sprAdd = ar2.sprAdd;
+	ar.strAdd = ar2.strAdd;
+	ar.wvalue = ar2.wvalue;
+#pragma endregion
+
+	return ar;
+}
+
+Player_Actor::armor inventory::aConvert(Player_Actor::armor ar, inventory::armor ar2)
+{
+
+#pragma region stat match
+	ar.agiAdd = ar2.agiAdd;
+	ar.atkAdd = ar2.atkAdd;
+	ar.conAdd = ar2.conAdd;
+	ar.defAdd = ar2.defAdd;
+	ar.dexAdd = ar2.dexAdd;
+	ar.endAdd = ar2.endAdd;
+	ar.goldValue = ar2.goldValue;
+	ar.intAdd = ar2.intAdd;
+	ar.name = ar2.name;
+	ar.quantity = ar2.quantity;
+	ar.spdAdd = ar2.spdAdd;
+	ar.sprAdd = ar2.sprAdd;
+	ar.strAdd = ar2.strAdd;
+	ar.avalue = ar2.avalue;
+#pragma endregion
+	return ar;
+}
+
 
 //for combat
 void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inventory that'll work in the world menu
@@ -554,7 +598,7 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 				cin >> hd;
 			}
 
-			itemExecute(party, getItem(i), hd);
+			itemExecute(party, allitemList(i), hd);
 
 			PlayerItemInventory(party);
 			break;
@@ -620,7 +664,10 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		}
 		cin >> choiceB;
 
-		party->setArmor(choiceB, armorlist);
+		//convert Type
+		aConvert(party[choiceB].getArmorEQ(), armorlist[choiceA]);
+
+		party->setArmor(choiceB, aConvert(party[choiceB].getArmorEQ(), armorlist[choiceA]));
 
 		if (!(isalpha(choiceA)))
 		{
@@ -759,14 +806,6 @@ void inventory::remItem(int find) {
 	deleteNodeItem(my_items[find], i);
 } //removing to the struct array
 
-inventory::item inventory::getItem(int d)
-{
-	return my_items[d];
-}
-
-
-
-
 inventory::~inventory()
 {
 	armor* nodeAPtr;
@@ -803,3 +842,4 @@ inventory::~inventory()
 
 	//delete [] stackArray;
 }
+

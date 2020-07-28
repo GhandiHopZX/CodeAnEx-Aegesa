@@ -61,6 +61,17 @@ string Player_Actor::normalOutput(string normal)
 	return string();
 }
 
+
+void Player_Actor::setArmor(int y, Player_Actor::armor d)
+{
+	mActorArmorE[y] = d;
+}
+
+void Player_Actor::setWeapon(int y, Player_Actor::weapon d)
+{
+	mActorWeaponE[y] = d;
+}
+
 // use this to kill the player and when they die
 Player_Actor::~Player_Actor()
 {

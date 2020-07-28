@@ -15,6 +15,15 @@ class Player_Actor : public aegesa
 {
 private:
 	// variables
+
+
+	string bio; // YOUR STORY!
+	string name; // YOUR NAME!
+
+	// variables
+
+public:
+
 	struct weapon
 	{
 		string name;
@@ -85,14 +94,6 @@ private:
 
 		// next item
 	};
-
-	string bio; // YOUR STORY!
-	string name; // YOUR NAME!
-	weapon mActorWeaponE[1];
-	armor mActorArmorE[3];
-	// variables
-
-public:
 
 	// stat multiplier flag
 	/*bool statmulti;
@@ -647,15 +648,13 @@ public:
 	//
 	//#pragma endregion
 
-/*nventory::armor getArmorEQ();
+weapon mActorWeaponE[1];
+armor mActorArmorE[3];
 
-inventory::weapon getWeaponEQ();
+void setArmor(int y, Player_Actor::armor d);
+void setWeapon(int y, Player_Actor::weapon d);
 
-void setArmor(int y, inventory::armor d);
-void setWeapon(int y, inventory::weapon d);*/
-
-
-
+/*
 
 		/*
 		void setParty(Player_Actor currentPa, int pos);

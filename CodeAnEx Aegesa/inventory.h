@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cstdio>
-//#include "inventory.h"
+#include "inventory.h"
 #include "Player_Actor.h"
 using namespace std;
 
@@ -159,6 +159,9 @@ public:
 	void displaylistArmor() const;
 
 	//void combatItemInventory(Player_Actor party[]);
+	Player_Actor::weapon wConvert(Player_Actor::weapon ar, inventory::weapon ar2);
+
+	Player_Actor::armor aConvert(Player_Actor::armor ar, inventory::armor ar2);
 
 	void PlayerItemInventory(Player_Actor party[]);
 
@@ -203,7 +206,7 @@ public:
 	};
 
 	// selections
-	item getItem(int);
+	//item getItem(int);
 	void itemExecute(Player_Actor i[], inventory::item newI, int selectParty)
 	{
 		i[selectParty].setAGId(newI.agiAdd);
