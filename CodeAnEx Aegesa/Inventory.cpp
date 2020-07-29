@@ -534,8 +534,6 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 	int maxP = party->getParty_num();
 	cin >> choice;
 
-	
-
 	if (!(isalpha(choice)))
 	{
 		cout << "try again bitch.." << endl;
@@ -625,7 +623,6 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		a = 0;
 		int choiceB;
 
-		listCount = 1;
 		for (size_t i = 0; i < listCount; i++)
 		{
 			cout << my_armors[i].name << endl;
@@ -684,8 +681,13 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 
 	case 'w':
 		listCount = 1;
-		choice = 'N';
-		listCount = 1;
+		hd = 0;
+		choice = NULL;
+		choiceInt;
+		int choiceA;
+		a = 0;
+		int choiceB;
+
 		for (size_t i = 0; i < listCount; i++)
 		{
 			cout << my_weapons[i].name << endl;
@@ -698,24 +700,51 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 				listCount += 0;
 			}
 		}
-		cin >> i;
+		
+		cout << "Select an Actor to select an weapon.. 0 - " << maxP << endl;
+		for (int h = 0; h < maxP; h++)
+		{
+			cout << listCount << party[h].getName() << endl;
+			++listCount;
+		}
+		cin >> hd;
 
-		//selectlistWeapon(i);
-		//equip weapon
+		for (a = 0; a < listCount; a++)
+		{
+			cout << a + 1 << my_weapons[a].name << endl;
+		}
 
-		cout << "Select an Weapon?: use an number to select one.. 0 - " + listCount << endl;
+
+		cout << "Select a weapon .. 0 - " << listCount << endl;
+		cin >> choiceA;
 		//displaylistWeapon();
 		cout << "select an weapon? using a #" << endl;
 
-		if (isalpha(i))
+		cout << "Select Actor's Weapon .. 0 - " << 4 << endl;
+		listCount = 1;
+		for (int h = 0; h < maxP; h++)
 		{
-			cout << "invalid option" << endl;
-			//PlayerItemInventory(party);
-			break;
+			cout << listCount << party[h].getWeaponEQ().name << endl;
+			++listCount;
 		}
+		cin >> choiceB;
+
+		//convert Type
+		wConvert(party[choiceB].getWeaponEQ(), weaponlist[choiceA]);
+
+		party->setWeapon(choiceB, wConvert(party[choiceB].getWeaponEQ(), weaponlist[choiceA]));
+
+		if (!(isalpha(choiceA)))
+		{
+			cout << "try again.." << endl;
+			cin >> choiceA;
+		}
+
+		choice = NULL;
+		cin >> choice;
+
 		cout << "Make another selection?" << endl;
-		cin >> i;
-		//PlayerItemInventory(party);
+		PlayerItemInventory(party);
 		break;
 
 	case 'e':
