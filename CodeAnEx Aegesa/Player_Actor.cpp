@@ -42,9 +42,11 @@ Player_Actor::Player_Actor()
 
 Player_Actor::armor Player_Actor::getArmorEQ()
 {
+	armor a[3];
 	for (int i = 0; i < 3; i++)
 	{
-		return mActorArmorE[i];
+		a[i] = mActorArmorE[i];
+		return a[i];
 	}
 }
 
@@ -54,6 +56,16 @@ Player_Actor::weapon Player_Actor::getWeaponEQ()
 	{
 		return mActorWeaponE[i];
 	}
+}
+
+Player_Actor::armor Player_Actor::getArmorEQ2(int me)
+{
+	return mActorArmorE[me];
+}
+
+Player_Actor::weapon Player_Actor::getWeaponEQ2(int me)
+{
+	return mActorWeaponE[me];
 }
 
 string Player_Actor::normalOutput(string normal)

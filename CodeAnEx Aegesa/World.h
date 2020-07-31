@@ -154,11 +154,10 @@ public:
 	int getPartySize();
 	bool mEVTriggerActive();
 
-	
-
 	// state modifiers
 	string tokenChangerAdd(int partyNum, int place, string name, stateEffects t);
 	string tokenChangerRem(int partyNum, int place, string name, stateEffects);
+	void tokenChecker(int, stateEffects);
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus

@@ -111,6 +111,28 @@ void World::beginningStory()
 
 	Actor1.setAp(5);
 	Actor1.setDp(0); // always set these defaulted to 0
+
+	// weapon eq
+	Player_Actor::weapon Basic_Injector;
+#pragma region Basic_Injector_Setup
+	Basic_Injector.agiAdd = 0;
+	Basic_Injector.atkAdd = 5;
+	Basic_Injector.conAdd = 1;
+	Basic_Injector.defAdd = 0;
+	Basic_Injector.dexAdd = 0;
+	Basic_Injector.endAdd = 0;
+	Basic_Injector.goldValue = 10;
+	Basic_Injector.intAdd = 3;
+	Basic_Injector.name = "Basic_Injector";
+	Basic_Injector.quantity = 1;
+	Basic_Injector.spdAdd = 0;
+	Basic_Injector.sprAdd = 0;
+	Basic_Injector.strAdd = 0;
+	Basic_Injector.wvalue = 1;
+
+#pragma endregion
+
+	
 #pragma endregion
 
 #pragma region Alicia_SetStats
@@ -144,6 +166,83 @@ void World::beginningStory()
 
 	Alicia.setAp(5);
 	Alicia.setDp(0); // always set these defaulted to 0
+
+	Player_Actor::weapon Gold_Dragon_Claws;
+	Player_Actor::armor Kommodo_Chestplate;
+	Player_Actor::armor Kommodo_Leggings;
+	Player_Actor::armor Kommodo_Palm_Soles;
+
+#pragma region Goldshit
+	Gold_Dragon_Claws.agiAdd = 0;
+	Gold_Dragon_Claws.atkAdd = 5;
+	Gold_Dragon_Claws.conAdd = 1;
+	Gold_Dragon_Claws.defAdd = 0;
+	Gold_Dragon_Claws.dexAdd = 0;
+	Gold_Dragon_Claws.endAdd = 0;
+	Gold_Dragon_Claws.goldValue = 10;
+	Gold_Dragon_Claws.intAdd = 3;
+	Gold_Dragon_Claws.name = "Gold_Dragon_Claws";
+	Gold_Dragon_Claws.quantity = 1;
+	Gold_Dragon_Claws.spdAdd = 0;
+	Gold_Dragon_Claws.sprAdd = 0;
+	Gold_Dragon_Claws.strAdd = 0;
+	Gold_Dragon_Claws.wvalue = 1;
+#pragma endregion
+
+
+#pragma region Kommodo_Chestplate
+	Kommodo_Chestplate.agiAdd = 0;
+	Kommodo_Chestplate.atkAdd = 5;
+	Kommodo_Chestplate.conAdd = 1;
+	Kommodo_Chestplate.defAdd = 0;
+	Kommodo_Chestplate.dexAdd = 0;
+	Kommodo_Chestplate.endAdd = 0;
+	Kommodo_Chestplate.goldValue = 10;
+	Kommodo_Chestplate.intAdd = 3;
+	Kommodo_Chestplate.name = "Kommodo_Chestplate";
+	Kommodo_Chestplate.quantity = 1;
+	Kommodo_Chestplate.spdAdd = 0;
+	Kommodo_Chestplate.sprAdd = 5;
+	Kommodo_Chestplate.strAdd = 0;
+	Kommodo_Chestplate.avalue = 1;
+#pragma endregion
+
+	
+#pragma region Kommodo_Leggings
+	Kommodo_Leggings.agiAdd = 5;
+	Kommodo_Leggings.atkAdd = 5;
+	Kommodo_Leggings.conAdd = 1;
+	Kommodo_Leggings.defAdd = 0;
+	Kommodo_Leggings.dexAdd = 0;
+	Kommodo_Leggings.endAdd = 0;
+	Kommodo_Leggings.goldValue = 10;
+	Kommodo_Leggings.intAdd = 3;
+	Kommodo_Leggings.name = "Kommodo_Chestplate";
+	Kommodo_Leggings.quantity = 1;
+	Kommodo_Leggings.spdAdd = 0;
+	Kommodo_Leggings.sprAdd = 0;
+	Kommodo_Leggings.strAdd = 0;
+	Kommodo_Leggings.avalue = 1;
+#pragma endregion
+
+#pragma region Kommodo_Palm_Soles
+	Kommodo_Palm_Soles.agiAdd = 7;
+	Kommodo_Palm_Soles.atkAdd = 5;
+	Kommodo_Palm_Soles.conAdd = 5;
+	Kommodo_Palm_Soles.defAdd = 3;
+	Kommodo_Palm_Soles.dexAdd = 8;
+	Kommodo_Palm_Soles.endAdd = 3;
+	Kommodo_Palm_Soles.goldValue = 10;
+	Kommodo_Palm_Soles.intAdd = 3;
+	Kommodo_Palm_Soles.name = "Kommodo_Palm_Soles";
+	Kommodo_Palm_Soles.quantity = 1;
+	Kommodo_Palm_Soles.spdAdd = 4;
+	Kommodo_Palm_Soles.sprAdd = 1;
+	Kommodo_Palm_Soles.strAdd = 5;
+	Kommodo_Palm_Soles.avalue = 1;
+#pragma endregion
+
+	
 #pragma endregion
 
 #pragma region opening setting
@@ -225,7 +324,15 @@ void World::beginningStory()
 	changePartySize(2);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
+
+	// gear setup
 	
+	playerParty[1].setWeapon(0, Gold_Dragon_Claws);
+	playerParty[1].setArmor(0, Kommodo_Chestplate);
+	playerParty[1].setArmor(1, Kommodo_Leggings);
+	playerParty[1].setArmor(2, Kommodo_Palm_Soles);
+
+	playerParty[0].setWeapon(0, Basic_Injector);
 
 	system("CLS");
 	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
@@ -559,6 +666,16 @@ void World::statusCall(Player_Actor p[])
 
 	if (choice <= partyNum)
 	{
+
+		int max_Weps = 2;
+		
+		int max_Armors = 3;
+
+		int i = 0;
+
+		Player_Actor::armor a;
+		Player_Actor::weapon w;
+
 		cout << p[choice].getName() << endl;
 
 		cout << "States" << endl;
@@ -572,17 +689,45 @@ void World::statusCall(Player_Actor p[])
 		cout << "AP: " << p[choice].getAp() << endl;
 		cout << "DP: " << p[choice].getDp() << endl;
 
-		cout << "ATK: " << p[choice].getATKd() << "/" << p[choice].getATK() << endl;
-		cout << "DEF: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
-		cout << "SPD: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
+		// addup armors
+		for (int i = 0; i < max_Armors; i++)
+		{
+			a.atkAdd += p[choice].getArmorEQ2(i).atkAdd;
+			a.defAdd += p[choice].getArmorEQ2(i).defAdd;
+			a.spdAdd += p[choice].getArmorEQ2(i).spdAdd;
+			a.agiAdd += p[choice].getArmorEQ2(i).agiAdd;
+			a.dexAdd += p[choice].getArmorEQ2(i).dexAdd;
+			a.intAdd += p[choice].getArmorEQ2(i).intAdd;
+			a.sprAdd += p[choice].getArmorEQ2(i).sprAdd;
+			a.strAdd += p[choice].getArmorEQ2(i).strAdd;
+			a.endAdd += p[choice].getArmorEQ2(i).endAdd;
+			a.conAdd += p[choice].getArmorEQ2(i).conAdd;
+		}
+		// addup weapons
+		for (int i = 0; i < max_Weps; i++)
+		{
+			w.atkAdd += p[choice].getWeaponEQ2(i).atkAdd;
+			w.defAdd += p[choice].getWeaponEQ2(i).defAdd;
+			w.spdAdd += p[choice].getWeaponEQ2(i).spdAdd;
+			w.agiAdd += p[choice].getWeaponEQ2(i).agiAdd;
+			w.dexAdd += p[choice].getWeaponEQ2(i).dexAdd;
+			w.intAdd += p[choice].getWeaponEQ2(i).intAdd;
+			w.sprAdd += p[choice].getWeaponEQ2(i).sprAdd;
+			w.strAdd += p[choice].getWeaponEQ2(i).strAdd;
+			w.endAdd += p[choice].getWeaponEQ2(i).endAdd;
+			w.conAdd += p[choice].getWeaponEQ2(i).conAdd;
+		}
 
-		cout << "AGI: " << p[choice].getAGId() << "/" << p[choice].getAGI() << endl;
-		cout << "DEX: " << p[choice].getDEXd() << "/" << p[choice].getDEX() << endl;
-		cout << "INT: " << p[choice].getINTd() << "/" << p[choice].getINT() << endl;
-		cout << "SPR: " << p[choice].getSPRd() << "/" << p[choice].getSPR() << endl;
-		cout << "STR: " << p[choice].getSTRd() << "/" << p[choice].getSTR() << endl;
-		cout << "END: " << p[choice].getENDd() << "/" << p[choice].getEND() << endl;
-		cout << "CON: " << p[choice].getCONd() << "/" << p[choice].getCON() << endl;
+		cout << "ATK: " << p[choice].getATKd() << "/" << p[choice].getATK() + a.atkAdd + w.atkAdd << endl;
+		cout << "DEF: " << p[choice].getDEFd() << "/" << p[choice].getDEF() + a.defAdd + w.defAdd << endl;
+		cout << "SPD: " << p[choice].getSPDd() << "/" << p[choice].getSPD() + a.spdAdd + w.spdAdd << endl;
+		cout << "AGI: " << p[choice].getAGId() << "/" << p[choice].getAGI() + a.agiAdd + w.agiAdd << endl;
+		cout << "DEX: " << p[choice].getDEXd() << "/" << p[choice].getDEX() + a.dexAdd + w.dexAdd << endl;
+		cout << "INT: " << p[choice].getINTd() << "/" << p[choice].getINT() + a.intAdd + w.intAdd << endl;
+		cout << "SPR: " << p[choice].getSPRd() << "/" << p[choice].getSPR() + a.sprAdd + w.sprAdd << endl;
+		cout << "STR: " << p[choice].getSTRd() << "/" << p[choice].getSTR() + a.strAdd + w.strAdd << endl;
+		cout << "END: " << p[choice].getENDd() << "/" << p[choice].getEND() + a.endAdd + w.endAdd << endl;
+		cout << "CON: " << p[choice].getCONd() << "/" << p[choice].getCON() + a.conAdd + w.conAdd << endl;
 
 
 		switch (p[choice].getLeadRole())
@@ -825,7 +970,14 @@ string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects
 		// does this buff/de exist?
 		if (name != t.allEffGet[i])
 		{
-			t.buffName == t.allEffGet[i];
+			//t.buffName == t.allEffGet[i];
+
+			// pointer
+			string *me{};
+
+			me = &t.allEffGet[i];
+
+			t.add_state(place, true, me);
 		}
 		else if (i > 20)
 		{
@@ -853,6 +1005,7 @@ string World::tokenChangerRem(int partyNum, int place, string name, stateEffects
 		if (bItr->first == place)
 		{
 			keyExists = true;
+			t.remove_state(place, true);
 			bItr = cell.erase(bItr);
 			cout << "[INFO] state removed." << endl;
 			break;
@@ -867,6 +1020,36 @@ string World::tokenChangerRem(int partyNum, int place, string name, stateEffects
 string hap = playerParty[partyNum].getName() + " is free of " + t.buffName;
 
 return hap;
+}
+
+void World::tokenChecker(int partyNum, stateEffects t)
+{
+	auto& cell = currentPartyStates[partyNum];
+	auto bItr = begin(cell);
+	int steff = t.turns_Of_aff;
+	int m = bItr->first;
+
+	for (; bItr != end(cell); bItr++)
+	{
+		switch (steff)
+		{
+		case 0:
+			tokenChangerRem(partyNum, m, t.buffName, t);
+			break;
+
+		default:
+			if (steff <= 0)
+			{
+				m = bItr->first;
+				tokenChangerRem(partyNum, m, t.buffName, t);
+			}
+			else
+			{
+				cout << playerParty[partyNum].getName() << "Has affliction of " << t.buffName;
+			}
+			break;
+		}
+	}
 }
 
 void World::changePartySize(int isIn)

@@ -684,9 +684,9 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		hd = 0;
 		choice = NULL;
 		choiceInt;
-		int choiceA;
+		choiceA = 0;
 		a = 0;
-		int choiceB;
+		choiceB = 0;
 
 		for (size_t i = 0; i < listCount; i++)
 		{

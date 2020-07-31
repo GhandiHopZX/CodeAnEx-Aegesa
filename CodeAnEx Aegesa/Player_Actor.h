@@ -106,6 +106,10 @@ public:
 
 	weapon getWeaponEQ();
 
+	Player_Actor::armor getArmorEQ2(int me);
+
+	Player_Actor::weapon getWeaponEQ2(int me);
+
 	// getters / accessors
 
 	string normalOutput(string normal);
