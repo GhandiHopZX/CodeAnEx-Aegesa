@@ -164,11 +164,11 @@ public:
 	Player_Actor::armor aConvert(Player_Actor::armor ar, inventory::armor ar2);
 
 	void PlayerItemInventory(Player_Actor party[]);
-
 	// battleSystem
-	void rewardCall(int);
 
-	void addItem(int);
+	void rewardCall(int index, int howMany);
+
+	void addItem(int find, int howMany);
 
 	void remItem(int);
 

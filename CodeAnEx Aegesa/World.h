@@ -158,6 +158,7 @@ public:
 	string tokenChangerAdd(int partyNum, int place, string name, stateEffects t);
 	string tokenChangerRem(int partyNum, int place, string name, stateEffects);
 	void tokenChecker(int, stateEffects);
+	void tokenNegate(int wholeParty, stateEffects);
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus

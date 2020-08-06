@@ -334,6 +334,10 @@ void World::beginningStory()
 
 	playerParty[0].setWeapon(0, Basic_Injector);
 
+	//mainInventory.
+
+	mainInventory.addItem(0, 1);
+
 	system("CLS");
 	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
 	lineStop();
@@ -639,7 +643,7 @@ void World::optionMenuCall() {}
 // Statuses
 void World::statusCall(Player_Actor p[])
 {
-	int partyNum = getPartySize();
+	int partyNum = p->getParty_num();
 	int choice = 0;
 
 	cout << "Status for ?" << endl;
@@ -687,7 +691,7 @@ void World::statusCall(Player_Actor p[])
 		cout << "SP: " << p[choice].getSpd() << "/" << p[choice].getSp() << endl;
 		cout << "FP: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
 		cout << "AP: " << p[choice].getAp() << endl;
-		cout << "DP: " << p[choice].getDp() << endl;
+		cout << "DP: " << p[choice].getDp() << endl << endl;
 
 		// addup armors
 		for (int i = 0; i < max_Armors; i++)
@@ -786,7 +790,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 
 	cout << "\nWhere will you go?\n (n)north,\n"
 		<< "(e)east,\n (w)west,\n (s)south,\n (1)northeast,\n"
-		<< "(2)northwest,\n (3)southeast,\n (4)southwest\n, (q)nowhere\n" << endl;
+		<< "(2)northwest,\n (3)southeast,\n (4)southwest,\n (q)nowhere\n" << endl;
 
 	char dir = {};
 	cin >> dir;
@@ -797,6 +801,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		// event randomizer
 		//mEVTriggerSetter(true);
+		
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -1050,6 +1055,10 @@ void World::tokenChecker(int partyNum, stateEffects t)
 			break;
 		}
 	}
+}
+
+void World::tokenNegate(int wholeParty, stateEffects x)
+{
 }
 
 void World::changePartySize(int isIn)

@@ -532,88 +532,89 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 	int choiceInt;
 	int hd = 0;
 	int maxP = party->getParty_num();
+	bool thaCurry = true;
+
 	cin >> choice;
-
-	if (!(isalpha(choice)))
-	{
-		cout << "try again bitch.." << endl;
-		cin >> choice;
-	}
-
+	
 	switch (choice)
 	{
 	case 'i':
-		i = 0;
-		listCount = 1;
-		for (size_t i = 0; i < listCount; i++)
+		do
 		{
-			cout << my_items[i].name << endl;
-			if (!(my_items[i].name.empty()))
-			{
-				listCount += 1;
-			}
-			else
-			{
-				listCount += 0;
-			}
-		}
-
-		cout << "Select an Item? or Exit? (n): use an number to select one.. 0 - " << endl;
-		
-		//displaylistItem();
-		
-		for (size_t i = 0; i < listCount; i++)
-		{
-			cout << my_items[i].name << endl;
-		}
-
-		// select an item? using a #
-		cout << "select an item? using a number.." << endl;
-		//int i = 0;
-
-		choice = NULL;
-		cin >> i;
-		cout << "Would you like to use this item? Yes(Y) or No(N) ?" << endl;
-		cout <<"[" << my_items[i].name << "]"<< endl;
-		
-		choice = NULL;
-		switch (choice)
-		{
-		case 'y':
+#pragma region inventory items
+			//cout << "Select an Item? or Exit? (n): use an number to select one.. 0 - " << endl;
+			i = 0;
 			listCount = 1;
-			hd = 0;
-			cout << "On who?" << endl;
-			for (int h = 0; h < maxP; h++)
+			for (size_t i = 0; i < MAX_INTEGRITY; i++)
 			{
-				cout << listCount << party[h].getName() << endl;
-				++listCount;
+				cout << "(" << listCount << ") " << my_items[i].name << endl;
+				if (!(my_items[i].name.empty()))
+				{
+					listCount += 1;
+				}
+				else
+				{
+					listCount += 0;
+				}
 			}
-			cin >> hd;
+			//displaylistItem();
 
-			if (!(isalpha(hd)))
+			/*for (size_t i = 0; i < listCount; i++)
 			{
-				cout << "try again.." << endl;
+				cout << my_items[i].name << endl;
+			}*/
+
+			// select an item? using a #
+			cout << "Select an item? Using a number.." << endl;
+			//int i = 0;
+
+			choice = NULL;
+			cin >> i;
+			cout << "Would you like to use this item? Yes(Y) or No(N) ?" << endl;
+			cout << "[" << my_items[i].name << "]" << endl;
+
+			choice = NULL;
+			switch (choice)
+			{
+			case 'y':
+				listCount = 1;
+				hd = 0;
+				cout << "On who?" << endl;
+				for (int h = 0; h < maxP; h++)
+				{
+					cout << listCount << party[h].getName() << endl;
+					++listCount;
+				}
 				cin >> hd;
+
+				if (!(isalpha(hd)))
+				{
+					cout << "try again.." << endl;
+					cin >> hd;
+				}
+
+				itemExecute(party, allitemList(i), hd);
+
+				PlayerItemInventory(party);
+				break;
+			case 'n':
+				PlayerItemInventory(party);
+				break;
+			default:
+				PlayerItemInventory(party);
+				break;
 			}
-
-			itemExecute(party, allitemList(i), hd);
-
+			// select_Item(my_items[i]);
+			//selectlistItem(i, o); // usage
+			cout << "Make another selection?" << endl;
 			PlayerItemInventory(party);
 			break;
-		case 'n':
-			PlayerItemInventory(party);
-			break;
-		default:
-			PlayerItemInventory(party);
-			break;
-		}
-		// select_Item(my_items[i]);
-		//selectlistItem(i, o); // usage
-		cout << "Make another selection?" << endl;
-		PlayerItemInventory(party);
-		break;
+#pragma endregion
+		
 
-		 
+
+#pragma region armors
+
 	case 'a':
 		listCount = 1;
 		hd = 0;
@@ -622,62 +623,65 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		int choiceA;
 		a = 0;
 		int choiceB;
-
-		for (size_t i = 0; i < listCount; i++)
-		{
-			cout << my_armors[i].name << endl;
-			if (!(my_armors[i].name.empty()))
-			{
-				listCount += 1;
-			}
-			else
-			{
-				listCount += 0;
-			}
-		}
-
-		cout << "Select an Actor to select an armor.. 0 - " << maxP << endl;
-		for (int h = 0; h < maxP; h++)
-		{
-			cout << listCount << party[h].getName() << endl;
-			++listCount;
-		}
-		cin >> hd;
-		
-		for (a = 0; a < listCount; a++)
-		{
-			cout << a + 1 << my_armors[a].name << endl;
-		}
-
-		cout << "Select an Armor .. 0 - " << listCount << endl;
-		cin >> choiceA;
-
-		cout << "Select Actor's Armor .. 0 - " << 4 << endl;
-		listCount = 1;
-		for (int h = 0; h < maxP; h++)
-		{
-			cout << listCount << party[h].getArmorEQ().name << endl;
-			++listCount;
-		}
-		cin >> choiceB;
-
-		//convert Type
-		aConvert(party[choiceB].getArmorEQ(), armorlist[choiceA]);
-
-		party->setArmor(choiceB, aConvert(party[choiceB].getArmorEQ(), armorlist[choiceA]));
-
-		if (!(isalpha(choiceA)))
-		{
-			cout << "try again.." << endl;
-			cin >> choiceA;
-		}
-		
-		choice = NULL;
-		cin >> choice;
-
-		cout << "Make another selection?" << endl;
-		PlayerItemInventory(party);
+	
+	    	for (size_t i = 0; i < listCount; i++)
+	    	{
+	    		cout << my_armors[i].name << endl;
+	    		if (!(my_armors[i].name.empty()))
+	    		{
+	    			listCount += 1;
+	    		}
+	    		else
+	    		{
+	    			listCount += 0;
+	    		}
+	    	}
+	    
+	    	cout << "Select an Actor to select an armor.. 0 - " << maxP << endl;
+	    	for (int h = 0; h < maxP; h++)
+	    		{
+	    			cout << listCount << party[h].getName() << endl;
+	    			++listCount;
+	    		}
+	    	cin >> hd;
+	    
+	    	for (a = 0; a < listCount; a++)
+	    	    {
+	    			cout << a + 1 << my_armors[a].name << endl;
+	    		}
+	    
+	    		cout << "Select an Armor .. 0 - " << listCount << endl;
+	    		cin >> choiceA;
+	    
+	    		cout << "Select Actor's Armor .. 0 - " << 4 << endl;
+	    		listCount = 1;
+	    	for (int h = 0; h < maxP; h++)
+	    		{
+	    			cout << listCount << party[h].getArmorEQ().name << endl;
+	    			++listCount;
+	    		}
+	    	cin >> choiceB;
+	    
+	    	//convert Type
+	    	aConvert(party[choiceB].getArmorEQ(), armorlist[choiceA]);
+	    
+	    	party->setArmor(choiceB, aConvert(party[choiceB].getArmorEQ(), armorlist[choiceA]));
+	    
+	    	if (!(isalpha(choiceA)))
+	    	{
+	    		cout << "try again.." << endl;
+	    		cin >> choiceA;
+	    	}
+	    
+	    	choice = NULL;
+	    	cin >> choice;
+	    
+	    	cout << "Make another selection?" << endl;
+	    	PlayerItemInventory(party);
 		break;
+#pragma endregion
+
+#pragma region weapons
 
 	case 'w':
 		listCount = 1;
@@ -700,7 +704,7 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 				listCount += 0;
 			}
 		}
-		
+
 		cout << "Select an Actor to select an weapon.. 0 - " << maxP << endl;
 		for (int h = 0; h < maxP; h++)
 		{
@@ -746,10 +750,15 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		cout << "Make another selection?" << endl;
 		PlayerItemInventory(party);
 		break;
+#pragma endregion
+
+#pragma region equipment
 
 	case 'e':
 		listCount2 = 1;
-		for (size_t i = 0; i < listCount2; i++)
+		
+		cout << "(" << listCount2 << ") " << my_weapons[i].name << endl;
+		for (int i = 0; i < listCount2; i++)
 		{
 			cout << my_weapons[i].name << endl;
 			if (!(my_weapons[i].name.empty()))
@@ -760,11 +769,6 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 			{
 				listCount2 += 0;
 			}
-		}
-
-		listCount = 1;
-		for (size_t i = 0; i < listCount; i++)
-		{
 			cout << my_armors[i].name << endl;
 			if (!(my_armors[i].name.empty()))
 			{
@@ -775,15 +779,15 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 				listCount += 0;
 			}
 		}
-		cout << "Weapons equipped: select one for overview.. 0 - " +  listCount2 << endl;
-		cout << "Armors equipped: select one for overview.. 0 - " + listCount << endl;
+
+		cout << " All equipped: select one for overview.. 0 - " + listCount2 << endl;
 		//displaylistEQWgear();
 		cout << endl;
 		//displaylistEQAgear();
 		cout << endl;
 		cout << "select equipment? using a number.." << endl;
 		//int i = 0;
-		choice = 'N';
+		choice = {};
 		cin >> i;
 
 		//selectlistWeapon(i);
@@ -797,30 +801,60 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 		cout << "Make another selection?" << endl;
 		PlayerItemInventory(party);
 		break;
+#pragma endregion
 
-	case 'q':
-
-		break;
-
-	default:
-		break;
-	}
+			case 'q':
+				// exit
+				break;
+			
+			default:
+				cout << "try again biatch" << endl;
+				cin >> choice;
+				break;
+				} while (thaCurry);
+			}
 }
 
-void inventory::rewardCall(int index)
+void inventory::rewardCall(int index, int howMany)
 {
 	cout << itemlist[index].name << endl;
-	addItem(itemlist[index].quantity);
+	addItem(itemlist[index].quantity, howMany);
 	//return allitemList(index);
 }
 
-void inventory::addItem(int find) {
+void inventory::addItem(int find, int howMany) {
 	int i = 1;
+	int length;
 	item b;
+	b.quantity = howMany;
+
 	for (size_t g = 0; g < MAX_INTEGRITY; g++)
 	{
 		b = itemlist[find];
+		if (my_items[g].name.empty())
+		{
+			my_items[g].agiAdd = b.agiAdd;
+			my_items[g].name = b.name;
+			my_items[g].apAdd = b.apAdd;
+			my_items[g].atkAdd = b.atkAdd;
+			my_items[g].conAdd = b.conAdd;
+			my_items[g].defAdd = b.defAdd;
+			my_items[g].dexAdd = b.dexAdd;
+			my_items[g].endAdd = b.endAdd;
+			my_items[g].fpAdd = b.fpAdd;
+			my_items[g].goldValue = b.goldValue;
+			my_items[g].hpAdd = b.hpAdd;
+			my_items[g].intAdd = b.intAdd;
+			my_items[g].ivalue = b.ivalue;
+			my_items[g].node = b.node;
+			my_items[g].quantity = b.quantity;
+			my_items[g].spAdd = b.spAdd;
+			my_items[g].spdAdd = b.spdAdd;
+			my_items[g].sprAdd = b.sprAdd;
+			my_items[g].strAdd = b.strAdd;
+		}
 	}
+
 	if (b.ivalue != my_items[find].ivalue)
 	{
 		insertNodeItem(allitemList(find), i);
