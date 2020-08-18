@@ -42,7 +42,7 @@ public:
 
 		unsigned int wvalue = 0; // node
 		unsigned int quantity = 0;
-		struct weapon* next; //next item
+		struct weapon* next = 0; //next item
 	};
 
 	struct armor
@@ -63,7 +63,7 @@ public:
 
 		unsigned int avalue = 0; //node
 		unsigned int quantity = 0;
-		struct armor* next; //next armor
+		struct armor* next = 0; //next armor
 	};
 
 	struct item
@@ -90,7 +90,7 @@ public:
 
 		unsigned int ivalue = 0; // node for items
 		unsigned int quantity = 0;
-		struct item* node;
+		struct item* node = 0;
 
 		// next item
 	};

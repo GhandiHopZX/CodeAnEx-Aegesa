@@ -84,10 +84,12 @@ void World::beginningStory()
 #pragma region Actor1_SetStats
 	
 	Actor1.setATK(5);
+	Actor1.setAGI(1);
 	Actor1.setSPD(3);
 	Actor1.setDEF(2);
 	Actor1.setSTR(2);
 	Actor1.setDEX(2);
+	Actor1.setSPR(1);
 	Actor1.setCON(4);
 	Actor1.setEND(2);
 	Actor1.setINT(7);
@@ -97,8 +99,10 @@ void World::beginningStory()
 	Actor1.setFp(2);
 
 	Actor1.setATKd(1);
-	Actor1.setSPDd(1);
+	Actor1.setAGId(1);
+	Actor1.setSPDd(3);
 	Actor1.setDEFd(1);
+	Actor1.setSPRd(1);
 	Actor1.setSTRd(1);
 	Actor1.setDEXd(1);
 	Actor1.setCONd(1);
@@ -114,20 +118,21 @@ void World::beginningStory()
 
 	// weapon eq
 	Player_Actor::weapon Basic_Injector;
+
 #pragma region Basic_Injector_Setup
-	Basic_Injector.agiAdd = 0;
+	Basic_Injector.agiAdd = 1;
 	Basic_Injector.atkAdd = 5;
 	Basic_Injector.conAdd = 1;
-	Basic_Injector.defAdd = 0;
-	Basic_Injector.dexAdd = 0;
-	Basic_Injector.endAdd = 0;
+	Basic_Injector.defAdd = 1;
+	Basic_Injector.dexAdd = 1;
+	Basic_Injector.endAdd = 1;
 	Basic_Injector.goldValue = 10;
 	Basic_Injector.intAdd = 3;
 	Basic_Injector.name = "Basic_Injector";
 	Basic_Injector.quantity = 1;
-	Basic_Injector.spdAdd = 0;
-	Basic_Injector.sprAdd = 0;
-	Basic_Injector.strAdd = 0;
+	Basic_Injector.spdAdd = 1;
+	Basic_Injector.sprAdd = 1;
+	Basic_Injector.strAdd = 1;
 	Basic_Injector.wvalue = 1;
 
 #pragma endregion
@@ -140,11 +145,13 @@ void World::beginningStory()
 	Alicia.setBio("Lost class 3 Android unit. Locked Away for 10 years, now follows you in your journey for the AType upgrade to save her friend..");
 	Alicia.setATK(6);
 	Alicia.setSPD(8);
+	Alicia.setAGI(7);
 	Alicia.setDEF(4);
 	Alicia.setSTR(10);
 	Alicia.setDEX(12);
 	Alicia.setCON(7);
 	Alicia.setEND(5);
+	Alicia.setSPR(1);
 	Alicia.setINT(6);
 
 	Alicia.setHp(15);
@@ -152,12 +159,14 @@ void World::beginningStory()
 	Alicia.setFp(5);
 
 	Alicia.setATKd(6);
+	Alicia.setAGId(7);
 	Alicia.setSPDd(8);
 	Alicia.setDEFd(4);
 	Alicia.setSTRd(10);
 	Alicia.setDEXd(12);
 	Alicia.setCONd(7);
 	Alicia.setENDd(5);
+	Alicia.setSPRd(1);
 	Alicia.setINTd(6);
 
 	Alicia.setHpd(15);
@@ -173,37 +182,37 @@ void World::beginningStory()
 	Player_Actor::armor Kommodo_Palm_Soles;
 
 #pragma region Goldshit
-	Gold_Dragon_Claws.agiAdd = 0;
+	Gold_Dragon_Claws.agiAdd = 3;
 	Gold_Dragon_Claws.atkAdd = 5;
 	Gold_Dragon_Claws.conAdd = 1;
-	Gold_Dragon_Claws.defAdd = 0;
-	Gold_Dragon_Claws.dexAdd = 0;
-	Gold_Dragon_Claws.endAdd = 0;
+	Gold_Dragon_Claws.defAdd = 5;
+	Gold_Dragon_Claws.dexAdd = 2;
+	Gold_Dragon_Claws.endAdd = 1;
 	Gold_Dragon_Claws.goldValue = 10;
 	Gold_Dragon_Claws.intAdd = 3;
 	Gold_Dragon_Claws.name = "Gold_Dragon_Claws";
 	Gold_Dragon_Claws.quantity = 1;
-	Gold_Dragon_Claws.spdAdd = 0;
-	Gold_Dragon_Claws.sprAdd = 0;
-	Gold_Dragon_Claws.strAdd = 0;
+	Gold_Dragon_Claws.spdAdd = 1;
+	Gold_Dragon_Claws.sprAdd = 3;
+	Gold_Dragon_Claws.strAdd = 1;
 	Gold_Dragon_Claws.wvalue = 1;
 #pragma endregion
 
 
 #pragma region Kommodo_Chestplate
-	Kommodo_Chestplate.agiAdd = 0;
+	Kommodo_Chestplate.agiAdd = 1;
 	Kommodo_Chestplate.atkAdd = 5;
 	Kommodo_Chestplate.conAdd = 1;
-	Kommodo_Chestplate.defAdd = 0;
-	Kommodo_Chestplate.dexAdd = 0;
-	Kommodo_Chestplate.endAdd = 0;
+	Kommodo_Chestplate.defAdd = 1;
+	Kommodo_Chestplate.dexAdd = 3;
+	Kommodo_Chestplate.endAdd = 1;
 	Kommodo_Chestplate.goldValue = 10;
 	Kommodo_Chestplate.intAdd = 3;
 	Kommodo_Chestplate.name = "Kommodo_Chestplate";
 	Kommodo_Chestplate.quantity = 1;
-	Kommodo_Chestplate.spdAdd = 0;
+	Kommodo_Chestplate.spdAdd = 4;
 	Kommodo_Chestplate.sprAdd = 5;
-	Kommodo_Chestplate.strAdd = 0;
+	Kommodo_Chestplate.strAdd = 1;
 	Kommodo_Chestplate.avalue = 1;
 #pragma endregion
 
@@ -212,16 +221,16 @@ void World::beginningStory()
 	Kommodo_Leggings.agiAdd = 5;
 	Kommodo_Leggings.atkAdd = 5;
 	Kommodo_Leggings.conAdd = 1;
-	Kommodo_Leggings.defAdd = 0;
-	Kommodo_Leggings.dexAdd = 0;
-	Kommodo_Leggings.endAdd = 0;
+	Kommodo_Leggings.defAdd = 1;
+	Kommodo_Leggings.dexAdd = 1;
+	Kommodo_Leggings.endAdd = 2;
 	Kommodo_Leggings.goldValue = 10;
 	Kommodo_Leggings.intAdd = 3;
 	Kommodo_Leggings.name = "Kommodo_Chestplate";
 	Kommodo_Leggings.quantity = 1;
-	Kommodo_Leggings.spdAdd = 0;
-	Kommodo_Leggings.sprAdd = 0;
-	Kommodo_Leggings.strAdd = 0;
+	Kommodo_Leggings.spdAdd = 3;
+	Kommodo_Leggings.sprAdd = 4;
+	Kommodo_Leggings.strAdd = 4;
 	Kommodo_Leggings.avalue = 1;
 #pragma endregion
 
@@ -320,11 +329,11 @@ void World::beginningStory()
 
 	// from now on change this if you want to see anykind of numeric
 	// or datatype change or like I said just make it a list
-	playerParty[0].setLead(true); 
+	
 	changePartySize(2);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
-
+	playerParty[0].setLead(true);
 	// gear setup
 	
 	playerParty[1].setWeapon(0, Gold_Dragon_Claws);
@@ -1089,6 +1098,8 @@ void World::addPartyMember(int m, Player_Actor in)
 		playerParty[m].setDEXd(in.getDEXd());
 		playerParty[m].setEND(in.getEND());
 		playerParty[m].setENDd(in.getENDd());
+		playerParty[m].setSPD(in.getSPD());
+		playerParty[m].setSPDd(in.getSPDd());
 		playerParty[m].setFp(in.getFp());
 		playerParty[m].setFpd(in.getFpd());
 		playerParty[m].setDp(in.getDp());

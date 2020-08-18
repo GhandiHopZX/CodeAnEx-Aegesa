@@ -26,6 +26,7 @@ inventory::item ripped_coat;
 inventory::item shattered_broach;
 #pragma endregion
 
+
 inventory::item itemlist[100] =
 {
 	AEGESA_FRAGMENT,
@@ -48,6 +49,27 @@ inventory::item allitemList(int integer)
 {
 	return itemlist[integer];
 }
+
+#pragma region itemNames
+string itemNames[100] =
+{
+	AEGESA_FRAGMENT.name = "AEGESA FRAGMENT",
+	kaider_shard.name = "kaider shard",
+	greenball_bun.name = "greenball bun",
+	enchantment_crystal.name = "enchantment crystal",
+	music_chord.name = "music chord",
+	static_weave.name = "static weave",
+	marble_eye.name = "marble eye",
+	tiny_fingers.name = "tiny fingers",
+	chared_beast_skin.name = "chared beast skin",
+	magical_mane.name = "magical mane",
+	masters_cane.name = "masters mane",
+	broken_wing.name = "broken wing",
+	ripped_coat.name = "ripped coat",
+	shattered_broach.name = "shattered broach",
+};
+
+#pragma endregion
 
 #pragma region All_armors
 	inventory::armor broad_armor;
@@ -216,7 +238,7 @@ void inventory::appendNodeArmor(armor, int a)
 	}
 }
 
-void inventory::insertNodeItem(item, int i)
+void inventory::insertNodeItem(item d, int i)
 {
 	item* newNode;
 	item* nodePtr;
@@ -228,6 +250,33 @@ void inventory::insertNodeItem(item, int i)
 	if (!headi)
 	{
 		headi = newNode;
+		for (size_t g = 0; g < MAX_INTEGRITY; g++)
+		{
+			d = itemlist[g];
+			if (my_items[g].quantity == 0)
+			{
+				my_items[g].agiAdd = d.agiAdd;
+				my_items[g].name = d.name;
+				my_items[g].apAdd = d.apAdd;
+				my_items[g].atkAdd = d.atkAdd;
+				my_items[g].conAdd = d.conAdd;
+				my_items[g].defAdd = d.defAdd;
+				my_items[g].dexAdd = d.dexAdd;
+				my_items[g].endAdd = d.endAdd;
+				my_items[g].fpAdd = d.fpAdd;
+				my_items[g].goldValue = d.goldValue;
+				my_items[g].hpAdd = d.hpAdd;
+				my_items[g].intAdd = d.intAdd;
+				my_items[g].ivalue = d.ivalue;
+				my_items[g].node = d.node;
+				my_items[g].quantity += 1;
+				my_items[g].spAdd = d.spAdd;
+				my_items[g].spdAdd = d.spdAdd;
+				my_items[g].sprAdd = d.sprAdd;
+				my_items[g].strAdd = d.strAdd;
+				break;
+			}
+		}
 		newNode->node = nullptr;
 	}
 
@@ -517,7 +566,7 @@ Player_Actor::armor inventory::aConvert(Player_Actor::armor ar, inventory::armor
 }
 
 
-//for combat
+//Main inventory
 void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inventory that'll work in the world menu
 {
 	system("CLS");
@@ -611,8 +660,6 @@ void inventory::PlayerItemInventory(Player_Actor party[]) // gotta make an inven
 			break;
 #pragma endregion
 		
-
-
 #pragma region armors
 
 	case 'a':
@@ -831,7 +878,7 @@ void inventory::addItem(int find, int howMany) {
 	for (size_t g = 0; g < MAX_INTEGRITY; g++)
 	{
 		b = itemlist[find];
-		if (my_items[g].name.empty())
+		if (my_items[g].quantity == 0)
 		{
 			my_items[g].agiAdd = b.agiAdd;
 			my_items[g].name = b.name;
@@ -852,6 +899,7 @@ void inventory::addItem(int find, int howMany) {
 			my_items[g].spdAdd = b.spdAdd;
 			my_items[g].sprAdd = b.sprAdd;
 			my_items[g].strAdd = b.strAdd;
+			break;
 		}
 	}
 

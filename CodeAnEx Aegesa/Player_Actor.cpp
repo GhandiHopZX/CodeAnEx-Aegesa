@@ -24,7 +24,7 @@ Player_Actor::Player_Actor()
 	// battler stats
 	ATK = 5;
 	DEF = 5;
-	SPD = 5;
+	SPEED = 5;
 
 	AGI = 5;
 	DEX = 5;
@@ -48,14 +48,18 @@ Player_Actor::armor Player_Actor::getArmorEQ()
 		a[i] = mActorArmorE[i];
 		return a[i];
 	}
+	return a[0];
 }
 
 Player_Actor::weapon Player_Actor::getWeaponEQ()
 {
+	weapon w[1];
 	for (int i = 0; i < 1; i++)
 	{
-		return mActorWeaponE[i];
+		w[i] = mActorWeaponE[i];
+		return w[i];
 	}
+	return w[0];
 }
 
 Player_Actor::armor Player_Actor::getArmorEQ2(int me)

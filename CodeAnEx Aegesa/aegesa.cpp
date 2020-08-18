@@ -16,21 +16,21 @@ aegesa::aegesa()
 	party_num = 4;
 	num_Statuses = 0;
 
-	hpd = getHp();
-	spd = getSp(); // special
-	fpd = getFp(); // fighter (aural)
+	hpd = getHpd();
+	spd = getSpd(); // special
+	fpd = getFpd(); // fighter (aural)
 
-	ATKd = getATK(); // attack
-	DEFd = getDEF(); // defence (armor based)
-	SPDd = getSPD(); // speed
+	ATKd = getATKd(); // attack
+	DEFd = getDEFd(); // defence (armor based)
+	SPEEDd = getSPDd(); // speed
 
-	AGId = getAGI(); // agility
-	DEXd = getDEX(); // dexterity
-	INTd = getINT(); // intelligence
-	SPRd = getSPR(); // spirit
-	STRd = getSTR(); // strength (also effects status)
-	ENDd = getEND(); // endurance (bodily based / also effects status)
-	CONd = getCON(); // constitution (mental, body, soul, based / also effects status)
+	AGId = getAGId(); // agility
+	DEXd = getDEXd(); // dexterity
+	INTd = getINTd(); // intelligence
+	SPRd = getSPRd(); // spirit
+	STRd = getSTRd(); // strength (also effects status)
+	ENDd = getENDd(); // endurance (bodily based / also effects status)
+	CONd = getCONd(); // constitution (mental, body, soul, based / also effects status)
 }
 
 void aegesa::setBGSpd(int spdIn)

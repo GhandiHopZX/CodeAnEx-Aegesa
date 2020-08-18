@@ -30,7 +30,7 @@ public:
 	// battler statbase <- ap goes here
 	unsigned int ATK = 0; // attack 
 	unsigned int DEF = 0; // defence (armor based)
-	unsigned int SPD = 0; // speed f
+	unsigned int SPEED = 0; // speed f
 
 	// ability stats <- dp goes here
 	unsigned int AGI = 0; // agility
@@ -48,7 +48,7 @@ public:
 
 	int ATKd = 0; // attack
 	int DEFd = 0; // defence (armor based)
-	int SPDd = 0; // speed
+	int SPEEDd = 0; // speed
 
 	int AGId = 0; // agility
 	int DEXd = 0; // dexterity
@@ -170,7 +170,7 @@ public:
 	//spd Getter
 	int getSPD()
 	{
-		return SPD;
+		return SPEED;
 	};
 
 	//agi Getter
@@ -299,7 +299,7 @@ public:
 
 	void setSPD(int sdin)
 	{
-		SPD = sdin;
+		SPEED = sdin;
 	}
 
 	void setSTR(int stin)
@@ -395,7 +395,7 @@ public:
 	//spd Getter
 	int getSPDd()
 	{
-		return SPDd;
+		return SPEEDd;
 	};
 
 	//agi Getter
@@ -474,9 +474,9 @@ public:
 		DEFd = dein;
 	}
 
-	void setSPDd(int sdin)
+	void setSPDd(int spddin)
 	{
-		SPDd = sdin;
+		SPEEDd = spddin;
 	}
 
 	void setSTRd(int stin)
