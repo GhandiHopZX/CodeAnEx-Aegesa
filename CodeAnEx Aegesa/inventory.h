@@ -122,55 +122,44 @@ public:
 
 	inventory(const inventory&);
 
-	/*inventory(int, weapon);
-
-	inventory(int, armor);
-
-	inventory(int, item);*/
-	// arrays for the player's inventory.
-
-	/*inventory::weapon ActorWeaponE[1] = {};
-	inventory::armor ActorArmorE[1] = {};*/
-
-	// functions
-	void push(int);
-	void pop(int&);
-	bool isFull() const;
-	bool isEmpty() const;
-
-	// append
-	void appendNodeItem(item, int);
-	void appendNodeWeapon(weapon, int);
-	void appendNodeArmor(armor, int);
-
-	// insert
-	void insertNodeItem(item, int);
-	void insertNodeWeapon(weapon, int);
-	void insertNodeArmor(armor, int);
-
-	// delete node
-	void deleteNodeItem(item, int);
-	void deleteNodeWeapon(weapon, int);
-	void deleteNodeArmor(armor, int);
-
 	// displayListo =)
-	void displaylistItem() const;
-	void displaylistWeapon() const;
-	void displaylistArmor() const;
+	void displaylistItem();
+	void displaylistWeapon();
+	void displaylistArmor();
+	void displayAll();
 
-	//void combatItemInventory(Player_Actor party[]);
 	Player_Actor::weapon wConvert(Player_Actor::weapon ar, inventory::weapon ar2);
 
 	Player_Actor::armor aConvert(Player_Actor::armor ar, inventory::armor ar2);
 
 	void PlayerItemInventory(Player_Actor party[]);
+
+	// other functions
+	int GetItem(string id, item inventItem);
+
+	bool TakeItem(string id, int count, int agi, int ap, int atk, int hp,
+		int sp, int fp, int def, int spd, int dex, int intell, int spr, int end, int con,
+		int gold, int ivalue, int quantity, int node);
+
+	bool TakeItem(item im);
+
 	// battleSystem
 
-	void rewardCall(int index, int howMany);
+	void rewardCall(string index, int howMany);
 
-	void addItem(int find, int howMany);
+	void addItem(string id, int count, int agi, int ap, int atk, int hp, int sp, 
+		int fp, int def, int spd, int dex, int intell, int spr, int end, 
+		int con, int gold, int ivalue, int quantity, int node);
 
-	void remItem(int);
+	void addItem(item n);
+
+	void add(item n);
+
+	void removeItem(string id);
+
+	int getItemQuantity(string id);
+
+	void zeroOut(int ix);
 
 #pragma region All_weapons
 	inventory::weapon brawd_injector;
@@ -240,4 +229,5 @@ public:
 
 	// Deconstructor
 	~inventory();
+	int searchItem(string name);
 };
