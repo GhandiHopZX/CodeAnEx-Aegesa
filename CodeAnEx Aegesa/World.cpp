@@ -334,6 +334,7 @@ void World::beginningStory()
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
 	playerParty[0].setLead(true);
+
 	// gear setup
 	
 	playerParty[1].setWeapon(0, Gold_Dragon_Claws);
@@ -345,7 +346,7 @@ void World::beginningStory()
 
 	//mainInventory.
 
-	mainInventory.addItem(0, 1);
+	mainInventory.rewardCall("AEGESA FRAGMENT", 1);
 
 	system("CLS");
 	cout << "-----======= ALICIA HAS JOINED YOUR PARTY ======-----" << endl;
@@ -502,9 +503,6 @@ void World::gameLoop(int mx, int my, int mz, mapN m, int location, Player_Actor 
 
 	case false:
 		break;
-
-	default:
-		break;
 	}
 	
 }
@@ -638,9 +636,6 @@ void World::eventCalls(World::mapN local, bool trigger, int evNCall)
 		break;
 
 	case false:
-		break;
-
-	default:
 		break;
 	}
 }
@@ -979,13 +974,12 @@ bool World::mEVTriggerActive()
 string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects t)
 {
 	string happened = "";
+
 	for (int i = 0; i < 20; i++)
 	{
 		// does this buff/de exist?
 		if (name != t.allEffGet[i])
 		{
-			//t.buffName == t.allEffGet[i];
-
 			// pointer
 			string *me{};
 
@@ -1068,6 +1062,7 @@ void World::tokenChecker(int partyNum, stateEffects t)
 
 void World::tokenNegate(int wholeParty, stateEffects x)
 {
+
 }
 
 void World::changePartySize(int isIn)
@@ -1210,8 +1205,6 @@ WeaponOut setWeapon(int y, WeaponOut d, Player_Actor a)
 	a.mActorWeaponE[y] = d;
 	cout << "weapon " << d.name << "equipped" << endl;
 }
-
-
 World::~World()
 {
 	StopTime(); // use this outside of this constructor for any game shutdown.

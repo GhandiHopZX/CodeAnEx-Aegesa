@@ -46,9 +46,7 @@ public:
 		unsigned int agiAdd = 0;
 		unsigned int goldValue = 0;
 
-		unsigned int wvalue = 0; // node
 		unsigned int quantity = 0;
-		struct weapon* next; //next item
 	};
 
 	struct armor
@@ -67,9 +65,7 @@ public:
 		unsigned int agiAdd = 0;
 		unsigned int goldValue = 0;
 
-		unsigned int avalue = 0; //node
 		unsigned int quantity = 0;
-		struct armor* next; //next armor
 	};
 
 	struct item
@@ -94,9 +90,7 @@ public:
 		unsigned int agiAdd = 0;
 		unsigned int goldValue = 0;
 
-		unsigned int ivalue = 0; // node for items
 		unsigned int quantity = 0;
-		struct item* node;
 
 		// next item
 	};

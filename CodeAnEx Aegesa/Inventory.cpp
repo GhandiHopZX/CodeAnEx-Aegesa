@@ -113,19 +113,25 @@ inventory::item my_items[inventory::MAX_INTEGRITY] =
 
 inventory::inventory()
 {
+	this->heada = 0;
+	this->headi = 0;
+	this->headw = 0;
+	this->size = 20;
+	this->capacity = 20;
 }
 
 inventory::inventory(int)
 {
-}
-
-inventory::inventory(const inventory&)
-{
+	this->heada = 0;
+	this->headi = 0;
+	this->headw = 0;
+	this->size = 20;
+	this->capacity = 20;
 }
 
 void inventory::displaylistItem()
 {
-
+	this->capacity = 20;
 }
 
 inventory::~inventory()
@@ -158,32 +164,6 @@ int inventory::GetItem(string id, item inventItem)
 	return -1;
 }
 
-bool inventory::TakeItem(string id, int count, int agi, int ap, int atk, 
-	int hp, int sp, int fp, int def, int spd, int dex, int intell, 
-	int spr, int end, int con, int gold, int ivalue, int quantity, int node)
-{
-	item b;
-	b.agiAdd = agi;
-	b.apAdd = ap;
-	b.atkAdd = atk;
-	b.name = id;
-	b.hpAdd = hp;
-	b.spAdd = sp;
-	b.fpAdd = fp;
-	b.defAdd = def;
-	b.spdAdd = spd;
-	b.dexAdd = dex;
-	b.intAdd = intell;
-	b.sprAdd = spr;
-	b.endAdd = end;
-	b.conAdd = con;
-	b.goldValue = gold;
-	b.ivalue = ivalue;
-	b.quantity = quantity;
-	b.node += node;
-	return true;
-}
-
 bool inventory::TakeItem(item im)
 {
 	item b = im;
@@ -193,8 +173,9 @@ bool inventory::TakeItem(item im)
 		return false;
 	}
 
-	if (b.quantity < im.quantity)
+	if (0 <= im.quantity)
 	{
+		removeItem(b.name);
 		return false;
 	}
 
@@ -204,25 +185,7 @@ bool inventory::TakeItem(item im)
 	}
 	else
 	{
-		my_items[itemSlot].agiAdd = 0;
-		my_items[itemSlot].agiAdd = 0;
-		my_items[itemSlot].apAdd = 0;
-		my_items[itemSlot].atkAdd = 0;
-		my_items[itemSlot].name = "";
-		my_items[itemSlot].hpAdd = 0;
-		my_items[itemSlot].spAdd = 0;
-		my_items[itemSlot].fpAdd = 0;
-		my_items[itemSlot].defAdd = 0;
-		my_items[itemSlot].spdAdd = 0;
-		my_items[itemSlot].dexAdd = 0;
-		my_items[itemSlot].intAdd = 0;
-		my_items[itemSlot].sprAdd = 0;
-		my_items[itemSlot].endAdd = 0;
-		my_items[itemSlot].conAdd = 0;
-		my_items[itemSlot].goldValue = 0;
-		my_items[itemSlot].ivalue = 0;
-		my_items[itemSlot].quantity = 0;
-		my_items[itemSlot].node += 0;
+		zeroOut(searchItem(my_items[itemSlot].name));
 		b.quantity = 0;
 	}
 	return true;
@@ -232,36 +195,9 @@ void inventory::rewardCall(string index, int howMany)
 {
 	if (itemlist[searchItem(index)].name.empty())
 	{
-		addItem(index, 10, 11, 11, 9, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 100, 1, howMany, 1);
+		removeItem(index);
 	}
 	cout << itemlist[searchItem(index)].name << "Aquired..." << endl;
-}
-
-void inventory::addItem(string id, int count = 1, int agi, int ap, int atk, int hp,
-	int sp, int fp, int def, int spd, int dex, int intell, int spr, int end, int con, 
-	int gold, int ivalue, int quantity, int node)
-{
-	item b;
-	b.agiAdd = agi;
-	b.apAdd = ap;
-	b.atkAdd = atk;
-	b.name = id;
-	b.hpAdd = hp;
-	b.spAdd = sp;
-	b.fpAdd = fp;
-	b.defAdd = def;
-	b.spdAdd = spd;
-	b.dexAdd = dex;
-	b.intAdd = intell;
-	b.sprAdd = spr;
-	b.endAdd = end;
-	b.conAdd = con;
-	b.goldValue = gold;
-	b.ivalue = ivalue;
-	b.quantity = quantity;
-	b.node += node;
-
-	addItem(b);
 }
 
 void inventory::addItem(item n)
@@ -288,7 +224,7 @@ void inventory::addItem(item n)
 
 void inventory::add(item n)
 {
-	for(int i; i < 20; i++) 
+	for(int i = 0; i < 20; i++) 
 	{
 		if (my_items[i].name.empty() || my_items[i].name == "")
 		{
@@ -340,7 +276,5 @@ void inventory::zeroOut(int ix)
 	my_items[ix].endAdd = 0;
 	my_items[ix].conAdd = 0;
 	my_items[ix].goldValue = 0;
-	my_items[ix].ivalue = 0;
 	my_items[ix].quantity = 0;
-	my_items[ix].node += 0;
 }
