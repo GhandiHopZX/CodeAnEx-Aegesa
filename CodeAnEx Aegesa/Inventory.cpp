@@ -135,7 +135,15 @@ void inventory::displaylistItem()
 {
 	for (size_t i = 0; i < 20; i++)
 	{
-		cout << my_items[i].name << endl;
+		
+		if (my_items[i].name.empty())
+		{
+			
+		}
+		else
+		{
+			cout << my_items[i].name << endl;
+		}
 	}
 }
 
@@ -143,7 +151,14 @@ void inventory::displaylistWeapon()
 {
 	for (size_t i = 0; i < 20; i++)
 	{
-		cout << my_weapons[i].name << endl;
+		if (my_weapons[i].name.empty())
+		{
+
+		}
+		else
+		{
+			cout << my_weapons[i].name << endl;
+		}
 	}
 }
 
@@ -151,7 +166,14 @@ void inventory::displaylistArmor()
 {
 	for (size_t i = 0; i < 20; i++)
 	{
-		cout << my_armors[i].name << endl;
+		if (my_armors[i].name.empty())
+		{
+
+		}
+		else
+		{
+			cout << my_armors[i].name << endl;
+		}
 	}
 }
 
@@ -181,7 +203,7 @@ int inventory::searchItem(string name)
 
 void inventory::PlayerItemInventory(Player_Actor party[])
 {
-
+	system("CLS");
 	string c;
 	cout << "			-ALL ITEMS Inventory- " << endl;
 	displayAll();
@@ -189,24 +211,35 @@ void inventory::PlayerItemInventory(Player_Actor party[])
 	cout << "			Sort Lists?  (1)weapons, (2)armors, (3)items, (Q) " << endl;
 	cout << "			NOTICE: 	ALL OF WHICH ARE UNEQUIPPED...			  " << endl;
 
+	cin >> c;
+
 	// player selection
 	switch (choiceIn(c))
 	{
 	case 1:
+		system("CLS");
 		displaylistWeapon();
 		cout << "Ok?" << endl;
+		system("PAUSE");
 		PlayerItemInventory(party);
 		break;
+
 	case 2:
+		system("CLS");
 		displaylistArmor();
 		cout << "Ok?" << endl;
+		system("PAUSE");
 		PlayerItemInventory(party);
 		break;
+
 	case 3:
+		system("CLS");
 		displaylistItem();
 		cout << "Ok?" << endl;
+		system("PAUSE");
 		PlayerItemInventory(party);
 		break;
+
 	case 'q':
 		// end
 		break;
