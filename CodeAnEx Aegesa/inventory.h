@@ -155,6 +155,8 @@ public:
 
 	void zeroOut(int ix);
 
+	char choiceIn(string choiceBuffer);
+
 #pragma region All_weapons
 	inventory::weapon brawd_injector;
 	inventory::weapon glass_gauntlet;

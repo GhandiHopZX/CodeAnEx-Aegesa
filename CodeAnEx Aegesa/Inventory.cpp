@@ -85,17 +85,17 @@ string itemNames[100] =
 
 inventory::armor armorlist[100] =
 {
-		broad_armor,
-		kavelar_gear,
-		carbonite_gear,
-		crystalline_armor,
-		aerolite_gear,
-		vandham_armor,
-		antiImpact_armor,
-		katType_armor,
-		grenadier_composite_armor,
-		anti_nuclear_armor
-	};
+	broad_armor,
+	kavelar_gear,
+	carbonite_gear,
+	crystalline_armor,
+	aerolite_gear,
+	vandham_armor,
+	antiImpact_armor,
+	katType_armor,
+	grenadier_composite_armor,
+	anti_nuclear_armor
+};
 
 inventory::armor allarmorList(int integer)
 {
@@ -117,6 +117,7 @@ inventory::inventory()
 	this->headi = 0;
 	this->headw = 0;
 	this->size = 20;
+	this->stackArray;
 	this->capacity = 20;
 }
 
@@ -126,12 +127,39 @@ inventory::inventory(int)
 	this->headi = 0;
 	this->headw = 0;
 	this->size = 20;
+	this->stackArray;
 	this->capacity = 20;
 }
 
 void inventory::displaylistItem()
 {
-	this->capacity = 20;
+	for (size_t i = 0; i < 20; i++)
+	{
+		cout << my_items[i].name << endl;
+	}
+}
+
+void inventory::displaylistWeapon()
+{
+	for (size_t i = 0; i < 20; i++)
+	{
+		cout << my_weapons[i].name << endl;
+	}
+}
+
+void inventory::displaylistArmor()
+{
+	for (size_t i = 0; i < 20; i++)
+	{
+		cout << my_armors[i].name << endl;
+	}
+}
+
+void inventory::displayAll()
+{
+	displaylistArmor();
+	displaylistItem();
+	displaylistWeapon();
 }
 
 inventory::~inventory()
@@ -149,6 +177,42 @@ int inventory::searchItem(string name)
 		}
 	}
 	return NULL;
+}
+
+void inventory::PlayerItemInventory(Player_Actor party[])
+{
+
+	string c;
+	cout << "			-ALL ITEMS Inventory- " << endl;
+	displayAll();
+	
+	cout << "			Sort Lists?  (1)weapons, (2)armors, (3)items, (Q) " << endl;
+	cout << "			NOTICE: 	ALL OF WHICH ARE UNEQUIPPED...			  " << endl;
+
+	// player selection
+	switch (choiceIn(c))
+	{
+	case 1:
+		displaylistWeapon();
+		cout << "Ok?" << endl;
+		PlayerItemInventory(party);
+		break;
+	case 2:
+		displaylistArmor();
+		cout << "Ok?" << endl;
+		PlayerItemInventory(party);
+		break;
+	case 3:
+		displaylistItem();
+		cout << "Ok?" << endl;
+		PlayerItemInventory(party);
+		break;
+	case 'q':
+		// end
+		break;
+	default:
+		break;
+	}
 }
 
 int inventory::GetItem(string id, item inventItem)
@@ -277,4 +341,26 @@ void inventory::zeroOut(int ix)
 	my_items[ix].conAdd = 0;
 	my_items[ix].goldValue = 0;
 	my_items[ix].quantity = 0;
+}
+
+char inventory::choiceIn(string choiceBuffer)
+{
+	//string choiceBuffer;
+	char choice = NULL;
+	//cin >> choice;
+	char* choiceWritable = new char[choiceBuffer.size() + 1];
+
+	copy(choiceBuffer.begin(), choiceBuffer.end(), choiceWritable);
+
+	choiceWritable[choiceBuffer.size()] = '\0';
+
+	char* choice3 = choiceWritable;
+
+	char& choice4 = *choice3;
+
+	choice = choice4;
+
+	delete[] choiceWritable;
+
+	return choice;
 }
