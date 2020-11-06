@@ -21,8 +21,11 @@ private:
 		node* nextptr;
 	}*stnode;
 
-	void list(int n[]);
+	void list(int n[], int u);
 	void reverse(node **stnode);
 	void listD();
+
+public: 
+	
 };
 

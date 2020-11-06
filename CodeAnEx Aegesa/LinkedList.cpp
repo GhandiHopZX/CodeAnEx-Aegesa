@@ -1,9 +1,12 @@
 #include "LinkedList.h"
 
-void LinkedList::list(int n[])
+// this function is useless?
+void LinkedList::list(int n[], int u)
 {
 	struct node* frntNode, * tmp;
 	int num, i;
+
+	i = u;
 
 	stnode = (struct node*)malloc(sizeof(struct node));
 
@@ -32,8 +35,8 @@ void LinkedList::list(int n[])
 			}
 			else
 			{
-				cout << "Enter the data for node " << i << ": "; // Entering data in nodes.
-				cin >> num;
+				//cout << "Enter the data for node " << i << ": "; // Entering data in nodes.
+				//cin >> num;
 				frntNode->num = num;
 				frntNode->nextptr = NULL;
 				tmp->nextptr = frntNode;
@@ -43,6 +46,7 @@ void LinkedList::list(int n[])
 	}
 }
 
+// reverse the list
 void LinkedList::reverse(node** stnode)
 {
 	struct node* temp = NULL;
@@ -57,6 +61,7 @@ void LinkedList::reverse(node** stnode)
 	(*stnode) = prev;
 }
 
+// use this for displaying info
 void LinkedList::listD()
 {
 	struct node* tmp;
