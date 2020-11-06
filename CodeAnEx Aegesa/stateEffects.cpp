@@ -11,8 +11,6 @@ stateEffects::stateEffects()
 	addState = false;
 }
 
-
-
 string stateEffects::indexer(int s)
 {
 	return string();
