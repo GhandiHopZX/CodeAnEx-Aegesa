@@ -18,12 +18,19 @@ private:
 	bool battleTime; // if its time to fight
 	bool* aGuage;
 	int turn_Number;
+
 	enum t
 	{
-		a = 0, b = 1, c = 2, d = 3, e = 4, f = 5
+		a = 0, // clash
+		b = 1, // turn 1 player 
+		c = 2, // turn check 
+		d = 3, // enemy turn 
+		e = 4, // turn check
+		f = 5  // update reset
+
 	}; //turn number
 
-	int mx = 8;// change this for the maximum amount of enemy fighters
+	int mx = 8; // change this for the maximum amount of enemy fighters
 	int numMembers = 0; // current number of members
 
 public:
@@ -268,7 +275,10 @@ public:
 	Intepreter aiFinalizerE(aegesa* targetArr1[], aegesa* targetArr2[], Intepreter choices[]);
 
 	template <class Intepreter> // knowledge of literally everything
-	Intepreter accounts(aegesa* targetArr1[], aegesa* targetArr2[], Intepreter turns); // keeping track of turns, sending necessary state data and changes and looking at stat bases
+	Intepreter accounts(aegesa* targetArr1[], aegesa* targetArr2[], Intepreter turns);
+
+	void MainLoop(int y); // turn add for apprehension or ambush..
+	// keeping track of turns, sending necessary state data and changes and looking at stat bases
 };
 
 //template<class victory>

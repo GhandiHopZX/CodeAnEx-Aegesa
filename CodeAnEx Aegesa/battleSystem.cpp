@@ -11,6 +11,7 @@
 #include "inventory.h"
 #include "Enemy.h"
 #include "World.h" // for encounters
+#include "LinkedList.h"
 #include "skillAction.h"
 
 using namespace std;
@@ -83,6 +84,160 @@ using namespace std;
 //	} while (battleTime);
 //	
 //}
+
+void battleSystem::MainLoop(int y)
+{
+	for (int i = 0; i < 2; i++)
+	{
+		// turn a branch
+		switch (a)
+		{
+		case 0:
+			
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		default:
+			break;
+		}
+		// turn b branch
+		switch (b)
+		{
+		case 0:
+
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		default:
+			break;
+		}
+		// turn c branch
+		switch (c)
+		{
+		case 0:
+
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		default:
+			break;
+		}
+		// turn d branch
+		switch (d)
+		{
+		case 0:
+
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		default:
+			break;
+		}
+		// turn e branch
+		switch (e)
+		{
+		case 0:
+
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		default:
+			break;
+		}
+		// turn f branch
+		switch (f)
+		{
+		case 0:
+
+			break;
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		default:
+			break;
+		}
+
+		i = 0;	// end of loop goes back to start
+	}
+}
+
 //
 //void battleSystem::enemyTroop()
 //{

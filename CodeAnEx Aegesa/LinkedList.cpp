@@ -52,7 +52,8 @@ void LinkedList::reverse(node** stnode)
 	struct node* temp = NULL;
 	struct node* prev = NULL;
 	struct node* current = (*stnode);
-	while (current != NULL) {
+	while (current != NULL) 
+	{
 		temp = current->nextptr;
 		current->nextptr = prev;
 		prev = current;
