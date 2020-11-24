@@ -16,7 +16,6 @@ class Player_Actor : public aegesa
 private:
 	// variables
 
-
 	string bio; // YOUR STORY!
 	string name; // YOUR NAME!
 
@@ -114,7 +113,7 @@ public:
 
 	string normalOutput(string normal);
 
-	// new get 
+	// new get
 	string getBio()
 	{
 		return bio;
@@ -246,7 +245,7 @@ public:
 	//#pragma endregion
 	//
 	//#pragma region setters
-	//	
+	//
 	//
 	//	void setName(string x)
 	//	{
@@ -652,21 +651,21 @@ public:
 	//
 	//#pragma endregion
 
-weapon mActorWeaponE[1];
-armor mActorArmorE[3];
+	weapon mActorWeaponE[1];
+	armor mActorArmorE[3];
 
-void setArmor(int y, Player_Actor::armor d);
-void setWeapon(int y, Player_Actor::weapon d);
+	void setArmor(int y, Player_Actor::armor d);
+	void setWeapon(int y, Player_Actor::weapon d);
 
-/*
+	/*
 
-		/*
-		void setParty(Player_Actor currentPa, int pos);
-		Player_Actor getParty();
-		Player_Actor callPartyMember(int pos);
-		//void battleGuage();
-		*/
+			/*
+			void setParty(Player_Actor currentPa, int pos);
+			Player_Actor getParty();
+			Player_Actor callPartyMember(int pos);
+			//void battleGuage();
+			*/
 
-// Deconstructor
+			// Deconstructor
 	~Player_Actor();
 };

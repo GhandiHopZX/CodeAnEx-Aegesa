@@ -46,7 +46,6 @@ public:
 	int getSkillSum();
 	void setSkillSum(int);
 
-
 	// for hashes
 	skillAction skillCall(int sk); //operator for this
 };

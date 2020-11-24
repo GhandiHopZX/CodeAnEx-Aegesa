@@ -77,7 +77,6 @@ string Player_Actor::normalOutput(string normal)
 	return string();
 }
 
-
 void Player_Actor::setArmor(int y, Player_Actor::armor d)
 {
 	mActorArmorE[y] = d;

@@ -9,7 +9,7 @@ HashTableSet kHash;
 
 //default
 //Next time just make Skills a struct this is a big biach
-skillAction::skillAction() 
+skillAction::skillAction()
 {
 	name = "";
 	dec = "";
@@ -93,7 +93,6 @@ skillAction::skillAction(int call)
 		skillcall(call).stat14Percentages[conPerc] + '\n'
 		<< endl;
 
-
 	herpesus = "none";
 	stat14Percentages[statsForSkill];
 }
@@ -152,18 +151,18 @@ skillAction::skillAction(int numid, string name, elementType d, string dec,
 
 skillAction skillAction::skillcall(int p)
 {
-//#pragma region Skillist
-//	skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 1300, 12);
-//	skillAction WaterFlash(1, "WaterFlash", elementType::Water, "A singular riptide of water..", false, 234, 2);
-//	skillAction MagnaFlare(2, "MagnaFlare", elementType::Lightning, "A raving magnetic flash of plasma.", true, 300, 5);
-//	skillAction WindShear(3, "WindShear", elementType::Air, "A Wind blast that cuts anybody who brandishes.", false, 230, 2);
-//#pragma endregion
-//
-//	kHash.insertSkill(0, FireWeave);
-//	kHash.insertSkill(1, WaterFlash);
-//	kHash.insertSkill(2, MagnaFlare);
-//	kHash.insertSkill(3, WindShear);
-//
+	//#pragma region Skillist
+	//	skillAction FireWeave(0, "FireWeave", elementType::Fire, "Weaves of unending flame lash about the targets", true, 1300, 12);
+	//	skillAction WaterFlash(1, "WaterFlash", elementType::Water, "A singular riptide of water..", false, 234, 2);
+	//	skillAction MagnaFlare(2, "MagnaFlare", elementType::Lightning, "A raving magnetic flash of plasma.", true, 300, 5);
+	//	skillAction WindShear(3, "WindShear", elementType::Air, "A Wind blast that cuts anybody who brandishes.", false, 230, 2);
+	//#pragma endregion
+	//
+	//	kHash.insertSkill(0, FireWeave);
+	//	kHash.insertSkill(1, WaterFlash);
+	//	kHash.insertSkill(2, MagnaFlare);
+	//	kHash.insertSkill(3, WindShear);
+	//
 
 	skillAction d = kHash.skillCall(p);
 	return d;
@@ -231,10 +230,9 @@ void skillAction::setRangeType(bool rangeT)
 	if (rangeType == true) // aoe true
 	{
 		cout << "AOE set" << endl;
-
 	}
 	else // single false
-	{	
+	{
 		cout << "Single set" << endl;
 	}
 }

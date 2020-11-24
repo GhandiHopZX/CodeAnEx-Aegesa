@@ -20,7 +20,7 @@ private:
 public:
 
 #pragma region public_vars
-	// every skill has an range type, element, name, description, sp/fp consumption, and stat multipliers 
+	// every skill has an range type, element, name, description, sp/fp consumption, and stat multipliers
 // and yes I'm putting it all in a magic hash
 // This exists because Enemy is not skillAction so ill compare the two in
 // validation when damage is processed...
@@ -122,4 +122,4 @@ public:
 		return i;
 	}
 	//state changes - wip
-}
+};

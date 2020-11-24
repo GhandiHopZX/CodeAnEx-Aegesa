@@ -22,12 +22,11 @@ private:
 	enum t
 	{
 		a = 0, // clash
-		b = 1, // turn 1 player 
-		c = 2, // turn check 
-		d = 3, // enemy turn 
+		b = 1, // turn 1 player
+		c = 2, // turn check
+		d = 3, // enemy turn
 		e = 4, // turn check
 		f = 5  // update reset
-
 	}; //turn number
 
 	int mx = 8; // change this for the maximum amount of enemy fighters
@@ -56,14 +55,14 @@ public:
 	int turnGuageNum;
 
 	// getters/accessors
-	template <class targeting> // 
+	template <class targeting> //
 	targeting getTargetArray();
 
-	template <class targeting> // 
+	template <class targeting> //
 	targeting getAITarget();
 
 	// setters/mutators
-	template <class targeting> // 
+	template <class targeting> //
 	targeting setTargetArray(targeting d[]);
 
 	template <class aiTargeting> //
@@ -71,7 +70,7 @@ public:
 
 	// functions
 
-	template <class targeting> // cmd placements 
+	template <class targeting> // cmd placements
 	targeting playerDeck(targeting d[]);
 
 	template <class aiTargeting> // cmd checks
@@ -121,7 +120,6 @@ public:
 	//getters
 	/*Player_Actor getActors
 	{
-
 	}*/
 #pragma endregion
 
@@ -145,7 +143,7 @@ public:
 		int attr_size = atk + mgk + auraFp;
 		int atk_value = .75 * +.66 * +attr_size; // crit // maybe lower these for the ARPG
 
-		// constants 
+		// constants
 		int MAX_DMG = atk_value; // Max allowed damage
 		int MIN_DMG = attr_size; // Min allowed damage
 
@@ -215,7 +213,7 @@ public:
 	iter itemUse(aegesa tArr[]);
 
 	template <class iter> // cmd process
-	iter attackPlus(iter atk, iter bonus, iter hpE, aegesa tArr[]); // bonuses granted from party strikes, skills and buffs 
+	iter attackPlus(iter atk, iter bonus, iter hpE, aegesa tArr[]); // bonuses granted from party strikes, skills and buffs
 
 	template <class iter> // cmd process
 	iter skill(iter atk, iter statPlus14[], string me, bool rangeType, aegesa tArr[]); //
@@ -284,7 +282,7 @@ public:
 //template<class victory>
 //inline victory battleSystem::rewards(aegesa tArr[]) // TODO: add inventory param and output the goodness
 //{
-//	countEnemies(); // resetting numMembers 
+//	countEnemies(); // resetting numMembers
 //
 //	for (int i = 0; i < getNumMembers(); i++)
 //	{
@@ -324,7 +322,7 @@ public:
 //	int auralDef;
 //	int defValue;
 //
-//	defValue = tArr->getDEFd(); // def items are added 
+//	defValue = tArr->getDEFd(); // def items are added
 //	auralDef = tArr->getFpd();
 //	mDef = (tArr->getDEFd() + tArr->getINTd() + auralDef) * .45;
 //
@@ -344,7 +342,7 @@ public:
 //	wstring window;
 //
 //	// movement grid
-//	wstring grid[26][6]; 
+//	wstring grid[26][6];
 //	// one plus higher for
 //	//the actuall char amount in the order
 //	// grid array
@@ -354,13 +352,13 @@ public:
 //
 //	// snap to grid
 //	grid[25][5] = window;
-//	
+//
 //	while (VK_SPACE)
 //	{
 //		normalOutput("press space to fire when \n your marker (X) lands on (*) \n making a (#)");
 //		//system("CLS");
 //
-//		// platforms 
+//		// platforms
 //
 //		// 1 2 3
 //		// 4 5 6
@@ -524,7 +522,7 @@ public:
 //			break;
 //		}
 //#pragma endregion
-//		
+//
 //#pragma region AI
 //
 //		//--------- enemy movement ------------
@@ -539,7 +537,7 @@ public:
 //		{
 //			enemy[ey + 1] = '='; // behind u
 //		}
-//		//down 
+//		//down
 //		if (enemy != grid[ex][ey]) //replacemet space
 //		{
 //			enemy[ey - 1] = '=';
@@ -559,7 +557,7 @@ public:
 //			enemy[ex - 3] = '=';
 //		}
 //
-//		// ai move away from player 
+//		// ai move away from player
 //		if (actorT[x] -1 >= enemy[ex] || actorT[x] - 1 <= enemy[ex])
 //		{
 //			// check if theres space and seek a way to escape
@@ -573,7 +571,7 @@ public:
 //			// wait
 //			// move again
 //		}
-//		
+//
 //		// collision
 //		if (grid[x][y] == grid[ex][ey] && grid[ex] == grid[ey])
 //		{
@@ -607,7 +605,7 @@ public:
 //		 */
 //#pragma endregion
 //
-//	
+//
 //{
 //	return iter();
 //}

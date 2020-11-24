@@ -12,7 +12,7 @@
 // then when World.CPP is used or battleSystem.CPP with a method that'll
 // count the turns from pulling said names from this class index
 // a method will pass effects to said actor or enemy within the battle system
-// and from battle the effects will pass into a container that'l be 
+// and from battle the effects will pass into a container that'l be
 // this class's several instantiations will be inside World.CPP
 // or battleSystem.cpp
 using namespace std;
@@ -115,7 +115,6 @@ public:
 		FATIGUED
 	}; // wip
 
-
 #pragma region vars
 
 	int num_Statuses = 0;
@@ -126,7 +125,6 @@ public:
 #pragma endregion
 
 	list<pair<int, string>> allEffGet2[statusGroups];
-
 
 	//allEffGet2[];
 
@@ -154,10 +152,4 @@ public:
 
 	stateEffects();
 	~stateEffects();
-
 };
-
-
-
-
-

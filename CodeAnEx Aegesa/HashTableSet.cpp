@@ -16,7 +16,7 @@ using namespace std;
 
 // make more constructors?
 
-HashTableSet::HashTableSet() // you cant include this class anywhere else bc of its identity 
+HashTableSet::HashTableSet() // you cant include this class anywhere else bc of its identity
 {
 	skill_Sum = {};
 	shash_Value = {};
@@ -162,12 +162,11 @@ skillAction HashTableSet::skillCall(int sk)
 
 	for (int i{}; i < skillGroups; i++) // hope this works
 	{
-
 		if (skillTable[i].size() == findKey)
 		{
 			return bItr->second;
 		}
-		else if(skillTable[i].empty())
+		else if (skillTable[i].empty())
 		{
 			cout << "Skill no. " << sk + " Not found or availiable moving to next skill..." << endl;
 			++shash_Value;
@@ -177,16 +176,14 @@ skillAction HashTableSet::skillCall(int sk)
 }
 #pragma endregion
 
-
 HashTableSet::~HashTableSet()
 {
-
 }
 
 // operator++
 int HashTableSet::operator++(int k)
 {
-	int *m = &k;
+	int* m = &k;
 	++m;
 	int& oldVal = *m;
 	return oldVal;

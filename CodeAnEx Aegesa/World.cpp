@@ -25,18 +25,17 @@ using namespace std;
 
 // full party GLOBALS
 Player_Actor Actor1; // Proper instantiation
-Player_Actor Alicia; // 
-Player_Actor Renae; // 
-Player_Actor Iyn; // 
+Player_Actor Alicia; //
+Player_Actor Renae; //
+Player_Actor Iyn; //
 inventory mainInventory; //
 stateEffects st;
 
-//HashTableSet anyHash; // magic hash of many things 
+//HashTableSet anyHash; // magic hash of many things
 //						// List aggregation stuff
 
 World::World()
 {
-
 	mao = 0; // int posx = 0;
 	tse = 0; // int posy = 0;
 	tung = 0; // int posz = 0;
@@ -82,7 +81,7 @@ void World::beginningStory()
 	cout << endl;
 
 #pragma region Actor1_SetStats
-	
+
 	Actor1.setATK(5);
 	Actor1.setAGI(1);
 	Actor1.setSPD(3);
@@ -137,7 +136,6 @@ void World::beginningStory()
 
 #pragma endregion
 
-	
 #pragma endregion
 
 #pragma region Alicia_SetStats
@@ -198,7 +196,6 @@ void World::beginningStory()
 	Gold_Dragon_Claws.wvalue = 1;
 #pragma endregion
 
-
 #pragma region Kommodo_Chestplate
 	Kommodo_Chestplate.agiAdd = 1;
 	Kommodo_Chestplate.atkAdd = 5;
@@ -216,7 +213,6 @@ void World::beginningStory()
 	Kommodo_Chestplate.avalue = 1;
 #pragma endregion
 
-	
 #pragma region Kommodo_Leggings
 	Kommodo_Leggings.agiAdd = 5;
 	Kommodo_Leggings.atkAdd = 5;
@@ -251,7 +247,6 @@ void World::beginningStory()
 	Kommodo_Palm_Soles.avalue = 1;
 #pragma endregion
 
-	
 #pragma endregion
 
 #pragma region opening setting
@@ -317,7 +312,7 @@ void World::beginningStory()
 	dialouge(Alicia, "Alright then..");
 	dialouge(Alicia, "I'll show you where it is. If you help me find my friend..");
 	dialouge(Actor1, "I'm not too sure I should even really trust you to go with you to any place...");
-	
+
 	// party insert
 
 	//playerParty[partySize] = this also needs to be a list
@@ -329,14 +324,14 @@ void World::beginningStory()
 
 	// from now on change this if you want to see anykind of numeric
 	// or datatype change or like I said just make it a list
-	
+
 	changePartySize(2);
 	addPartyMember(0, Actor1);
 	addPartyMember(1, Alicia);
 	playerParty[0].setLead(true);
 
 	// gear setup
-	
+
 	playerParty[1].setWeapon(0, Gold_Dragon_Claws);
 	playerParty[1].setArmor(0, Kommodo_Chestplate);
 	playerParty[1].setArmor(1, Kommodo_Leggings);
@@ -370,28 +365,24 @@ void World::chapter1()
 
 void World::chapter2()
 {
-
 	//end of chapter
 	chapter3();
 }
 
 void World::chapter3()
 {
-
 	//end of chapter
 	chapter4();
 }
 
 void World::chapter4()
 {
-
 	//end of chapter
 	chapter5();
 }
 
 void World::chapter5()
 {
-
 	//end of chapter
 	//endGame(); call this when you beat the game
 	lineStop();
@@ -407,7 +398,6 @@ void World::endGame()
 	cout << "Will you dream again?" << endl;
 	// end of game? =)
 	// lineStop(); use this outside of the function.
-	
 }
 
 //Enemy Encounter call ins
@@ -506,7 +496,6 @@ void World::gameLoop(int mx, int my, int mz, mapN m, int location, Player_Actor 
 	case false:
 		break;
 	}
-	
 }
 
 // work on this
@@ -530,7 +519,7 @@ void World::evRandomizer(Player_Actor party[], mapN location, int mx, int my, in
 		{
 			eventCalls(location, mEVTriggerActive(), evRand);
 		}
-		//party[i]; 
+		//party[i];
 	}
 
 	party->isPlayer;
@@ -551,13 +540,11 @@ void World::partyMenu(Player_Actor party[])
 	// print menu
 	for (int i = 0; i < party_ppl; i++)
 	{
-
 		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
 		cout << '\n' << "SP" << ": " << '\t' << party[i].getSpd() << '/' << party[i].getSp() << endl;
 
 		if (!party[i].stateIsEmpty())
 		{
-
 		}
 
 		else
@@ -568,7 +555,7 @@ void World::partyMenu(Player_Actor party[])
 				party[f].printStates();
 				//cout << "[" << << " " << "]" << endl;
 			}
-			
+
 			cout << endl;
 		}
 	}
@@ -618,7 +605,6 @@ void World::partyMenu(Player_Actor party[])
 
 void World::eventCalls(World::mapN local, bool trigger, int evNCall)
 {
-
 	switch (mEVTriggerActive())
 	{
 	case true:
@@ -666,7 +652,7 @@ void World::statusCall(Player_Actor p[])
 
 	for (int i = 0; i < partyNum; i++)
 	{
-	// for the ones to choose
+		// for the ones to choose
 		cout << p[i].getName() << endl;
 		cout << endl;
 	}
@@ -686,9 +672,8 @@ void World::statusCall(Player_Actor p[])
 
 	if (choice <= partyNum)
 	{
-
 		int max_Weps = 2;
-		
+
 		int max_Armors = 3;
 
 		int i = 0;
@@ -700,7 +685,7 @@ void World::statusCall(Player_Actor p[])
 
 		cout << "States" << endl;
 		p[choice].printStates();
-		
+
 		cout << endl;
 
 		// addup armors
@@ -731,7 +716,7 @@ void World::statusCall(Player_Actor p[])
 			w.endAdd += p[choice].getWeaponEQ2(i).endAdd;
 			w.conAdd += p[choice].getWeaponEQ2(i).conAdd;
 		}
-		
+
 		cout << "HP: " << p[choice].getHpd() << "/" << p[choice].getHp() << endl;
 		cout << "SP: " << p[choice].getSpd() << "/" << p[choice].getSp() << endl;
 		cout << "FP: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
@@ -749,7 +734,6 @@ void World::statusCall(Player_Actor p[])
 		cout << "END: " << p[choice].getENDd() << "/" << p[choice].getEND() + a.endAdd + w.endAdd << endl;
 		cout << "CON: " << p[choice].getCONd() << "/" << p[choice].getCON() + a.conAdd + w.conAdd << endl;
 
-
 		switch (p[choice].getLeadRole())
 		{
 		case true:
@@ -764,7 +748,6 @@ void World::statusCall(Player_Actor p[])
 		cout << endl;
 
 		cout << "OK?" << endl;
-
 	}
 	lineStop();
 }
@@ -793,11 +776,11 @@ void World::navigation(int selectedMap, int x, int y, int z)
 	system("CLS");
 	// maps
 
-	// n = north, ne = northeast, nw = northwest, 
+	// n = north, ne = northeast, nw = northwest,
 	// sw = southwest, s = south, se = southeast
 	// w = west, e = east
 	// z = floor
-	// these are for changing the coodinates to each floor 
+	// these are for changing the coodinates to each floor
 	int xC = 0;
 	int yC = 0;
 	int zC = 0;
@@ -817,7 +800,7 @@ void World::navigation(int selectedMap, int x, int y, int z)
 		tse = maps[selectedMap].y;
 		// event randomizer
 		//mEVTriggerSetter(true);
-		
+
 		whereAmI(selectedMap, x, y, z);
 		menu();
 		break;
@@ -944,7 +927,7 @@ char World::choiceIn(string choiceBuffer)
 	return choice;
 }
 
-// this thing eats the string that comes after every 
+// this thing eats the string that comes after every
 // 'ENTER' press so the system doesn't poop out too much at once...
 // don't use this for anything but text dialouge unless you know what you're doing.
 string World::lineStop()
@@ -993,7 +976,7 @@ string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects
 		if (name != t.allEffGet[i])
 		{
 			// pointer
-			string *me{};
+			string* me{};
 
 			me = &t.allEffGet[i];
 
@@ -1038,10 +1021,10 @@ string World::tokenChangerRem(int partyNum, int place, string name, stateEffects
 	{
 		cout << "[WARNING] state not found. PAIR NOT REMOVED." << endl;
 	}
-	
-string hap = playerParty[partyNum].getName() + " is free of " + t.buffName;
 
-return hap;
+	string hap = playerParty[partyNum].getName() + " is free of " + t.buffName;
+
+	return hap;
 }
 
 void World::tokenChecker(int partyNum, stateEffects t)
@@ -1076,7 +1059,6 @@ void World::tokenChecker(int partyNum, stateEffects t)
 
 void World::tokenNegate(int wholeParty, stateEffects x)
 {
-
 }
 
 void World::changePartySize(int isIn)
@@ -1086,40 +1068,40 @@ void World::changePartySize(int isIn)
 
 void World::addPartyMember(int m, Player_Actor in)
 {
-		playerParty[m].setName(in.getName());
-		playerParty[m].setBio(in.getBio());
+	playerParty[m].setName(in.getName());
+	playerParty[m].setBio(in.getBio());
 
-		playerParty[m].setAGI(in.getAGI());
-		playerParty[m].setAGId(in.getAGId());
-		playerParty[m].setSTR(in.getSTR());
-		playerParty[m].setSTRd(in.getSTRd());
-		playerParty[m].setSPR(in.getSPR());
-		playerParty[m].setSPRd(in.getSPRd());
-		playerParty[m].setAp(in.getAp());
-		playerParty[m].setATK(in.getATK());
-		playerParty[m].setATKd(in.getATKd());
-		playerParty[m].setCON(in.getCON());
-		playerParty[m].setCONd(in.getCONd());
-		playerParty[m].setBGSpd(in.getBGspd());
-		playerParty[m].setDEF(in.getDEFd());
-		playerParty[m].setDEFd(in.getDEFd());
-		playerParty[m].setDEX(in.getDEX());
-		playerParty[m].setDEXd(in.getDEXd());
-		playerParty[m].setEND(in.getEND());
-		playerParty[m].setENDd(in.getENDd());
-		playerParty[m].setSPD(in.getSPD());
-		playerParty[m].setSPDd(in.getSPDd());
-		playerParty[m].setFp(in.getFp());
-		playerParty[m].setFpd(in.getFpd());
-		playerParty[m].setDp(in.getDp());
-		playerParty[m].setINT(in.getINT());
-		playerParty[m].setINTd(in.getINTd());
-		playerParty[m].setSp(in.getSp());
-		playerParty[m].setHp(in.getHp());
-		playerParty[m].setHpd(in.getHpd());
-		playerParty[m].setSpd(in.getSpd());
-		playerParty[m].setState("NORMAL");
-		playerParty[m].setTitle(in.getTitle());
+	playerParty[m].setAGI(in.getAGI());
+	playerParty[m].setAGId(in.getAGId());
+	playerParty[m].setSTR(in.getSTR());
+	playerParty[m].setSTRd(in.getSTRd());
+	playerParty[m].setSPR(in.getSPR());
+	playerParty[m].setSPRd(in.getSPRd());
+	playerParty[m].setAp(in.getAp());
+	playerParty[m].setATK(in.getATK());
+	playerParty[m].setATKd(in.getATKd());
+	playerParty[m].setCON(in.getCON());
+	playerParty[m].setCONd(in.getCONd());
+	playerParty[m].setBGSpd(in.getBGspd());
+	playerParty[m].setDEF(in.getDEFd());
+	playerParty[m].setDEFd(in.getDEFd());
+	playerParty[m].setDEX(in.getDEX());
+	playerParty[m].setDEXd(in.getDEXd());
+	playerParty[m].setEND(in.getEND());
+	playerParty[m].setENDd(in.getENDd());
+	playerParty[m].setSPD(in.getSPD());
+	playerParty[m].setSPDd(in.getSPDd());
+	playerParty[m].setFp(in.getFp());
+	playerParty[m].setFpd(in.getFpd());
+	playerParty[m].setDp(in.getDp());
+	playerParty[m].setINT(in.getINT());
+	playerParty[m].setINTd(in.getINTd());
+	playerParty[m].setSp(in.getSp());
+	playerParty[m].setHp(in.getHp());
+	playerParty[m].setHpd(in.getHpd());
+	playerParty[m].setSpd(in.getSpd());
+	playerParty[m].setState("NORMAL");
+	playerParty[m].setTitle(in.getTitle());
 }
 
 void World::removePartyMember(int m, Player_Actor out, string deleteCall)
@@ -1134,17 +1116,16 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 
 	for (int i = 0; i < partyNum; i++)
 	{
-		
 		if (playerParty[i].getName() == deleteCall)
 		{
-		// overrite the one before the last with the last
+			// overrite the one before the last with the last
 
-		// save its data here
+			// save its data here
 			outFile.open("/" + deleteCall + ".dat", ios::out, ios::trunc);
 			if (!outFile)
-				{
-					return;
-				}
+			{
+				return;
+			}
 			else
 			{
 				outFile.write(deleteCall.c_str(), playerParty[i].getAGI());
@@ -1193,16 +1174,12 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 			playerParty[m].setParty_num(partyNum - negation);
 		}
 
-
 		if (playerParty[i].getName() != deleteCall)
 		{
 			// save party into a object array
 			arr[i] = playerParty[i];
 		}
-	
 	}
-
-	
 
 	// restoration
 	for (int i = 0; i < partyNum; i++)

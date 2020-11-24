@@ -24,9 +24,9 @@ private:
 	//keep this for state effects above map structs
 	map<int, stateEffects> currentPartyStates[6];
 
-	// Hub worlds that have cellular navigation 
+	// Hub worlds that have cellular navigation
 	// for now we only have ch 0 - 5 to cover the lost city arc
-	// and that's it for now. 
+	// and that's it for now.
 	// this is the lost city player pos and map
 	struct mapN
 	{
@@ -73,7 +73,6 @@ public:
 		"Wild Monsters"
 	};
 
-
 	string stateTokenC[20]
 	{
 		"REGENERATION",
@@ -90,7 +89,6 @@ public:
 		"CURSED",
 		"ANGER"
 	};
-
 
 	// setters/mutators
 
@@ -162,8 +160,8 @@ public:
 
 	// other functions
 	Player_Actor playerParty[partySize]; // menus
-	
-	void addPartyMember(int , Player_Actor in);
+
+	void addPartyMember(int, Player_Actor in);
 	void removePartyMember(int m, Player_Actor out, string deleteCall);
 	aegesa battlersP[partySize]; // for the player_Actors
 	aegesa battlersE[ePartySize]; // for the enemy
@@ -171,5 +169,4 @@ public:
 	~World();
 
 	void changePartySize(int isIn);
-	
 };

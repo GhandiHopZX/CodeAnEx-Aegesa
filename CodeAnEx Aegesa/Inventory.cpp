@@ -71,16 +71,16 @@ string itemNames[100] =
 #pragma endregion
 
 #pragma region All_armors
-	inventory::armor broad_armor;
-	inventory::armor kavelar_gear;
-	inventory::armor carbonite_gear;
-	inventory::armor crystalline_armor;
-	inventory::armor aerolite_gear;
-	inventory::armor vandham_armor;
-	inventory::armor antiImpact_armor;
-	inventory::armor katType_armor;
-	inventory::armor grenadier_composite_armor;
-	inventory::armor anti_nuclear_armor;
+inventory::armor broad_armor;
+inventory::armor kavelar_gear;
+inventory::armor carbonite_gear;
+inventory::armor crystalline_armor;
+inventory::armor aerolite_gear;
+inventory::armor vandham_armor;
+inventory::armor antiImpact_armor;
+inventory::armor katType_armor;
+inventory::armor grenadier_composite_armor;
+inventory::armor anti_nuclear_armor;
 #pragma endregion
 
 inventory::armor armorlist[100] =
@@ -135,10 +135,8 @@ void inventory::displaylistItem()
 {
 	for (size_t i = 0; i < 20; i++)
 	{
-		
 		if (my_items[i].name.empty())
 		{
-			
 		}
 		else
 		{
@@ -153,7 +151,6 @@ void inventory::displaylistWeapon()
 	{
 		if (my_weapons[i].name.empty())
 		{
-
 		}
 		else
 		{
@@ -168,7 +165,6 @@ void inventory::displaylistArmor()
 	{
 		if (my_armors[i].name.empty())
 		{
-
 		}
 		else
 		{
@@ -186,7 +182,6 @@ void inventory::displayAll()
 
 inventory::~inventory()
 {
-	
 }
 
 int inventory::searchItem(string name)
@@ -207,7 +202,7 @@ void inventory::PlayerItemInventory(Player_Actor party[])
 	string c;
 	cout << "			-ALL ITEMS Inventory- " << endl;
 	displayAll();
-	
+
 	cout << "	Sort Lists?  (1)weapons, (2)armors, (3)items, (Q)quit " << endl;
 	cout << "			NOTICE: 	ALL OF WHICH ARE UNEQUIPPED...			  " << endl;
 
@@ -321,7 +316,7 @@ void inventory::addItem(item n)
 
 void inventory::add(item n)
 {
-	for(int i = 0; i < 20; i++) 
+	for (int i = 0; i < 20; i++)
 	{
 		if (my_items[i].name.empty() || my_items[i].name == "")
 		{
@@ -459,7 +454,7 @@ void inventory::DisplayEQWeapons(Player_Actor p[], int call)
 	}
 }
 
-void inventory::zeroOut(int ix) 
+void inventory::zeroOut(int ix)
 {
 	my_items[ix].agiAdd = NULL;
 	my_items[ix].agiAdd = NULL;

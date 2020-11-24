@@ -210,8 +210,7 @@ void Enemy::setEXP(int rexp)
 	expA = rexp;
 }
 
-
-//void Enemy::setTroop(Enemy d, int indx) 
+//void Enemy::setTroop(Enemy d, int indx)
 //{
 //	enemyTroop.insert = d;
 //}

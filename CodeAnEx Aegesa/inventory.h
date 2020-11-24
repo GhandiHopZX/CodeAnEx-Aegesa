@@ -15,16 +15,15 @@ private:
 	int capacity; // stack size
 	int size;
 
-
 public:
-	// structs  
+	// structs
 
-	// you're going to have to look at 
+	// you're going to have to look at
 	// different hash creations for each item, armor and weapon types
-	// so that these can be saved to a file called to decoding then called to be 
+	// so that these can be saved to a file called to decoding then called to be
 	// stored on a stack of memory (a method that stores it into an array)
-	// to then be used from that list of data 
-    // ie: a non h file method but object method only 
+	// to then be used from that list of data
+	// ie: a non h file method but object method only
 	// "ArmorBase", "WeaponBase", "ItemBase" etc...
 	// to then call it to any other object (.cpp) not an h file
 	// this could work with anything else
@@ -141,8 +140,8 @@ public:
 
 	void rewardCall(string index, int howMany);
 
-	void addItem(string id, int count, int agi, int ap, int atk, int hp, int sp, 
-		int fp, int def, int spd, int dex, int intell, int spr, int end, 
+	void addItem(string id, int count, int agi, int ap, int atk, int hp, int sp,
+		int fp, int def, int spd, int dex, int intell, int spr, int end,
 		int con, int gold, int ivalue, int quantity, int node);
 
 	void addItem(item n);
@@ -221,7 +220,6 @@ public:
 	// shop_time
 
 	// templates
-
 
 	template <class aGCall>
 	aGCall anyItemEver(aGCall index[], int select)

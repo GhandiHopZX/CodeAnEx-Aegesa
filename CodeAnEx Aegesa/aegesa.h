@@ -28,7 +28,7 @@ public:
 	unsigned int dp = 0; // dynamic points (obtained after a Turn A clash for leveling) f
 
 	// battler statbase <- ap goes here
-	unsigned int ATK = 0; // attack 
+	unsigned int ATK = 0; // attack
 	unsigned int DEF = 0; // defence (armor based)
 	unsigned int SPEED = 0; // speed f
 
@@ -58,7 +58,7 @@ public:
 	int ENDd = 0; // endurance (bodily based / also effects status)
 	int CONd = 0; // constitution (mental, body, soul, based / also effects status)
 	int party_num; // number of people you can have
-	
+
 	int num_Statuses = 0;
 
 	// experience
@@ -230,7 +230,7 @@ public:
 	void stateCheck();
 
 #pragma region setters
-	
+
 	void setLead(bool m)
 	{
 		leader = m;
@@ -353,8 +353,6 @@ public:
 	}
 
 	void statPlus(char stat, int plus);
-
-
 
 #pragma endregion
 
@@ -529,7 +527,7 @@ public:
 	void setTitle(string n);
 
 	int getSPDPlus();
-	
+
 	bool stateIsEmpty();
 
 	int battleGuage(int spd);

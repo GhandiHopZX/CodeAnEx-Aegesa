@@ -20,10 +20,10 @@ string stateEffects::indexer(int s)
 bool stateEffects::isFull(int d)
 {
 	for (int i = 0; i < 20; i++)
-	{	
+	{
 		sizeupAEG += nameInt(allEffGet[i]);
 	}
-	
+
 	return false;
 }
 
@@ -50,7 +50,6 @@ void stateEffects::insertStatus(int key, string m)
 
 void stateEffects::remove_state(int id, bool force = false)
 {
-
 }
 
 void stateEffects::add_state(int id, bool force, string kd[])
@@ -85,8 +84,6 @@ void stateEffects::add_state(int id, bool force, string kd[])
 	//	//stateEffects::setHpd(0);
 	//}
 
-
-
 	for (int i = 0; i < sizeupAEG; i++)
 	{
 		//if (allEffGet[id].addState ? (i) : false)
@@ -103,7 +100,6 @@ void stateEffects::add_state(int id, bool force, string kd[])
 
 	// line change to a large rating order (if value is the same, then a strong restriction order)
 
-
 	int a = 0;
 	int b = 0;
 	/*stateEffects::statusEff state_a;
@@ -111,8 +107,7 @@ void stateEffects::add_state(int id, bool force, string kd[])
 	/*state_a = allEffGet[statusGroups];
 	state_b = allEffGet[statusGroups];*/
 
-	//sort time; 
-
+	//sort time;
 
 	//for loops for sorting
 	for (int i = 0; i < sizeupAEG; i++)
@@ -142,9 +137,6 @@ void stateEffects::add_state(int id, bool force, string kd[])
 		//	//a <=> b; combined comparison
 		//}
 	}
-
-	
-
 }
 
 int stateEffects::nameInt(string choiceBuffer)
@@ -176,7 +168,7 @@ int stateEffects::nameInt(string choiceBuffer)
 	char* choice3 = choiceWritable;
 
 	char& choice4 = *choice3;
-	
+
 	choice = choice4;
 
 	delete[] choiceWritable;

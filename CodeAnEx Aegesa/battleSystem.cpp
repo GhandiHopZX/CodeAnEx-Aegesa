@@ -71,18 +71,18 @@ using namespace std;
 //			//player set
 //			playerTGuage(he.callPartyMember(i).getSPDPlus(), he.callPartyMember(i).getSPD(), he.callPartyMember(i).getFp());
 //		}
-//		
+//
 //		for (size_t i = 0; i < en.getParty_num(); i++)
 //		{
 //			//enemyTGuage(en.callTroopMember(i).getSPDPlus(), en.callTroopMember(i).getSPD(), en.callTroopMember(i).getFp());
 //		}
-//		
+//
 //		turnSystem(turn_Number);
 //
 //		turn_Number = 0; // get an operator for this
 //
 //	} while (battleTime);
-//	
+//
 //}
 
 void battleSystem::MainLoop(int y)
@@ -93,7 +93,7 @@ void battleSystem::MainLoop(int y)
 		switch (a)
 		{
 		case 0:
-			
+
 			break;
 		case 1:
 
@@ -329,7 +329,7 @@ void battleSystem::MainLoop(int y)
 //			he.callPartyMember(i).My_Statuses[i].buffName.erase();
 //		}
 //	}
-//	
+//
 //}
 //
 //void battleSystem::turnSystem(int turnN)
@@ -559,7 +559,7 @@ void battleSystem::MainLoop(int y)
 //	int weaponPwr;
 //
 //	// I guess now everyone has their own inventory...
-//	weaponPwr = he.getATKd() + inv.ActorWeaponE->atkAdd; 
+//	weaponPwr = he.getATKd() + inv.ActorWeaponE->atkAdd;
 //	point_plier(weaponPwr, he.getSpd(), he.getFpd());
 //	targetEnemy();
 //}
@@ -584,14 +584,14 @@ void battleSystem::MainLoop(int y)
 //}
 //
 //void battleSystem::hack() {
-//	
+//
 //	// get the enemy target
 //	targetEnemy();
 //
 //	wstring window;
 //
 //	// movement grid
-//	wstring grid[26][6]; 
+//	wstring grid[26][6];
 //	// one plus higher for
 //	//the actuall char amount in the order
 //	// grid array
@@ -601,13 +601,13 @@ void battleSystem::MainLoop(int y)
 //
 //	// snap to grid
 //	grid[25][5] = window;
-//	
+//
 //	while (!VK_SPACE)
 //	{
 //		normalOutput("press space to fire when \n your marker (X) lands on (*) \n making a (#)");
 //		//system("CLS");
 //
-//		// platforms 
+//		// platforms
 //
 //		// 1 2 3
 //		// 4 5 6
@@ -772,7 +772,7 @@ void battleSystem::MainLoop(int y)
 //			break;
 //		}
 //#pragma endregion
-//		
+//
 //#pragma region AI
 //
 //		//--------- enemy movement ------------
@@ -787,7 +787,7 @@ void battleSystem::MainLoop(int y)
 //		{
 //			enemy[ey + 1] = '='; // behind u
 //		}
-//		//down 
+//		//down
 //		if (enemy != grid[ex][ey]) //replacemet space
 //		{
 //			enemy[ey - 1] = '=';
@@ -807,7 +807,7 @@ void battleSystem::MainLoop(int y)
 //			enemy[ex - 3] = '=';
 //		}
 //
-//		// ai move away from player 
+//		// ai move away from player
 //		if (actorT[x] -1 >= enemy[ex] || actorT[x] - 1 <= enemy[ex])
 //		{
 //			// check if theres space and seek a way to escape
@@ -821,7 +821,7 @@ void battleSystem::MainLoop(int y)
 //			// wait
 //			// move again
 //		}
-//		
+//
 //		// collision
 //		if (grid[x][y] == grid[ex][ey] && grid[ex] == grid[ey])
 //		{

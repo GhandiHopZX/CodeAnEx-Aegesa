@@ -35,7 +35,7 @@ aegesa::aegesa()
 
 void aegesa::setBGSpd(int spdIn)
 {
-	newSpd = getSPDd() + static_cast<int>(0.3) *(spdIn * getSPD());
+	newSpd = getSPDd() + static_cast<int>(0.3) * (spdIn * getSPD());
 }
 
 // states are added here
@@ -52,24 +52,18 @@ void aegesa::setState(string name)
 		//put in the state
 		if (My_Statuses[i].empty())
 		{
-			My_Statuses[i] == name;
+			My_Statuses[i] = name;
 		}
-	
 	}
 }
 
-// gets all states
+// gets one state
 string aegesa::getState()
 {
 	stateCheck();
 	string sups[20];
 
-	string fullSet[20]; // for this function just use this for now
-	// in another void version, just have it be used as a setter type
-	// written in the world Class.
-	// then use a different "getState2" written here to 
-	// make a simpler call out for each
-	// string
+	string fullSet[20];
 
 	for (int i = 0; i < getNumOfStates(); i++)
 	{
@@ -77,14 +71,13 @@ string aegesa::getState()
 		{
 			fullSet[i] += sups[i];
 		}
-		return fullSet[i];
 	}
+	return fullSet[0];
 }
-
+// gets any state with the number for its slot
 string aegesa::getState2(int call)
 {
 	stateCheck();
-	map<int, string>::iterator it;
 	string sups[20];
 	string fullSet[20];
 
@@ -94,8 +87,8 @@ string aegesa::getState2(int call)
 		{
 			fullSet[i] += sups[i];
 		}
-		return fullSet[call];
 	}
+	return fullSet[call];
 }
 
 // print all states
@@ -106,10 +99,10 @@ void aegesa::printStates()
 
 	// iterator
 	int i = 0;
-		for (; i < 20; i++)
-		{
-			cout << "[" << My_Statuses[i] << "]" << " /" << " ";
-		}
+	for (; i < 20; i++)
+	{
+		cout << "[" << My_Statuses[i] << "]" << " /" << " ";
+	}
 }
 
 // Title change
@@ -118,7 +111,7 @@ void aegesa::setTitle(string n)
 	title = n;
 }
 
-// speed add for in battle status 
+// speed add for in battle status
 int aegesa::getSPDPlus()
 {
 	return dummyPlus;
@@ -139,12 +132,12 @@ bool aegesa::stateIsEmpty()
 			return true;
 		}
 
-		if (My_Statuses[i].size() > My_Statuses[i].empty())
+		if (!My_Statuses[i].empty())
 		{
 			return false; // then the state isn't existant here its something else
 		}
 	}
-	
+
 	return false;
 }
 
@@ -483,4 +476,3 @@ int aegesa::battleGuage(int spd)
 aegesa::~aegesa()
 {
 }
-

@@ -15,7 +15,6 @@
 #include <chrono>
 #include "World.h"
 
-
 using namespace std;
 
 // templates
@@ -56,7 +55,6 @@ findDuplicate twoSameNum(findDuplicate d[])
 			ptr1 = d[ptr1];
 			ptr2 = d[ptr2];
 			return ptr1;
-			
 		}
 		check = false;
 		break;
@@ -73,15 +71,15 @@ bool newGamePlus;
 int menyu();
 
 //new Game Plus
-int menyuPlus(); 
+int menyuPlus();
 
 // Stops you from nutting in the strings
 string lineStop();
 
-// helps with taht 
+// helps with taht
 string dialougeInput(string);
 
-// select shit with this 
+// select shit with this
 char choiceIN(string);
 
 int main()
@@ -152,7 +150,6 @@ int menyu()
 		<< "Continue (c)\n"
 		<< "Quit Game (q)" << endl;
 
-	
 	char choice{};
 	string choiceS;
 

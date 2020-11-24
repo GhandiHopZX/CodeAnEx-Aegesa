@@ -42,7 +42,7 @@ public:
 	struct SKILLSET
 	{
 		string names[24] = { 0 };
-		int keys[24] = {0};
+		int keys[24] = { 0 };
 	};
 
 	struct PARTY_MEMBER_DATA
@@ -63,7 +63,7 @@ public:
 		string CLASS_PROGRESSION_STATE;
 		SKILLSET SKILLS;
 		long PLAY_TIME;
-		int CURRENT_PARTY; //NUMBER AND NAMES 
+		int CURRENT_PARTY; //NUMBER AND NAMES
 		int STORY_SEG; // INT WILL BE CALLED INTO A METHOD
 		int COMPLETED_SEG;
 		int LOCATION_XYZ[3];
@@ -141,7 +141,6 @@ public:
 		SaveFile.seekg(0L, ios::beg);    // to set position to read the file
 		while (SaveFile.peek() != EOF)
 		{
-
 			SaveFile.read(reinterpret_cast<char*>(&c), sizeof(c));
 			setSaveData(c.l1, c.l2, c.l3, c.INVENTORY_KEYS_l4);
 			/*cout << "Name: " << c.INVENTORY_KEYS_l4 << endl;
@@ -182,7 +181,6 @@ public:
 			// find the .dat ones
 			/*for each (FILE var in derp)
 			{
-
 			}*/
 			// put them in this array "numberOfFiles"
 			for (int i = 0; i < numberOfFiles; i++)
@@ -197,12 +195,9 @@ public:
 				cout << i++ << loadedDirs[numberOfFiles] << endl;
 			}
 
-			
 			cin >> selectFileNumb;
 			try
 			{
-
-				
 				if (selectFileNumb <= 0)
 				{
 					cout << "No File Found..." << endl;
@@ -217,9 +212,9 @@ public:
 				loadFile();
 			}
 			break;
-			
+
 		default:
-		
+
 			break;
 		}
 		// fstream stuff here...
@@ -228,12 +223,10 @@ public:
 		// end here
 	};
 
-
 	string getSaveName()
 	{
 		return saveName;
 	};
 
 	~FileSave();
-
 };

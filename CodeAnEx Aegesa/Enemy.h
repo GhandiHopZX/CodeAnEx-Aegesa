@@ -18,7 +18,6 @@ private:
 	bool leader; // lead
 	int party_num;
 
-
 public:
 	// check this for a weakness
 	enum class elementType
@@ -62,12 +61,8 @@ public:
 
 	void setEXP(int);
 
-	
-
 	void setTroop(Enemy d, int indx);
 
 	// list of enemy types and methods
 	list <Enemy> enemyTroop = {};
-
-
 };
