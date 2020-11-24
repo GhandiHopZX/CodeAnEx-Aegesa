@@ -420,7 +420,9 @@ void World::menu()
 {
 	system("CLS");
 	char choice = {};
-	cout << "Please select an option....\n (i) Inventory,\n (n) Navigation,\n (p) Party,\n (d) Save/Load,\n (o) Options\n" << endl;
+	navigation();
+
+	cout << "\nPlease select an option....\n (i) Inventory,\n (n) Navigation,\n (p) Party,\n (d) Save/Load,\n (o) Options\n" << endl;
 	cin >> choice;
 	switch (choice)
 	{
@@ -468,7 +470,7 @@ void World::inventory()
 
 void World::navigation()
 {
-
+	cout << "Current Location: " << maps[location].name << endl;
 }
 
 void World::gameLoop(int mx, int my, int mz, mapN m, int location, Player_Actor party[])
@@ -553,12 +555,22 @@ void World::partyMenu(Player_Actor party[])
 		cout << party[i].getName() << ": " << '\n' << "HP" << ": " << '\t' << party[i].getHpd() << '/' << party[i].getHp();
 		cout << '\n' << "SP" << ": " << '\t' << party[i].getSpd() << '/' << party[i].getSp() << endl;
 
-		cout << "[::state(s)::]" << endl;
-		for (int k = 0; k < party[i].num_Statuses; k++)
+		if (!party[i].stateIsEmpty())
 		{
-			cout << "["  << party[i].getState()  << " " << "]" << "Turns Left: " << endl;
+
 		}
-		cout << endl;
+
+		else
+		{
+			cout << "[::state(s)::]" << endl;
+			for (size_t f = 0; f < party[f].getNumOfStates(); f++)
+			{
+				party[f].printStates();
+				//cout << "[" << << " " << "]" << endl;
+			}
+			
+			cout << endl;
+		}
 	}
 
 	scin = "\0";
@@ -581,7 +593,7 @@ void World::partyMenu(Player_Actor party[])
 		// select party member
 		// equip items
 
-		mainInventory.PlayerItemInventory(playerParty);
+		mainInventory.EquipItemSelect(playerParty);
 		menu();
 		break;
 
@@ -603,6 +615,7 @@ void World::partyMenu(Player_Actor party[])
 		break;
 	}
 }
+
 
 void World::eventCalls(World::mapN local, bool trigger, int evNCall)
 {
@@ -690,12 +703,6 @@ void World::statusCall(Player_Actor p[])
 		p[choice].printStates();
 		
 		cout << endl;
-		
-		cout << "HP: " << p[choice].getHpd() << "/" << p[choice].getHp() << endl;
-		cout << "SP: " << p[choice].getSpd() << "/" << p[choice].getSp() << endl;
-		cout << "FP: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
-		cout << "AP: " << p[choice].getAp() << endl;
-		cout << "DP: " << p[choice].getDp() << endl << endl;
 
 		// addup armors
 		for (int i = 0; i < max_Armors; i++)
@@ -725,6 +732,12 @@ void World::statusCall(Player_Actor p[])
 			w.endAdd += p[choice].getWeaponEQ2(i).endAdd;
 			w.conAdd += p[choice].getWeaponEQ2(i).conAdd;
 		}
+		
+		cout << "HP: " << p[choice].getHpd() << "/" << p[choice].getHp() << endl;
+		cout << "SP: " << p[choice].getSpd() << "/" << p[choice].getSp() << endl;
+		cout << "FP: " << p[choice].getFpd() << "/" << p[choice].getFp() << endl;
+		cout << "AP: " << p[choice].getAp() << endl;
+		cout << "DP: " << p[choice].getDp() << endl << endl;
 
 		cout << "ATK: " << p[choice].getATKd() << "/" << p[choice].getATK() + a.atkAdd + w.atkAdd << endl;
 		cout << "DEF: " << p[choice].getDEFd() << "/" << p[choice].getDEF() + a.defAdd + w.defAdd << endl;
@@ -994,7 +1007,9 @@ string World::tokenChangerAdd(int partyNum, int place, string name, stateEffects
 		}
 		else
 		{
-			t.buffName == name;
+			t.allEffGet[i] = name;
+			happened = name;
+			return name;
 			break;
 		}
 	}
@@ -1120,6 +1135,7 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 
 	for (int i = 0; i < partyNum; i++)
 	{
+		
 		if (playerParty[i].getName() == deleteCall)
 		{
 		// overrite the one before the last with the last
@@ -1171,18 +1187,23 @@ void World::removePartyMember(int m, Player_Actor out, string deleteCall)
 			}
 			outFile.close();
 		}
+
+		// deletion
+		if (playerParty[m].getName() == deleteCall)
+		{
+			playerParty[m].setParty_num(partyNum - negation);
+		}
+
+
 		if (playerParty[i].getName() != deleteCall)
 		{
 			// save party into a object array
 			arr[i] = playerParty[i];
 		}
+	
 	}
 
-	// deletion
-	if (playerParty[m].getName() == deleteCall)
-	{
-		playerParty[m].setParty_num(partyNum - negation);
-	}
+	
 
 	// restoration
 	for (int i = 0; i < partyNum; i++)

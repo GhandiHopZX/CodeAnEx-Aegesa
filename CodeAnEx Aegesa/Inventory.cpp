@@ -117,7 +117,7 @@ inventory::inventory()
 	this->headi = 0;
 	this->headw = 0;
 	this->size = 20;
-	this->stackArray;
+	this->stackArray = &capacity;
 	this->capacity = 20;
 }
 
@@ -127,7 +127,7 @@ inventory::inventory(int)
 	this->headi = 0;
 	this->headw = 0;
 	this->size = 20;
-	this->stackArray;
+	this->stackArray = &capacity;
 	this->capacity = 20;
 }
 
@@ -208,7 +208,7 @@ void inventory::PlayerItemInventory(Player_Actor party[])
 	cout << "			-ALL ITEMS Inventory- " << endl;
 	displayAll();
 	
-	cout << "			Sort Lists?  (1)weapons, (2)armors, (3)items, (Q) " << endl;
+	cout << "	Sort Lists?  (1)weapons, (2)armors, (3)items, (Q)quit " << endl;
 	cout << "			NOTICE: 	ALL OF WHICH ARE UNEQUIPPED...			  " << endl;
 
 	cin >> c;
@@ -355,25 +355,129 @@ int inventory::getItemQuantity(string id)
 	return b.quantity;
 }
 
+void inventory::EquipItemSelect(Player_Actor p[])
+{
+	int partyNum = p->getParty_num();
+	int choice = 0;
+	int choice2 = 0;
+	char choiceC = ' ';
+
+	system("CLS");
+
+	cout << "Equip Armor/Weapon for what Member?(Any Key) Or exit? (Q)" << endl;
+
+	cin >> choiceC;
+
+	switch (choiceC)
+	{
+	case 'Q':
+		return;
+		break;
+	case 'q':
+		return;
+		break;
+	default:
+		for (int i = 0; i < partyNum; i++)
+		{
+			// for the ones to choose
+			cout << p[i].getName() << endl;
+			cout << endl;
+		}
+
+		cout << "Select Member... " << "0 - " << partyNum - 1 << endl;
+
+		cin >> choice;
+
+		system("CLS");
+
+		while (choice < 0 || choice > partyNum)
+		{
+			cout << "Invalid selection. Reselect...";
+			cin >> choice;
+			break;
+		}
+
+		system("CLS");
+
+		cout << "Armors(0) or weapons(1)?" << endl;
+
+		cin >> choice2;
+
+		while (choice2 < 0 || choice2 > 1)
+		{
+			cout << "Invalid selection. Reselect...";
+			cin >> choice2;
+			break;
+		}
+
+		if (choice <= partyNum)
+		{
+			switch (choice2)
+			{
+			case 0:
+				DisplayEQArmors(p, choice);
+				EquipItemSelect(p);
+				break;
+
+			default:
+				DisplayEQWeapons(p, choice);
+				EquipItemSelect(p);
+				break;
+			}
+		}
+		break;
+	}
+}
+
+void inventory::DisplayEQArmors(Player_Actor p[], int call)
+{
+	for (size_t i = 0; i < 3; i++)
+	{
+		if (p[call].getArmorEQ().name.empty())
+		{
+			cout << "empty slot " << endl;
+		}
+		else
+		{
+			cout << p[call].getArmorEQ().name << endl;
+		}
+	}
+}
+
+void inventory::DisplayEQWeapons(Player_Actor p[], int call)
+{
+	for (size_t i = 0; i < 1; i++)
+	{
+		if (p[call].getWeaponEQ().name.empty())
+		{
+			cout << "empty slot " << endl;
+		}
+		else
+		{
+			cout << p[call].getWeaponEQ().name << endl;
+		}
+	}
+}
+
 void inventory::zeroOut(int ix) 
 {
-	my_items[ix].agiAdd = 0;
-	my_items[ix].agiAdd = 0;
-	my_items[ix].apAdd = 0;
-	my_items[ix].atkAdd = 0;
+	my_items[ix].agiAdd = NULL;
+	my_items[ix].agiAdd = NULL;
+	my_items[ix].apAdd = NULL;
+	my_items[ix].atkAdd = NULL;
 	my_items[ix].name = "";
-	my_items[ix].hpAdd = 0;
-	my_items[ix].spAdd = 0;
-	my_items[ix].fpAdd = 0;
-	my_items[ix].defAdd = 0;
-	my_items[ix].spdAdd = 0;
-	my_items[ix].dexAdd = 0;
-	my_items[ix].intAdd = 0;
-	my_items[ix].sprAdd = 0;
-	my_items[ix].endAdd = 0;
-	my_items[ix].conAdd = 0;
-	my_items[ix].goldValue = 0;
-	my_items[ix].quantity = 0;
+	my_items[ix].hpAdd = NULL;
+	my_items[ix].spAdd = NULL;
+	my_items[ix].fpAdd = NULL;
+	my_items[ix].defAdd = NULL;
+	my_items[ix].spdAdd = NULL;
+	my_items[ix].dexAdd = NULL;
+	my_items[ix].intAdd = NULL;
+	my_items[ix].sprAdd = NULL;
+	my_items[ix].endAdd = NULL;
+	my_items[ix].conAdd = NULL;
+	my_items[ix].goldValue = NULL;
+	my_items[ix].quantity = NULL;
 }
 
 char inventory::choiceIn(string choiceBuffer)

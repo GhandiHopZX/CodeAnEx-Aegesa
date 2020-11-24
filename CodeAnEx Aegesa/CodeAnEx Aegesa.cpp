@@ -35,7 +35,7 @@ findDuplicate twoSameNum(findDuplicate d[])
 	o = d[0];
 	o2 = d[0];
 
-	bool check;
+	bool check = false;
 
 	while (check == true)
 	{
@@ -45,8 +45,8 @@ findDuplicate twoSameNum(findDuplicate d[])
 		if (o == o2)
 			break;
 
-		int& ptr1;
-		int& ptr2;
+		int& ptr1 = nullptr;
+		int& ptr2 = nullptr;
 
 		ptr1 = d[0];
 		ptr2 = o;

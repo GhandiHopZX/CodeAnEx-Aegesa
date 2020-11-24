@@ -153,6 +153,12 @@ public:
 
 	int getItemQuantity(string id);
 
+	void EquipItemSelect(Player_Actor p[]);
+
+	void DisplayEQArmors(Player_Actor p[], int call);
+
+	void DisplayEQWeapons(Player_Actor p[], int call);
+
 	void zeroOut(int ix);
 
 	char choiceIn(string choiceBuffer);

@@ -38,41 +38,10 @@ void aegesa::setBGSpd(int spdIn)
 	newSpd = getSPDd() + static_cast<int>(0.3) *(spdIn * getSPD());
 }
 
-//void aegesa::setStatus(statusEff)
-//{
-//}
-//
-//aegesa::statusEff aegesa::getStatus()
-//{
-//	return statusEff();
-//}
-
-//bool stateEffects::isFull(int d)
-//{
-//	for (int i = 0; i < 20; i++)
-//	{
-//		if (allEffGet[d].buffName != aegesa::My_Statuses[i].buffName)
-//		{
-//			return false; // then the state isn't existant here
-//		}
-//
-//		if (aegesa::My_Statuses[i].turns_Of_aff == -1)
-//		{
-//			return true;
-//		}
-//
-//		if (aegesa::My_Statuses[i].turns_Of_aff == allEffGet[d].turns_Of_aff)
-//		{
-//			return true;
-//		}
-//	}
-//
-//	return false;
-//}
-
 // states are added here
 void aegesa::setState(string name)
 {
+	setNumOfStates(getNumOfStates() + 1);
 	stateCheck();
 	for (int i = 0; i < 20; i++)
 	{
@@ -80,8 +49,12 @@ void aegesa::setState(string name)
 		//My_Statuses2.
 		//validate actual states
 		//add one if needed
-		//put in the state 
-		My_Statuses2->insert(pair<int, string>(m, name));
+		//put in the state
+		if (My_Statuses[i].empty())
+		{
+			My_Statuses[i] == name;
+		}
+	
 	}
 }
 
@@ -89,16 +62,39 @@ void aegesa::setState(string name)
 string aegesa::getState()
 {
 	stateCheck();
-	map<int, string>::iterator it;
 	string sups[20];
+
+	string fullSet[20]; // for this function just use this for now
+	// in another void version, just have it be used as a setter type
+	// written in the world Class.
+	// then use a different "getState2" written here to 
+	// make a simpler call out for each
+	// string
 
 	for (int i = 0; i < getNumOfStates(); i++)
 	{
-		for (it = My_Statuses2[i].begin(); it != My_Statuses2[i].end(); ++it)
+		if (!sups[i].empty())
 		{
-			sups[i] += it->second;
+			fullSet[i] += sups[i];
 		}
-		return sups[i];
+		return fullSet[i];
+	}
+}
+
+string aegesa::getState2(int call)
+{
+	stateCheck();
+	map<int, string>::iterator it;
+	string sups[20];
+	string fullSet[20];
+
+	for (int i = 0; i < getNumOfStates(); i++)
+	{
+		if (!sups[i].empty())
+		{
+			fullSet[i] += sups[i];
+		}
+		return fullSet[call];
 	}
 }
 
@@ -109,15 +105,11 @@ void aegesa::printStates()
 	cstate = " CURRENT STATES";
 
 	// iterator
-	map<int, string>::iterator it;
-
-	for (int i = 0; i < getNumOfStates(); i++)
-	{
-		for (it = My_Statuses2[i].begin(); it!= My_Statuses2[i].end(); ++it)
+	int i = 0;
+		for (; i < 20; i++)
 		{
-			cout << "[" << it->second << "]" << " /" << " ";
+			cout << "[" << My_Statuses[i] << "]" << " /" << " ";
 		}
-	}
 }
 
 // Title change
@@ -137,17 +129,17 @@ bool aegesa::stateIsEmpty()
 {
 	for (int i = 0; i < 20; i++)
 	{
-		if (My_Statuses2->at(i).empty())
+		if (My_Statuses[i].empty())
 		{
 			return true;
 		}
 
-		if (My_Statuses2->at(i) == "")
+		if (My_Statuses[i] == "")
 		{
 			return true;
 		}
 
-		if (My_Statuses2->at(i).size() > My_Statuses2->at(i).empty())
+		if (My_Statuses[i].size() > My_Statuses[i].empty())
 		{
 			return false; // then the state isn't existant here its something else
 		}
@@ -159,8 +151,8 @@ bool aegesa::stateIsEmpty()
 // gets rid of states
 void aegesa::removeStates(int io)
 {
-	My_Statuses2->at(io).erase();
-	setNumOfStates(-1);
+	My_Statuses[io] = "";
+	setNumOfStates(getNumOfStates() - 1);
 }
 
 // is the state there??
@@ -168,9 +160,13 @@ void aegesa::stateCheck()
 {
 	for (int i = 0; i < getNumOfStates(); i++)
 	{
-		if (My_Statuses2->at(i).empty())
+		if (My_Statuses[i].empty())
 		{
 			removeStates(i);
+		}
+		else if (My_Statuses[i] == "NORMAL")
+		{
+			return;
 		}
 	}
 }

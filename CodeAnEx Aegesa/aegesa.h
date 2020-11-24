@@ -67,7 +67,6 @@ public:
 #pragma endregion
 
 	// just use maps for now on.
-	map<int, string> My_Statuses2[statusGroups];
 
 	string My_Statuses[statusGroups]{};
 
@@ -522,6 +521,8 @@ public:
 	void setState(string);
 
 	string getState();
+
+	string getState2(int call);
 
 	void printStates();
 
