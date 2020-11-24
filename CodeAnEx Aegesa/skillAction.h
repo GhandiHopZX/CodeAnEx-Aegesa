@@ -96,6 +96,10 @@ public:
 
 	skillAction skillcall(int);
 
+	string getBuffType();
+
+	char getStrikeType();
+
 	// hooking to the skill the
 	// enum class
 	elementType getElementType();
@@ -118,4 +122,4 @@ public:
 		return i;
 	}
 	//state changes - wip
-};
+}

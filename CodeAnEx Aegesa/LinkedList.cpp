@@ -19,7 +19,7 @@ void LinkedList::list(int n[], int u)
 		num = n[0];
 		if (n[0] <= 0)
 		{
-			n[0] == 1;
+			n[0] = 1;
 		}
 		stnode->nextptr = NULL;
 		tmp = stnode;

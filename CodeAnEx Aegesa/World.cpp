@@ -616,7 +616,6 @@ void World::partyMenu(Player_Actor party[])
 	}
 }
 
-
 void World::eventCalls(World::mapN local, bool trigger, int evNCall)
 {
 
@@ -1226,6 +1225,7 @@ WeaponOut setWeapon(int y, WeaponOut d, Player_Actor a)
 	a.mActorWeaponE[y] = d;
 	cout << "weapon " << d.name << "equipped" << endl;
 }
+
 World::~World()
 {
 	StopTime(); // use this outside of this constructor for any game shutdown.

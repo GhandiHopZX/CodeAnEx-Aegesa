@@ -36,10 +36,10 @@ HashTableSet::HashTableSet(int key, skillAction meeep)
 
 bool HashTableSet::sisEmpty() const
 {
-	int addAll{};
-	for (int i{}; i < skillGroups; i++)
+	int addAll = 0;
+	for (int i = 0; i < skillGroups; i++)
 	{
-		addAll += (skillTable[i].size());
+		addAll += static_cast<int>(skillTable[i].size());
 	}
 
 	if (!addAll)
@@ -112,7 +112,7 @@ string HashTableSet::searchSkTable(int key)
 
 	for (int i{}; i < skillGroups; i++)
 	{
-		findKey = skillTable[i].size();
+		findKey = static_cast<int>(skillTable[i].size());
 
 		if (skillTable[i].size() == findKey)
 		{

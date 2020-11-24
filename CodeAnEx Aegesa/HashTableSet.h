@@ -1,8 +1,8 @@
+#include <iostream>
 #include <list>
 #include <vector>
-#include <iostream>
+#include <string>
 #include <unordered_set>
-#include "aegesa.h"
 #include "skillAction.h"
 
 using namespace std;
@@ -35,7 +35,7 @@ public:
 	//void removeItem(int key);
 	//string searchTable(int key);
 	//void printTable();
-	
+
 	// skill and stat
 	bool sisEmpty() const;
 	int skillHash(int);
@@ -45,7 +45,7 @@ public:
 	void printSkTable();
 	int getSkillSum();
 	void setSkillSum(int);
-	
+
 
 	// for hashes
 	skillAction skillCall(int sk); //operator for this

@@ -52,13 +52,13 @@ skillAction::skillAction(int call)
 		skillcall(call).num + '\n';
 
 	cout << "Buff/Debuff name\n" +
-		skillcall(call).herpesus << endl;
+		skillcall(call).getBuffType() << endl;
 
 	cout << "StrikeType (O) OVERHAND, (L) LUNGE, (WS) WIDE-SWING, (P) PARRY\n " <<
 		"O < L < W > P > L > O\n" <<
 		"W AND L COLLIDE CAUSES DAMAGE TO BOTH SIDES\n" <<
 		"O AND P CANCEL BOTH ATTACKS\n" <<
-		skillcall(call).strikeType + '\n' << endl;
+		skillcall(call).getStrikeType() + '\n' << endl;
 
 	cout << "Buff/debuff effects" +
 		skillcall(call).hpAdd + '\n' +
@@ -167,6 +167,16 @@ skillAction skillAction::skillcall(int p)
 
 	skillAction d = kHash.skillCall(p);
 	return d;
+}
+
+string skillAction::getBuffType()
+{
+	return herpesus;
+}
+
+char skillAction::getStrikeType()
+{
+	return strikeType;
 }
 
 skillAction::elementType skillAction::getElementType()
