@@ -133,7 +133,7 @@ inventory::inventory(int)
 
 void inventory::displaylistItem()
 {
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 19; i++)
 	{
 		if (my_items[i].name.empty())
 		{
@@ -147,7 +147,7 @@ void inventory::displaylistItem()
 
 void inventory::displaylistWeapon()
 {
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 19; i++)
 	{
 		if (my_weapons[i].name.empty())
 		{
@@ -161,7 +161,7 @@ void inventory::displaylistWeapon()
 
 void inventory::displaylistArmor()
 {
-	for (size_t i = 0; i < 20; i++)
+	for (size_t i = 0; i < 19; i++)
 	{
 		if (my_armors[i].name.empty())
 		{
@@ -178,6 +178,79 @@ void inventory::displayAll()
 	displaylistArmor();
 	displaylistItem();
 	displaylistWeapon();
+}
+
+// unfinished
+void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
+{
+	// virtual keys here
+	//
+	system("CLS");
+	
+	armor stackIn[19] = {};
+
+	bool markers[19]; // capacity can't change
+
+	int itemCount = 0;
+	for (int i = 0; i < 19; i++)
+	{
+		if (my_armors[i].name.empty())
+		{
+		}
+		else
+		{
+			stackIn[i] = my_armors[i];
+			++itemCount;
+		}
+	}
+
+	// update
+	SetItemCount(itemCount);
+
+	int choice3 = 0;
+	bool itemS = false;
+	// infinite loop
+	for (int i = 0; i < 1; i++)
+	{
+		system("CLS");
+		switch (itemS)
+		{
+		case true:
+			cout << " Select another Item..? " << endl;
+			break;
+		default:
+			cout << " Here is the list of equippable items Equip item? (0 - 19)" << endl;
+			break;
+		}
+
+		for (int i = 0; i < itemCount; i++)
+		{
+			if (my_armors[i].name.empty())
+			{
+			}
+			else
+			{
+				cout << i << " " << my_armors[i].name << endl;
+			}
+		}
+		cout << my_armors[19].name << " <-- "; // marker moves with boolean and arrow key
+
+		// loop back
+
+		i = 0;
+	}
+}
+
+void inventory::EquipW(Player_Actor i[], inventory::weapon wq, int selected)
+{
+}
+
+void inventory::UnequipA(Player_Actor i[], inventory::armor aq, int selected)
+{
+}
+
+void inventory::UnequipW(Player_Actor i[], inventory::weapon wq, int selected)
+{
 }
 
 inventory::~inventory()
@@ -411,11 +484,17 @@ void inventory::EquipItemSelect(Player_Actor p[])
 			{
 			case 0:
 				DisplayEQArmors(p, choice);
+				// armor list
+				cout << "	-unequipped armors-" << endl;
+				displaylistArmor();
 				EquipItemSelect(p);
 				break;
 
 			default:
 				DisplayEQWeapons(p, choice);
+				// weapon list
+				cout << "	-unequipped weapons-" << endl;
+				displaylistWeapon();
 				EquipItemSelect(p);
 				break;
 			}
@@ -426,6 +505,7 @@ void inventory::EquipItemSelect(Player_Actor p[])
 
 void inventory::DisplayEQArmors(Player_Actor p[], int call)
 {
+	system("CLS");
 	for (size_t i = 0; i < 3; i++)
 	{
 		if (p[call].getArmorEQ().name.empty())
@@ -435,12 +515,15 @@ void inventory::DisplayEQArmors(Player_Actor p[], int call)
 		else
 		{
 			cout << p[call].getArmorEQ().name << endl;
+			
 		}
 	}
+	system("PAUSE");
 }
 
 void inventory::DisplayEQWeapons(Player_Actor p[], int call)
 {
+	system("CLS");
 	for (size_t i = 0; i < 1; i++)
 	{
 		if (p[call].getWeaponEQ().name.empty())
@@ -452,6 +535,7 @@ void inventory::DisplayEQWeapons(Player_Actor p[], int call)
 			cout << p[call].getWeaponEQ().name << endl;
 		}
 	}
+	system("PAUSE");
 }
 
 void inventory::zeroOut(int ix)

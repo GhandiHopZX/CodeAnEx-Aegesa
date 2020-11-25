@@ -14,6 +14,9 @@ private:
 	int* stackArray;
 	int capacity; // stack size
 	int size;
+	int itemCount;
+	int armorCount;
+	int weaponCount;
 
 public:
 	// structs
@@ -128,6 +131,32 @@ public:
 	void PlayerItemInventory(Player_Actor party[]);
 
 	// other functions
+	int GetItemCount()
+	{
+		return itemCount;
+	}
+	int GetArmorCount()
+	{
+		return armorCount;
+	}
+	int GetWeaponCount()
+	{
+		return weaponCount;
+	}
+
+	void SetItemCount(int m)
+	{
+		itemCount = m;
+	}
+	void SetArmorCount(int m)
+	{
+		armorCount = m;
+	}
+	void SetWeaponCount(int m)
+	{
+		weaponCount = m;
+	}
+
 	int GetItem(string id, item inventItem);
 
 	bool TakeItem(string id, int count, int agi, int ap, int atk, int hp,
@@ -215,6 +244,15 @@ public:
 		i[selectParty].setFpd(newI.fpAdd);
 		cout << newI.name << " used" << endl;
 	}
+
+	void EquipA(Player_Actor i[], inventory::armor aq, int selected);
+
+	void EquipW(Player_Actor i[], inventory::weapon wq, int selected);
+
+	void UnequipA(Player_Actor i[], inventory::armor aq, int selected);
+
+	void UnequipW(Player_Actor i[], inventory::weapon wq, int selected);
+
 	// setters / mutators
 
 	// shop_time
