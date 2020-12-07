@@ -18,6 +18,34 @@ private:
 	int armorCount;
 	int weaponCount;
 
+	// selections
+	bool markers[19]{}; // capacity can't change... Yet..
+
+	string getMarker(bool marker)
+	{
+		switch (marker)
+		{
+		case true:
+			return " < --";
+			break;
+		default:
+			return "";
+			break;
+		}
+	}
+
+	// upon moving last cursor
+	void setLastMarker(int l, bool d)
+	{
+		markers[l] = d;
+	}
+
+	void setMarker(int k, int l)
+	{
+		setLastMarker(l, false);
+		markers[k] = true;
+	}
+
 public:
 	// structs
 
@@ -246,6 +274,10 @@ public:
 	}
 
 	void EquipA(Player_Actor i[], inventory::armor aq, int selected);
+
+	void listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[]);
+
+	void listGetchArmorDown(int d, int itemCount, int lastM, armor stackIn[]);
 
 	void EquipW(Player_Actor i[], inventory::weapon wq, int selected);
 

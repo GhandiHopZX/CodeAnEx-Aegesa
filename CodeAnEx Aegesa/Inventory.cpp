@@ -2,10 +2,19 @@
 #include <string>
 #include <map>
 #include <stack>
+#include <conio.h>
+#include <wtypes.h>
 #include "inventory.h"
 
 // use tha multimap function
 using namespace std;
+
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_X 120
+#define KEY_Z 90
 
 //items
 
@@ -113,6 +122,9 @@ inventory::item my_items[inventory::MAX_INTEGRITY] =
 
 inventory::inventory()
 {
+	this->itemCount = 19;
+	this->armorCount = 19;
+	this->weaponCount = 19;
 	this->heada = 0;
 	this->headi = 0;
 	this->headw = 0;
@@ -123,6 +135,9 @@ inventory::inventory()
 
 inventory::inventory(int)
 {
+	this->itemCount = 19;
+	this->armorCount = 19;
+	this->weaponCount = 19;
 	this->heada = 0;
 	this->headi = 0;
 	this->headw = 0;
@@ -180,7 +195,7 @@ void inventory::displayAll()
 	displaylistWeapon();
 }
 
-// unfinished
+// unfinished fix number input
 void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 {
 	// virtual keys here
@@ -188,8 +203,6 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 	system("CLS");
 	
 	armor stackIn[19] = {};
-
-	bool markers[19]; // capacity can't change
 
 	int itemCount = 0;
 	for (int i = 0; i < 19; i++)
@@ -206,7 +219,7 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 
 	// update
 	SetItemCount(itemCount);
-
+	int lastM{};
 	int choice3 = 0;
 	bool itemS = false;
 	// infinite loop
@@ -219,26 +232,135 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 			cout << " Select another Item..? " << endl;
 			break;
 		default:
-			cout << " Here is the list of equippable items Equip item? (0 - 19)" << endl;
+			cout << " Here is the list of equippable items Equip item? (1 - 20)" << endl;
+			//displaylistArmor();
 			break;
 		}
 
-		for (int i = 0; i < itemCount; i++)
+		for (int d = 0; d < itemCount - 1; d++)
 		{
-			if (my_armors[i].name.empty())
+			if (my_armors[d].name.empty())
 			{
 			}
+
 			else
 			{
-				cout << i << " " << my_armors[i].name << endl;
+				stackIn[d] = my_armors[d];
+				cout << d + 1 << " " << my_armors[d].name << getMarker(markers[d]) << endl;
 			}
+
+			setMarker(d + 1, itemCount/2); // marker initialization itemCount/2 will never be accessed 
+			cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
+			lastM = d;
 		}
-		cout << my_armors[19].name << " <-- "; // marker moves with boolean and arrow key
 
 		// loop back
+		/*HKL ActivateKeyboardLayout(
+			HKL hkl,
+			UINT Flags
+		);*/
+		
+		char key = getch();
+		int value = key;
 
+		while (choice3 == NULL || value != KEY_X || value != KEY_Z)
+		{
+			int d = 0;
+			switch (getch())
+			{
+			case KEY_UP:
+				listGetchArmorUp(d, itemCount, lastM, stackIn);
+				// equip ask
+				//  < -- here
+				system("CLS");
+				break;
+			case KEY_DOWN:
+				listGetchArmorDown(d, itemCount, lastM, stackIn);
+				// equip ask
+				//  < -- here
+				system("CLS");
+
+				break;
+			default:
+				break;
+			}
+		}
+		key = getch();
+		value = key;
 		i = 0;
 	}
+}
+
+void inventory::listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[])
+{
+#pragma region
+	d = 0;
+	for (; d < itemCount - 1; d++)
+	{
+		if (my_armors[d].name.empty())
+		{
+		}
+
+		else
+		{
+			stackIn[d] = my_armors[d];
+			cout << d + 1 << " " << my_armors[d].name << inventory::getMarker(markers[d]) << endl;
+		}
+	}
+	cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
+
+	if (lastM >= itemCount)
+	{
+
+		lastM = itemCount;
+		inventory::setMarker(0, lastM);
+		lastM = 0;
+	}
+	else
+	{
+		setMarker(lastM - 1, lastM);
+		lastM = lastM - 1;
+	}
+
+#pragma endregion
+}
+
+void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackIn[])
+{
+#pragma region
+	d = 0;
+	for (; d < itemCount - 1; d++)
+	{
+		if (my_armors[d].name.empty())
+		{
+		}
+
+		else
+		{
+			stackIn[d] = my_armors[d];
+			cout << d + 1 << " " << my_armors[d].name << inventory::getMarker(markers[d]) << endl;
+		}
+	}
+	cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
+
+	if (lastM >= itemCount)
+	{
+
+		lastM = itemCount;
+		inventory::setMarker(0, lastM);
+		lastM = 0;
+	}
+	else if (lastM <= itemCount)
+	{
+
+	}
+	else
+	{
+		setMarker(lastM - 1, lastM);
+		lastM = lastM - 1;
+	}
+
+#pragma endregion
 }
 
 void inventory::EquipW(Player_Actor i[], inventory::weapon wq, int selected)
