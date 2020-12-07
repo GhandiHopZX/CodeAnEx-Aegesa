@@ -211,6 +211,10 @@ public:
 
 	void EquipItemSelect(Player_Actor p[]);
 
+	void DisplayEQArmors(Player_Actor p[]);
+
+	void DisplayEQWeapons(Player_Actor p[]);
+
 	void DisplayEQArmors(Player_Actor p[], int call);
 
 	void DisplayEQWeapons(Player_Actor p[], int call);

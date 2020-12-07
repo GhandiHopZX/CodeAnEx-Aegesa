@@ -260,6 +260,7 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 			UINT Flags
 		);*/
 		
+#pragma warning(disable : 4996)
 		char key = getch();
 		int value = key;
 
@@ -316,10 +317,16 @@ void inventory::listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[
 		inventory::setMarker(0, lastM);
 		lastM = 0;
 	}
+	else if (lastM <= 0)
+	{
+		lastM = 0;
+		inventory::setMarker(itemCount, lastM);
+		lastM = itemCount;
+	}
 	else
 	{
 		setMarker(lastM - 1, lastM);
-		lastM = lastM - 1;
+		lastM = lastM + 1;
 	}
 
 #pragma endregion
@@ -327,14 +334,19 @@ void inventory::listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[
 
 void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackIn[])
 {
-#pragma region
+#pragma region 
 	d = 0;
 	for (; d < itemCount - 1; d++)
 	{
 		if (my_armors[d].name.empty())
 		{
 		}
-
+		else if (lastM <= 0)
+		{
+			lastM = 0;
+			inventory::setMarker(itemCount, lastM);
+			lastM = itemCount;
+		}
 		else
 		{
 			stackIn[d] = my_armors[d];
@@ -350,13 +362,15 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackI
 		inventory::setMarker(0, lastM);
 		lastM = 0;
 	}
-	else if (lastM <= itemCount)
+	else if (lastM <= 0)
 	{
-
+		lastM = 0;
+		inventory::setMarker(itemCount, lastM);
+		lastM = itemCount;
 	}
 	else
 	{
-		setMarker(lastM - 1, lastM);
+		setMarker(lastM + 1, lastM);
 		lastM = lastM - 1;
 	}
 
@@ -549,7 +563,7 @@ void inventory::EquipItemSelect(Player_Actor p[])
 {
 	int partyNum = p->getParty_num();
 	int choice = 0;
-	int choice2 = 0;
+	char choice2{};
 	char choiceC = ' ';
 
 	system("CLS");
@@ -570,7 +584,7 @@ void inventory::EquipItemSelect(Player_Actor p[])
 		for (int i = 0; i < partyNum; i++)
 		{
 			// for the ones to choose
-			cout << p[i].getName() << endl;
+			cout << i << " " << p[i].getName() << endl;
 			cout << endl;
 		}
 
@@ -588,36 +602,34 @@ void inventory::EquipItemSelect(Player_Actor p[])
 		}
 
 		system("CLS");
-
-		cout << "Armors(0) or weapons(1)?" << endl;
+		system("PAUSE");
+		cout << "Armors(a) or weapons(w)?" << endl;
 
 		cin >> choice2;
-
-		while (choice2 < 0 || choice2 > 1)
-		{
-			cout << "Invalid selection. Reselect...";
-			cin >> choice2;
-			break;
-		}
 
 		if (choice <= partyNum)
 		{
 			switch (choice2)
 			{
-			case 0:
-				DisplayEQArmors(p, choice);
+			case 'a':
+				DisplayEQArmors(p);
 				// armor list
 				cout << "	-unequipped armors-" << endl;
 				displaylistArmor();
+
 				EquipItemSelect(p);
 				break;
 
-			default:
-				DisplayEQWeapons(p, choice);
+			case 'w':
+				DisplayEQWeapons(p);
 				// weapon list
 				cout << "	-unequipped weapons-" << endl;
 				displaylistWeapon();
 				EquipItemSelect(p);
+				break;
+			default:
+				cout << "Invalid selection. Reselect...";
+				cin >> choice2;
 				break;
 			}
 		}
@@ -625,36 +637,36 @@ void inventory::EquipItemSelect(Player_Actor p[])
 	}
 }
 
-void inventory::DisplayEQArmors(Player_Actor p[], int call)
+void inventory::DisplayEQArmors(Player_Actor p[])
 {
 	system("CLS");
 	for (size_t i = 0; i < 3; i++)
 	{
-		if (p[call].getArmorEQ().name.empty())
+		if (p[i].getArmorEQ().name.empty())
 		{
 			cout << "empty slot " << endl;
 		}
 		else
 		{
-			cout << p[call].getArmorEQ().name << endl;
+			cout << p[i].getArmorEQ().name << endl;
 			
 		}
 	}
 	system("PAUSE");
 }
 
-void inventory::DisplayEQWeapons(Player_Actor p[], int call)
+void inventory::DisplayEQWeapons(Player_Actor p[])
 {
 	system("CLS");
 	for (size_t i = 0; i < 1; i++)
 	{
-		if (p[call].getWeaponEQ().name.empty())
+		if (p[i].getWeaponEQ().name.empty())
 		{
 			cout << "empty slot " << endl;
 		}
 		else
 		{
-			cout << p[call].getWeaponEQ().name << endl;
+			cout << p[i].getWeaponEQ().name << endl;
 		}
 	}
 	system("PAUSE");
