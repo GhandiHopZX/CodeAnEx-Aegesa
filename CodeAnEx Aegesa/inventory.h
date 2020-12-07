@@ -17,9 +17,20 @@ private:
 	int itemCount;
 	int armorCount;
 	int weaponCount;
-
+	
 	// selections
 	bool markers[19]{}; // capacity can't change... Yet..
+	int current{};
+
+	int getCurrent()
+	{
+		return current;
+	}
+
+	void setCurrent(int d)
+	{
+		current = d;
+	}
 
 	string getMarker(bool marker)
 	{
@@ -32,6 +43,11 @@ private:
 			return "";
 			break;
 		}
+	}
+
+	int getMarkerInt(int dl)
+	{
+		return markers[dl];
 	}
 
 	// upon moving last cursor
@@ -221,6 +237,10 @@ public:
 
 	void zeroOut(int ix);
 
+	void zeroOutAr(int ix);
+
+	void zeroOutWe(int ix);
+
 	char choiceIn(string choiceBuffer);
 
 #pragma region All_weapons
@@ -279,9 +299,17 @@ public:
 
 	void EquipA(Player_Actor i[], inventory::armor aq, int selected);
 
+	void EquipA(Player_Actor ip, inventory::armor aq, int selected);
+
 	void listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[]);
 
 	void listGetchArmorDown(int d, int itemCount, int lastM, armor stackIn[]);
+
+	void EquipW(Player_Actor i, inventory::weapon wq, int selected);
+
+	void UnequipA(Player_Actor i, inventory::armor aq, int selected);
+
+	void UnequipW(Player_Actor i, inventory::weapon wq, int selected);
 
 	void EquipW(Player_Actor i[], inventory::weapon wq, int selected);
 

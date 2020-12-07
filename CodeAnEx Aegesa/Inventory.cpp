@@ -196,13 +196,13 @@ void inventory::displayAll()
 }
 
 // unfinished fix number input
-void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
+void inventory::EquipA(Player_Actor ip, inventory::armor aq, int selected)
 {
 	// virtual keys here
 	//
 	system("CLS");
 	
-	armor stackIn[19] = {};
+	armor stackIn[19] = {}; // leave this
 
 	int itemCount = 0;
 	for (int i = 0; i < 19; i++)
@@ -222,6 +222,7 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 	int lastM{};
 	int choice3 = 0;
 	bool itemS = false;
+	
 	// infinite loop
 	for (int i = 0; i < 1; i++)
 	{
@@ -248,23 +249,21 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 				stackIn[d] = my_armors[d];
 				cout << d + 1 << " " << my_armors[d].name << getMarker(markers[d]) << endl;
 			}
-
-			setMarker(d + 1, itemCount/2); // marker initialization itemCount/2 will never be accessed 
+			setCurrent(d + 1);
+			setMarker(current, itemCount/2); // marker initialization itemCount/2 will never be accessed 
 			cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
 			lastM = d;
 		}
 
-		// loop back
-		/*HKL ActivateKeyboardLayout(
-			HKL hkl,
-			UINT Flags
-		);*/
 		
 #pragma warning(disable : 4996)
 		char key = getch();
 		int value = key;
+		int choice4{};
+		armor lArmor;
+		int eqArmors{};
 
-		while (choice3 == NULL || value != KEY_X || value != KEY_Z)
+		while (choice3 == NULL || value != KEY_X)
 		{
 			int d = 0;
 			switch (getch())
@@ -280,15 +279,59 @@ void inventory::EquipA(Player_Actor i[], inventory::armor aq, int selected)
 				// equip ask
 				//  < -- here
 				system("CLS");
-
 				break;
+
+			case KEY_Z:
+				choice3 = getMarkerInt(current);
+				// slot selector Yay...
+				// just do a number input
+				
+				for (int i = 0; i < 2; i++)
+				{
+					if (ip.getArmorEQ2(i).name.empty())
+					{
+						cout << "empty slot " << endl;
+					}
+					else
+					{
+						++eqArmors;
+						cout << ip.getArmorEQ2(i).name << endl;
+
+					}
+				}
+				if (eqArmors <= 0)
+				{
+					system("CLS");
+					cout << "No armor items to equip" << endl;
+					system("PAUSE");
+				}
+				cin >> choice4;
+
+				while (choice4 >= 2 || choice4 <= 2)
+				{
+					cout << "wrong choice" << endl;
+					cin >> choice4;
+				}
+
+				//lArmor = ip.getArmorEQ2(choice4); //convertMethod
+				 //if checking if lArmor is empty, replace with an empty slot
+				//if (lArmor.name.empty())
+				//{
+				//	zeroOut(my_armors[getCurrent()]);
+				//}
+				//ip.setArmor(choice4, my_armors[getCurrent()]); //convertMethod
+				//my_armors[getCurrent()] = lArmor; // convertMethod
+				
+
 			default:
 				break;
 			}
 		}
+
 		key = getch();
 		value = key;
 		i = 0;
+
 	}
 }
 
@@ -312,19 +355,21 @@ void inventory::listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[
 
 	if (lastM >= itemCount)
 	{
-
 		lastM = itemCount;
+		current = 0;
 		inventory::setMarker(0, lastM);
 		lastM = 0;
 	}
 	else if (lastM <= 0)
 	{
 		lastM = 0;
+		current = itemCount;
 		inventory::setMarker(itemCount, lastM);
 		lastM = itemCount;
 	}
 	else
 	{
+		current = lastM - 1;
 		setMarker(lastM - 1, lastM);
 		lastM = lastM + 1;
 	}
@@ -357,7 +402,7 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackI
 
 	if (lastM >= itemCount)
 	{
-
+		current = 0;
 		lastM = itemCount;
 		inventory::setMarker(0, lastM);
 		lastM = 0;
@@ -365,11 +410,13 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackI
 	else if (lastM <= 0)
 	{
 		lastM = 0;
+		current = itemCount;
 		inventory::setMarker(itemCount, lastM);
 		lastM = itemCount;
 	}
 	else
 	{
+		current = lastM + 1;
 		setMarker(lastM + 1, lastM);
 		lastM = lastM - 1;
 	}
@@ -377,15 +424,15 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackI
 #pragma endregion
 }
 
-void inventory::EquipW(Player_Actor i[], inventory::weapon wq, int selected)
+void inventory::EquipW(Player_Actor i, inventory::weapon wq, int selected)
 {
 }
 
-void inventory::UnequipA(Player_Actor i[], inventory::armor aq, int selected)
+void inventory::UnequipA(Player_Actor i, inventory::armor aq, int selected)
 {
 }
 
-void inventory::UnequipW(Player_Actor i[], inventory::weapon wq, int selected)
+void inventory::UnequipW(Player_Actor i, inventory::weapon wq, int selected)
 {
 }
 
@@ -691,6 +738,40 @@ void inventory::zeroOut(int ix)
 	my_items[ix].conAdd = NULL;
 	my_items[ix].goldValue = NULL;
 	my_items[ix].quantity = NULL;
+}
+
+void inventory::zeroOutAr(int ix)
+{
+	my_armors[ix].agiAdd = NULL;
+	my_armors[ix].agiAdd = NULL;
+	my_armors[ix].atkAdd = NULL;
+	my_armors[ix].name = "";
+	my_armors[ix].defAdd = NULL;
+	my_armors[ix].spdAdd = NULL;
+	my_armors[ix].dexAdd = NULL;
+	my_armors[ix].intAdd = NULL;
+	my_armors[ix].sprAdd = NULL;
+	my_armors[ix].endAdd = NULL;
+	my_armors[ix].conAdd = NULL;
+	my_armors[ix].goldValue = NULL;
+	my_armors[ix].quantity = NULL;
+}
+
+void inventory::zeroOutWe(int ix)
+{
+	my_weapons[ix].agiAdd = NULL;
+	my_weapons[ix].agiAdd = NULL;
+	my_weapons[ix].atkAdd = NULL;
+	my_weapons[ix].name = "";
+	my_weapons[ix].defAdd = NULL;
+	my_weapons[ix].spdAdd = NULL;
+	my_weapons[ix].dexAdd = NULL;
+	my_weapons[ix].intAdd = NULL;
+	my_weapons[ix].sprAdd = NULL;
+	my_weapons[ix].endAdd = NULL;
+	my_weapons[ix].conAdd = NULL;
+	my_weapons[ix].goldValue = NULL;
+	my_weapons[ix].quantity = NULL;
 }
 
 char inventory::choiceIn(string choiceBuffer)

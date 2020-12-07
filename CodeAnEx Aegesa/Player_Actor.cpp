@@ -42,8 +42,8 @@ Player_Actor::Player_Actor()
 
 Player_Actor::armor Player_Actor::getArmorEQ()
 {
-	armor a[3];
-	for (int i = 0; i < 3; i++)
+	armor a[2];
+	for (int i = 0; i < 2; i++)
 	{
 		a[i] = mActorArmorE[i];
 		return a[i];
