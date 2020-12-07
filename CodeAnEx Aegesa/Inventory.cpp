@@ -317,7 +317,7 @@ void inventory::EquipA(Player_Actor ip, inventory::armor aq, int selected)
 				 //if checking if lArmor is empty, replace with an empty slot
 				//if (lArmor.name.empty())
 				//{
-				//	zeroOut(my_armors[getCurrent()]);
+					//zeroOutAr(getCurrent());
 				//}
 				//ip.setArmor(choice4, my_armors[getCurrent()]); //convertMethod
 				//my_armors[getCurrent()] = lArmor; // convertMethod
