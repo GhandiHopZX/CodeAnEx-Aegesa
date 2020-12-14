@@ -4,6 +4,7 @@
 #include <cstdio>
 #include "inventory.h"
 #include "Player_Actor.h"
+#include "ItemType.h"
 using namespace std;
 
 class inventory
@@ -76,77 +77,8 @@ public:
 	// this could work with anything else
 	// there are other methods but this is the only thing I could think of.
 
-	struct weapon
-	{
-		string name;
-		unsigned int atkAdd = 0;
-		unsigned int defAdd = 0;
-		unsigned int spdAdd = 0;
-
-		unsigned int dexAdd = 0;
-		unsigned int intAdd = 0;
-		unsigned int sprAdd = 0;
-		unsigned int endAdd = 0;
-		unsigned int conAdd = 0;
-		unsigned int strAdd = 0;
-		unsigned int agiAdd = 0;
-		unsigned int goldValue = 0;
-
-		unsigned int quantity = 0;
-	};
-
-	struct armor
-	{
-		string name;
-		unsigned int atkAdd = 0;
-		unsigned int defAdd = 0;
-		unsigned int spdAdd = 0;
-
-		unsigned int dexAdd = 0;
-		unsigned int intAdd = 0;
-		unsigned int sprAdd = 0;
-		unsigned int endAdd = 0;
-		unsigned int conAdd = 0;
-		unsigned int strAdd = 0;
-		unsigned int agiAdd = 0;
-		unsigned int goldValue = 0;
-
-		unsigned int quantity = 0;
-	};
-
-	struct item
-	{
-		string name;
-		unsigned int hpAdd = 0;
-		unsigned int spAdd = 0;
-		unsigned int fpAdd = 0;
-		unsigned int apAdd = 0;
-		// no dp plus plz
-
-		unsigned int atkAdd = 0;
-		unsigned int defAdd = 0;
-		unsigned int spdAdd = 0;
-
-		unsigned int dexAdd = 0;
-		unsigned int intAdd = 0;
-		unsigned int sprAdd = 0;
-		unsigned int endAdd = 0;
-		unsigned int conAdd = 0;
-		unsigned int strAdd = 0;
-		unsigned int agiAdd = 0;
-		unsigned int goldValue = 0;
-
-		unsigned int quantity = 0;
-
-		// next item
-	};
 
 	//node heads
-	weapon* headw;
-
-	armor* heada;
-
-	item* headi;
 
 	unsigned int sum_weapons = 0; // total number of nodes
 	unsigned int sum_armors = 0; // total number of nodes
@@ -167,10 +99,6 @@ public:
 	void displaylistWeapon();
 	void displaylistArmor();
 	void displayAll();
-
-	Player_Actor::weapon wConvert(Player_Actor::weapon ar, inventory::weapon ar2);
-
-	Player_Actor::armor aConvert(Player_Actor::armor ar, inventory::armor ar2);
 
 	void PlayerItemInventory(Player_Actor party[]);
 
@@ -201,13 +129,13 @@ public:
 		weaponCount = m;
 	}
 
-	int GetItem(string id, item inventItem);
+	int GetItem(string id, ItemType::item inventItem);
 
 	bool TakeItem(string id, int count, int agi, int ap, int atk, int hp,
 		int sp, int fp, int def, int spd, int dex, int intell, int spr, int end, int con,
 		int gold, int ivalue, int quantity, int node);
 
-	bool TakeItem(item im);
+	bool TakeItem(ItemType::item im);
 
 	// battleSystem
 
@@ -217,9 +145,9 @@ public:
 		int fp, int def, int spd, int dex, int intell, int spr, int end,
 		int con, int gold, int ivalue, int quantity, int node);
 
-	void addItem(item n);
+	void addItem(ItemType::item n);
 
-	void add(item n);
+	void add(ItemType::item n);
 
 	void removeItem(string id);
 
@@ -231,9 +159,20 @@ public:
 
 	void DisplayEQWeapons(Player_Actor p[]);
 
-	void DisplayEQArmors(Player_Actor p[], int call);
+	
 
-	void DisplayEQWeapons(Player_Actor p[], int call);
+	void DisplayEQArmorSelected(Player_Actor p[], int call);
+
+	void DisplayEQWeaponsSelected(Player_Actor p[], int call);
+
+	// conversions and conv back
+
+	// conv back
+	inventory pTIA(ItemType::armor v, ItemType::armor p, int select);
+
+	inventory pTIW(ItemType::weapon v, ItemType::weapon p, int select);
+
+	inventory pTII(ItemType::item v, ItemType::item p, int select);
 
 	void zeroOut(int ix);
 
@@ -243,42 +182,11 @@ public:
 
 	char choiceIn(string choiceBuffer);
 
-#pragma region All_weapons
-	inventory::weapon brawd_injector;
-	inventory::weapon glass_gauntlet;
-	inventory::weapon carbonite_knuckle;
-	inventory::weapon crystalline_injector;
-	inventory::weapon aerolite_gauntlet;
-	inventory::weapon vandham_gauntlet;
-	inventory::weapon antimatter_injector;
-	inventory::weapon shinobi_claws;
-	inventory::weapon tacheyon_injector;
-	inventory::weapon magic_glove;
-	inventory::weapon bomber_injector;
-	inventory::weapon titanium_infused_gauntlet;
-	inventory::weapon anti_nuclear_injector;
-#pragma endregion
 
-	inventory::weapon weaponlist[100] =
-	{
-	 brawd_injector,
-	 glass_gauntlet,
-	 carbonite_knuckle,
-	 crystalline_injector,
-	 aerolite_gauntlet,
-	 vandham_gauntlet,
-	 antimatter_injector,
-	 shinobi_claws,
-	 tacheyon_injector,
-	 magic_glove,
-	 bomber_injector,
-	 titanium_infused_gauntlet,
-	 anti_nuclear_injector
-	};
 
 	// selections
 	//item getItem(int);
-	void itemExecute(Player_Actor i[], inventory::item newI, int selectParty)
+	void itemExecute(Player_Actor i[], ItemType::item newI, int selectParty)
 	{
 		i[selectParty].setAGId(newI.agiAdd);
 		i[selectParty].setATKd(newI.atkAdd);
@@ -297,25 +205,25 @@ public:
 		cout << newI.name << " used" << endl;
 	}
 
-	void EquipA(Player_Actor i[], inventory::armor aq, int selected);
+	void EquipA(Player_Actor i[], ItemType::armor aq, int selected);
 
-	void EquipA(Player_Actor ip, inventory::armor aq, int selected);
+	void EquipA(Player_Actor ip, ItemType::armor aq, int selected);
 
-	void listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[]);
+	void listGetchArmorUp(int d, int itemCount, int lastM, ItemType::armor stackIn[]);
 
-	void listGetchArmorDown(int d, int itemCount, int lastM, armor stackIn[]);
+	void listGetchArmorDown(int d, int itemCount, int lastM, ItemType::armor stackIn[]);
 
-	void EquipW(Player_Actor i, inventory::weapon wq, int selected);
+	void EquipW(Player_Actor i, ItemType::weapon wq, int selected);
 
-	void UnequipA(Player_Actor i, inventory::armor aq, int selected);
+	void UnequipA(Player_Actor i, ItemType::armor aq, int selected);
 
-	void UnequipW(Player_Actor i, inventory::weapon wq, int selected);
+	void UnequipW(Player_Actor i, ItemType::weapon wq, int selected);
 
-	void EquipW(Player_Actor i[], inventory::weapon wq, int selected);
+	void EquipW(Player_Actor i[], ItemType::weapon wq, int selected);
 
-	void UnequipA(Player_Actor i[], inventory::armor aq, int selected);
+	void UnequipA(Player_Actor i[], ItemType::armor aq, int selected);
 
-	void UnequipW(Player_Actor i[], inventory::weapon wq, int selected);
+	void UnequipW(Player_Actor i[], ItemType::weapon wq, int selected);
 
 	// setters / mutators
 

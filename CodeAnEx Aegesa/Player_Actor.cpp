@@ -40,9 +40,9 @@ Player_Actor::Player_Actor()
 #pragma endregion
 }
 
-Player_Actor::armor Player_Actor::getArmorEQ()
+ItemType::armor getArmorEQ()
 {
-	armor a[2];
+	ItemType::armor a[2];
 	for (int i = 0; i < 2; i++)
 	{
 		a[i] = mActorArmorE[i];
@@ -51,25 +51,25 @@ Player_Actor::armor Player_Actor::getArmorEQ()
 	return a[0];
 }
 
-Player_Actor::weapon Player_Actor::getWeaponEQ()
+ItemType::weapon getWeaponEQ()
 {
-	weapon w[1];
+	ItemType::weapon w[1];
 	for (int i = 0; i < 1; i++)
 	{
-		w[i] = mActorWeaponE[i];
+		w[i] = ItemType::mActorWeaponE[i];
 		return w[i];
 	}
 	return w[0];
 }
 
-Player_Actor::armor Player_Actor::getArmorEQ2(int me)
+ItemType::armor getArmorEQ2(int me)
 {
 	return mActorArmorE[me];
 }
 
-Player_Actor::weapon Player_Actor::getWeaponEQ2(int me)
+ItemType::weapon getWeaponEQ2(int me)
 {
-	return mActorWeaponE[me];
+	return ItemType::mActorWeaponE[me];
 }
 
 string Player_Actor::normalOutput(string normal)
@@ -77,12 +77,12 @@ string Player_Actor::normalOutput(string normal)
 	return string();
 }
 
-void Player_Actor::setArmor(int y, Player_Actor::armor d)
+void Player_Actor::setArmor(int y, ItemType::armor d)
 {
 	mActorArmorE[y] = d;
 }
 
-void Player_Actor::setWeapon(int y, Player_Actor::weapon d)
+void Player_Actor::setWeapon(int y, ItemType::weapon d)
 {
 	mActorWeaponE[y] = d;
 }

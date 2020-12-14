@@ -16,118 +16,12 @@ using namespace std;
 #define KEY_X 120
 #define KEY_Z 90
 
-//items
-
-#pragma region All_items
-inventory::item AEGESA_FRAGMENT;
-inventory::item kaider_shard;
-inventory::item greenball_bun;
-inventory::item enchantment_crystal;
-inventory::item music_chord;
-inventory::item static_weave;
-inventory::item marble_eye;
-inventory::item tiny_fingers;
-inventory::item chared_beast_skin;
-inventory::item magical_mane;
-inventory::item masters_cane;
-inventory::item broken_wing;
-inventory::item ripped_coat;
-inventory::item shattered_broach;
-#pragma endregion
-
-inventory::item itemlist[100] =
-{
-	AEGESA_FRAGMENT,
-	kaider_shard,
-	greenball_bun,
-	enchantment_crystal,
-	music_chord,
-	static_weave,
-	marble_eye,
-	tiny_fingers,
-	chared_beast_skin,
-	magical_mane,
-	masters_cane,
-	broken_wing,
-	ripped_coat,
-	shattered_broach,
-};
-
-inventory::item allitemList(int integer)
-{
-	return itemlist[integer];
-}
-
-#pragma region itemNames
-string itemNames[100] =
-{
-	AEGESA_FRAGMENT.name = "AEGESA FRAGMENT",
-	kaider_shard.name = "kaider shard",
-	greenball_bun.name = "greenball bun",
-	enchantment_crystal.name = "enchantment crystal",
-	music_chord.name = "music chord",
-	static_weave.name = "static weave",
-	marble_eye.name = "marble eye",
-	tiny_fingers.name = "tiny fingers",
-	chared_beast_skin.name = "chared beast skin",
-	magical_mane.name = "magical mane",
-	masters_cane.name = "masters mane",
-	broken_wing.name = "broken wing",
-	ripped_coat.name = "ripped coat",
-	shattered_broach.name = "shattered broach",
-};
-
-#pragma endregion
-
-#pragma region All_armors
-inventory::armor broad_armor;
-inventory::armor kavelar_gear;
-inventory::armor carbonite_gear;
-inventory::armor crystalline_armor;
-inventory::armor aerolite_gear;
-inventory::armor vandham_armor;
-inventory::armor antiImpact_armor;
-inventory::armor katType_armor;
-inventory::armor grenadier_composite_armor;
-inventory::armor anti_nuclear_armor;
-#pragma endregion
-
-inventory::armor armorlist[100] =
-{
-	broad_armor,
-	kavelar_gear,
-	carbonite_gear,
-	crystalline_armor,
-	aerolite_gear,
-	vandham_armor,
-	antiImpact_armor,
-	katType_armor,
-	grenadier_composite_armor,
-	anti_nuclear_armor
-};
-
-inventory::armor allarmorList(int integer)
-{
-	return armorlist[integer];
-}
-
-inventory::weapon my_weapons[inventory::MAX_INTEGRITY] =
-{};
-
-inventory::armor my_armors[inventory::MAX_INTEGRITY] =
-{};
-
-inventory::item my_items[inventory::MAX_INTEGRITY] =
-{};
 
 inventory::inventory()
 {
 	this->itemCount = 19;
 	this->armorCount = 19;
 	this->weaponCount = 19;
-	this->heada = 0;
-	this->headi = 0;
-	this->headw = 0;
 	this->size = 20;
 	this->stackArray = &capacity;
 	this->capacity = 20;
@@ -138,9 +32,6 @@ inventory::inventory(int)
 	this->itemCount = 19;
 	this->armorCount = 19;
 	this->weaponCount = 19;
-	this->heada = 0;
-	this->headi = 0;
-	this->headw = 0;
 	this->size = 20;
 	this->stackArray = &capacity;
 	this->capacity = 20;
@@ -196,13 +87,13 @@ void inventory::displayAll()
 }
 
 // unfinished fix number input
-void inventory::EquipA(Player_Actor ip, inventory::armor aq, int selected)
+void inventory::EquipA(Player_Actor ip, ItemType::armor aq, int selected)
 {
 	// virtual keys here
 	//
 	system("CLS");
 	
-	armor stackIn[19] = {}; // leave this
+	ItemType::armor stackIn[19] = {}; // leave this
 
 	int itemCount = 0;
 	for (int i = 0; i < 19; i++)
@@ -260,7 +151,7 @@ void inventory::EquipA(Player_Actor ip, inventory::armor aq, int selected)
 		char key = getch();
 		int value = key;
 		int choice4{};
-		armor lArmor;
+		ItemType::armor lArmor;
 		int eqArmors{};
 
 		while (choice3 == NULL || value != KEY_X)
@@ -313,6 +204,7 @@ void inventory::EquipA(Player_Actor ip, inventory::armor aq, int selected)
 					cin >> choice4;
 				}
 
+				// conversions needed
 				//lArmor = ip.getArmorEQ2(choice4); //convertMethod
 				 //if checking if lArmor is empty, replace with an empty slot
 				//if (lArmor.name.empty())
@@ -335,7 +227,7 @@ void inventory::EquipA(Player_Actor ip, inventory::armor aq, int selected)
 	}
 }
 
-void inventory::listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[])
+void inventory::listGetchArmorUp(int d, int itemCount, int lastM, ItemType::armor stackIn[])
 {
 #pragma region
 	d = 0;
@@ -377,7 +269,7 @@ void inventory::listGetchArmorUp(int d, int itemCount, int lastM, armor stackIn[
 #pragma endregion
 }
 
-void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackIn[])
+void inventory::listGetchArmorDown(int d, int itemCount, int lastM, ItemType::armor stackIn[])
 {
 #pragma region 
 	d = 0;
@@ -424,15 +316,15 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, armor stackI
 #pragma endregion
 }
 
-void inventory::EquipW(Player_Actor i, inventory::weapon wq, int selected)
+void inventory::EquipW(Player_Actor i, ItemType::weapon wq, int selected)
 {
 }
 
-void inventory::UnequipA(Player_Actor i, inventory::armor aq, int selected)
+void inventory::UnequipA(Player_Actor i, ItemType::armor aq, int selected)
 {
 }
 
-void inventory::UnequipW(Player_Actor i, inventory::weapon wq, int selected)
+void inventory::UnequipW(Player_Actor i, ItemType::weapon wq, int selected)
 {
 }
 
@@ -499,7 +391,7 @@ void inventory::PlayerItemInventory(Player_Actor party[])
 	}
 }
 
-int inventory::GetItem(string id, item inventItem)
+int inventory::GetItem(string id, ItemType::item inventItem)
 {
 	for (int i = 0; i < 20; ++i)
 	{
@@ -512,9 +404,9 @@ int inventory::GetItem(string id, item inventItem)
 	return -1;
 }
 
-bool inventory::TakeItem(item im)
+bool inventory::TakeItem(ItemType::item im)
 {
-	item b = im;
+	ItemType::item b = im;
 	int itemSlot = GetItem(im.name, b);
 	if (itemSlot == -1)
 	{
@@ -548,9 +440,9 @@ void inventory::rewardCall(string index, int howMany)
 	cout << itemlist[searchItem(index)].name << "Aquired..." << endl;
 }
 
-void inventory::addItem(item n)
+void inventory::addItem(ItemType::item n)
 {
-	item m;
+	ItemType::item m;
 	int in = GetItem(n.name, m);
 	for (int i = 0; i < 20; i++)
 	{
@@ -570,7 +462,7 @@ void inventory::addItem(item n)
 	}
 }
 
-void inventory::add(item n)
+void inventory::add(ItemType::item n)
 {
 	for (int i = 0; i < 20; i++)
 	{
@@ -583,7 +475,7 @@ void inventory::add(item n)
 
 void inventory::removeItem(string id)
 {
-	item inventoryItem;
+	ItemType::item inventoryItem;
 	int itemSlot = GetItem(id, inventoryItem);
 	if (itemSlot == -1)
 	{
@@ -597,7 +489,7 @@ void inventory::removeItem(string id)
 
 int inventory::getItemQuantity(string id)
 {
-	item b;
+	ItemType::item b;
 	if (GetItem(id, b) == -1)
 	{
 		return 0;

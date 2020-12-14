@@ -8,6 +8,7 @@
 #include "Player_Actor.h"
 #include "stateEffects.h"
 #include "aegesa.h"
+#include "ItemType.h"
 
 using namespace std;
 
@@ -23,76 +24,6 @@ private:
 
 public:
 
-	struct weapon
-	{
-		string name;
-		unsigned int atkAdd = 0;
-		unsigned int defAdd = 0;
-		unsigned int spdAdd = 0;
-
-		unsigned int dexAdd = 0;
-		unsigned int intAdd = 0;
-		unsigned int sprAdd = 0;
-		unsigned int endAdd = 0;
-		unsigned int conAdd = 0;
-		unsigned int strAdd = 0;
-		unsigned int agiAdd = 0;
-		unsigned int goldValue = 0;
-
-		unsigned int wvalue = 0; // node
-		unsigned int quantity = 0;
-		struct weapon* next = 0; //next item
-	};
-
-	struct armor
-	{
-		string name;
-		unsigned int atkAdd = 0;
-		unsigned int defAdd = 0;
-		unsigned int spdAdd = 0;
-
-		unsigned int dexAdd = 0;
-		unsigned int intAdd = 0;
-		unsigned int sprAdd = 0;
-		unsigned int endAdd = 0;
-		unsigned int conAdd = 0;
-		unsigned int strAdd = 0;
-		unsigned int agiAdd = 0;
-		unsigned int goldValue = 0;
-
-		unsigned int avalue = 0; //node
-		unsigned int quantity = 0;
-		struct armor* next = 0; //next armor
-	};
-
-	struct item
-	{
-		string name;
-		unsigned int hpAdd = 0;
-		unsigned int spAdd = 0;
-		unsigned int fpAdd = 0;
-		unsigned int apAdd = 0;
-		// no dp plus plz
-
-		unsigned int atkAdd = 0;
-		unsigned int defAdd = 0;
-		unsigned int spdAdd = 0;
-
-		unsigned int dexAdd = 0;
-		unsigned int intAdd = 0;
-		unsigned int sprAdd = 0;
-		unsigned int endAdd = 0;
-		unsigned int conAdd = 0;
-		unsigned int strAdd = 0;
-		unsigned int agiAdd = 0;
-		unsigned int goldValue = 0;
-
-		unsigned int ivalue = 0; // node for items
-		unsigned int quantity = 0;
-		struct item* node = 0;
-
-		// next item
-	};
 
 	// stat multiplier flag
 	/*bool statmulti;
@@ -101,13 +32,13 @@ public:
 	// Constructors
 	Player_Actor();
 
-	armor getArmorEQ();
+	ItemType getArmorEQ();
 
-	weapon getWeaponEQ();
+	ItemType getWeaponEQ();
 
-	Player_Actor::armor getArmorEQ2(int me);
+	ItemType getArmorEQ2(int me);
 
-	Player_Actor::weapon getWeaponEQ2(int me);
+	ItemType getWeaponEQ2(int me);
 
 	// getters / accessors
 
@@ -651,11 +582,11 @@ public:
 	//
 	//#pragma endregion
 
-	weapon mActorWeaponE[1];
-	armor mActorArmorE[3];
+	ItemType::weapon mActorWeaponE[1];
+	ItemType::armor mActorArmorE[3];
 
-	void setArmor(int y, Player_Actor::armor d);
-	void setWeapon(int y, Player_Actor::weapon d);
+	void setArmor(int y, ItemType::armor d);
+	void setWeapon(int y, ItemType::weapon d);
 
 	/*
 

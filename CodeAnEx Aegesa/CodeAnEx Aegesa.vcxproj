@@ -154,6 +154,7 @@
     <ClCompile Include="FileSave.cpp" />
     <ClCompile Include="HashTableSet.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="ItemType.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Player_Actor.cpp" />
     <ClCompile Include="skillAction.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="FileSave.h" />
     <ClInclude Include="HashTableSet.h" />
     <ClInclude Include="inventory.h" />
+    <ClInclude Include="ItemType.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Player_Actor.h" />
     <ClInclude Include="skillAction.h" />
