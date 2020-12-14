@@ -8,6 +8,65 @@ ItemType::ItemType()
 
 }
 
+ItemType::ItemType(item d)
+{
+	d.agiAdd = NULL;
+	d.agiAdd = NULL;
+	d.apAdd = NULL;
+	d.atkAdd = NULL;
+	d.name = "";
+	d.hpAdd = NULL;
+	d.spAdd = NULL;
+	d.fpAdd = NULL;
+	d.defAdd = NULL;
+	d.spdAdd = NULL;
+	d.dexAdd = NULL;
+	d.intAdd = NULL;
+	d.sprAdd = NULL;
+	d.endAdd = NULL;
+	d.conAdd = NULL;
+	d.goldValue = NULL;
+	d.quantity = NULL;
+}
+
+ItemType::ItemType(armor d)
+{
+	d.agiAdd = NULL;
+	d.agiAdd = NULL;
+	d.atkAdd = NULL;
+	d.name = "";
+	d.defAdd = NULL;
+	d.spdAdd = NULL;
+	d.dexAdd = NULL;
+	d.intAdd = NULL;
+	d.sprAdd = NULL;
+	d.endAdd = NULL;
+	d.conAdd = NULL;
+	d.goldValue = NULL;
+	d.quantity = NULL;
+}
+
+ItemType::ItemType(weapon d)
+{
+	d.agiAdd = NULL;
+	d.agiAdd = NULL;
+	d.atkAdd = NULL;
+	d.name = "";
+	d.defAdd = NULL;
+	d.spdAdd = NULL;
+	d.dexAdd = NULL;
+	d.intAdd = NULL;
+	d.sprAdd = NULL;
+	d.endAdd = NULL;
+	d.conAdd = NULL;
+	d.goldValue = NULL;
+	d.quantity = NULL;
+}
+
+ItemType::ItemType()
+{
+}
+
 // conversion methods
 ItemType::armor pTIA(ItemType::armor v, ItemType::armor p, int select)
 {

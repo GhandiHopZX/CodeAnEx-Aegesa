@@ -116,7 +116,7 @@ void World::beginningStory()
 	Actor1.setDp(0); // always set these defaulted to 0
 
 	// weapon eq
-	Player_Actor::weapon Basic_Injector;
+	ItemType::weapon Basic_Injector;
 
 #pragma region Basic_Injector_Setup
 	Basic_Injector.agiAdd = 1;
@@ -132,7 +132,6 @@ void World::beginningStory()
 	Basic_Injector.spdAdd = 1;
 	Basic_Injector.sprAdd = 1;
 	Basic_Injector.strAdd = 1;
-	Basic_Injector.wvalue = 1;
 
 #pragma endregion
 
@@ -174,10 +173,10 @@ void World::beginningStory()
 	Alicia.setAp(5);
 	Alicia.setDp(0); // always set these defaulted to 0
 
-	Player_Actor::weapon Gold_Dragon_Claws;
-	Player_Actor::armor Kommodo_Chestplate;
-	Player_Actor::armor Kommodo_Leggings;
-	Player_Actor::armor Kommodo_Palm_Soles;
+	ItemType::weapon Gold_Dragon_Claws;
+	ItemType::armor Kommodo_Chestplate;
+	ItemType::armor Kommodo_Leggings;
+	ItemType::armor Kommodo_Palm_Soles;
 
 #pragma region Goldshit
 	Gold_Dragon_Claws.agiAdd = 3;
@@ -193,7 +192,6 @@ void World::beginningStory()
 	Gold_Dragon_Claws.spdAdd = 1;
 	Gold_Dragon_Claws.sprAdd = 3;
 	Gold_Dragon_Claws.strAdd = 1;
-	Gold_Dragon_Claws.wvalue = 1;
 #pragma endregion
 
 #pragma region Kommodo_Chestplate
@@ -210,7 +208,6 @@ void World::beginningStory()
 	Kommodo_Chestplate.spdAdd = 4;
 	Kommodo_Chestplate.sprAdd = 5;
 	Kommodo_Chestplate.strAdd = 1;
-	Kommodo_Chestplate.avalue = 1;
 #pragma endregion
 
 #pragma region Kommodo_Leggings
@@ -227,7 +224,6 @@ void World::beginningStory()
 	Kommodo_Leggings.spdAdd = 3;
 	Kommodo_Leggings.sprAdd = 4;
 	Kommodo_Leggings.strAdd = 4;
-	Kommodo_Leggings.avalue = 1;
 #pragma endregion
 
 #pragma region Kommodo_Palm_Soles
@@ -244,7 +240,6 @@ void World::beginningStory()
 	Kommodo_Palm_Soles.spdAdd = 4;
 	Kommodo_Palm_Soles.sprAdd = 1;
 	Kommodo_Palm_Soles.strAdd = 5;
-	Kommodo_Palm_Soles.avalue = 1;
 #pragma endregion
 
 #pragma endregion
@@ -678,8 +673,8 @@ void World::statusCall(Player_Actor p[])
 
 		int i = 0;
 
-		Player_Actor::armor a;
-		Player_Actor::weapon w;
+		ItemType::armor a;
+		ItemType::weapon w;
 
 		cout << p[choice].getName() << endl;
 

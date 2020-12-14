@@ -32,6 +32,8 @@ public:
 	// Constructors
 	Player_Actor();
 
+	ItemType::armor getArmorEQ(int me);
+
 	ItemType getArmorEQ();
 
 	ItemType getWeaponEQ();

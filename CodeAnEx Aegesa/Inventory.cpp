@@ -16,6 +16,14 @@ using namespace std;
 #define KEY_X 120
 #define KEY_Z 90
 
+ItemType::weapon my_weapons[inventory::MAX_INTEGRITY] =
+{};
+
+ItemType::armor my_armors[inventory::MAX_INTEGRITY] =
+{};
+
+ItemType::item my_items[inventory::MAX_INTEGRITY] =
+{};
 
 inventory::inventory()
 {

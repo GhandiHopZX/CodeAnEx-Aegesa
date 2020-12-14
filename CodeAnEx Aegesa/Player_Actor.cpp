@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include "ItemType.h"
 #include "Player_Actor.h"
 #include "stateEffects.h"
 
@@ -45,13 +46,13 @@ ItemType::armor getArmorEQ()
 	ItemType::armor a[2];
 	for (int i = 0; i < 2; i++)
 	{
-		a[i] = mActorArmorE[i];
+		a[i] = Player_Actor::mActorArmorE[i];
 		return a[i];
 	}
 	return a[0];
 }
 
-ItemType::weapon getWeaponEQ()
+Player_Actor ItemType::weapon getWeaponEQ()
 {
 	ItemType::weapon w[1];
 	for (int i = 0; i < 1; i++)
@@ -62,12 +63,12 @@ ItemType::weapon getWeaponEQ()
 	return w[0];
 }
 
-ItemType::armor getArmorEQ2(int me)
+Player_Actor ItemType::armor getArmorEQ2(int me)
 {
-	return mActorArmorE[me];
+	return ItemType::mActorArmorE[me];
 }
 
-ItemType::weapon getWeaponEQ2(int me)
+Player_Actor ItemType::weapon getWeaponEQ2(int me)
 {
 	return ItemType::mActorWeaponE[me];
 }

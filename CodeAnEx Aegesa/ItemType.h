@@ -71,6 +71,8 @@ public:
 		// next item
 	};
 
+	int MAX_INTEGRITY = 20;
+
 	// data 
 #pragma region All_weapons
 	ItemType::weapon brawd_injector;
@@ -201,17 +203,16 @@ public:
 		return armorlist[integer];
 	}
 
-	ItemType::weapon my_weapons[inventory::MAX_INTEGRITY] =
-	{};
 
-	ItemType::armor my_armors[inventory::MAX_INTEGRITY] =
-	{};
-
-	ItemType::item my_items[inventory::MAX_INTEGRITY] =
-	{};
 
 	// constructor
 	ItemType();
+
+	ItemType(item);
+
+	ItemType(armor);
+
+	ItemType(weapon);
 
 	//mutators / accessors
 	
