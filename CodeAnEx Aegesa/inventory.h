@@ -129,13 +129,13 @@ public:
 		weaponCount = m;
 	}
 
-	int GetItem(string id, ItemType::item inventItem);
+	int GetItem(string id, ItemType inventItem);
 
 	bool TakeItem(string id, int count, int agi, int ap, int atk, int hp,
 		int sp, int fp, int def, int spd, int dex, int intell, int spr, int end, int con,
 		int gold, int ivalue, int quantity, int node);
 
-	bool TakeItem(ItemType::item im);
+	bool TakeItem(ItemType im);
 
 	// battleSystem
 
@@ -145,9 +145,9 @@ public:
 		int fp, int def, int spd, int dex, int intell, int spr, int end,
 		int con, int gold, int ivalue, int quantity, int node);
 
-	void addItem(ItemType::item n);
+	void addItem(ItemType n);
 
-	void add(ItemType::item n);
+	void add(ItemType n);
 
 	void removeItem(string id);
 
@@ -168,11 +168,11 @@ public:
 	// conversions and conv back
 
 	// conv back
-	inventory pTIA(ItemType::armor v, ItemType::armor p, int select);
+	inventory pTIA(ItemType v, ItemType p, int select);
 
-	inventory pTIW(ItemType::weapon v, ItemType::weapon p, int select);
+	inventory pTIW(ItemType v, ItemType p, int select);
 
-	inventory pTII(ItemType::item v, ItemType::item p, int select);
+	inventory pTII(ItemType v, ItemType p, int select);
 
 	void zeroOut(int ix);
 
@@ -186,7 +186,7 @@ public:
 
 	// selections
 	//item getItem(int);
-	void itemExecute(Player_Actor i[], ItemType::item newI, int selectParty)
+	void itemExecute(Player_Actor i[], ItemType newI, int selectParty)
 	{
 		i[selectParty].setAGId(newI.agiAdd);
 		i[selectParty].setATKd(newI.atkAdd);
@@ -205,25 +205,25 @@ public:
 		cout << newI.name << " used" << endl;
 	}
 
-	void EquipA(Player_Actor i[], ItemType::armor aq, int selected);
+	void EquipA(Player_Actor i[], ItemType aq, int selected);
 
-	void EquipA(Player_Actor ip, ItemType::armor aq, int selected);
+	void EquipA(Player_Actor ip, ItemType aq, int selected);
 
-	void listGetchArmorUp(int d, int itemCount, int lastM, ItemType::armor stackIn[]);
+	void listGetchArmorUp(int d, int itemCount, int lastM, ItemType stackIn[]);
 
-	void listGetchArmorDown(int d, int itemCount, int lastM, ItemType::armor stackIn[]);
+	void listGetchArmorDown(int d, int itemCount, int lastM, ItemType stackIn[]);
 
-	void EquipW(Player_Actor i, ItemType::weapon wq, int selected);
+	void EquipW(Player_Actor i, ItemType wq, int selected);
 
-	void UnequipA(Player_Actor i, ItemType::armor aq, int selected);
+	void UnequipA(Player_Actor i, ItemType aq, int selected);
 
-	void UnequipW(Player_Actor i, ItemType::weapon wq, int selected);
+	void UnequipW(Player_Actor i, ItemType wq, int selected);
 
-	void EquipW(Player_Actor i[], ItemType::weapon wq, int selected);
+	void EquipW(Player_Actor i[], ItemType wq, int selected);
 
-	void UnequipA(Player_Actor i[], ItemType::armor aq, int selected);
+	void UnequipA(Player_Actor i[], ItemType aq, int selected);
 
-	void UnequipW(Player_Actor i[], ItemType::weapon wq, int selected);
+	void UnequipW(Player_Actor i[], ItemType wq, int selected);
 
 	// setters / mutators
 

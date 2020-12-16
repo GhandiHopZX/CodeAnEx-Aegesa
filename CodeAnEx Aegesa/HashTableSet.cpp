@@ -116,7 +116,9 @@ string HashTableSet::searchSkTable(int key)
 
 		if (skillTable[i].size() == findKey)
 		{
+			keyExists = true;
 			return "Skill" + bItr->second.name + " found.";
+
 		}
 		else if (skillTable[i].size() != key)
 		{

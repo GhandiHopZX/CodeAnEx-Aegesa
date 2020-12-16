@@ -32,7 +32,7 @@ public:
 	// Constructors
 	Player_Actor();
 
-	ItemType::armor getArmorEQ(int me);
+	ItemType getArmorEQ(int me);
 
 	ItemType getArmorEQ();
 
@@ -584,11 +584,11 @@ public:
 	//
 	//#pragma endregion
 
-	ItemType::weapon mActorWeaponE[1];
-	ItemType::armor mActorArmorE[3];
+	ItemType mActorWeaponE[1];
+	ItemType mActorArmorE[3];
 
-	void setArmor(int y, ItemType::armor d);
-	void setWeapon(int y, ItemType::weapon d);
+	void setArmor(int y, ItemType d);
+	void setWeapon(int y, ItemType d);
 
 	/*
 
