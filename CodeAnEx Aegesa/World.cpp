@@ -116,22 +116,25 @@ void World::beginningStory()
 	Actor1.setDp(0); // always set these defaulted to 0
 
 	// weapon eq
-	ItemType::weapon Basic_Injector;
+	ItemType Basic_Injector;
 
 #pragma region Basic_Injector_Setup
-	Basic_Injector.agiAdd = 1;
-	Basic_Injector.atkAdd = 5;
-	Basic_Injector.conAdd = 1;
-	Basic_Injector.defAdd = 1;
-	Basic_Injector.dexAdd = 1;
-	Basic_Injector.endAdd = 1;
-	Basic_Injector.goldValue = 10;
-	Basic_Injector.intAdd = 3;
-	Basic_Injector.name = "Basic_Injector";
-	Basic_Injector.quantity = 1;
-	Basic_Injector.spdAdd = 1;
-	Basic_Injector.sprAdd = 1;
-	Basic_Injector.strAdd = 1;
+	Basic_Injector.attFNCall(13, 1, false);
+	Basic_Injector.attFNCall(4, 5, false);
+	Basic_Injector.attFNCall(11, 1, false);
+	Basic_Injector.attFNCall(5, 1, false);
+	Basic_Injector.attFNCall(7, 1, false);
+	Basic_Injector.attFNCall(10, 1, false);
+	Basic_Injector.attFNCall(14, 10, false);
+	Basic_Injector.attFNCall(8, 3, false);
+	Basic_Injector.setName("Basic_Injector");
+	Basic_Injector.attFNCall(15, 1, false);
+	Basic_Injector.attFNCall(6, 1, false);
+	Basic_Injector.attFNCall(9, 1, false);
+	Basic_Injector.attFNCall(11, 1, false);
+	Basic_Injector.attFNCall(16, true, false);
+	Basic_Injector.attFNCall(17, false, false);
+	Basic_Injector.attFNCall(18, false, false);
 
 #pragma endregion
 
@@ -173,73 +176,85 @@ void World::beginningStory()
 	Alicia.setAp(5);
 	Alicia.setDp(0); // always set these defaulted to 0
 
-	ItemType::weapon Gold_Dragon_Claws;
-	ItemType::armor Kommodo_Chestplate;
-	ItemType::armor Kommodo_Leggings;
-	ItemType::armor Kommodo_Palm_Soles;
+	ItemType Gold_Dragon_Claws;
+	ItemType Kommodo_Chestplate;
+	ItemType Kommodo_Leggings;
+	ItemType Kommodo_Palm_Soles;
 
 #pragma region Goldshit
-	Gold_Dragon_Claws.agiAdd = 3;
-	Gold_Dragon_Claws.atkAdd = 5;
-	Gold_Dragon_Claws.conAdd = 1;
-	Gold_Dragon_Claws.defAdd = 5;
-	Gold_Dragon_Claws.dexAdd = 2;
-	Gold_Dragon_Claws.endAdd = 1;
-	Gold_Dragon_Claws.goldValue = 10;
-	Gold_Dragon_Claws.intAdd = 3;
-	Gold_Dragon_Claws.name = "Gold_Dragon_Claws";
-	Gold_Dragon_Claws.quantity = 1;
-	Gold_Dragon_Claws.spdAdd = 1;
-	Gold_Dragon_Claws.sprAdd = 3;
-	Gold_Dragon_Claws.strAdd = 1;
+	Gold_Dragon_Claws.attFNCall(13, 1, false);
+	Gold_Dragon_Claws.attFNCall(4, 5, false);
+	Gold_Dragon_Claws.attFNCall(11, 1, false);
+	Gold_Dragon_Claws.attFNCall(5, 1, false);
+	Gold_Dragon_Claws.attFNCall(7, 1, false);
+	Gold_Dragon_Claws.attFNCall(10, 1, false);
+	Gold_Dragon_Claws.attFNCall(14, 10, false);
+	Gold_Dragon_Claws.attFNCall(8, 3, false);
+	Gold_Dragon_Claws.setName("Gold_Dragon_Claws");
+	Gold_Dragon_Claws.attFNCall(15, 1, false);
+	Gold_Dragon_Claws.attFNCall(6, 1, false);
+	Gold_Dragon_Claws.attFNCall(9, 1, false);
+	Gold_Dragon_Claws.attFNCall(11, 1, false);
+	Gold_Dragon_Claws.attFNCall(16, false, false);
+	Gold_Dragon_Claws.attFNCall(17, true, false);
+	Gold_Dragon_Claws.attFNCall(18, false, false);
 #pragma endregion
 
 #pragma region Kommodo_Chestplate
-	Kommodo_Chestplate.agiAdd = 1;
-	Kommodo_Chestplate.atkAdd = 5;
-	Kommodo_Chestplate.conAdd = 1;
-	Kommodo_Chestplate.defAdd = 1;
-	Kommodo_Chestplate.dexAdd = 3;
-	Kommodo_Chestplate.endAdd = 1;
-	Kommodo_Chestplate.goldValue = 10;
-	Kommodo_Chestplate.intAdd = 3;
-	Kommodo_Chestplate.name = "Kommodo_Chestplate";
-	Kommodo_Chestplate.quantity = 1;
-	Kommodo_Chestplate.spdAdd = 4;
-	Kommodo_Chestplate.sprAdd = 5;
-	Kommodo_Chestplate.strAdd = 1;
+	Kommodo_Chestplate.attFNCall(13, 1, false);
+	Kommodo_Chestplate.attFNCall(4, 5, false);
+	Kommodo_Chestplate.attFNCall(11, 1, false);
+	Kommodo_Chestplate.attFNCall(5, 1, false);
+	Kommodo_Chestplate.attFNCall(7, 1, false);
+	Kommodo_Chestplate.attFNCall(10, 1, false);
+	Kommodo_Chestplate.attFNCall(14, 10, false);
+	Kommodo_Chestplate.attFNCall(8, 3, false);
+	Kommodo_Chestplate.setName("Kommodo_Chestplate");
+	Kommodo_Chestplate.attFNCall(15, 1, false);
+	Kommodo_Chestplate.attFNCall(6, 1, false);
+	Kommodo_Chestplate.attFNCall(9, 1, false);
+	Kommodo_Chestplate.attFNCall(11, 1, false);
+	Kommodo_Chestplate.attFNCall(16, false, false);
+	Kommodo_Chestplate.attFNCall(17, true, false);
+	Kommodo_Chestplate.attFNCall(18, false, false);
 #pragma endregion
 
 #pragma region Kommodo_Leggings
-	Kommodo_Leggings.agiAdd = 5;
-	Kommodo_Leggings.atkAdd = 5;
-	Kommodo_Leggings.conAdd = 1;
-	Kommodo_Leggings.defAdd = 1;
-	Kommodo_Leggings.dexAdd = 1;
-	Kommodo_Leggings.endAdd = 2;
-	Kommodo_Leggings.goldValue = 10;
-	Kommodo_Leggings.intAdd = 3;
-	Kommodo_Leggings.name = "Kommodo_Chestplate";
-	Kommodo_Leggings.quantity = 1;
-	Kommodo_Leggings.spdAdd = 3;
-	Kommodo_Leggings.sprAdd = 4;
-	Kommodo_Leggings.strAdd = 4;
+	Kommodo_Leggings.attFNCall(13, 1, false);
+	Kommodo_Leggings.attFNCall(4, 5, false);
+	Kommodo_Leggings.attFNCall(11, 1, false);
+	Kommodo_Leggings.attFNCall(5, 1, false);
+	Kommodo_Leggings.attFNCall(7, 1, false);
+	Kommodo_Leggings.attFNCall(10, 1, false);
+	Kommodo_Leggings.attFNCall(14, 10, false);
+	Kommodo_Leggings.attFNCall(8, 3, false);
+	Kommodo_Leggings.setName("Kommodo_Leggings");
+	Kommodo_Leggings.attFNCall(15, 1, false);
+	Kommodo_Leggings.attFNCall(6, 1, false);
+	Kommodo_Leggings.attFNCall(9, 1, false);
+	Kommodo_Leggings.attFNCall(11, 1, false);
+	Kommodo_Leggings.attFNCall(16, false, false);
+	Kommodo_Leggings.attFNCall(17, true, false);
+	Kommodo_Leggings.attFNCall(18, false, false);
 #pragma endregion
 
 #pragma region Kommodo_Palm_Soles
-	Kommodo_Palm_Soles.agiAdd = 7;
-	Kommodo_Palm_Soles.atkAdd = 5;
-	Kommodo_Palm_Soles.conAdd = 5;
-	Kommodo_Palm_Soles.defAdd = 3;
-	Kommodo_Palm_Soles.dexAdd = 8;
-	Kommodo_Palm_Soles.endAdd = 3;
-	Kommodo_Palm_Soles.goldValue = 10;
-	Kommodo_Palm_Soles.intAdd = 3;
-	Kommodo_Palm_Soles.name = "Kommodo_Palm_Soles";
-	Kommodo_Palm_Soles.quantity = 1;
-	Kommodo_Palm_Soles.spdAdd = 4;
-	Kommodo_Palm_Soles.sprAdd = 1;
-	Kommodo_Palm_Soles.strAdd = 5;
+	Kommodo_Palm_Soles.attFNCall(13, 1, false);
+	Kommodo_Palm_Soles.attFNCall(4, 5, false);
+	Kommodo_Palm_Soles.attFNCall(11, 1, false);
+	Kommodo_Palm_Soles.attFNCall(5, 1, false);
+	Kommodo_Palm_Soles.attFNCall(7, 1, false);
+	Kommodo_Palm_Soles.attFNCall(10, 1, false);
+	Kommodo_Palm_Soles.attFNCall(14, 10, false);
+	Kommodo_Palm_Soles.attFNCall(8, 3, false);
+	Kommodo_Palm_Soles.setName("Kommodo_Palm_Soles");
+	Kommodo_Palm_Soles.attFNCall(15, 1, false);
+	Kommodo_Palm_Soles.attFNCall(6, 1, false);
+	Kommodo_Palm_Soles.attFNCall(9, 1, false);
+	Kommodo_Palm_Soles.attFNCall(11, 1, false);
+	Kommodo_Palm_Soles.attFNCall(16, false, false);
+	Kommodo_Palm_Soles.attFNCall(17, true, false);
+	Kommodo_Palm_Soles.attFNCall(18, false, false);
 #pragma endregion
 
 #pragma endregion
@@ -673,8 +688,8 @@ void World::statusCall(Player_Actor p[])
 
 		int i = 0;
 
-		ItemType::armor a;
-		ItemType::weapon w;
+		ItemType a;
+		ItemType w;
 
 		cout << p[choice].getName() << endl;
 

@@ -16,13 +16,13 @@ using namespace std;
 #define KEY_X 120
 #define KEY_Z 90
 
-ItemType::weapon my_weapons[inventory::MAX_INTEGRITY] =
+ItemType my_weapons[inventory::MAX_INTEGRITY] =
 {};
 
-ItemType::armor my_armors[inventory::MAX_INTEGRITY] =
+ItemType my_armors[inventory::MAX_INTEGRITY] =
 {};
 
-ItemType::item my_items[inventory::MAX_INTEGRITY] =
+ItemType my_items[inventory::MAX_INTEGRITY] =
 {};
 
 inventory::inventory()
@@ -49,12 +49,12 @@ void inventory::displaylistItem()
 {
 	for (size_t i = 0; i < 19; i++)
 	{
-		if (my_items[i].name.empty())
+		if (my_items[i].attFNCall(0, "", true) == NULL) // leave the value in the middle blank. it'll only return the already existant set value.
 		{
 		}
 		else
 		{
-			cout << my_items[i].name << endl;
+			cout << my_items[i].attFNCall(0, "", true) << endl;
 		}
 	}
 }
@@ -63,12 +63,12 @@ void inventory::displaylistWeapon()
 {
 	for (size_t i = 0; i < 19; i++)
 	{
-		if (my_weapons[i].name.empty())
+		if (my_weapons[i].getName().empty())
 		{
 		}
 		else
 		{
-			cout << my_weapons[i].name << endl;
+			cout << my_weapons[i].getName().empty() << endl;
 		}
 	}
 }
@@ -77,12 +77,12 @@ void inventory::displaylistArmor()
 {
 	for (size_t i = 0; i < 19; i++)
 	{
-		if (my_armors[i].name.empty())
+		if (my_armors[i].getName().empty())
 		{
 		}
 		else
 		{
-			cout << my_armors[i].name << endl;
+			cout << my_armors[i].getName() << endl;
 		}
 	}
 }
@@ -95,18 +95,18 @@ void inventory::displayAll()
 }
 
 // unfinished fix number input
-void inventory::EquipA(Player_Actor ip, ItemType::armor aq, int selected)
+void inventory::EquipA(Player_Actor ip, ItemType aq, int selected)
 {
 	// virtual keys here
 	//
 	system("CLS");
 	
-	ItemType::armor stackIn[19] = {}; // leave this
+	ItemType stackIn[19] = {}; // leave this
 
 	int itemCount = 0;
 	for (int i = 0; i < 19; i++)
 	{
-		if (my_armors[i].name.empty())
+		if (my_armors[i].getName().empty())
 		{
 		}
 		else
@@ -139,18 +139,18 @@ void inventory::EquipA(Player_Actor ip, ItemType::armor aq, int selected)
 
 		for (int d = 0; d < itemCount - 1; d++)
 		{
-			if (my_armors[d].name.empty())
+			if (my_armors[d].getName().empty())
 			{
 			}
 
 			else
 			{
 				stackIn[d] = my_armors[d];
-				cout << d + 1 << " " << my_armors[d].name << getMarker(markers[d]) << endl;
+				cout << d + 1 << " " << my_armors[d].getName() << getMarker(markers[d]) << endl;
 			}
 			setCurrent(d + 1);
 			setMarker(current, itemCount/2); // marker initialization itemCount/2 will never be accessed 
-			cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
+			cout << d + 1 << " " << my_armors[d + 1].getName() << getMarker(markers[d + 1]) << endl;
 			lastM = d;
 		}
 
@@ -159,7 +159,7 @@ void inventory::EquipA(Player_Actor ip, ItemType::armor aq, int selected)
 		char key = getch();
 		int value = key;
 		int choice4{};
-		ItemType::armor lArmor;
+		ItemType lArmor;
 		int eqArmors{};
 
 		while (choice3 == NULL || value != KEY_X)
@@ -187,14 +187,14 @@ void inventory::EquipA(Player_Actor ip, ItemType::armor aq, int selected)
 				
 				for (int i = 0; i < 2; i++)
 				{
-					if (ip.getArmorEQ2(i).name.empty())
+					if (ip.getArmorEQ2(i).getName().empty())
 					{
 						cout << "empty slot " << endl;
 					}
 					else
 					{
 						++eqArmors;
-						cout << ip.getArmorEQ2(i).name << endl;
+						cout << ip.getArmorEQ2(i).getName() << endl;
 
 					}
 				}
@@ -235,23 +235,23 @@ void inventory::EquipA(Player_Actor ip, ItemType::armor aq, int selected)
 	}
 }
 
-void inventory::listGetchArmorUp(int d, int itemCount, int lastM, ItemType::armor stackIn[])
+void inventory::listGetchArmorUp(int d, int itemCount, int lastM, ItemType stackIn[])
 {
 #pragma region
 	d = 0;
 	for (; d < itemCount - 1; d++)
 	{
-		if (my_armors[d].name.empty())
+		if (my_armors[d].getName().empty())
 		{
 		}
 
 		else
 		{
 			stackIn[d] = my_armors[d];
-			cout << d + 1 << " " << my_armors[d].name << inventory::getMarker(markers[d]) << endl;
+			cout << d + 1 << " " << my_armors[d].getName() << inventory::getMarker(markers[d]) << endl;
 		}
 	}
-	cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
+	cout << d + 1 << " " << my_armors[d + 1].getName() << getMarker(markers[d + 1]) << endl;
 
 	if (lastM >= itemCount)
 	{
@@ -277,13 +277,13 @@ void inventory::listGetchArmorUp(int d, int itemCount, int lastM, ItemType::armo
 #pragma endregion
 }
 
-void inventory::listGetchArmorDown(int d, int itemCount, int lastM, ItemType::armor stackIn[])
+void inventory::listGetchArmorDown(int d, int itemCount, int lastM, ItemType stackIn[])
 {
 #pragma region 
 	d = 0;
 	for (; d < itemCount - 1; d++)
 	{
-		if (my_armors[d].name.empty())
+		if (my_armors[d].getName().empty())
 		{
 		}
 		else if (lastM <= 0)
@@ -295,10 +295,10 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, ItemType::ar
 		else
 		{
 			stackIn[d] = my_armors[d];
-			cout << d + 1 << " " << my_armors[d].name << inventory::getMarker(markers[d]) << endl;
+			cout << d + 1 << " " << my_armors[d].getName() << inventory::getMarker(markers[d]) << endl;
 		}
 	}
-	cout << d + 1 << " " << my_armors[d + 1].name << getMarker(markers[d + 1]) << endl;
+	cout << d + 1 << " " << my_armors[d + 1].getName() << getMarker(markers[d + 1]) << endl;
 
 	if (lastM >= itemCount)
 	{
@@ -324,15 +324,15 @@ void inventory::listGetchArmorDown(int d, int itemCount, int lastM, ItemType::ar
 #pragma endregion
 }
 
-void inventory::EquipW(Player_Actor i, ItemType::weapon wq, int selected)
+void inventory::EquipW(Player_Actor i, ItemType wq, int selected)
 {
 }
 
-void inventory::UnequipA(Player_Actor i, ItemType::armor aq, int selected)
+void inventory::UnequipA(Player_Actor i, ItemType aq, int selected)
 {
 }
 
-void inventory::UnequipW(Player_Actor i, ItemType::weapon wq, int selected)
+void inventory::UnequipW(Player_Actor i, ItemType wq, int selected)
 {
 }
 
@@ -344,7 +344,7 @@ int inventory::searchItem(string name)
 {
 	for (int i = 0; i < 100; i++)
 	{
-		if (itemlist->name == name)
+		if (itemList[i].getName() == name)
 		{
 			return i;
 		}
@@ -399,11 +399,11 @@ void inventory::PlayerItemInventory(Player_Actor party[])
 	}
 }
 
-int inventory::GetItem(string id, ItemType::item inventItem)
+int inventory::GetItem(string id, ItemType inventItem)
 {
 	for (int i = 0; i < 20; ++i)
 	{
-		if (my_items[i].name == id)
+		if (my_items[i].getName() == id)
 		{
 			inventItem = my_items[i];
 			return i;
@@ -412,10 +412,10 @@ int inventory::GetItem(string id, ItemType::item inventItem)
 	return -1;
 }
 
-bool inventory::TakeItem(ItemType::item im)
+bool inventory::TakeItem(ItemType im)
 {
-	ItemType::item b = im;
-	int itemSlot = GetItem(im.name, b);
+	ItemType b = im;
+	int itemSlot = GetItem(im.getName(), b);
 	if (itemSlot == -1)
 	{
 		return false;

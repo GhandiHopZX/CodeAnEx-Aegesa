@@ -150,7 +150,7 @@ int stateEffects::nameInt(string choiceBuffer)
 
 	int y = 0;
 
-	// mental ju jitstu
+	// not too much mental ju jitstu
 	for (int i = 0; i < choiceBuffer.size(); i++)
 	{
 		if (i >= 1)

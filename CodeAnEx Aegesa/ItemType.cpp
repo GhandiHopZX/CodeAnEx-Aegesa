@@ -11,11 +11,9 @@ ItemType::ItemType()
 	spAdd = 0;
 	fpAdd = 0;
 	apAdd = 0;
-
 	atkAdd = 0;
 	defAdd = 0;
 	spdAdd = 0;
-
 	dexAdd = 0;
 	intAdd = 0;
 	sprAdd = 0;
@@ -24,84 +22,139 @@ ItemType::ItemType()
 	strAdd = 0;
 	agiAdd = 0;
 	goldValue = 0;
-
 	quantity = 0;
-
 	weapon = false;
 	armor = false;
 	item = true;
 
+#pragma region
+	setName(name);
+	setStatBank(1, hpAdd);
+	setStatBank(2, spAdd);
+	setStatBank(3, fpAdd);
+	setStatBank(4, apAdd);
+	setStatBank(5, atkAdd);
+	setStatBank(6, defAdd);
+	setStatBank(7, spdAdd);
+	setStatBank(8, dexAdd);
+	setStatBank(9, intAdd);
+	setStatBank(10, sprAdd);
+	setStatBank(11, endAdd);
+	setStatBank(12, conAdd);
+	setStatBank(13, strAdd);
+	setStatBank(14, agiAdd);
+	setStatBank(15, goldValue);
+	setStatBank(16, quantity);
+	setBools(0, weapon);
+	setBools(1, armor);
+	setBools(2, item);
+
+#pragma endregion
+
 #pragma endregion
 	
 	attFNCall(0, this->name, true);
-	attFNCall(1, this->spAdd, true);
-	attFNCall(2, this->fpAdd, true);
-	attFNCall(3, this->apAdd, true);
-	attFNCall(4, this->atkAdd, true);
-	attFNCall(5, this->defAdd, true);
-	attFNCall(6, this->spdAdd, true);
-	attFNCall(7, this->dexAdd, true);
-	attFNCall(8, this->intAdd, true);
-	attFNCall(9, this->sprAdd, true);
-	attFNCall(10, this->endAdd, true);
-	attFNCall(11, this->conAdd, true);
-	attFNCall(12, this->strAdd, true);
-	attFNCall(13, this->agiAdd, true);
-	attFNCall(14, this->goldValue, true);
-	attFNCall(15, this->quantity, true);
-	attFNCall(16, this->weapon, false);
-	attFNCall(17, this->armor, false);
-	attFNCall(18, this->item, true);
+	attFNCall(1, this->hpAdd, true);
+	attFNCall(2, this->spAdd, true);
+	attFNCall(3, this->fpAdd, true);
+	attFNCall(4, this->apAdd, true);
+	attFNCall(5, this->atkAdd, true);
+	attFNCall(6, this->defAdd, true);
+	attFNCall(7, this->spdAdd, true);
+	attFNCall(8, this->dexAdd, true);
+	attFNCall(9, this->intAdd, true);
+	attFNCall(10, this->sprAdd, true);
+	attFNCall(11, this->endAdd, true);
+	attFNCall(12, this->conAdd, true);
+	attFNCall(13, this->strAdd, true);
+	attFNCall(14, this->agiAdd, true);
+	attFNCall(15, this->goldValue, true);
+	attFNCall(16, this->quantity, true);
+	attFNCall(17, this->weapon, false);
+	attFNCall(18, this->armor, false);
+	attFNCall(19, this->item, true);
 }
 
-ItemType::ItemType(string n, int at1, int at2,
+ItemType::ItemType(string n, int at0, int at1, int at2,
 	int at3, int at4, int at5, int at6, 
 	int at7, int at8, int at9, int at10, int at11, 
 	int at12, int at13, int at14, 
 	int at15, bool w16, bool a17, bool i18)
 {
 	attFNCall(0, n, true);
-	attFNCall(1, at1, true);
-	attFNCall(2, at2, true);
-	attFNCall(3, at3, true);
-	attFNCall(4, at4, true);
-	attFNCall(5, at5, true);
-	attFNCall(6, at6, true);
-	attFNCall(7, at7, true);
-	attFNCall(8, at8, true);
-	attFNCall(9, at9, true);
-	attFNCall(10, at10, true);
-	attFNCall(11, at11, true);
-	attFNCall(12, at12, true);
-	attFNCall(13, at13, true);
-	attFNCall(14, at14, true);
-	attFNCall(15, at15, true);
-	attFNCall(16, w16, true);
-	attFNCall(17, a17, true);
-	attFNCall(18, i18, true);
+	attFNCall(1, at0, true);
+	attFNCall(2, at1, true);
+	attFNCall(3, at2, true);
+	attFNCall(4, at3, true);
+	attFNCall(5, at4, true);
+	attFNCall(6, at5, true);
+	attFNCall(7, at6, true);
+	attFNCall(8, at7, true);
+	attFNCall(9, at8, true);
+	attFNCall(10, at9, true);
+	attFNCall(11, at10, true);
+	attFNCall(12, at11, true);
+	attFNCall(13, at12, true);
+	attFNCall(14, at13, true);
+	attFNCall(15, at14, true);
+	attFNCall(16, at15, true);
+	attFNCall(17, w16, true);
+	attFNCall(18, a17, true);
+	attFNCall(19, i18, true);
 }
 
-ItemType::ItemType(bool w16, bool a17, bool i18)
+ItemType::ItemType(bool w17, bool a18, bool i19)
 {
 	attFNCall(0, this->name, true);
-	attFNCall(1, this->spAdd, true);
-	attFNCall(2, this->fpAdd, true);
-	attFNCall(3, this->apAdd, true);
-	attFNCall(4, this->atkAdd, true);
-	attFNCall(5, this->defAdd, true);
-	attFNCall(6, this->spdAdd, true);
-	attFNCall(7, this->dexAdd, true);
-	attFNCall(8, this->intAdd, true);
-	attFNCall(9, this->sprAdd, true);
-	attFNCall(10, this->endAdd, true);
-	attFNCall(11, this->conAdd, true);
-	attFNCall(12, this->strAdd, true);
-	attFNCall(13, this->agiAdd, true);
-	attFNCall(14, this->goldValue, true);
-	attFNCall(15, this->quantity, true);
-	attFNCall(16, w16, true);
-	attFNCall(17, a17, true);
-	attFNCall(18, i18, true);
+	attFNCall(1, this->hpAdd, true);
+	attFNCall(2, this->spAdd, true);
+	attFNCall(3, this->fpAdd, true);
+	attFNCall(4, this->apAdd, true);
+	attFNCall(5, this->atkAdd, true);
+	attFNCall(6, this->defAdd, true);
+	attFNCall(7, this->spdAdd, true);
+	attFNCall(8, this->dexAdd, true);
+	attFNCall(9, this->intAdd, true);
+	attFNCall(10, this->sprAdd, true);
+	attFNCall(11, this->endAdd, true);
+	attFNCall(12, this->conAdd, true);
+	attFNCall(13, this->strAdd, true);
+	attFNCall(14, this->agiAdd, true);
+	attFNCall(15, this->goldValue, true);
+	attFNCall(16, this->quantity, true);
+	attFNCall(17, w17, true);
+	attFNCall(18, a18, true);
+	attFNCall(19, i19, true);
+}
+
+string ItemType::getName()
+{
+	return name;
+}
+
+void ItemType::setName(string n)
+{
+	name = n;
+}
+
+void ItemType::setStatBank(int call, int set)
+{
+	tegerBank[call] = set;
+}
+
+void ItemType::setBools(int call, bool d)
+{
+	wai[call] = d;
+}
+
+int ItemType::getStatBank(int call)
+{
+	return tegerBank[call];
+}
+
+bool ItemType::getBools(int call)
+{
+	return wai[call];
 }
 
 // data 

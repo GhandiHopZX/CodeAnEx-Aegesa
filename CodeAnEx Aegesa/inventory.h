@@ -84,6 +84,39 @@ public:
 	unsigned int sum_armors = 0; // total number of nodes
 	unsigned int sum_items = 0; // total number of nodes
 
+	ItemType AEGESA_FRAGMENT;
+	ItemType kaider_shard;
+	ItemType greenball_bun;
+	ItemType enchantment_crystal;
+	ItemType music_chord;
+	ItemType static_weave;
+	ItemType marble_eye;
+	ItemType tiny_fingers;
+	ItemType chared_beast_skin;
+	ItemType magical_mane;
+	ItemType masters_cane;
+	ItemType broken_wing;
+	ItemType ripped_coat;
+	ItemType shattered_broach;
+
+	ItemType itemList[100] = 
+	{
+	AEGESA_FRAGMENT,
+	kaider_shard,
+	greenball_bun,
+	enchantment_crystal,
+	music_chord,
+	static_weave,
+	marble_eye,
+	tiny_fingers,
+	chared_beast_skin,
+	magical_mane,
+	masters_cane,
+	broken_wing,
+	ripped_coat,
+	shattered_broach
+	};
+
 	// constant variables
 	static const int MAX_INTEGRITY = 20;
 
@@ -159,8 +192,6 @@ public:
 
 	void DisplayEQWeapons(Player_Actor p[]);
 
-	
-
 	void DisplayEQArmorSelected(Player_Actor p[], int call);
 
 	void DisplayEQWeaponsSelected(Player_Actor p[], int call);
@@ -182,30 +213,26 @@ public:
 
 	char choiceIn(string choiceBuffer);
 
-
-
 	// selections
 	//item getItem(int);
 	void itemExecute(Player_Actor i[], ItemType newI, int selectParty)
 	{
-		i[selectParty].setAGId(newI.agiAdd);
-		i[selectParty].setATKd(newI.atkAdd);
-		i[selectParty].setCONd(newI.conAdd);
-		i[selectParty].setDEFd(newI.defAdd);
-		i[selectParty].setDEXd(newI.dexAdd);
-		i[selectParty].setENDd(newI.endAdd);
-		i[selectParty].setSPDd(newI.spdAdd);
-		i[selectParty].setSPRd(newI.sprAdd);
-		i[selectParty].setINTd(newI.intAdd);
-		i[selectParty].setSTRd(newI.strAdd);
+		i[selectParty].setAGId(newI.attFNCall(14, 0, false));
+		i[selectParty].setATKd(newI.attFNCall(5, 0, false));
+		i[selectParty].setCONd(newI.attFNCall(12, 0, false));
+		i[selectParty].setDEFd(newI.attFNCall(6, 0, false));
+		i[selectParty].setDEXd(newI.attFNCall(8, 0, false));
+		i[selectParty].setENDd(newI.attFNCall(11, 0, false));
+		i[selectParty].setSPDd(newI.attFNCall(7, 0, false));
+		i[selectParty].setSPRd(newI.attFNCall(10, 0, false));
+		i[selectParty].setINTd(newI.attFNCall(9, 0, false));
+		i[selectParty].setSTRd(newI.attFNCall(13, 0, false));
 
-		i[selectParty].setHpd(newI.hpAdd);
-		i[selectParty].setSpd(newI.spAdd);
-		i[selectParty].setFpd(newI.fpAdd);
-		cout << newI.name << " used" << endl;
+		i[selectParty].setHpd(newI.attFNCall(1, 0, false));
+		i[selectParty].setSpd(newI.attFNCall(2, 0, false));
+		i[selectParty].setFpd(newI.attFNCall(3, 0, false));
+		cout << newI.attFNCall(0, "", false) << " used" << endl;
 	}
-
-	void EquipA(Player_Actor i[], ItemType aq, int selected);
 
 	void EquipA(Player_Actor ip, ItemType aq, int selected);
 
